@@ -1,0 +1,5 @@
+../Src/mainADC.c:40:5:main	8	static
+../Src/mainADC.c:89:6:initSystem	4	static
+../Src/mainADC.c:143:6:Timer2_Callback	4	static
+../Src/mainADC.c:147:6:USART2_Callback	8	static
+../Src/mainADC.c:152:6:adc_Complete_Callback	8	static

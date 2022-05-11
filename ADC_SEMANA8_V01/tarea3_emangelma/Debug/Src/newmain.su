@@ -1,0 +1,6 @@
+newmain.c:44:5:main	8	static
+newmain.c:69:6:LEDConfig	8	static
+newmain.c:134:6:initSystem	4	static
+newmain.c:186:6:TIM2_Callback	4	static
+newmain.c:191:6:TIM3_Callback	4	static
+newmain.c:196:6:USART2_Callback	8	static

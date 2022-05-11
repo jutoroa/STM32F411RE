@@ -1,0 +1,6 @@
+core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+AdcDriver.c:21:6:adc_Config	16	static,ignoring_inline_asm
+AdcDriver.c:129:6:startConversion	4	static
+AdcDriver.c:136:6:ADC_IRQHandler	8	static
+AdcDriver.c:150:29:adcComplete_Callback	4	static,ignoring_inline_asm
+AdcDriver.c:155:6:configAnalogPin	16	static

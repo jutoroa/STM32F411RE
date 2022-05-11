@@ -1,0 +1,10 @@
+G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+../Drivers/Src/USARTxDriver.c:17:6:USART_Config	16	static,ignoring_inline_asm
+../Drivers/Src/USARTxDriver.c:236:28:USART1_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/USARTxDriver.c:241:28:USART2_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/USARTxDriver.c:246:28:USART6_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/USARTxDriver.c:253:6:USART1_IRQHandler	8	static
+../Drivers/Src/USARTxDriver.c:258:6:USART2_IRQHandler	8	static
+../Drivers/Src/USARTxDriver.c:271:6:USART6_IRQHandler	8	static
+../Drivers/Src/USARTxDriver.c:278:6:readChar	24	static
+../Drivers/Src/USARTxDriver.c:295:5:writeChar	16	static
