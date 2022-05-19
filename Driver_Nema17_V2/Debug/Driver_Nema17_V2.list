@@ -2013,13 +2013,13 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor1
 
-	handlerStep1Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
+	handlerStep1Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOC
  8000cac:	4b69      	ldr	r3, [pc, #420]	; (8000e54 <initSystem+0x1d0>)
  8000cae:	4a6a      	ldr	r2, [pc, #424]	; (8000e58 <initSystem+0x1d4>)
  8000cb0:	601a      	str	r2, [r3, #0]
-	handlerStep1Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;					// Pin a emplear: PC9
+	handlerStep1Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_8;					// Pin a emplear: PC9
  8000cb2:	4b68      	ldr	r3, [pc, #416]	; (8000e54 <initSystem+0x1d0>)
- 8000cb4:	2209      	movs	r2, #9
+ 8000cb4:	2208      	movs	r2, #8
  8000cb6:	711a      	strb	r2, [r3, #4]
 	handlerStep1Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
  8000cb8:	4b66      	ldr	r3, [pc, #408]	; (8000e54 <initSystem+0x1d0>)
@@ -2046,11 +2046,11 @@ void initSystem(void){
 
 	handlerDir1Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
  8000cd6:	4b61      	ldr	r3, [pc, #388]	; (8000e5c <initSystem+0x1d8>)
- 8000cd8:	4a5f      	ldr	r2, [pc, #380]	; (8000e58 <initSystem+0x1d4>)
+ 8000cd8:	4a61      	ldr	r2, [pc, #388]	; (8000e60 <initSystem+0x1dc>)
  8000cda:	601a      	str	r2, [r3, #0]
-	handlerDir1Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_8;					// Pin a emplear: PC8
+	handlerDir1Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_6;					// Pin a emplear: PC8
  8000cdc:	4b5f      	ldr	r3, [pc, #380]	; (8000e5c <initSystem+0x1d8>)
- 8000cde:	2208      	movs	r2, #8
+ 8000cde:	2206      	movs	r2, #6
  8000ce0:	711a      	strb	r2, [r3, #4]
 	handlerDir1Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
  8000ce2:	4b5e      	ldr	r3, [pc, #376]	; (8000e5c <initSystem+0x1d8>)
@@ -2076,45 +2076,45 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor2
 
-	handlerStep2Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOB
- 8000d00:	4b57      	ldr	r3, [pc, #348]	; (8000e60 <initSystem+0x1dc>)
- 8000d02:	4a58      	ldr	r2, [pc, #352]	; (8000e64 <initSystem+0x1e0>)
+	handlerStep2Config.pGPIOx 									= GPIOA;					// Puerto a emplear: GPIOB
+ 8000d00:	4b58      	ldr	r3, [pc, #352]	; (8000e64 <initSystem+0x1e0>)
+ 8000d02:	4a53      	ldr	r2, [pc, #332]	; (8000e50 <initSystem+0x1cc>)
  8000d04:	601a      	str	r2, [r3, #0]
-	handlerStep2Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_8;					// Pin a emplear: PB8
- 8000d06:	4b56      	ldr	r3, [pc, #344]	; (8000e60 <initSystem+0x1dc>)
- 8000d08:	2208      	movs	r2, #8
+	handlerStep2Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_12;					// Pin a emplear: PB8
+ 8000d06:	4b57      	ldr	r3, [pc, #348]	; (8000e64 <initSystem+0x1e0>)
+ 8000d08:	220c      	movs	r2, #12
  8000d0a:	711a      	strb	r2, [r3, #4]
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
- 8000d0c:	4b54      	ldr	r3, [pc, #336]	; (8000e60 <initSystem+0x1dc>)
+ 8000d0c:	4b55      	ldr	r3, [pc, #340]	; (8000e64 <initSystem+0x1e0>)
  8000d0e:	2201      	movs	r2, #1
  8000d10:	715a      	strb	r2, [r3, #5]
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
- 8000d12:	4b53      	ldr	r3, [pc, #332]	; (8000e60 <initSystem+0x1dc>)
+ 8000d12:	4b54      	ldr	r3, [pc, #336]	; (8000e64 <initSystem+0x1e0>)
  8000d14:	2200      	movs	r2, #0
  8000d16:	721a      	strb	r2, [r3, #8]
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
- 8000d18:	4b51      	ldr	r3, [pc, #324]	; (8000e60 <initSystem+0x1dc>)
+ 8000d18:	4b52      	ldr	r3, [pc, #328]	; (8000e64 <initSystem+0x1e0>)
  8000d1a:	2201      	movs	r2, #1
  8000d1c:	71da      	strb	r2, [r3, #7]
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinSpeed				= GPIO_OSPEED_MEDIUM;
- 8000d1e:	4b50      	ldr	r3, [pc, #320]	; (8000e60 <initSystem+0x1dc>)
+ 8000d1e:	4b51      	ldr	r3, [pc, #324]	; (8000e64 <initSystem+0x1e0>)
  8000d20:	2201      	movs	r2, #1
  8000d22:	719a      	strb	r2, [r3, #6]
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinAltFunMode		= AF0;						// Ninguna función
- 8000d24:	4b4e      	ldr	r3, [pc, #312]	; (8000e60 <initSystem+0x1dc>)
+ 8000d24:	4b4f      	ldr	r3, [pc, #316]	; (8000e64 <initSystem+0x1e0>)
  8000d26:	2200      	movs	r2, #0
  8000d28:	725a      	strb	r2, [r3, #9]
 
 
 	// Definimos el handler para la dirección del motor2
 
-	handlerDir2Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
+	handlerDir2Config.pGPIOx 									= GPIOA;					// Puerto a emplear: GPIOC
  8000d2a:	4b4f      	ldr	r3, [pc, #316]	; (8000e68 <initSystem+0x1e4>)
- 8000d2c:	4a4a      	ldr	r2, [pc, #296]	; (8000e58 <initSystem+0x1d4>)
+ 8000d2c:	4a48      	ldr	r2, [pc, #288]	; (8000e50 <initSystem+0x1cc>)
  8000d2e:	601a      	str	r2, [r3, #0]
-	handlerDir2Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_6;					// Pin a emplear: PC6
+	handlerDir2Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_11;					// Pin a emplear: PC6
  8000d30:	4b4d      	ldr	r3, [pc, #308]	; (8000e68 <initSystem+0x1e4>)
- 8000d32:	2206      	movs	r2, #6
+ 8000d32:	220b      	movs	r2, #11
  8000d34:	711a      	strb	r2, [r3, #4]
 	handlerDir2Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
  8000d36:	4b4c      	ldr	r3, [pc, #304]	; (8000e68 <initSystem+0x1e4>)
@@ -2139,13 +2139,13 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor3
 
-	handlerStep3Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOB
+	handlerStep3Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOB
  8000d54:	4b45      	ldr	r3, [pc, #276]	; (8000e6c <initSystem+0x1e8>)
- 8000d56:	4a43      	ldr	r2, [pc, #268]	; (8000e64 <initSystem+0x1e0>)
+ 8000d56:	4a42      	ldr	r2, [pc, #264]	; (8000e60 <initSystem+0x1dc>)
  8000d58:	601a      	str	r2, [r3, #0]
-	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;					// Pin a emplear: PB9
+	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_1;					// Pin a emplear: PB9
  8000d5a:	4b44      	ldr	r3, [pc, #272]	; (8000e6c <initSystem+0x1e8>)
- 8000d5c:	2209      	movs	r2, #9
+ 8000d5c:	2201      	movs	r2, #1
  8000d5e:	711a      	strb	r2, [r3, #4]
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
  8000d60:	4b42      	ldr	r3, [pc, #264]	; (8000e6c <initSystem+0x1e8>)
@@ -2173,7 +2173,7 @@ void initSystem(void){
 
 	handlerDir3Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
  8000d7e:	4b3c      	ldr	r3, [pc, #240]	; (8000e70 <initSystem+0x1ec>)
- 8000d80:	4a35      	ldr	r2, [pc, #212]	; (8000e58 <initSystem+0x1d4>)
+ 8000d80:	4a37      	ldr	r2, [pc, #220]	; (8000e60 <initSystem+0x1dc>)
  8000d82:	601a      	str	r2, [r3, #0]
 	handlerDir3Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_5;					// Pin a emplear: PC5
  8000d84:	4b3a      	ldr	r3, [pc, #232]	; (8000e70 <initSystem+0x1ec>)
@@ -2319,10 +2319,10 @@ void initSystem(void){
  8000e4c:	20000028 	.word	0x20000028
  8000e50:	40020000 	.word	0x40020000
  8000e54:	200000e4 	.word	0x200000e4
- 8000e58:	40020800 	.word	0x40020800
+ 8000e58:	40020400 	.word	0x40020400
  8000e5c:	200000f0 	.word	0x200000f0
- 8000e60:	200000fc 	.word	0x200000fc
- 8000e64:	40020400 	.word	0x40020400
+ 8000e60:	40020800 	.word	0x40020800
+ 8000e64:	200000fc 	.word	0x200000fc
  8000e68:	20000108 	.word	0x20000108
  8000e6c:	20000114 	.word	0x20000114
  8000e70:	20000120 	.word	0x20000120

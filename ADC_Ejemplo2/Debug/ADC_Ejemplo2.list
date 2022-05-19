@@ -1669,6 +1669,8 @@ void startTimer(TIMER_Handler_t *ptrTimerConfig){
  8000b18:	681b      	ldr	r3, [r3, #0]
  8000b1a:	f042 0201 	orr.w	r2, r2, #1
  8000b1e:	60da      	str	r2, [r3, #12]
+
+
 	__NVIC_EnableIRQ(TIM3_IRQn);
  8000b20:	201d      	movs	r0, #29
  8000b22:	f7ff fedb 	bl	80008dc <__NVIC_EnableIRQ>

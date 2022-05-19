@@ -1,0 +1,25 @@
+G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+../Src/EXTIxDriver.c:14:6:EXTI_Config	16	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:176:6:EXTI0_IRQHandler	8	static
+../Src/EXTIxDriver.c:184:6:EXTI1_IRQHandler	8	static
+../Src/EXTIxDriver.c:192:6:EXTI2_IRQHandler	8	static
+../Src/EXTIxDriver.c:200:6:EXTI3_IRQHandler	8	static
+../Src/EXTIxDriver.c:208:6:EXTI4_IRQHandler	8	static
+../Src/EXTIxDriver.c:216:6:EXTI9_5_IRQHandler	8	static
+../Src/EXTIxDriver.c:273:6:EXTI15_10_IRQHandler	8	static
+../Src/EXTIxDriver.c:338:28:EXTI0_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:342:28:EXTI1_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:346:28:EXTI2_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:350:28:EXTI3_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:354:28:EXTI4_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:358:28:EXTI5_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:362:28:EXTI6_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:366:28:EXTI7_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:370:28:EXTI8_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:374:28:EXTI9_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:378:28:EXTI10_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:382:28:EXTI11_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:386:28:EXTI12_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:390:28:EXTI13_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:394:28:EXTI14_Callback	4	static,ignoring_inline_asm
+../Src/EXTIxDriver.c:398:28:EXTI15_Callback	4	static,ignoring_inline_asm

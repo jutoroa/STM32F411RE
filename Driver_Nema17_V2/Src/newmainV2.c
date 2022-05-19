@@ -116,8 +116,8 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor1
 
-	handlerStep1Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
-	handlerStep1Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;					// Pin a emplear: PC9
+	handlerStep1Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOC
+	handlerStep1Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_8;					// Pin a emplear: PC9
 	handlerStep1Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
 	handlerStep1Config.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerStep1Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -127,7 +127,7 @@ void initSystem(void){
 	// Definimos el handler para la dirección (DIR) del motor1
 
 	handlerDir1Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
-	handlerDir1Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_8;					// Pin a emplear: PC8
+	handlerDir1Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_6;					// Pin a emplear: PC8
 	handlerDir1Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
 	handlerDir1Config.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerDir1Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -137,8 +137,8 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor2
 
-	handlerStep2Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOB
-	handlerStep2Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_8;					// Pin a emplear: PB8
+	handlerStep2Config.pGPIOx 									= GPIOA;					// Puerto a emplear: GPIOB
+	handlerStep2Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_12;					// Pin a emplear: PB8
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerStep2Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -148,8 +148,8 @@ void initSystem(void){
 
 	// Definimos el handler para la dirección del motor2
 
-	handlerDir2Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOC
-	handlerDir2Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_6;					// Pin a emplear: PC6
+	handlerDir2Config.pGPIOx 									= GPIOA;					// Puerto a emplear: GPIOC
+	handlerDir2Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_11;					// Pin a emplear: PC6
 	handlerDir2Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
 	handlerDir2Config.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerDir2Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -158,8 +158,8 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor3
 
-	handlerStep3Config.pGPIOx 									= GPIOB;					// Puerto a emplear: GPIOB
-	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;					// Pin a emplear: PB9
+	handlerStep3Config.pGPIOx 									= GPIOC;					// Puerto a emplear: GPIOB
+	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_1;					// Pin a emplear: PB9
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;			// Señal de salida
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;

@@ -3,12 +3,12 @@ G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.
 G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
 ../Drivers/Src/TIMxDriver.c:21:6:Timer_Config	16	static,ignoring_inline_asm
 ../Drivers/Src/TIMxDriver.c:104:6:startTimer	16	static
-../Drivers/Src/TIMxDriver.c:109:6:stopTimer	16	static
-../Drivers/Src/TIMxDriver.c:118:28:Timer2_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/TIMxDriver.c:123:28:Timer3_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/TIMxDriver.c:128:28:Timer4_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/TIMxDriver.c:133:28:Timer5_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/TIMxDriver.c:140:6:TIM2_IRQHandler	8	static
-../Drivers/Src/TIMxDriver.c:145:6:TIM3_IRQHandler	8	static
-../Drivers/Src/TIMxDriver.c:150:6:TIM4_IRQHandler	8	static
-../Drivers/Src/TIMxDriver.c:155:6:TIM5_IRQHandler	8	static
+../Drivers/Src/TIMxDriver.c:111:6:stopTimer	16	static
+../Drivers/Src/TIMxDriver.c:120:28:Timer2_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/TIMxDriver.c:125:28:Timer3_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/TIMxDriver.c:130:28:Timer4_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/TIMxDriver.c:135:28:Timer5_Callback	4	static,ignoring_inline_asm
+../Drivers/Src/TIMxDriver.c:142:6:TIM2_IRQHandler	8	static
+../Drivers/Src/TIMxDriver.c:147:6:TIM3_IRQHandler	8	static
+../Drivers/Src/TIMxDriver.c:152:6:TIM4_IRQHandler	8	static
+../Drivers/Src/TIMxDriver.c:157:6:TIM5_IRQHandler	8	static
