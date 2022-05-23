@@ -3,6 +3,10 @@
  *
  *  Created on: 4/05/2022
  *  Author: Juan Pablo
+ *
+ * Esta tarea pretende implementar un sumador de dos dígitos, en donde cada unidad se aumenta debido a una interrupción
+ * del EXTI, la cuál podrá estar dada por un botón, o una fotocompuerta. Los resultados de la suma se pondrán observar
+ * en un Display 7 segmentos.
  */
 
 
@@ -20,7 +24,7 @@
 // *************** // VARIABLES PROYECTO // *************** //
 
 GPIO_Handler_t 	handlerStateLED 	= {0};	// StateLED
-GPIO_Handler_t	handlerSwitchLED	= {0};	// Switch LED
+GPIO_Handler_t	handlerSwitchLED	= {0};	// Switch LED (LED que prende y apaga con cada interrupción del EXTI).
 TIMER_Handler_t handlerTimer2 		= {0};	// Timer2
 TIMER_Handler_t handlerTimer4 		= {0};	// Timer4
 EXTI_Config_t	handlerEXTI0		= {0};	// EXTI0 Botón
@@ -43,11 +47,12 @@ GPIO_Handler_t	handlerTransistorDecenas			=	{0};	// Transistor decenas
 
 // Variables auxiliar.
 
-uint32_t 	counterUnidades	= 0;				// Contador para cada iteración del botón
-uint32_t 	counterDecenas	= 0;				// Contador para cada iteración del botón
+uint32_t 	counterUnidades	= 0;				// Contador para cada iteración del botón - Unidades
+uint32_t 	counterDecenas	= 0;				// Contador para cada iteración del botón - Decenas
 uint32_t 	auxCounter		= 0;				// Variable auxiliar para el SwitchLED
 uint8_t		buttonControl	= 0;				// Variable para controlar el Debounce
 uint8_t		LEDState		= 1;				// State del SwitchLED
+
 // *************** // Headers // *************** //
 
 void initSystem(void);
@@ -58,7 +63,7 @@ int main(void)
 {
 		// Inicializamos el sistema
 		initSystem();
-		//GPIO_WritePin(&handlerSwitchLED, SET);
+
 	    /* Ciclo principal */
 		while(1){
 
@@ -94,7 +99,7 @@ int main(void)
 				}
 
 			}
-			// Si ambos contadores llegan a 9 (Número 99) se reinicia el contador.
+			// Si el contador de decenas llega a más de 9 (Número mayor a 99) se reinicia el contador a 00.
 			if(counterDecenas > 9 && counterUnidades == 0){
 				counterUnidades = 0;
 				counterDecenas = 0;
@@ -158,7 +163,6 @@ void initSystem(void){
 
 	// Desincronizamos los dos display
 	handlerTransistorDecenas.pGPIOx -> ODR ^= GPIO_ODR_OD5;
-//	handlerTransistorDecenas.pGPIOx -> ODR |= GPIO_ODR_OD5;*/
 
 	// Configuración del timer2
 	handlerTimer2.ptrTIMx								= TIM2;
@@ -290,6 +294,10 @@ void initSystem(void){
 	GPIO_WritePin(&handlerSevenSegmentsG, SET);
 	GPIO_WritePin(&handlerSevenSegmentsP, SET);
 }
+
+//***********// setNumber //***********//
+
+// Función que tiene la configuración para cada uno de los números del 0 al 9.
 
 void setNumber(uint32_t number){
 
@@ -427,33 +435,41 @@ void setNumber(uint32_t number){
 }
 
 //***********// CallBacks //***********//
+
+// Timer encargado del StateLED
 void Timer2_Callback(void){
 	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
 }
 
+// Timer encargado de genera la frecuencia de oscilación de los dos transistores para los display
 void Timer4_Callback(void){
 
-	//setNumber(0);
+	handlerTransistorUnidades.pGPIOx -> ODR ^= GPIO_ODR_OD5;	// Switcheamos el estado del Transistor Unidades
 
-	handlerTransistorUnidades.pGPIOx -> ODR ^= GPIO_ODR_OD5;
-
-	handlerTransistorDecenas.pGPIOx -> ODR ^= GPIO_ODR_OD5;
+	handlerTransistorDecenas.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Switcheamos el estado del Transistor Decenas
 
 
-
+	// Si el transistor Unidades está encendido, se muestra el valor de unidades
 	if(((handlerTransistorUnidades.pGPIOx -> ODR) &= GPIO_ODR_OD5) !=  GPIO_ODR_OD5 ){
 		setNumber(counterUnidades);
+	// Si el transistor Decenas está encendido, se muestra el valor de Decenas
 	}else if((handlerTransistorDecenas.pGPIOx -> ODR &= GPIO_ODR_OD5) != GPIO_ODR_OD5){
 		setNumber(counterDecenas);
 	}
 }
 
+// Interrupción externa para el botón.
 void EXTI0_Callback(void){
+	// Cambiamos el estado del Switch LED cada vez que se genera una interrupción.
 	auxCounter ^= 1;
+	// Variable para la comprobación del Bounce.
 	buttonControl = 1;
 }
 
+// Interrupción externa para la fotocompuerta.
 void EXTI3_Callback(void){
+	// Cambiamos el estado del Switch LED cada vez que se genera una interrupción.
 	auxCounter ^= 1;
+	// Variable para la comprobación del Bounce.
 	buttonControl = 1;
 }

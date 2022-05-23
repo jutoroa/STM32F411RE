@@ -23,3 +23,8 @@
 2022-05-12 20:46:39,578 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
 2022-05-12 20:47:24,995 [INFO] RetryExec:97 - I/O exception (org.apache.http.NoHttpResponseException) caught when processing request to {s}->https://sw-center.st.com:443: The target server failed to respond
 2022-05-12 20:47:24,997 [INFO] RetryExec:113 - Retrying request to {s}->https://sw-center.st.com:443
+2022-05-19 07:07:40,805 [INFO] Activator:177 - 
+
+
+2022-05-19 07:07:40,808 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-19 07:07:49,670 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
