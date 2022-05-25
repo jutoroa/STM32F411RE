@@ -59,8 +59,8 @@ all: main-build
 main-build: EXTIEjemplo1.elf secondary-outputs
 
 # Tool invocations
-EXTIEjemplo1.elf EXTIEjemplo1.map: $(OBJS) $(USER_OBJS) G:\Mi\ unidad\Unalmed\Taller_5\STM32DIRECTORY\EXTIEjemplo1\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "EXTIEjemplo1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\EXTIEjemplo1\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTIEjemplo1.map" -Wl,--gc-sections -static -L"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\DriversSTM32\Debug" --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+EXTIEjemplo1.elf EXTIEjemplo1.map: $(OBJS) $(USER_OBJS) /home/jutoroa/workspace/STMDirectory/EXTIEjemplo1/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "EXTIEjemplo1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/EXTIEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTIEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

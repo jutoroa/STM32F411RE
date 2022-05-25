@@ -1,0 +1,6 @@
+20:59:24 **** Incremental Build of configuration Debug for project DriversSTM32 ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+
+20:59:25 Build Finished. 0 errors, 0 warnings. (took 471ms)
+

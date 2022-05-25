@@ -1,0 +1,16 @@
+21:08:00 **** Incremental Build of configuration Debug for project EXTIEjemplo1 ****
+make -j8 all 
+arm-none-eabi-gcc -o "EXTIEjemplo1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/EXTIEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTIEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTIEjemplo1.elf
+ 
+arm-none-eabi-size   EXTIEjemplo1.elf 
+arm-none-eabi-objdump -h -S  EXTIEjemplo1.elf  > "EXTIEjemplo1.list"
+   text	   data	    bss	    dec	    hex	filename
+   4284	      8	   1616	   5908	   1714	EXTIEjemplo1.elf
+Finished building: default.size.stdout
+ 
+Finished building: EXTIEjemplo1.list
+ 
+
+21:08:01 Build Finished. 0 errors, 0 warnings. (took 521ms)
+

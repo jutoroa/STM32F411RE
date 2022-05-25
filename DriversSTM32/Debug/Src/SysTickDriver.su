@@ -1,4 +1,4 @@
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
 ../Src/SysTickDriver.c:16:6:config_SysTickMs	8	static,ignoring_inline_asm
 ../Src/SysTickDriver.c:45:10:getTicksMs	4	static
 ../Src/SysTickDriver.c:51:6:SysTick_Handler	4	static

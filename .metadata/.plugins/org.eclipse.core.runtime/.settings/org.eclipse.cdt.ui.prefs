@@ -1,4 +1,17 @@
+c_default=114,159,207
+c_multi_line_comment=186,189,182
+c_numbers=131,211,230
+c_operators=94,245,95
+c_single_line_comment=186,189,182
+c_type=239,90,90
 eclipse.preferences.version=1
+semanticHighlighting.globalVariable.color=255,173,79
+semanticHighlighting.globalVariable.enabled=true
+semanticHighlighting.globalVariable.underline=true
+semanticHighlighting.localVariable.underline=true
+semanticHighlighting.localVariableDeclaration.color=213,154,66
+semanticHighlighting.macroSubstitution.color=114,159,207
+semanticHighlighting.parameterVariable.bold=true
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

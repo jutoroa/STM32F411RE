@@ -1,0 +1,10 @@
+21:17:30 **** Incremental Build of configuration Debug for project tarea3_jutoroa ****
+make -j8 all 
+arm-none-eabi-size   tarea3_jutoroa.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3668	      8	   1928	   5604	   15e4	tarea3_jutoroa.elf
+Finished building: default.size.stdout
+ 
+
+21:17:30 Build Finished. 0 errors, 0 warnings. (took 421ms)
+

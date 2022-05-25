@@ -35,15 +35,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_ranges 000001c0  00000000  00000000  00023ab0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000f63c  00000000  00000000  00023c70  2**0
+ 16 .debug_macro  0000f654  00000000  00000000  00023c70  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00002d74  00000000  00000000  000332ac  2**0
+ 17 .debug_line   00002c29  00000000  00000000  000332c4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00055184  00000000  00000000  00036020  2**0
+ 18 .debug_str    00055182  00000000  00000000  00035eed  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  0008b1a4  2**0
+ 19 .comment      00000050  00000000  00000000  0008b06f  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000aa8  00000000  00000000  0008b1f4  2**2
+ 20 .debug_frame  00000aa8  00000000  00000000  0008b0c0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -589,7 +589,7 @@ void *_sbrk(ptrdiff_t incr)
  800050e:	220c      	movs	r2, #12
  8000510:	601a      	str	r2, [r3, #0]
     return (void *)-1;
- 8000512:	f04f 33ff 	mov.w	r3, #4294967295
+ 8000512:	f04f 33ff 	mov.w	r3, #4294967295	; 0xffffffff
  8000516:	e009      	b.n	800052c <_sbrk+0x54>
   }
 
@@ -3424,7 +3424,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  80014d8:	89a3      	ldrh	r3, [r4, #12]
  80014da:	f043 0340 	orr.w	r3, r3, #64	; 0x40
  80014de:	81a3      	strh	r3, [r4, #12]
- 80014e0:	f04f 30ff 	mov.w	r0, #4294967295
+ 80014e0:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
  80014e4:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
  80014e8:	6921      	ldr	r1, [r4, #16]
  80014ea:	464a      	mov	r2, r9
@@ -3485,7 +3485,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  8001566:	b920      	cbnz	r0, 8001572 <_svfiprintf_r+0x2e>
  8001568:	230c      	movs	r3, #12
  800156a:	603b      	str	r3, [r7, #0]
- 800156c:	f04f 30ff 	mov.w	r0, #4294967295
+ 800156c:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
  8001570:	e0d1      	b.n	8001716 <_svfiprintf_r+0x1d2>
  8001572:	2340      	movs	r3, #64	; 0x40
  8001574:	616b      	str	r3, [r5, #20]
@@ -3520,7 +3520,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  80015c2:	2b00      	cmp	r3, #0
  80015c4:	f000 80a2 	beq.w	800170c <_svfiprintf_r+0x1c8>
  80015c8:	2300      	movs	r3, #0
- 80015ca:	f04f 32ff 	mov.w	r2, #4294967295
+ 80015ca:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
  80015ce:	e9cd 2305 	strd	r2, r3, [sp, #20]
  80015d2:	f10a 0a01 	add.w	sl, sl, #1
  80015d6:	9304      	str	r3, [sp, #16]
@@ -3587,7 +3587,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  8001666:	9203      	str	r2, [sp, #12]
  8001668:	2b00      	cmp	r3, #0
  800166a:	bfb8      	it	lt
- 800166c:	f04f 33ff 	movlt.w	r3, #4294967295
+ 800166c:	f04f 33ff 	movlt.w	r3, #4294967295	; 0xffffffff
  8001670:	3402      	adds	r4, #2
  8001672:	9305      	str	r3, [sp, #20]
  8001674:	f8df a0bc 	ldr.w	sl, [pc, #188]	; 8001734 <_svfiprintf_r+0x1f0>
@@ -3748,7 +3748,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  80017e2:	47c0      	blx	r8
  80017e4:	3001      	adds	r0, #1
  80017e6:	d103      	bne.n	80017f0 <_printf_common+0xac>
- 80017e8:	f04f 30ff 	mov.w	r0, #4294967295
+ 80017e8:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
  80017ec:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
  80017f0:	3501      	adds	r5, #1
  80017f2:	e7c6      	b.n	8001782 <_printf_common+0x3e>
@@ -3896,7 +3896,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  8001960:	bfde      	ittt	le
  8001962:	2330      	movle	r3, #48	; 0x30
  8001964:	f805 3c01 	strble.w	r3, [r5, #-1]
- 8001968:	f105 35ff 	addle.w	r5, r5, #4294967295
+ 8001968:	f105 35ff 	addle.w	r5, r5, #4294967295	; 0xffffffff
  800196c:	1b52      	subs	r2, r2, r5
  800196e:	6122      	str	r2, [r4, #16]
  8001970:	f8cd a000 	str.w	sl, [sp]
@@ -3907,7 +3907,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  800197c:	f7ff fee2 	bl	8001744 <_printf_common>
  8001980:	3001      	adds	r0, #1
  8001982:	d14c      	bne.n	8001a1e <_printf_i+0x1fe>
- 8001984:	f04f 30ff 	mov.w	r0, #4294967295
+ 8001984:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
  8001988:	b004      	add	sp, #16
  800198a:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
  800198e:	4835      	ldr	r0, [pc, #212]	; (8001a64 <_printf_i+0x244>)
@@ -4014,7 +4014,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
 08001a6c <memcpy>:
  8001a6c:	440a      	add	r2, r1
  8001a6e:	4291      	cmp	r1, r2
- 8001a70:	f100 33ff 	add.w	r3, r0, #4294967295
+ 8001a70:	f100 33ff 	add.w	r3, r0, #4294967295	; 0xffffffff
  8001a74:	d100      	bne.n	8001a78 <memcpy+0xc>
  8001a76:	4770      	bx	lr
  8001a78:	b510      	push	{r4, lr}
@@ -4141,7 +4141,7 @@ void writeMsg(USART_Handler_t *ptrUsartHandler, char *msgToSend){
  8001b7c:	f000 f8ac 	bl	8001cd8 <_sbrk_r>
  8001b80:	3001      	adds	r0, #1
  8001b82:	d101      	bne.n	8001b88 <sbrk_aligned+0x38>
- 8001b84:	f04f 34ff 	mov.w	r4, #4294967295
+ 8001b84:	f04f 34ff 	mov.w	r4, #4294967295	; 0xffffffff
  8001b88:	4620      	mov	r0, r4
  8001b8a:	bd70      	pop	{r4, r5, r6, pc}
  8001b8c:	200001b0 	.word	0x200001b0

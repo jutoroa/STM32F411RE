@@ -1,4 +1,4 @@
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
 ../Src/USARTxDriver.c:19:6:USART_Config	16	static,ignoring_inline_asm
 ../Src/USARTxDriver.c:287:28:USART1_Callback	4	static,ignoring_inline_asm
 ../Src/USARTxDriver.c:292:28:USART2_Callback	4	static,ignoring_inline_asm

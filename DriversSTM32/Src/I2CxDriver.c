@@ -145,10 +145,10 @@ void addressI2C_1(uint8_t address){
 		__NOP();
 	}
 	// Leemos el SR1 y el SR2 para limpiar el ADDR bit
-	uint8_t temp = I2C1 -> SR1 | I2C1 -> SR2;
+	//uint8_t temp = I2C1 -> SR1 | I2C1 -> SR2;
 }
 
-void stopI2C_1(void){
+movoid stopI2C_1(void){
 	I2C1 -> CR1 |= I2C_CR1_STOP;
 }
 

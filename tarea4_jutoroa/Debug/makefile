@@ -59,8 +59,8 @@ all: main-build
 main-build: tarea4_jutoroa.elf secondary-outputs
 
 # Tool invocations
-tarea4_jutoroa.elf tarea4_jutoroa.map: $(OBJS) $(USER_OBJS) G:\Mi\ unidad\Unalmed\Taller_5\STM32DIRECTORY\tarea4_jutoroa\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "tarea4_jutoroa.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\tarea4_jutoroa\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tarea4_jutoroa.map" -Wl,--gc-sections -static -L"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\DriversSTM32\Debug" --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+tarea4_jutoroa.elf tarea4_jutoroa.map: $(OBJS) $(USER_OBJS) /home/jutoroa/workspace/STMDirectory/tarea4_jutoroa/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "tarea4_jutoroa.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/tarea4_jutoroa/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tarea4_jutoroa.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

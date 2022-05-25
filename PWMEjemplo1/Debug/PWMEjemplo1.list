@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0000ee9b  00000000  00000000  000114a0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00000eb4  00000000  00000000  0002033b  2**0
+ 17 .debug_line   00000e3b  00000000  00000000  0002033b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00054405  00000000  00000000  000211ef  2**0
+ 18 .debug_str    000543f5  00000000  00000000  00021176  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000755f4  2**0
+ 19 .comment      00000050  00000000  00000000  0007556b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000100  00000000  00000000  00075644  2**2
+ 20 .debug_frame  00000100  00000000  00000000  000755bc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -104,15 +104,15 @@ void PWD_config(void){
  80001f6:	6013      	str	r3, [r2, #0]
 
 	/* 3. Configuración del Prescaler */
-	TIM2 -> PSC =  1600 -1;		// Valor en ms
+	TIM2 -> PSC =  16000 -1;		// Valor en ms
  80001f8:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
- 80001fc:	f240 623f 	movw	r2, #1599	; 0x63f
+ 80001fc:	f643 627f 	movw	r2, #15999	; 0x3e7f
  8000200:	629a      	str	r2, [r3, #40]	; 0x28
 
 	/* 4. Configuramos el periodo de las interrupciones */
-	TIM2 -> ARR = 200;
+	TIM2 -> ARR = 20;
  8000202:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
- 8000206:	22c8      	movs	r2, #200	; 0xc8
+ 8000206:	2214      	movs	r2, #20
  8000208:	62da      	str	r2, [r3, #44]	; 0x2c
 
 	/* 5. Activamos al timer para que comience a incrementarse  */
@@ -125,9 +125,9 @@ void PWD_config(void){
 
 	// Configuramos el duty
 
-	TIM2 -> CCR1 = 15;
+	TIM2 -> CCR1 = 1;
  800021a:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
- 800021e:	220f      	movs	r2, #15
+ 800021e:	2201      	movs	r2, #1
  8000220:	635a      	str	r2, [r3, #52]	; 0x34
 
 	// Ponemos el contador (CNT) en cero.

@@ -1,5 +1,5 @@
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
+/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
 ../Src/AdcDriver.c:15:6:adc_Config	16	static,ignoring_inline_asm
 ../Src/AdcDriver.c:122:6:startSingleADC	4	static
 ../Src/AdcDriver.c:127:6:startContinuousADC	4	static

@@ -59,8 +59,8 @@ all: main-build
 main-build: PWMEjemplo1.elf secondary-outputs
 
 # Tool invocations
-PWMEjemplo1.elf PWMEjemplo1.map: $(OBJS) $(USER_OBJS) G:\Mi\ unidad\Unalmed\Taller_5\STM32DIRECTORY\PWMEjemplo1\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "PWMEjemplo1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\PWMEjemplo1\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PWMEjemplo1.map" -Wl,--gc-sections -static -L"G:\Mi unidad\Unalmed\Taller_5\STM32DIRECTORY\DriversSTM32\Debug" --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+PWMEjemplo1.elf PWMEjemplo1.map: $(OBJS) $(USER_OBJS) /home/jutoroa/workspace/STMDirectory/PWMEjemplo1/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "PWMEjemplo1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/PWMEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PWMEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

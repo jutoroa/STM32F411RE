@@ -1,5 +1,7 @@
 ../Src/I2CxDriver.c:15:6:I2C_Config	16	static
-../Src/I2CxDriver.c:108:6:startI2C_1	4	static,ignoring_inline_asm
-../Src/I2CxDriver.c:118:6:writeI2C_1	16	static,ignoring_inline_asm
-../Src/I2CxDriver.c:136:6:addressI2C_1	24	static,ignoring_inline_asm
-../Src/I2CxDriver.c:151:6:configI2CPin	16	static
+../Src/I2CxDriver.c:110:6:startI2C_1	4	static,ignoring_inline_asm
+../Src/I2CxDriver.c:120:6:writeI2C_1	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:138:6:addressI2C_1	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:151:6:stopI2C_1	4	static
+../Src/I2CxDriver.c:155:6:writeMultiI2C_1	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:178:6:configI2CPin	16	static

@@ -4,4 +4,14 @@
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="askReindex.detail" value="0"/>
+	</section>
+	<section name="org.eclipse.cdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="143"/>
+		<item key="DIALOG_Y_ORIGIN" value="343"/>
+		<item key="DIALOG_WIDTH" value="588"/>
+		<item key="DIALOG_HEIGHT" value="274"/>
+		<item key="DIALOG_FONT_NAME" value="1|Noto Sans|10.0|0|GTK|1|"/>
+	</section>
 </section>

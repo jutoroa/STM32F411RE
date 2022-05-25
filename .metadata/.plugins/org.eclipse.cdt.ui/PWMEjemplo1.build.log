@@ -1,0 +1,16 @@
+21:09:15 **** Incremental Build of configuration Debug for project PWMEjemplo1 ****
+make -j8 all 
+arm-none-eabi-gcc -o "PWMEjemplo1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/PWMEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PWMEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PWMEjemplo1.elf
+ 
+arm-none-eabi-size   PWMEjemplo1.elf 
+arm-none-eabi-objdump -h -S  PWMEjemplo1.elf  > "PWMEjemplo1.list"
+   text	   data	    bss	    dec	    hex	filename
+   1612	      8	   1592	   3212	    c8c	PWMEjemplo1.elf
+Finished building: default.size.stdout
+ 
+Finished building: PWMEjemplo1.list
+ 
+
+21:09:16 Build Finished. 0 errors, 0 warnings. (took 522ms)
+
