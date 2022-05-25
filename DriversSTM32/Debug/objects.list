@@ -2,6 +2,7 @@
 "./Src/EXTIxDriver.o"
 "./Src/GPIOxDriver.o"
 "./Src/I2CxDriver.o"
+"./Src/PWMxDriver.o"
 "./Src/SysTickDriver.o"
 "./Src/TIMxDriver.o"
 "./Src/USARTxDriver.o"

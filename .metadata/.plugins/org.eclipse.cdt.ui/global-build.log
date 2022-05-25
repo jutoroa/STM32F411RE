@@ -1,7 +1,3 @@
-21:17:30 **** Incremental Build of configuration Debug for project tarea3_jutoroa ****
+22:51:06 **** Incremental Build of configuration Debug for project DriversSTM32 ****
 make -j8 all 
-arm-none-eabi-size   tarea3_jutoroa.elf 
-   text	   data	    bss	    dec	    hex	filename
-   3668	      8	   1928	   5604	   15e4	tarea3_jutoroa.elf
-Finished building: default.size.stdout
- 
+make: Nothing to be done for 'all'.

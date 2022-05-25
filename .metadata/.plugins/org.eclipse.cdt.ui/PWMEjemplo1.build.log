@@ -1,5 +1,6 @@
-21:09:15 **** Incremental Build of configuration Debug for project PWMEjemplo1 ****
+22:42:08 **** Incremental Build of configuration Debug for project PWMEjemplo1 ****
 make -j8 all 
+arm-none-eabi-gcc "../Src/PWMEjemplo1.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/PWMEjemplo1.d" -MT"Src/PWMEjemplo1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/PWMEjemplo1.o"
 arm-none-eabi-gcc -o "PWMEjemplo1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/PWMEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PWMEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: PWMEjemplo1.elf
  
@@ -12,5 +13,5 @@ Finished building: default.size.stdout
 Finished building: PWMEjemplo1.list
  
 
-21:09:16 Build Finished. 0 errors, 0 warnings. (took 522ms)
+22:42:09 Build Finished. 0 errors, 0 warnings. (took 577ms)
 

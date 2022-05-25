@@ -147,10 +147,10 @@ void addressI2C_1(uint8_t address){
 	// Leemos el SR1 y el SR2 para limpiar el ADDR bit
 	//uint8_t temp = I2C1 -> SR1 | I2C1 -> SR2;
 }
-
+/*
 movoid stopI2C_1(void){
 	I2C1 -> CR1 |= I2C_CR1_STOP;
-}
+}*/
 
 void writeMultiI2C_1(uint8_t *data,uint8_t size){
 	/* 1. Esperar al TXE (bit 7 in SR1) a set. Esto indica que el Data Register (DR) is empty */

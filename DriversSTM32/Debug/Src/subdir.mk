@@ -9,6 +9,7 @@ C_SRCS += \
 ../Src/EXTIxDriver.c \
 ../Src/GPIOxDriver.c \
 ../Src/I2CxDriver.c \
+../Src/PWMxDriver.c \
 ../Src/SysTickDriver.c \
 ../Src/TIMxDriver.c \
 ../Src/USARTxDriver.c 
@@ -18,6 +19,7 @@ OBJS += \
 ./Src/EXTIxDriver.o \
 ./Src/GPIOxDriver.o \
 ./Src/I2CxDriver.o \
+./Src/PWMxDriver.o \
 ./Src/SysTickDriver.o \
 ./Src/TIMxDriver.o \
 ./Src/USARTxDriver.o 
@@ -27,6 +29,7 @@ C_DEPS += \
 ./Src/EXTIxDriver.d \
 ./Src/GPIOxDriver.d \
 ./Src/I2CxDriver.d \
+./Src/PWMxDriver.d \
 ./Src/SysTickDriver.d \
 ./Src/TIMxDriver.d \
 ./Src/USARTxDriver.d 
@@ -39,7 +42,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/AdcDriver.d ./Src/AdcDriver.o ./Src/AdcDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su
+	-$(RM) ./Src/AdcDriver.d ./Src/AdcDriver.o ./Src/AdcDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/PWMxDriver.d ./Src/PWMxDriver.o ./Src/PWMxDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su
 
 .PHONY: clean-Src
 

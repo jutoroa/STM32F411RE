@@ -721,10 +721,10 @@ LOAD /opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_macro   0x000000000000ec9a       0xdd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
  .debug_macro   0x000000000000ed77      0x124 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
 
-.debug_line     0x0000000000000000      0xe3b
- .debug_line    0x0000000000000000      0x755 ./Src/PWMEjemplo1.o
- .debug_line    0x0000000000000755       0x84 ./Startup/startup_stm32f411retx.o
- .debug_line    0x00000000000007d9      0x662 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+.debug_line     0x0000000000000000      0xe3a
+ .debug_line    0x0000000000000000      0x754 ./Src/PWMEjemplo1.o
+ .debug_line    0x0000000000000754       0x84 ./Startup/startup_stm32f411retx.o
+ .debug_line    0x00000000000007d8      0x662 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
 
 .debug_str      0x0000000000000000    0x543f5
  .debug_str     0x0000000000000000    0x54329 ./Src/PWMEjemplo1.o

@@ -32,14 +32,13 @@ void PWD_config(void){
 	/* 3. Configuración del Prescaler */
 	TIM2 -> PSC =  16000 -1;		// Valor en ms
 
-	/* 4. Configuramos el periodo de las interrupciones */
+	/* 4. Configuramos el periodo */
 	TIM2 -> ARR = 20;
 
 	/* 5. Activamos al timer para que comience a incrementarse  */
 	TIM2 -> CR1 |= TIM_CR1_CEN;
 
 	// Configuramos el duty
-
 	TIM2 -> CCR1 = 1;
 
 	// Ponemos el contador (CNT) en cero.
