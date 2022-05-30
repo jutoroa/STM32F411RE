@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Driver_Nema17_V3/Src/mainI2CMPU6050V1.c&apos; to &apos;mainNemaV3.c&apos;" description="Rename resource &apos;mainI2CMPU6050V1.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/mainI2CMPU6050V1.c" name="mainNemaV3.c" stamp="1653883591555" updateReferences="true"/>
+</session>

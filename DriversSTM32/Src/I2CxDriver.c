@@ -235,16 +235,15 @@ void I2C_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataTo
 	 ptrHandlerI2C -> ptrI2Cx -> CR1 |= I2C_CR1_STOP;
 }
 
-
-void startI2C_1(void){
-
-	/* 1. Empezar la condición de INICIO (START) */
-
-	I2C1 -> CR1 |= I2C_CR1_START;
-	while(!(I2C1 -> SR1 & (I2C_SR1_SB))){		// Se espera hasta que el SB Register sea puesto en SET
-		__NOP();
-	}
-}
+//void startI2C_1(void){
+//
+//	/* 1. Empezar la condición de INICIO (START) */
+//
+//	I2C1 -> CR1 |= I2C_CR1_START;
+//	while(!(I2C1 -> SR1 & (I2C_SR1_SB))){		// Se espera hasta que el SB Register sea puesto en SET
+//		__NOP();
+//	}
+//}
 
 
 //

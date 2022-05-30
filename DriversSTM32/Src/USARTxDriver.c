@@ -159,7 +159,7 @@ void USART_Config(USART_Handler_t *ptrUsartHandler){
 		// Mantiza = 8 = 0x8, fraction = 16 * 0.6875 = 11
 		// Valor a cargar 0x0081
 		// Configurando el Baudrate generator para una velocidad de 115200bps
-		ptrUsartHandler -> ptrUSARTx -> BRR = 0x0081;
+		ptrUsartHandler -> ptrUSARTx -> BRR = 0x08B;//0x0081;
 	}
 
 	// 2.5 Configuramos el modo: TX only, RX only, RXTX, disable

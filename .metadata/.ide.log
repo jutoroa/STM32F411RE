@@ -46,3 +46,30 @@
 
 2022-05-26 14:07:25,847 [INFO] Activator:178 - !SESSION log4j initialized
 2022-05-26 14:07:35,137 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-27 12:16:59,883 [INFO] Activator:177 - 
+
+
+2022-05-27 12:16:59,885 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-27 12:17:04,052 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-28 10:36:01,565 [INFO] Activator:177 - 
+
+
+2022-05-28 10:36:01,578 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-28 10:36:14,183 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-29 16:36:10,748 [INFO] Activator:177 - 
+
+
+2022-05-29 16:36:10,751 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-29 16:36:15,048 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-29 23:31:08,548 [INFO] Activator:177 - 
+
+
+2022-05-29 23:31:08,550 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-29 23:31:14,470 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-29 23:32:21,783 [INFO] RetryExec:97 - I/O exception (org.apache.http.NoHttpResponseException) caught when processing request to {s}->https://sw-center.st.com:443: The target server failed to respond
+2022-05-29 23:32:21,784 [INFO] RetryExec:113 - Retrying request to {s}->https://sw-center.st.com:443
+2022-05-29 23:32:47,023 [INFO] Activator:177 - 
+
+
+2022-05-29 23:32:47,025 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-29 23:32:51,256 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com

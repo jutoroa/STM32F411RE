@@ -1,4 +1,3 @@
 ../Src/I2CxDriver.c:22:6:I2C_Config	16	static,ignoring_inline_asm
 ../Src/I2CxDriver.c:94:9:I2C_readByte	24	static,ignoring_inline_asm
 ../Src/I2CxDriver.c:181:6:I2C_writeByte	24	static,ignoring_inline_asm
-../Src/I2CxDriver.c:239:6:startI2C_1	4	static,ignoring_inline_asm

@@ -1,0 +1,11 @@
+connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.baudRate=8
+connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.byteSize=3
+connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.parity=2
+connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.portName=/dev/ttyACM0
+connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.stopBits=0
+connections/org.eclipse.remote.serial.core.connectionType/ACM1_19200_8BITS_ODD_1STOP/serial.baudRate=8
+connections/org.eclipse.remote.serial.core.connectionType/ACM1_19200_8BITS_ODD_1STOP/serial.byteSize=3
+connections/org.eclipse.remote.serial.core.connectionType/ACM1_19200_8BITS_ODD_1STOP/serial.parity=2
+connections/org.eclipse.remote.serial.core.connectionType/ACM1_19200_8BITS_ODD_1STOP/serial.portName=/dev/ttyACM1
+connections/org.eclipse.remote.serial.core.connectionType/ACM1_19200_8BITS_ODD_1STOP/serial.stopBits=0
+eclipse.preferences.version=1
