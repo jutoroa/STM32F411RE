@@ -39,6 +39,8 @@ GPIO_Handler_t handlerDir2Config 	= {0};
 GPIO_Handler_t handlerStep3Config 	= {0};		// Motor articulación codo x1
 GPIO_Handler_t handlerDir3Config 	= {0};
 
+
+
 // Variable auxiliar para evaluar los casos de cada motor
 
 uint32_t 	nMotor 			= 0;

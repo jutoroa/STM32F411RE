@@ -59,6 +59,13 @@ void PWD_config(void){
 	TIM2 -> CCER |= TIM_CCER_CC1E;
 }
 
+void delay(int time){
+	// Con este ciclo se genera un intervalo de tiempo en el programa (no tiene otro objetivo)
+	for (int i = 0; i <= time; i++){
+		__NOP();
+	}
+}
+
 GPIO_Handler_t 	handlerStateLED 	= {0};	// StateLED
 GPIO_Handler_t	handlerPWDTimer		= {0};
 int main(void){
@@ -76,7 +83,7 @@ int main(void){
 
 	GPIO_WritePin(&handlerStateLED, SET);
 
-	// Configuración el State LED
+	// Configuración del PWD
 	handlerPWDTimer.pGPIOx								= GPIOA;
 	handlerPWDTimer.GPIO_PinConfig.GPIO_PinNumber		= PIN_0;
 	handlerPWDTimer.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
@@ -91,6 +98,11 @@ int main(void){
 	PWD_config();
 
 	while(1){
+		TIM2 -> CCR1 = 2;
+
+		delay(10000);
+
+		TIM2 -> CCR1 = 1;
 		__NOP();
 	}
 }

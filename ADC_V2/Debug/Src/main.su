@@ -1,0 +1,7 @@
+../Src/main.c:62:5:main	8	static
+../Src/main.c:115:6:initSystem	8	static
+../Src/main.c:302:6:setNumber	16	static
+../Src/main.c:440:6:Timer2_Callback	4	static
+../Src/main.c:445:6:Timer4_Callback	8	static
+../Src/main.c:462:6:EXTI0_Callback	4	static
+../Src/main.c:470:6:EXTI3_Callback	4	static

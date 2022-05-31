@@ -17,9 +17,19 @@ void adc_Config(ADC_Config_t *adcConfig){
 
 	__disable_irq();
 
-
 	/* 1. Configuramos el PinX para que cumpla la función de canal análogo deseado. */
-	configAnalogPin(adcConfig -> channel);
+
+	/*1. Verificamos si es single Channel, o multichannel */
+	if(adcConfig -> channelMode == ADC_SINGLE_CHANNEL){
+		configAnalogPin(adcConfig -> channel);
+	}
+	else if(adcConfig -> channelMode == ADC_MULTI_CHANNEL){
+		if(adcConfig -> numberOfChannels == 3){
+			configAnalogPin(adcConfig -> channel_First);
+			configAnalogPin(adcConfig -> channel_Second);
+			configAnalogPin(adcConfig -> channel_Third);
+		}
+	}
 
 	/* 2. Activamos la señal de reloj para el periférico ADC1 (bus APB2) */
 	RCC -> APB2ENR |= RCC_APB2ENR_ADC1EN;
@@ -64,8 +74,18 @@ void adc_Config(ADC_Config_t *adcConfig){
 	}
 	}
 
-	/* 4. Configuramos el modo Scan como desactivado */
-	ADC1 -> CR1 &= ~(ADC_CR1_SCAN);
+	/* 4. Configuramos el modo Scan mode */
+	if(adcConfig -> channelMode == ADC_SINGLE_CHANNEL){
+		//Configuramos el modo Scan como desactivado
+		ADC1 -> CR1 &= ~(ADC_CR1_SCAN);
+	}
+	else if(adcConfig -> channelMode == ADC_MULTI_CHANNEL){
+		//Configuramos el modo Scan como activado
+		ADC1 -> CR1  |= (ADC_CR1_SCAN);
+	}
+	else{
+		__NOP();
+	}
 
 	/* 5. Configuramos la alineación de los datos (derecha o izquierda) */
 	if(adcConfig -> dataAlignment == ADC_ALIGNMENT_RIGHT){
@@ -73,7 +93,6 @@ void adc_Config(ADC_Config_t *adcConfig){
 		ADC1 -> CR2 &= ~(ADC_CR2_ALIGN);
 	}
 	else{
-
 		// Alineación a la izquierda (para algunos cálculos matemáticos).
 		ADC1 -> CR2 |= ADC_CR2_ALIGN;
 	}
@@ -82,19 +101,63 @@ void adc_Config(ADC_Config_t *adcConfig){
 	ADC1 -> CR2 &= ~(ADC_CR2_CONT);
 
 	/* 7. Acá se debería configurar el sampling */
-	if(adcConfig -> channel < ADC_CHANNEL_9){
-		ADC1 -> SMPR2 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel)));
+
+	if(adcConfig -> channelMode == ADC_SINGLE_CHANNEL){
+		if(adcConfig -> channel < ADC_CHANNEL_9){
+			ADC1 -> SMPR2 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel)));
+		}
+		else{
+			ADC1 -> SMPR1 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel)));
+		}
+	}
+	else if(adcConfig -> channelMode == ADC_MULTI_CHANNEL){
+
+		if(adcConfig -> numberOfChannels <= ADC_CHANNEL_9){
+			ADC1 -> SMPR2 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel_First)));
+			ADC1 -> SMPR2 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel_Second)));
+			ADC1 -> SMPR2 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel_Third)));
+		}
+		else{
+			__NOP();//ADC1 -> SMPR1 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel)));
+		}
 	}
 	else{
-		ADC1 -> SMPR1 |= (adcConfig -> samplingPeriod << (3 * (adcConfig -> channel)));
+		__NOP();
 	}
 
-	/* 8. Configuramos la secuencia y cuantos elementos hay en la secuencia */
-	// Al hacerlo todo 0, estamos seleccionando solo 1 elemento en el conteo de la secuencia
-	ADC1 -> SQR1 = 0;
 
-	// Asignamos el canal de la conversión a la primera posición en la secuencia
-	ADC1 -> SQR3 |= (adcConfig -> channel << 0);
+	/* 8. Configuramos la secuencia y cuantos elementos hay en la secuencia */
+
+	if(adcConfig -> channelMode == ADC_SINGLE_CHANNEL){
+		// Al hacerlo todo 0, estamos seleccionando solo 1 elemento en el conteo de la secuencia
+		ADC1 -> SQR1 = 0;
+		// Asignamos el canal de la conversión a la primera posición en la secuencia
+		ADC1 -> SQR3 |= (adcConfig -> channel << 0);
+	}
+	else if(adcConfig -> channelMode == ADC_MULTI_CHANNEL){
+
+		// Activamos la interrupción al final de cada conversión single.
+		ADC1 -> CR2 |= ADC_CR2_EOCS;
+
+		// Activamos cuantos elementos hay en la secuencia
+		ADC1 -> SQR1 |= ((adcConfig -> numberOfChannels-1) << ADC_SQR1_L_Pos);
+
+		if((adcConfig -> numberOfChannels >= 1) & (adcConfig -> numberOfChannels <= 6)){
+			ADC1 -> SQR3 |= adcConfig -> channel_First << 0;
+			ADC1 -> SQR3 |= adcConfig -> channel_Second << 5;
+			ADC1 -> SQR3 |= adcConfig -> channel_Third << 10;
+			//ADC1 -> SQR3 |= (adcConfig -> channel << ((adcConfig -> sequencePos -1)*5));
+		}
+		else if((adcConfig -> numberOfChannels >= 7) & (adcConfig -> numberOfChannels <= 12)){
+			ADC1 -> SQR2 |= (adcConfig -> channel << ((adcConfig -> sequencePos -7)*5));
+		}
+		else if((adcConfig -> numberOfChannels >= 13) & (adcConfig -> numberOfChannels <= 16)){
+			ADC1 -> SQR1 |= (adcConfig -> channel << ((adcConfig -> sequencePos -13)*5));
+		}
+		else{
+			__NOP();
+		}
+	}
 
 	/* 9. Configuramos el preescaler del ADC en 2:1 (el más rápido que se puede tener) */
 	ADC -> CCR = 0;
@@ -140,6 +203,10 @@ uint16_t getADC(void){
 	return adcRawData;
 }
 
+void multiChannelADC(ADC_Config_t *adcConfig){
+	ADC1 -> SQR1 |= (adcConfig -> numberOfChannels << ADC_SQR1_L_Pos);
+	ADC1 -> CR1  |= (ADC_CR1_SCAN);
+}
 /* Esta es la ISR de la interrupción por conversión ADC */
 void ADC_IRQHandler(void){
 	if(ADC1 -> SR & ADC_SR_EOC){

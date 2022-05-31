@@ -1,70 +1,48 @@
-23:42:01 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
+20:34:50 **** Incremental Build of configuration Debug for project DriversSTM32 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/mainNemaV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainNemaV3.d" -MT"Src/mainNemaV3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainNemaV3.o"
-arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Driver_Nema17_V3.elf
+arm-none-eabi-gcc "../Src/AdcDriver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/AdcDriver.d" -MT"Src/AdcDriver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/AdcDriver.o"
+arm-none-eabi-ar -r  "libDriversSTM32.a" @"objects.list"  
+arm-none-eabi-ar: creating libDriversSTM32.a
+Finished building target: libDriversSTM32.a
  
-arm-none-eabi-size   Driver_Nema17_V3.elf 
-arm-none-eabi-objdump -h -S  Driver_Nema17_V3.elf  > "Driver_Nema17_V3.list"
+20:34:57 **** Incremental Build of configuration Debug for project ADC_V2 ****
+make -j8 all 
+arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_V2.elf
+ 
+arm-none-eabi-size   ADC_V2.elf 
+arm-none-eabi-objdump -h -S  ADC_V2.elf  > "ADC_V2.list"
    text	   data	    bss	    dec	    hex	filename
-   4736	     16	   1840	   6592	   19c0	Driver_Nema17_V3.elf
+   8188	    108	   1892	  10188	   27cc	ADC_V2.elf
 Finished building: default.size.stdout
  
-Finished building: Driver_Nema17_V3.list
+Finished building: ADC_V2.list
  
-23:42:03 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
+20:42:07 **** Incremental Build of configuration Debug for project ADC_V2 ****
 make -j8 all 
-arm-none-eabi-size   Driver_Nema17_V3.elf 
+arm-none-eabi-gcc "../Src/ADCMAIN_V2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/ADCMAIN_V2.d" -MT"Src/ADCMAIN_V2.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/ADCMAIN_V2.o"
+arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_V2.elf
+ 
+arm-none-eabi-size   ADC_V2.elf 
+arm-none-eabi-objdump -h -S  ADC_V2.elf  > "ADC_V2.list"
    text	   data	    bss	    dec	    hex	filename
-   4736	     16	   1840	   6592	   19c0	Driver_Nema17_V3.elf
+   8164	    108	   1892	  10164	   27b4	ADC_V2.elf
 Finished building: default.size.stdout
  
-23:44:22 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/mainNemaV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainNemaV3.d" -MT"Src/mainNemaV3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainNemaV3.o"
-arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Driver_Nema17_V3.elf
+Finished building: ADC_V2.list
  
-arm-none-eabi-size   Driver_Nema17_V3.elf 
-arm-none-eabi-objdump -h -S  Driver_Nema17_V3.elf  > "Driver_Nema17_V3.list"
+20:45:29 **** Incremental Build of configuration Debug for project ADC_V2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/ADCMAIN_V2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/ADCMAIN_V2.d" -MT"Src/ADCMAIN_V2.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/ADCMAIN_V2.o"
+arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_V2.elf
+ 
+arm-none-eabi-size   ADC_V2.elf 
+arm-none-eabi-objdump -h -S  ADC_V2.elf  > "ADC_V2.list"
    text	   data	    bss	    dec	    hex	filename
-   4748	     16	   1840	   6604	   19cc	Driver_Nema17_V3.elf
+   8180	    108	   1892	  10180	   27c4	ADC_V2.elf
 Finished building: default.size.stdout
  
-Finished building: Driver_Nema17_V3.list
- 
-23:44:30 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
-make -j8 all 
-arm-none-eabi-size   Driver_Nema17_V3.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4748	     16	   1840	   6604	   19cc	Driver_Nema17_V3.elf
-Finished building: default.size.stdout
- 
-23:45:41 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/mainNemaV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainNemaV3.d" -MT"Src/mainNemaV3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainNemaV3.o"
-arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Driver_Nema17_V3.elf
- 
-arm-none-eabi-size   Driver_Nema17_V3.elf 
-arm-none-eabi-objdump -h -S  Driver_Nema17_V3.elf  > "Driver_Nema17_V3.list"
-   text	   data	    bss	    dec	    hex	filename
-   4748	     16	   1840	   6604	   19cc	Driver_Nema17_V3.elf
-Finished building: default.size.stdout
- 
-Finished building: Driver_Nema17_V3.list
- 
-00:11:11 **** Incremental Build of configuration Debug for project Driver_Nema17_V3 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/mainNemaV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainNemaV3.d" -MT"Src/mainNemaV3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainNemaV3.o"
-arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Driver_Nema17_V3.elf
- 
-arm-none-eabi-size   Driver_Nema17_V3.elf 
-arm-none-eabi-objdump -h -S  Driver_Nema17_V3.elf  > "Driver_Nema17_V3.list"
-   text	   data	    bss	    dec	    hex	filename
-   4744	     16	   1840	   6600	   19c8	Driver_Nema17_V3.elf
-Finished building: default.size.stdout
- 
-Finished building: Driver_Nema17_V3.list
+Finished building: ADC_V2.list
  

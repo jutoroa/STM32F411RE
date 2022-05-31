@@ -1338,3 +1338,34 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.cdt.dsf 4 10005 2022-05-29 23:44:30.711
 !MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@2cf175d9): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
+!SESSION 2022-05-30 09:32:03.613 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-05-30 09:32:13.015
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-05-30 09:32:13.078
+!MESSAGE Log4j initialized with config file /home/jutoroa/workspace/STMDirectory/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-05-30 09:32:23.593
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-05-30 10:30:19.051
+!MESSAGE Indexed 'Driver_Servo_V1' (3 sources, 67 headers) in 0.963 sec: 2,845 declarations; 3,989 references; 9 unresolved inclusions; 30 syntax errors; 633 unresolved names (8.5%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-05-30 16:18:41.644
+!MESSAGE Indexed 'ADC_V2' (3 sources, 69 headers) in 0.35 sec: 3,321 declarations; 5,424 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.023%)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 4 0 2022-05-30 16:34:56.004
+!MESSAGE Stackanalyzer failed to analyze input
+!STACK 0
+java.lang.Exception: File: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.ado not exists
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:56)
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:84)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:914)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$15(StackAnalyzerView.java:1256)
+	at java.base/java.lang.Thread.run(Thread.java:829)

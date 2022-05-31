@@ -1,0 +1,6 @@
+../Src/ADCMAIN_V2.c:48:5:main	16	static
+../Src/ADCMAIN_V2.c:101:6:initSystem	8	static
+../Src/ADCMAIN_V2.c:176:6:Timer2_Callback	4	static
+../Src/ADCMAIN_V2.c:180:6:Timer3_Callback	8	static
+../Src/ADCMAIN_V2.c:184:6:USART2_Callback	8	static
+../Src/ADCMAIN_V2.c:189:6:adc_Complete_Callback	16	static

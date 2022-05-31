@@ -10,7 +10,7 @@
 
 #include "stm32f4xx.h"
 
-#define ADC_SIGNAL_SIZE	256
+//#define ADC_SIGNAL_SIZE	256
 
 #define ADC_CHANNEL_0		0
 #define ADC_CHANNEL_1		1
@@ -46,12 +46,21 @@
 #define ADC_SAMPLING_PERIOD_144_CYCLES		0b110;
 #define ADC_SAMPLING_PERIOD_480_CYCLES		0b111;
 
+#define ADC_SINGLE_CHANNEL		0
+#define ADC_MULTI_CHANNEL		1
+
 typedef struct
 {
-	uint8_t 	channel;			// Canal ADC que será utilizado para la conversión ADC
+	uint8_t 	channel;			// Canal ADC que será utilizado para la conversión ADC SINGLE
 	uint8_t 	resolution;			// Precisión con la que el ADC hace la adquisición del dato
 	uint16_t 	samplingPeriod;		// Tiempo deseado para hacer la adquisición del dato
 	uint8_t		dataAlignment;		// Alineación a la izquierda o a la derecha
+	uint8_t		channelMode;
+	uint8_t		numberOfChannels;
+	uint8_t		sequencePos;
+	uint8_t		channel_First;
+	uint8_t		channel_Second;
+	uint8_t		channel_Third;
 }ADC_Config_t;
 
 void adc_Config(ADC_Config_t *adcConfig);
@@ -60,6 +69,7 @@ void adc_Complete_Callback(void);
 void startSingleADC(void);
 void startContinuousADC(void);
 void stopContinousADC(void);
+void multiChannelADC(ADC_Config_t *adcConfig);
 uint16_t getADC(void);
 
 #endif /* INC_ADCDRIVER_H_ */
