@@ -1,16 +1,10 @@
-17:58:10 **** Build of configuration Debug for project EjemploLibrerias ****
+17:00:19 **** Build of configuration Debug for project EjemploLibrerias ****
 make -j8 all 
-arm-none-eabi-gcc -o "EjemploLibrerias.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/EjemploLibrerias/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EjemploLibrerias.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: EjemploLibrerias.elf
- 
 arm-none-eabi-size   EjemploLibrerias.elf 
-arm-none-eabi-objdump -h -S  EjemploLibrerias.elf  > "EjemploLibrerias.list"
    text	   data	    bss	    dec	    hex	filename
    7544	    108	   1884	   9536	   2540	EjemploLibrerias.elf
 Finished building: default.size.stdout
  
-Finished building: EjemploLibrerias.list
- 
 
-17:58:11 Build Finished. 0 errors, 0 warnings. (took 518ms)
+17:00:19 Build Finished. 0 errors, 0 warnings. (took 469ms)
 

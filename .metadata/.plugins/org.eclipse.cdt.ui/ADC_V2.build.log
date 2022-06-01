@@ -1,6 +1,5 @@
-20:45:29 **** Incremental Build of configuration Debug for project ADC_V2 ****
+16:59:59 **** Build of configuration Debug for project ADC_V2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/ADCMAIN_V2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/ADCMAIN_V2.d" -MT"Src/ADCMAIN_V2.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/ADCMAIN_V2.o"
 arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: ADC_V2.elf
  
@@ -13,5 +12,5 @@ Finished building: default.size.stdout
 Finished building: ADC_V2.list
  
 
-20:45:30 Build Finished. 0 errors, 0 warnings. (took 568ms)
+17:00:00 Build Finished. 0 errors, 0 warnings. (took 518ms)
 

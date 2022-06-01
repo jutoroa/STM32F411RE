@@ -45,6 +45,16 @@ void I2C_Config(I2C_Handler_t *ptrHandlerI2C);
 uint8_t I2C_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr);
 void I2C_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite);
 
+// Funciones para generar la configuración
+void startI2C(I2C_Handler_t *ptrHandlerI2C);
+void sendSlaveAddressWriteI2C(I2C_Handler_t *ptrHandlerI2C);
+void sendMemoryAddressI2C(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr);
+void reStartI2C(I2C_Handler_t *ptrHandlerI2C);
+void sendSlaveAddressReadI2C(I2C_Handler_t *ptrHandlerI2C);
+void nACKI2C(I2C_Handler_t *ptrHandlerI2C);
+void stopI2C(I2C_Handler_t *ptrHandlerI2C);
+uint8_t recibeDataI2C(I2C_Handler_t *ptrHandlerI2C);
+void sendDataI2C(I2C_Handler_t *ptrHandlerI2C, uint8_t dataToWrite);
 
 //void configI2CPin(I2C_Handler_t *ptrHandlerI2C);
 

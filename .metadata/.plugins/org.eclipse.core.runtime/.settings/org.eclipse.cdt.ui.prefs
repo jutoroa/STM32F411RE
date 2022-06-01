@@ -1,10 +1,13 @@
 c_braces=102,255,81
 c_operators=102,255,81
 eclipse.preferences.version=1
+scalability.detect=false
+semanticHighlighting.function.underline=true
 semanticHighlighting.globalVariable.color=255,173,79
 semanticHighlighting.globalVariable.enabled=true
 semanticHighlighting.globalVariable.underline=true
 semanticHighlighting.macroSubstitution.color=114,159,207
+semanticHighlighting.macroSubstitution.enabled=true
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

@@ -1,16 +1,11 @@
-17:58:10 **** Build of configuration Debug for project EXTIEjemplo1 ****
+17:00:18 **** Build of configuration Debug for project EXTIEjemplo1 ****
 make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
 arm-none-eabi-gcc -o "EXTIEjemplo1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/EXTIEjemplo1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTIEjemplo1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: EXTIEjemplo1.elf
- 
-arm-none-eabi-size   EXTIEjemplo1.elf 
-arm-none-eabi-objdump -h -S  EXTIEjemplo1.elf  > "EXTIEjemplo1.list"
-   text	   data	    bss	    dec	    hex	filename
-   4284	      8	   1616	   5908	   1714	EXTIEjemplo1.elf
-Finished building: default.size.stdout
- 
-Finished building: EXTIEjemplo1.list
- 
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: cannot find -lDriversSTM32
+collect2: error: ld returned 1 exit status
+make: *** [makefile:63: EXTIEjemplo1.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-17:58:10 Build Finished. 0 errors, 0 warnings. (took 516ms)
+17:00:19 Build Failed. 2 errors, 0 warnings. (took 523ms)
 

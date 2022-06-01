@@ -8,9 +8,9 @@
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_SIZE" value="true"/>
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="orderedElements">
-			<item value="com.genuitec.eclipse.theming.preferences.themes"/>
-			<item value="org.eclipse.epp.mpc.ui.command.showInstalled"/>
 			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
+			<item value="org.eclipse.epp.mpc.ui.command.showInstalled"/>
+			<item value="com.genuitec.eclipse.theming.preferences.themes"/>
 			<item value="org.eclipse.ui.window.preferences"/>
 			<item value="org.eclipse.ui.preferencePages.AutoSave"/>
 		</list>
@@ -29,9 +29,9 @@
 			<item value="1"/>
 		</list>
 		<list key="textArray">
-			<item value="colo"/>
-			<item value="plug"/>
 			<item value="color"/>
+			<item value="plug"/>
+			<item value="colo"/>
 			<item value="prefe"/>
 			<item value="auto"/>
 		</list>

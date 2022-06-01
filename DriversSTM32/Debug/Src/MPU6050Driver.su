@@ -1,0 +1,2 @@
+../Src/MPU6050Driver.c:11:9:getSensorValue	24	static
+../Src/MPU6050Driver.c:18:9:getMPURegisterValue	24	static

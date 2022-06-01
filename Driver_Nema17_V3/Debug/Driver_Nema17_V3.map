@@ -938,7 +938,7 @@ LOAD /opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_ranges  0x0000000000000080       0x78 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
  .debug_ranges  0x00000000000000f8       0x68 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
-.debug_macro    0x0000000000000000     0xf4e1
+.debug_macro    0x0000000000000000     0xf4e7
  .debug_macro   0x0000000000000000      0x2d9 ./Src/mainNemaV3.o
  .debug_macro   0x00000000000002d9      0xa7e ./Src/mainNemaV3.o
  .debug_macro   0x0000000000000d57       0x28 ./Src/mainNemaV3.o
@@ -994,16 +994,16 @@ LOAD /opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_macro   0x000000000000eb12      0x12a ./Src/mainNemaV3.o
  .debug_macro   0x000000000000ec3c       0x82 ./Src/mainNemaV3.o
  .debug_macro   0x000000000000ecbe       0x28 ./Src/mainNemaV3.o
- .debug_macro   0x000000000000ece6       0xc4 ./Src/mainNemaV3.o
- .debug_macro   0x000000000000edaa       0x2e ./Src/mainNemaV3.o
- .debug_macro   0x000000000000edd8       0x4c ./Src/mainNemaV3.o
- .debug_macro   0x000000000000ee24       0xdd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
- .debug_macro   0x000000000000ef01      0x124 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
- .debug_macro   0x000000000000f025       0xd7 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
- .debug_macro   0x000000000000f0fc      0x23b /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f337       0x16 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f34d       0x97 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f3e4       0xfd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000ece6       0xca ./Src/mainNemaV3.o
+ .debug_macro   0x000000000000edb0       0x2e ./Src/mainNemaV3.o
+ .debug_macro   0x000000000000edde       0x4c ./Src/mainNemaV3.o
+ .debug_macro   0x000000000000ee2a       0xdd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_macro   0x000000000000ef07      0x124 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_macro   0x000000000000f02b       0xd7 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+ .debug_macro   0x000000000000f102      0x23b /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000f33d       0x16 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000f353       0x97 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000f3ea       0xfd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
 .debug_line     0x0000000000000000     0x2366
  .debug_line    0x0000000000000000      0xafe ./Src/mainNemaV3.o
@@ -1012,15 +1012,15 @@ LOAD /opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_line    0x00000000000011e4      0x71f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
  .debug_line    0x0000000000001903      0xa63 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
-.debug_str      0x0000000000000000    0x54eae
- .debug_str     0x0000000000000000    0x546e7 ./Src/mainNemaV3.o
-                                      0x548ee (size before relaxing)
- .debug_str     0x00000000000546e7       0x69 ./Startup/startup_stm32f411retx.o
- .debug_str     0x0000000000054750      0x1a4 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+.debug_str      0x0000000000000000    0x54ec3
+ .debug_str     0x0000000000000000    0x546fc ./Src/mainNemaV3.o
+                                      0x54903 (size before relaxing)
+ .debug_str     0x00000000000546fc       0x69 ./Startup/startup_stm32f411retx.o
+ .debug_str     0x0000000000054765      0x1a4 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
                                       0x4fe90 (size before relaxing)
- .debug_str     0x00000000000548f4      0x507 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+ .debug_str     0x0000000000054909      0x507 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
                                       0x50143 (size before relaxing)
- .debug_str     0x0000000000054dfb       0xb3 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_str     0x0000000000054e10       0xb3 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
                                       0x542ba (size before relaxing)
 
 .comment        0x0000000000000000       0x50

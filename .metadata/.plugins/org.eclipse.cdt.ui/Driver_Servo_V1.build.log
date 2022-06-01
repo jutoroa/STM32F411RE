@@ -1,17 +1,14 @@
-12:07:48 **** Incremental Build of configuration Debug for project Driver_Servo_V1 ****
+17:00:00 **** Build of configuration Debug for project Driver_Servo_V1 ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/mainServoV1.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainServoV1.d" -MT"Src/mainServoV1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainServoV1.o"
-arm-none-eabi-gcc -o "Driver_Servo_V1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Servo_V1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Servo_V1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Driver_Servo_V1.elf
- 
-arm-none-eabi-size   Driver_Servo_V1.elf 
-arm-none-eabi-objdump -h -S  Driver_Servo_V1.elf  > "Driver_Servo_V1.list"
-   text	   data	    bss	    dec	    hex	filename
-   6672	    176	   1800	   8648	   21c8	Driver_Servo_V1.elf
-Finished building: default.size.stdout
- 
-Finished building: Driver_Servo_V1.list
- 
+../Src/mainServoV1.c: In function 'main':
+../Src/mainServoV1.c:114:5: error: 'PWM1Bufaddfer' undeclared (first use in this function); did you mean 'PWM1Buffer'?
+  114 |     PWM1Bufaddfer = dutyCounter;
+      |     ^~~~~~~~~~~~~
+      |     PWM1Buffer
+../Src/mainServoV1.c:114:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:25: Src/mainServoV1.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-12:07:49 Build Finished. 0 errors, 0 warnings. (took 569ms)
+17:00:01 Build Failed. 2 errors, 0 warnings. (took 520ms)
 

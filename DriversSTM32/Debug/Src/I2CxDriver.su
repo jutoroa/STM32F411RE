@@ -1,3 +1,12 @@
 ../Src/I2CxDriver.c:22:6:I2C_Config	16	static,ignoring_inline_asm
-../Src/I2CxDriver.c:94:9:I2C_readByte	24	static,ignoring_inline_asm
-../Src/I2CxDriver.c:181:6:I2C_writeByte	24	static,ignoring_inline_asm
+../Src/I2CxDriver.c:94:9:I2C_readByte	24	static
+../Src/I2CxDriver.c:115:6:I2C_writeByte	16	static
+../Src/I2CxDriver.c:130:6:startI2C	24	static,ignoring_inline_asm
+../Src/I2CxDriver.c:151:6:sendSlaveAddressWriteI2C	24	static,ignoring_inline_asm
+../Src/I2CxDriver.c:173:6:sendMemoryAddressI2C	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:183:6:reStartI2C	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:194:6:sendSlaveAddressReadI2C	24	static,ignoring_inline_asm
+../Src/I2CxDriver.c:216:6:nACKI2C	16	static
+../Src/I2CxDriver.c:223:6:stopI2C	16	static
+../Src/I2CxDriver.c:228:9:recibeDataI2C	16	static,ignoring_inline_asm
+../Src/I2CxDriver.c:239:6:sendDataI2C	16	static,ignoring_inline_asm
