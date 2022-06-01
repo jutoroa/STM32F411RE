@@ -1,3 +1,4 @@
+connectionTypeId=org.eclipse.remote.JSch
 connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.baudRate=8
 connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.byteSize=3
 connections/org.eclipse.remote.serial.core.connectionType/ACM0_19200_8BIT_ODD_STOP1/serial.parity=2

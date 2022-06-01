@@ -12,4 +12,7 @@
 			<item value="/home/jutoroa/workspace/STMDirectory"/>
 		</list>
 	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+	</section>
 </section>

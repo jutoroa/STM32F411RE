@@ -1,7 +1,11 @@
+AbstractTextEditor.Color.Background=28,31,34
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
 eclipse.preferences.version=1
+findIndication=false
 org.eclipse.cdt.ui.occurrenceHighlighting=false
 org.eclipse.cdt.ui.occurrenceIndication=true
-org.eclipse.cdt.ui.occurrenceIndicationColor=228,53,227
 org.eclipse.cdt.ui.occurrenceTextStyle=BOX
 org.eclipse.cdt.ui.overrideIndicator=true
 org.eclipse.cdt.ui.overrideIndicatorColor=228,53,227
@@ -9,3 +13,4 @@ org.eclipse.cdt.ui.writeOccurrenceHighlighting=false
 org.eclipse.cdt.ui.writeOccurrenceIndicationColor=228,53,227
 org.eclipse.cdt.ui.writeOccurrenceTextStyle=BOX
 spellingEnabled=false
+spellingEngine=org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine

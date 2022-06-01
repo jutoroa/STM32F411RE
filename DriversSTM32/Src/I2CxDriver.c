@@ -25,15 +25,15 @@ void I2C_Config(I2C_Handler_t *ptrHandlerI2C){
 
 	if(ptrHandlerI2C -> ptrI2Cx == I2C1){
 		// Activación RCC para el I2C1
-		RCC -> APB1RSTR |= RCC_APB1ENR_I2C1EN;
+		RCC -> APB1ENR |= RCC_APB1ENR_I2C1EN;
 	}
 	else if(ptrHandlerI2C -> ptrI2Cx == I2C2){
 		// Activación RCC para el I2C2
-		RCC -> APB1RSTR |= RCC_APB1ENR_I2C2EN ;
+		RCC -> APB1ENR |= RCC_APB1ENR_I2C2EN ;
 	}
 	else if(ptrHandlerI2C -> ptrI2Cx == I2C3){
 		// Activación RCC para el I2C3
-		RCC -> APB1RSTR |= RCC_APB1ENR_I2C3EN;
+		RCC -> APB1ENR |= RCC_APB1ENR_I2C3EN;
 	}
 
 	/* 2. Limpiamos los registros del I2C. Reiniciamos el periferico

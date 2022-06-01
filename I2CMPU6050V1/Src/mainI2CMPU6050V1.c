@@ -52,6 +52,8 @@ uint32_t 	systemTicksEnd		= 0;
 #define ACCEL_XOUT_L	60
 #define ACCEL_YOUT_H	61
 #define ACCEL_YOUT_L	62
+#define ACCEL_ZOUT_H	63
+#define ACCEL_ZOUT_L	64
 
 #define PWR_MGMT_1		107
 #define WHO_AM_I		117
@@ -73,35 +75,49 @@ int main(void)
 		if(rxData != '\0'){
 			writeChar(&handlerCommTerminal, rxData);
 
+			// Devolvemos la dirección que posee el sensor
 			if(rxData == 'd'){
 				i2cBuffer = I2C_readByte(&handlerAccelerometer, WHO_AM_I);
 				sprintf(bufferData, "dataRead = 0x%2x \n", (unsigned int) i2cBuffer);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
+			// Obtenemos el valor del registro Reset
 			else if(rxData == 'p'){
 				i2cBuffer = I2C_readByte(&handlerAccelerometer, PWR_MGMT_1);
 				sprintf(bufferData, "dataRead = 0x%2x \n", (unsigned int) i2cBuffer);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
+			// Escribimos 0x0 (reset) en todos los registros del MPU6050
 			else if(rxData == 'r'){
 				I2C_writeByte(&handlerAccelerometer, PWR_MGMT_1, 0x00);
 				rxData = '\0';
 			}
+			// Leemos los valores del acelerómetro para x
 			else if(rxData == 'x'){
 				uint8_t AccelX_low = I2C_readByte(&handlerAccelerometer, ACCEL_XOUT_L);
 				uint8_t AccelX_high = I2C_readByte(&handlerAccelerometer, ACCEL_XOUT_H);
-				uint16_t AccelX = (AccelX_high << 8) | AccelX_low;
+				int16_t AccelX = (AccelX_high << 8) | AccelX_low;
 				sprintf(bufferData, "AccelX = %d \n",(int) AccelX);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
+			// Leemos los valores del acelerómetro para y
 			else if(rxData == 'y'){
 				uint8_t AccelY_low = I2C_readByte(&handlerAccelerometer, ACCEL_YOUT_L);
 				uint8_t AccelY_high = I2C_readByte(&handlerAccelerometer, ACCEL_YOUT_H);
-				uint16_t AccelY = AccelY_high << 8 | AccelY_low;
+				int16_t AccelY = AccelY_high << 8 | AccelY_low;
 				sprintf(bufferData, "AccelY = %d \n",(int) AccelY);
+				writeMsg(&handlerCommTerminal, bufferData);
+				rxData = '\0';
+			}
+			// Leemos los valores del acelerómetro para z
+			else if(rxData == 'z'){
+				uint8_t AccelZ_low  = I2C_readByte(&handlerAccelerometer, ACCEL_ZOUT_L);
+				uint8_t AccelZ_high = I2C_readByte(&handlerAccelerometer, ACCEL_ZOUT_H);
+				int16_t AccelZ = AccelZ_high << 8 | AccelZ_low;
+				sprintf(bufferData, "AccelY = %d \n",(int) AccelZ);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
