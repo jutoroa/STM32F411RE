@@ -120,6 +120,7 @@ Discarded input sections
  .group         0x0000000000000000        0xc ./Src/mainI2CMPU6050V1.o
  .group         0x0000000000000000        0xc ./Src/mainI2CMPU6050V1.o
  .group         0x0000000000000000        0xc ./Src/mainI2CMPU6050V1.o
+ .group         0x0000000000000000        0xc ./Src/mainI2CMPU6050V1.o
  .text          0x0000000000000000        0x0 ./Src/mainI2CMPU6050V1.o
  .data          0x0000000000000000        0x0 ./Src/mainI2CMPU6050V1.o
  .bss           0x0000000000000000        0x0 ./Src/mainI2CMPU6050V1.o
@@ -1265,104 +1266,105 @@ LOAD /opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_ranges  0x0000000000000108       0x78 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
  .debug_ranges  0x0000000000000180       0x68 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
-.debug_macro    0x0000000000000000     0xfa5b
- .debug_macro   0x0000000000000000      0x309 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000309      0xa7e ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000d87       0x28 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000daf       0x28 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000dd7       0x22 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000df9       0x8e ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000e87       0x51 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000ed8      0x103 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000000fdb       0x6a ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000001045      0x1df ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000001224       0x1c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000001240       0x22 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000001262       0xd9 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000133b     0x102d ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000002368      0x11f ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x0000000000002487     0xb953 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ddda       0x6d ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000de47       0x18 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000de5f       0x52 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000deb1       0x3c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000deed       0x34 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000df21       0x16 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000df37      0x10e ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e045       0x8d ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e0d2       0x16 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e0e8       0x43 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e12b       0x34 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e15f       0x10 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e16f       0x58 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e1c7       0x71 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e238       0x1c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e254      0x12a ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e37e      0x341 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e6bf       0x16 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e6d5       0x29 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e6fe       0x16 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e714       0x35 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e749       0x20 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e769       0x1c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e785       0x10 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e795       0x10 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e7a5       0x1c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e7c1       0x52 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e813       0x22 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e835       0x10 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e845       0x52 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e897       0xd5 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e96c       0x1c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e988       0x3d ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e9c5       0x16 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000e9db      0x145 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000eb20       0x22 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000eb42      0x12a ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ec6c       0x82 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ecee       0x28 ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ed16       0xca ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ede0       0x2e ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ee0e       0x4c ./Src/mainI2CMPU6050V1.o
- .debug_macro   0x000000000000ee5a       0xff ./Src/sysmem.o
- .debug_macro   0x000000000000ef59      0x23b ./Src/sysmem.o
- .debug_macro   0x000000000000f194       0xdd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
- .debug_macro   0x000000000000f271      0x124 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
- .debug_macro   0x000000000000f395       0xe6 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
- .debug_macro   0x000000000000f47b       0x46 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
- .debug_macro   0x000000000000f4c1       0xde /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
- .debug_macro   0x000000000000f59f       0xd7 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
- .debug_macro   0x000000000000f676      0x23b /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f8b1       0x16 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f8c7       0x97 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
- .debug_macro   0x000000000000f95e       0xfd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+.debug_macro    0x0000000000000000     0xfd15
+ .debug_macro   0x0000000000000000      0x312 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000312      0xa7e ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000d90       0x28 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000db8       0x28 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000de0       0x22 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000e02       0x8e ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000e90       0x51 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000ee1      0x103 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000000fe4       0x6a ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000104e      0x1df ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000122d       0x1c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000001249       0x22 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000126b       0xd9 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000001344     0x102d ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000002371      0x11f ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x0000000000002490     0xb953 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000dde3       0x6d ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000de50       0x18 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000de68       0x52 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000deba       0x3c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000def6       0x34 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000df2a       0x16 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000df40      0x10e ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e04e       0x8d ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e0db       0x16 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e0f1       0x43 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e134       0x34 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e168       0x10 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e178       0x58 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e1d0       0x71 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e241       0x1c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e25d      0x12a ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e387      0x341 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e6c8       0x16 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e6de       0x29 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e707       0x16 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e71d       0x35 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e752       0x20 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e772       0x1c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e78e       0x10 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e79e       0x10 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e7ae       0x1c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e7ca       0x52 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e81c       0x22 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e83e       0x10 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e84e       0x52 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e8a0       0xd5 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e975       0x1c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e991       0x3d ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e9ce       0x16 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000e9e4      0x145 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000eb29       0x22 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000eb4b      0x12a ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ec75       0x82 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ecf7       0x28 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ed1f       0xca ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ede9       0x2e ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ee17       0x4c ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000ee63      0x2b1 ./Src/mainI2CMPU6050V1.o
+ .debug_macro   0x000000000000f114       0xff ./Src/sysmem.o
+ .debug_macro   0x000000000000f213      0x23b ./Src/sysmem.o
+ .debug_macro   0x000000000000f44e       0xdd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_macro   0x000000000000f52b      0x124 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_macro   0x000000000000f64f       0xe6 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
+ .debug_macro   0x000000000000f735       0x46 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
+ .debug_macro   0x000000000000f77b       0xde /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
+ .debug_macro   0x000000000000f859       0xd7 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+ .debug_macro   0x000000000000f930      0x23b /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000fb6b       0x16 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000fb81       0x97 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_macro   0x000000000000fc18       0xfd /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
-.debug_line     0x0000000000000000     0x32a1
- .debug_line    0x0000000000000000      0x8ed ./Src/mainI2CMPU6050V1.o
- .debug_line    0x00000000000008ed      0x4b3 ./Src/sysmem.o
- .debug_line    0x0000000000000da0       0x84 ./Startup/startup_stm32f411retx.o
- .debug_line    0x0000000000000e24      0x662 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
- .debug_line    0x0000000000001486      0x76a /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
- .debug_line    0x0000000000001bf0      0x52f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
- .debug_line    0x000000000000211f      0x71f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
- .debug_line    0x000000000000283e      0xa63 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+.debug_line     0x0000000000000000     0x32b4
+ .debug_line    0x0000000000000000      0x900 ./Src/mainI2CMPU6050V1.o
+ .debug_line    0x0000000000000900      0x4b3 ./Src/sysmem.o
+ .debug_line    0x0000000000000db3       0x84 ./Startup/startup_stm32f411retx.o
+ .debug_line    0x0000000000000e37      0x662 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_line    0x0000000000001499      0x76a /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
+ .debug_line    0x0000000000001c03      0x52f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
+ .debug_line    0x0000000000002132      0x71f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+ .debug_line    0x0000000000002851      0xa63 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
 
-.debug_str      0x0000000000000000    0x555db
- .debug_str     0x0000000000000000    0x5483b ./Src/mainI2CMPU6050V1.o
-                                      0x54a4a (size before relaxing)
- .debug_str     0x000000000005483b      0x4d5 ./Src/sysmem.o
+.debug_str      0x0000000000000000    0x562e0
+ .debug_str     0x0000000000000000    0x55540 ./Src/mainI2CMPU6050V1.o
+                                      0x5574f (size before relaxing)
+ .debug_str     0x0000000000055540      0x4d5 ./Src/sysmem.o
                                        0x5d76 (size before relaxing)
- .debug_str     0x0000000000054d10       0x31 ./Startup/startup_stm32f411retx.o
+ .debug_str     0x0000000000055a15       0x31 ./Startup/startup_stm32f411retx.o
                                          0x69 (size before relaxing)
- .debug_str     0x0000000000054d41      0x1a4 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+ .debug_str     0x0000000000055a46      0x1a4 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
                                       0x4fe90 (size before relaxing)
- .debug_str     0x0000000000054ee5       0xcc /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
+ .debug_str     0x0000000000055bea       0xcc /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(I2CxDriver.o)
                                       0x5004f (size before relaxing)
- .debug_str     0x0000000000054fb1      0x46f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
+ .debug_str     0x0000000000055cb6      0x46f /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(SysTickDriver.o)
                                       0x4fe83 (size before relaxing)
- .debug_str     0x0000000000055420      0x111 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+ .debug_str     0x0000000000056125      0x111 /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
                                       0x50143 (size before relaxing)
- .debug_str     0x0000000000055531       0xaa /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+ .debug_str     0x0000000000056236       0xaa /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
                                       0x542ba (size before relaxing)
 
 .comment        0x0000000000000000       0x50

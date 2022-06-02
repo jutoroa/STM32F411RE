@@ -33,7 +33,7 @@ uint16_t 	adcData			= 0;				// Valor obtenido por el ADC
 uint16_t 	counter			= 0;				// Contador para cada iteración del ADC
 uint16_t 	auxCounter		= 0;
 char		bufferData[64]	= {0};				// Buffer de recepción del ADC
-uint16_t	adcSignal[ADC_SIGNAL_SIZE]	= {0};	// Almacenamiento para los datos del ADC
+//uint16_t	adcSignal[ADC_SIGNAL_SIZE]	= {0};	// Almacenamiento para los datos del ADC
 
 // *************** // Headers // *************** //
 
