@@ -126,6 +126,46 @@ void I2C_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataTo
 }
 
 
+uint8_t I2C_readByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
+
+	startI2C(ptrHandlerI2C);
+
+	sendSlaveAddressWriteI2C(ptrHandlerI2C);
+
+	sendMemoryAddressI2C(ptrHandlerI2C,memAddr);
+
+	stopI2C(ptrHandlerI2C);
+
+	startI2C(ptrHandlerI2C);
+
+	//reStartI2C(ptrHandlerI2C);
+
+	sendSlaveAddressReadI2C(ptrHandlerI2C);
+
+	uint8_t dataI2C = recibeDataI2C(ptrHandlerI2C);
+
+	nACKI2C(ptrHandlerI2C);
+
+	stopI2C(ptrHandlerI2C);
+
+	//uint8_t dataI2C = recibeDataI2C(ptrHandlerI2C);
+
+	return dataI2C;
+
+}
+
+void I2C_writeByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite){
+
+	startI2C(ptrHandlerI2C);
+
+	sendSlaveAddressWriteI2C(ptrHandlerI2C);
+
+	sendMemoryAddressI2C(ptrHandlerI2C,memAddr);
+
+	sendDataI2C(ptrHandlerI2C,dataToWrite);
+
+	stopI2C(ptrHandlerI2C);
+}
 
 void startI2C(I2C_Handler_t *ptrHandlerI2C){
 	/* 0. Definimos una variable auxiliar */

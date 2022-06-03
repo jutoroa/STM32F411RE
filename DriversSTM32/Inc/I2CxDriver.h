@@ -55,7 +55,8 @@ void nACKI2C(I2C_Handler_t *ptrHandlerI2C);
 void stopI2C(I2C_Handler_t *ptrHandlerI2C);
 uint8_t recibeDataI2C(I2C_Handler_t *ptrHandlerI2C);
 void sendDataI2C(I2C_Handler_t *ptrHandlerI2C, uint8_t dataToWrite);
-
+void I2C_writeByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite);
+uint8_t I2C_readByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr);
 //void configI2CPin(I2C_Handler_t *ptrHandlerI2C);
 
 #endif /* I2CXDRIVER_H_ */
