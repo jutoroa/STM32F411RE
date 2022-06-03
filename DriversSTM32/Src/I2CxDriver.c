@@ -125,48 +125,6 @@ void I2C_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataTo
 	stopI2C(ptrHandlerI2C);
 }
 
-
-uint8_t I2C_readByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
-
-	startI2C(ptrHandlerI2C);
-
-	sendSlaveAddressWriteI2C(ptrHandlerI2C);
-
-	sendMemoryAddressI2C(ptrHandlerI2C,memAddr);
-
-	stopI2C(ptrHandlerI2C);
-
-	startI2C(ptrHandlerI2C);
-
-	//reStartI2C(ptrHandlerI2C);
-
-	sendSlaveAddressReadI2C(ptrHandlerI2C);
-
-	uint8_t dataI2C = recibeDataI2C(ptrHandlerI2C);
-
-	nACKI2C(ptrHandlerI2C);
-
-	stopI2C(ptrHandlerI2C);
-
-	//uint8_t dataI2C = recibeDataI2C(ptrHandlerI2C);
-
-	return dataI2C;
-
-}
-
-void I2C_writeByte_RTC(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite){
-
-	startI2C(ptrHandlerI2C);
-
-	sendSlaveAddressWriteI2C(ptrHandlerI2C);
-
-	sendMemoryAddressI2C(ptrHandlerI2C,memAddr);
-
-	sendDataI2C(ptrHandlerI2C,dataToWrite);
-
-	stopI2C(ptrHandlerI2C);
-}
-
 void startI2C(I2C_Handler_t *ptrHandlerI2C){
 	/* 0. Definimos una variable auxiliar */
 	uint8_t auxByte = 0;
@@ -199,6 +157,23 @@ void sendSlaveAddressWriteI2C(I2C_Handler_t *ptrHandlerI2C){
 	ptrHandlerI2C -> ptrI2Cx -> DR = (ptrHandlerI2C -> slaveAddress << 1)	| I2C_WRITE_DATA;
 
 	 /* 3.1 Esperemos hasta que la bandera del evento "addr" se levante
+	  * (esto nos indica que la dirección fue enviada satisfactoriamente */
+	 while(!(ptrHandlerI2C -> ptrI2Cx -> SR1 & I2C_SR1_ADDR)){
+		__NOP();
+	 }
+
+	 /* 3.2 Debemos limpiar la bandera de la recepción de ACK de la "addr", para lo cual
+	  * debemos leer en secuencia primero el I2C_SR1 y luego I2C_SR2 */
+	 auxByte = ptrHandlerI2C -> ptrI2Cx -> SR1;
+	 auxByte = ptrHandlerI2C -> ptrI2Cx -> SR2;
+}
+
+void ACKReception(I2C_Handler_t *ptrHandlerI2C){
+	/* 0. Definimos una variable auxiliar */
+		uint8_t auxByte = 0;
+		(void) auxByte;	// Para no generar warning
+
+ /* 3.1 Esperemos hasta que la bandera del evento "addr" se levante
 	  * (esto nos indica que la dirección fue enviada satisfactoriamente */
 	 while(!(ptrHandlerI2C -> ptrI2Cx -> SR1 & I2C_SR1_ADDR)){
 		__NOP();
@@ -290,46 +265,3 @@ void sendDataI2C(I2C_Handler_t *ptrHandlerI2C, uint8_t dataToWrite){
 
 
 
-// Configuración del GPIOx
-/*
-void configI2CPin(I2C_Handler_t *ptrHandlerI2C){
-
-	// Escogemos el I2C_1
-	if(i2cConfig -> i2cnumber == I2C_1){
-
-		i2cPinSDA.pGPIOx								= GPIOB;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinNumber			= i2cConfig -> pinNumber;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_OUT;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinOPType			= GPIO_PUPDR_PULLUP;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_OTYPE_OPENDRAIN;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_HIGH;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinAltFunMode		= AF4;
-
-	}
-	// Escogemos el I2C_2
-	else if(i2cConfig -> i2cnumber == I2C_2){
-
-		i2cPinSDA.pGPIOx								= GPIOB;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinNumber			= i2cConfig -> pinNumber;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_OUT;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinOPType			= GPIO_PUPDR_PULLUP;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_OTYPE_OPENDRAIN;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_HIGH;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinAltFunMode		= AF4;
-	}
-	// Escogemos el I2C_3
-	else if(i2cConfig -> i2cnumber == I2C_3){
-
-		i2cPinSDA.pGPIOx								= GPIOC;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinNumber			= i2cConfig -> pinNumber;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_OUT;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinOPType			= GPIO_PUPDR_PULLUP;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_OTYPE_OPENDRAIN;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_HIGH;
-		i2cPinSDA.GPIO_PinConfig.GPIO_PinAltFunMode		= AF4;
-	}
-
-	// Cargamos la configuración
-	GPIO_Config(&i2cPinSDA);
-}
-*/

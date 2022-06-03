@@ -7,3 +7,4 @@
 "./Src/SysTickDriver.o"
 "./Src/TIMxDriver.o"
 "./Src/USARTxDriver.o"
+"./Src/rtcDS1307Driver.o"

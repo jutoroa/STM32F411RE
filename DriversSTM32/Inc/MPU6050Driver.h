@@ -11,6 +11,8 @@
 // Driver que contendrá todas las definiciones para el MPU6050
 
 #include <stdbool.h>
+#include "I2CxDriver.h"
+
 
 #define MPU6050_ADDRESS_AD0_LOW     0x68 // address pin low (GND), default for InvenSense evaluation board
 #define MPU6050_ADDRESS_AD0_HIGH    0x69 // address pin high (VCC)
@@ -127,11 +129,25 @@
 #define MPU6050_RA_FIFO_R_W         0x74
 #define MPU6050_RA_WHO_AM_I         0x75
 
+// Definiciones para los ejes
+
+#define ACCEL_X		0
+#define ACCEL_Y		1
+#define ACCEL_Z		2
+#define TEMP		3
+#define GYRO_X		4
+#define GYRO_Y		5
+#define GYRO_Z		6
+
 
 // Funciones
 
-int16_t getSensorValue(I2C_Handler_t *ptrHandlerI2C, uint8_t axisL, uint8_t axisH);
+int16_t MPU6050_SensorValue(I2C_Handler_t *ptrHandlerI2C, uint8_t sensorAndAxis);
 uint8_t getMPURegisterValue(I2C_Handler_t *ptrHandlerI2C, uint8_t address);
+
+uint8_t MPU6050_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr);
+
+void MPU6050_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite);
 
 //int16_t controlI2CMPU6050(I2C_Handler_t *ptrHandlerI2C, uint8_t rxData);
 
