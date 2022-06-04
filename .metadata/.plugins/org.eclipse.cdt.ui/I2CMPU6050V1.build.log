@@ -1,4 +1,4 @@
-17:30:07 **** Incremental Build of configuration Debug for project I2CMPU6050V1 ****
+01:45:06 **** Incremental Build of configuration Debug for project I2CMPU6050V1 ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/mainI2CMPU6050V1.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainI2CMPU6050V1.d" -MT"Src/mainI2CMPU6050V1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainI2CMPU6050V1.o"
 arm-none-eabi-gcc -o "I2CMPU6050V1.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/I2CMPU6050V1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2CMPU6050V1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,11 +7,11 @@ Finished building target: I2CMPU6050V1.elf
 arm-none-eabi-size   I2CMPU6050V1.elf 
 arm-none-eabi-objdump -h -S  I2CMPU6050V1.elf  > "I2CMPU6050V1.list"
    text	   data	    bss	    dec	    hex	filename
-   8048	    172	   1824	  10044	   273c	I2CMPU6050V1.elf
+   8068	    172	   1824	  10064	   2750	I2CMPU6050V1.elf
 Finished building: default.size.stdout
  
 Finished building: I2CMPU6050V1.list
  
 
-17:30:08 Build Finished. 0 errors, 0 warnings. (took 592ms)
+01:45:07 Build Finished. 0 errors, 0 warnings. (took 572ms)
 

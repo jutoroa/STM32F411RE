@@ -1,16 +1,10 @@
-17:28:33 **** Incremental Build of configuration Debug for project tarea4_jutoroa ****
+00:58:09 **** Incremental Build of configuration Debug for project tarea4_jutoroa ****
 make -j8 all 
-arm-none-eabi-gcc -o "tarea4_jutoroa.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/tarea4_jutoroa/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tarea4_jutoroa.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: tarea4_jutoroa.elf
- 
 arm-none-eabi-size   tarea4_jutoroa.elf 
-arm-none-eabi-objdump -h -S  tarea4_jutoroa.elf  > "tarea4_jutoroa.list"
    text	   data	    bss	    dec	    hex	filename
    5908	     12	   1780	   7700	   1e14	tarea4_jutoroa.elf
 Finished building: default.size.stdout
  
-Finished building: tarea4_jutoroa.list
- 
 
-17:28:33 Build Finished. 0 errors, 0 warnings. (took 580ms)
+00:58:10 Build Finished. 0 errors, 0 warnings. (took 534ms)
 

@@ -118,7 +118,7 @@ int main(void)
 				uint8_t AccelZ_low  = I2C_readByte(&handlerAccelerometer, ACCEL_ZOUT_L);
 				uint8_t AccelZ_high = I2C_readByte(&handlerAccelerometer, ACCEL_ZOUT_H);
 				int16_t AccelZ = AccelZ_high << 8 | AccelZ_low;
-				sprintf(bufferData, "AccelY = %d \n",(int) AccelZ);
+				sprintf(bufferData, "AccelZ = %d \n",(int) AccelZ);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}

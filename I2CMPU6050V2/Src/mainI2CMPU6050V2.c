@@ -42,8 +42,8 @@ I2C_Handler_t  handlerAccelerometer = {0};
 
 
 // Variables auxiliar.
-char 		bufferData[64] 		= "esto es una pequeña prueba";
-uint8_t 	rxData				= 0;
+char 		bufferData[64] 		= "¡Hola! Soy el USART del STM32 y estoy funcionando. \n";
+uint8_t 	rxData				= '\0';
 uint8_t 	i2cBuffer 			= 0;
 uint32_t 	systemTicks 		= 0;
 uint32_t 	systemTicksStart 	= 0;
@@ -55,7 +55,7 @@ int16_t		MPUBuffer[numberofsensor]		= {0};
 // *************** // Headers // *************** //
 
 void initSystem(void);
-void sensorConfig();
+void sensorConfig(void);
 void sensorData(void);
 
 // *************** // MAIN // *************** //
@@ -70,14 +70,14 @@ int main(void)
 		// Hacemos un "eco" con el valor que nos llega por el serial
 		if(rxData != '\0'){
 			writeChar(&handlerCommTerminal, rxData);
-
+/*
 			if(rxData == 'c'){
 				// Conversión de modo continua
 				startTimer(&handlerTimer3);
 			}
 			if(rxData == 's'){
 				stopTimer(&handlerTimer3);
-			}
+			}*/
 			// Limpiamos el valor de la variable que guarda los datos del RX
 			sensorConfig();
 			sensorData();
@@ -198,24 +198,24 @@ void initSystem(void){
 
 }
 
-void sensorConfig(){
+void sensorConfig(void){
 	// Devolvemos la dirección que posee el sensor
 	if(rxData == 'd'){
-		i2cBuffer = I2C_readByte(&handlerAccelerometer, MPU6050_RA_WHO_AM_I);
+		i2cBuffer = MPU6050_readByte(&handlerAccelerometer, MPU6050_RA_WHO_AM_I);
 		sprintf(bufferData, "dataRead = 0x%2x \n", (unsigned int) i2cBuffer);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	// Obtenemos el valor del registro Reset
 	else if(rxData == 'p'){
-		i2cBuffer = I2C_readByte(&handlerAccelerometer, MPU6050_RA_PWR_MGMT_1);
+		i2cBuffer = MPU6050_readByte(&handlerAccelerometer, MPU6050_RA_PWR_MGMT_1);
 		sprintf(bufferData, "dataRead = 0x%2x \n", (unsigned int) i2cBuffer);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	// Escribimos 0x0 (reset) en todos los registros del MPU6050
 	else if(rxData == 'r'){
-		I2C_writeByte(&handlerAccelerometer, MPU6050_RA_PWR_MGMT_1, 0x00);
+		MPU6050_writeByte(&handlerAccelerometer, MPU6050_RA_PWR_MGMT_1, 0x00);
 		rxData = '\0';
 	}
 }
@@ -223,53 +223,46 @@ void sensorConfig(){
 void sensorData(void){
 	// Leemos los valores del acelerómetro para x
 	if(rxData == 'x'){
-		int16_t AccelX = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_ACCEL_XOUT_L, MPU6050_RA_ACCEL_XOUT_H);
+		int16_t AccelX = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_X);
 		sprintf(bufferData, "AccelX = %d \n",(int) AccelX);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	// Leemos los valores del acelerómetro para y
 	else if(rxData == 'y'){
-		int16_t AccelY = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_ACCEL_YOUT_L, MPU6050_RA_ACCEL_YOUT_H);
+		int16_t AccelY = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_Y);
 		sprintf(bufferData, "AccelY = %d \n",(int) AccelY);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	// Leemos los valores del acelerómetro para z
 	else if(rxData == 'z'){
-		int16_t AccelZ = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_ACCEL_ZOUT_L, MPU6050_RA_ACCEL_ZOUT_H);
-		sprintf(bufferData, "AccelX = %d \n",(int) AccelZ);
+		int16_t AccelZ = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_Z);
+		sprintf(bufferData, "AccelZ = %d \n",(int) AccelZ);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	// Leemos los valores del giroscopio para x
 	else if(rxData == 'i'){
-		int16_t GirosX = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_GYRO_XOUT_L, MPU6050_RA_GYRO_XOUT_H);
+		int16_t GirosX = MPU6050_SensorValue(&handlerAccelerometer,GYRO_X);
 		sprintf(bufferData, "GirosX = %d \n",(int) GirosX);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	else if(rxData == 'j'){
-		int16_t GirosY = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_GYRO_YOUT_L, MPU6050_RA_GYRO_YOUT_H);
+		int16_t GirosY = MPU6050_SensorValue(&handlerAccelerometer,GYRO_Y);
 		sprintf(bufferData, "GirosY = %d \n",(int) GirosY);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	else if(rxData == 'k'){
-		int16_t GirosZ = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_GYRO_ZOUT_L, MPU6050_RA_GYRO_ZOUT_H);
+		int16_t GirosZ = MPU6050_SensorValue(&handlerAccelerometer,GYRO_Z);
 		sprintf(bufferData, "GirosZ = %d \n",(int) GirosZ);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
 	}
 	else if(rxData == 't'){
-		int16_t Temp = getSensorValue(&handlerAccelerometer,
-				MPU6050_RA_TEMP_OUT_L, MPU6050_RA_TEMP_OUT_H);
+		int16_t Temp = MPU6050_SensorValue(&handlerAccelerometer,TEMP);
 		sprintf(bufferData, "Temp = %d \n",(int) Temp);
 		writeMsg(&handlerCommTerminal, bufferData);
 		rxData = '\0';
@@ -293,14 +286,11 @@ void Timer2_Callback(void){
 // Timer encargado del muestreo a través del MPU6050
 void Timer3_Callback(void){
 	uint16_t dataPosition = 0;
-	MPUBuffer[dataPosition] = getSensorValue(&handlerAccelerometer,
-			MPU6050_RA_GYRO_XOUT_L, MPU6050_RA_GYRO_XOUT_H);
+	MPUBuffer[dataPosition] = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_X);
 	dataPosition++;
-	MPUBuffer[dataPosition] = getSensorValue(&handlerAccelerometer,
-			MPU6050_RA_GYRO_YOUT_L, MPU6050_RA_GYRO_YOUT_H);
+	MPUBuffer[dataPosition] = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_Y);
 	dataPosition++;
-	MPUBuffer[dataPosition] = getSensorValue(&handlerAccelerometer,
-			MPU6050_RA_GYRO_ZOUT_L, MPU6050_RA_GYRO_ZOUT_H);
+	MPUBuffer[dataPosition] = MPU6050_SensorValue(&handlerAccelerometer,ACCEL_Z);
 	dataPosition++;
 	if (dataPosition >= numberofsensor){
 		dataPosition = 0;

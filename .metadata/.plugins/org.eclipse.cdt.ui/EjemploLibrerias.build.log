@@ -1,10 +1,10 @@
-17:00:19 **** Build of configuration Debug for project EjemploLibrerias ****
+00:58:06 **** Incremental Build of configuration Debug for project EjemploLibrerias ****
 make -j8 all 
 arm-none-eabi-size   EjemploLibrerias.elf 
    text	   data	    bss	    dec	    hex	filename
-   7544	    108	   1884	   9536	   2540	EjemploLibrerias.elf
+   8056	    108	   1884	  10048	   2740	EjemploLibrerias.elf
 Finished building: default.size.stdout
  
 
-17:00:19 Build Finished. 0 errors, 0 warnings. (took 469ms)
+00:58:06 Build Finished. 0 errors, 0 warnings. (took 527ms)
 

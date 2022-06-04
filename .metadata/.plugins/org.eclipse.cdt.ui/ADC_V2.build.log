@@ -1,16 +1,10 @@
-16:59:59 **** Build of configuration Debug for project ADC_V2 ****
+00:58:04 **** Incremental Build of configuration Debug for project ADC_V2 ****
 make -j8 all 
-arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ADC_V2.elf
- 
 arm-none-eabi-size   ADC_V2.elf 
-arm-none-eabi-objdump -h -S  ADC_V2.elf  > "ADC_V2.list"
    text	   data	    bss	    dec	    hex	filename
    8180	    108	   1892	  10180	   27c4	ADC_V2.elf
 Finished building: default.size.stdout
  
-Finished building: ADC_V2.list
- 
 
-17:00:00 Build Finished. 0 errors, 0 warnings. (took 518ms)
+00:58:05 Build Finished. 0 errors, 0 warnings. (took 474ms)
 

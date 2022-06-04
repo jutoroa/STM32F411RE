@@ -43,26 +43,26 @@ void MPU6050_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t da
 
 int16_t MPU6050_SensorValue(I2C_Handler_t *ptrHandlerI2C, uint8_t sensorAndAxis){
 
-	uint8_t axisL;
-	uint8_t axisH;
+	uint8_t axisL = 0;
+	uint8_t axisH = 0;
 
 	switch(sensorAndAxis){
 	case(ACCEL_X):
 	{
-		axisL = MPU6050_RA_GYRO_XOUT_L;
-		axisH = MPU6050_RA_GYRO_XOUT_H;
+		axisL = MPU6050_RA_ACCEL_XOUT_L;
+		axisH = MPU6050_RA_ACCEL_XOUT_H;
 		break;
 	}
 	case(ACCEL_Y):
 	{
-		axisL = MPU6050_RA_GYRO_YOUT_L;
-		axisH = MPU6050_RA_GYRO_YOUT_H;
+		axisL = MPU6050_RA_ACCEL_YOUT_L;
+		axisH = MPU6050_RA_ACCEL_YOUT_H;
 		break;
 	}
 	case(ACCEL_Z):
 	{
-		axisL = MPU6050_RA_GYRO_ZOUT_L;
-		axisH = MPU6050_RA_GYRO_ZOUT_H;
+		axisL = MPU6050_RA_ACCEL_ZOUT_L;
+		axisH = MPU6050_RA_ACCEL_ZOUT_H;
 		break;
 	}
 	case(TEMP):
@@ -89,9 +89,15 @@ int16_t MPU6050_SensorValue(I2C_Handler_t *ptrHandlerI2C, uint8_t sensorAndAxis)
 		axisH = MPU6050_RA_GYRO_ZOUT_H;
 		break;
 	}
+	default:
+	{
+		axisL = MPU6050_RA_ACCEL_XOUT_L;
+		axisH = MPU6050_RA_ACCEL_XOUT_H;
+		break;
+	}
 }
-	uint8_t Value_low  = MPU6050_readByte(ptrHandlerI2C, axisL);
-	uint8_t Value_high = MPU6050_readByte(ptrHandlerI2C, axisH);
+	uint8_t Value_low  = I2C_readByte(ptrHandlerI2C, axisL);
+	uint8_t Value_high = I2C_readByte(ptrHandlerI2C, axisH);
 	int16_t Value = Value_high << 8 | Value_low;
 	return Value;
 }

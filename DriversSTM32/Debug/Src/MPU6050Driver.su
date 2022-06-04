@@ -1,4 +1,4 @@
 ../Src/MPU6050Driver.c:10:9:MPU6050_readByte	24	static
 ../Src/MPU6050Driver.c:31:6:MPU6050_writeByte	16	static
 ../Src/MPU6050Driver.c:44:9:MPU6050_SensorValue	24	static
-../Src/MPU6050Driver.c:99:9:getMPURegisterValue	24	static
+../Src/MPU6050Driver.c:105:9:getMPURegisterValue	24	static
