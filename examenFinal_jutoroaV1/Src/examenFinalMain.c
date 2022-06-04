@@ -36,34 +36,31 @@ TIMER_Handler_t handlerTimer3 			= {0};	// Timer3
 USART_Handler_t handlerCommTerminal		= {0};	// Usart para la terminal
 
 /* Configuración para el I2C */
-GPIO_Handler_t handlerI2CSDA =	{0};
-GPIO_Handler_t handlerI2CSCL =	{0};
-I2C_Handler_t  handlerRTC	 = {0};
+GPIO_Handler_t handlerI2CSDA 			= {0};	// SDA para el I2C
+GPIO_Handler_t handlerI2CSCL 			= {0};	// SCL para el I2C
+I2C_Handler_t  handlerRTC	 			= {0};	// I2C para el RTC
 
 /* Configuración para el RTC */
 rtc_t			dateAndTimeRTC = {0};
 
 // Variables auxiliar.
 char 		bufferData[64] = "¡Hola! Soy el USART del STM32 y estoy funcionando.";
-uint32_t	counterReception 	= 0;
-char		bufferReception[256];
-uint8_t		stringComplete		= false;
-
 uint8_t 	rxData				= 0;
 uint8_t 	i2cBuffer 			= 0;
-uint32_t 	systemTicks 		= 0;
-uint32_t 	systemTicksStart 	= 0;
-uint32_t 	systemTicksEnd		= 0;
 uint8_t		MPU6050IsReady		= false;
 
 /* Variables para los commands */
+char		bufferReception[256];
+char 		cmd[16];
+char 		userMsg[256];
 
-char 			cmd[16];
-char 			userMsg[256];
-unsigned int 	firstParameter 		= 0;
-unsigned int  	secondParameter 	= 0;
+uint32_t		counterReception 		= 0;
+uint8_t			stringComplete			= false;
+unsigned int 	firstParameter 			= 0;
+unsigned int  	secondParameter 		= 0;
 
 #define numberofsensor 	3
+
 int16_t		MPUBuffer[numberofsensor]		= {0};
 // *************** // Headers // *************** //
 
@@ -72,6 +69,7 @@ void sensorConfig();
 void sensorData(void);
 void parseCommands(char *ptrBufferReception);
 void initialMessage(void);
+void defineSetAndTimeRTC(void);
 
 // *************** // MAIN // *************** //
 int main(void)
@@ -79,19 +77,11 @@ int main(void)
 	// Inicializamos el sistema
 	initSystem();
 
-	//initialMessage();
-	writeMsg(&handlerCommTerminal, bufferData);
-	writeMsg(&handlerCommTerminal, "\n");
-	//I2C_writeByte_RTC(&handlerRTC,0x7,0x00);
-	//RTC_init(&handlerRTC);
+	// Mandamos el mensaje de Bienvenida
+	initialMessage();
 
-	dateAndTimeRTC.seconds 	= 5;
-	dateAndTimeRTC.minutes 	= 3;
-	dateAndTimeRTC.hour 	= 3;
-	dateAndTimeRTC.weekDay 	= 3;
-	dateAndTimeRTC.date		= 18;
-	dateAndTimeRTC.month 	= 5;
-	dateAndTimeRTC.year		= 20;
+	// Cargamos los valores iniciales para el RTC
+	defineSetAndTimeRTC();
 
 	//RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
 
@@ -100,12 +90,22 @@ int main(void)
 
 
 		if(rxData != '\0'){
-			// Hacemos un "eco" con el valor que nos llega por el serial
-			writeChar(&handlerCommTerminal, rxData);
+
+			//Guardamos las cadenas para los comandos
+			bufferReception[counterReception] = rxData;
+			counterReception++;
+
+			// Levantamos una bandera para indicar que se completó el comando
+			if(rxData == '@'){
+				stringComplete = true;
+				// Agrego esta línea para crear el string con el null al final del arreglo
+				bufferReception[counterReception] = '\0';
+				counterReception = 0;
+			}
 
 			//sensorConfig();
 			//sensorData();
-
+/*
 			// Leemos los valores del los segundos transcurridos
 			if(rxData == 's'){
 				uint8_t sec = RTC_readByte(&handlerRTC,0x00);
@@ -121,8 +121,14 @@ int main(void)
 				sprintf(bufferData, "Minutos = %d \n",(int) min);
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
-			}
+			}*/
 			rxData = '\0';
+		}
+
+		// Hacemos un análisis de la cadena de datos obtenida
+		if(stringComplete){
+			parseCommands(bufferReception);
+			stringComplete = false;
 		}
 
 //		if(MPU6050IsReady == true){
@@ -239,6 +245,20 @@ void initSystem(void){
 
 }
 
+//***********// defineSetAndTimeRTC //***********//
+
+void defineSetAndTimeRTC(void){
+	dateAndTimeRTC.seconds 	= 5;
+	dateAndTimeRTC.minutes 	= 3;
+	dateAndTimeRTC.hour 	= 3;
+	dateAndTimeRTC.weekDay 	= 3;
+	dateAndTimeRTC.date		= 18;
+	dateAndTimeRTC.month 	= 5;
+	dateAndTimeRTC.year		= 20;
+}
+
+//***********// parseCommands //***********//
+
 void parseCommands(char *ptrBufferReception){
 
 	// Esta funcion de C lee la cadena de caracteres a la que apunta el "ptr" y la divide
@@ -249,9 +269,18 @@ void parseCommands(char *ptrBufferReception){
 
 	if(strcmp(cmd, "help") == 0){
 		writeMsg(&handlerCommTerminal, "Help Menu CMDs:\n");
-		writeMsg(&handlerCommTerminal, "1) help				-- Print this menu\n");
-		writeMsg(&handlerCommTerminal, "2) dummy #A #B		-- Dummy cmd, #A and #B are uint32_t\n");
-		writeMsg(&handlerCommTerminal, "3) usermsg # # msg	-- msg is a string comming from outside\n");
+		writeMsg(&handlerCommTerminal, "Seleccione el comando pertinente. \n");
+		writeMsg(&handlerCommTerminal, "1) help             -- Imprime el menú de ayuda. \n");
+		writeMsg(&handlerCommTerminal, "2) accelx           -- Obtiene la información del accelerómetro en X. \n");
+		writeMsg(&handlerCommTerminal, "3) accely           -- Obtiene la información del accelerómetro en Y. \n");
+		writeMsg(&handlerCommTerminal, "4) accelz           -- Obtiene la información del accelerómetro en Z. \n");
+		writeMsg(&handlerCommTerminal, "5) gyro #n          -- Obtiene la información de los giroscopios en el eje #n. \n");
+		writeMsg(&handlerCommTerminal, "siendo 1 = x, 2 = y, 3 = z. \n");
+		writeMsg(&handlerCommTerminal, "6) angle #n         -- Obtiene el angulo de rotación con respecto al eje #n. \n");
+		writeMsg(&handlerCommTerminal, "7) temp             -- Obtiene la temperatura del sensor MPU6050. \n");
+		writeMsg(&handlerCommTerminal, "8) setrtc           -- Setea la configuración para el RTC. \n");
+		writeMsg(&handlerCommTerminal, "9) partyrgb         -- Activa el modo Party del rgb. \n");
+		writeMsg(&handlerCommTerminal, "10) partyoled       -- Activa el modo Party de la pantalla oled. \n");
 	}
 	else if(strcmp(cmd, "dummy") == 0){
 		writeMsg(&handlerCommTerminal, "CMD: dummy\n");
@@ -273,6 +302,8 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, "Wrong CMD");
 	}
 }
+
+//***********// initialMessage //***********//
 
 void initialMessage(void){
 	writeMsg(&handlerCommTerminal,"// ***** // BIENVENIDO A LA NERIONETA // ***** // \n");
