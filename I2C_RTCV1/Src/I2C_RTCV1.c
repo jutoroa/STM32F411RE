@@ -42,6 +42,8 @@ I2C_Handler_t  handlerRTC	 = {0};
 
 /* Configuración para el RTC */
 rtc_t			dateAndTimeRTC = {0};
+uint8_t 			dataRTC[7];
+getTime_t		dataRTCtest = {0};
 
 // Variables auxiliar.
 char 		bufferData[64] = "¡Hola! Soy el USART del STM32 y estoy funcionando.";
@@ -71,7 +73,7 @@ void initSystem(void);
 void sensorConfig();
 void sensorData(void);
 void parseCommands(char *ptrBufferReception);
-void initialMessage(void);
+//void initialMessage(void);
 
 // *************** // MAIN // *************** //
 int main(void)
@@ -82,18 +84,18 @@ int main(void)
 	//initialMessage();
 	writeMsg(&handlerCommTerminal, bufferData);
 	writeMsg(&handlerCommTerminal, "\n");
-	//I2C_writeByte_RTC(&handlerRTC,0x7,0x00);
-	//RTC_init(&handlerRTC);
+	// Función para inicializar el RTC
+	RTC_init(&handlerRTC);
 
-	dateAndTimeRTC.seconds 	= 5;
-	dateAndTimeRTC.minutes 	= 3;
+	dateAndTimeRTC.seconds 	= 0;
+	dateAndTimeRTC.minutes 	= 15;
 	dateAndTimeRTC.hour 	= 3;
 	dateAndTimeRTC.weekDay 	= 3;
-	dateAndTimeRTC.date		= 18;
+	dateAndTimeRTC.date		= 11;
 	dateAndTimeRTC.month 	= 5;
-	dateAndTimeRTC.year		= 20;
+	dateAndTimeRTC.year		= 7;
 
-	//RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
+	RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
 
 	/* Main Loop */
 	while(1){
@@ -120,6 +122,23 @@ int main(void)
 				//uint8_t minutes = (min & 0b00001111);
 				sprintf(bufferData, "Minutos = %d \n",(int) min);
 				writeMsg(&handlerCommTerminal, bufferData);
+				rxData = '\0';
+			}
+			else if(rxData == 'f'){
+				//RTC_ReadDateTimeFull(&handlerRTC,dataRTC);
+				dataRTC[0] = BCDToDec(RTC_readByte(&handlerRTC, 0x01));
+				dataRTC[1] = BCDToDec(RTC_readByte(&handlerRTC, 0x02));
+				dataRTC[2] = BCDToDec(RTC_readByte(&handlerRTC, 0x03));
+				dataRTC[3] = BCDToDec(RTC_readByte(&handlerRTC, 0x04));
+				dataRTC[4] = BCDToDec(RTC_readByte(&handlerRTC, 0x05));
+				dataRTC[5] = BCDToDec(RTC_readByte(&handlerRTC, 0x06));
+				dataRTC[6] = BCDToDec(RTC_readByte(&handlerRTC, 0x07));
+				sprintf(bufferReception, "Seconds: %d | Minutes: %d | Hours: %d \n",
+				(int) dataRTC[0],(int) dataRTC[1],(int) dataRTC[2]);
+				writeMsg(&handlerCommTerminal, bufferReception);
+				sprintf(bufferReception, "Date: %d/%d/%d \n",
+				(int) dataRTC[4],(int) dataRTC[5],(int) dataRTC[6]);
+				writeMsg(&handlerCommTerminal, bufferReception);
 				rxData = '\0';
 			}
 			rxData = '\0';

@@ -305,6 +305,8 @@ void USART1_IRQHandler(void){
 
 	USART1 -> SR &= ~(USART_SR_RXNE);		// Bajamos la bandera manualmente
 
+	data = (USART1 -> DR);
+
 	USART1_Callback();
 }
 
@@ -320,6 +322,9 @@ void USART2_IRQHandler(void){
 
 void USART6_IRQHandler(void){
 	USART6 -> SR &= ~(USART_SR_RXNE);
+
+	data = (USART6 -> DR);
+
 	USART6_Callback();
 }
 

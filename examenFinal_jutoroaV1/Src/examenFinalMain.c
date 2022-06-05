@@ -289,7 +289,7 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, bufferData);
 
 		// Cambiando el formato para presentar el número por el puerto serial
-		printf(bufferData, "number B = %u \n", secondParameter);
+		sprintf(bufferData, "number B = %u \n", secondParameter);
 				writeMsg(&handlerCommTerminal, bufferData);
 	}
 	else if (strcmp(cmd, "usermsg") == 0){
@@ -307,6 +307,7 @@ void parseCommands(char *ptrBufferReception){
 
 void initialMessage(void){
 	writeMsg(&handlerCommTerminal,"// ***** // BIENVENIDO A LA NERIONETA // ***** // \n");
+	writeMsg(&handlerCommTerminal, "\n");
 	writeMsg(&handlerCommTerminal,"─▌█──║─║╔═║─║─╔═╗─ \n");
 	writeMsg(&handlerCommTerminal,"─███─╠═╣╠═║─║─║─║─ \n");
 	writeMsg(&handlerCommTerminal,"─▐█▐─║─║╚═╚═╚═╚═╝─ \n");

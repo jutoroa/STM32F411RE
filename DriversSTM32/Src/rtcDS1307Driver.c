@@ -42,7 +42,7 @@ void RTC_SetDateTime(I2C_Handler_t *ptrHandlerI2C, rtc_t *rtc){
 	stopI2C(ptrHandlerI2C);
 }
 
-int RTC_ReadDateTime(I2C_Handler_t *ptrHandlerI2C, rtc_t *rtc){
+void RTC_ReadDateTime(I2C_Handler_t *ptrHandlerI2C, getTime_t *ptrGetTime){
 
 	startI2C(ptrHandlerI2C);
 
@@ -58,28 +58,74 @@ int RTC_ReadDateTime(I2C_Handler_t *ptrHandlerI2C, rtc_t *rtc){
 
 	sendSlaveAddressReadI2C(ptrHandlerI2C);
 
-	int DateAndTime[7];
+	//int GetDateAndTime[7];
 
-	DateAndTime[0] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> seconds 	= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> minutes 	= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> hour 		= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> weekDay 	= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> date 		= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> month 	= BCDToDec(recibeDataI2C(ptrHandlerI2C));
+	ptrGetTime -> year 		= BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
-	DateAndTime[1] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
-	DateAndTime[2] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
+//	GetDateAndTime++;
+//	*GetDateAndTime = recibeDataI2C(ptrHandlerI2C);
 
-	DateAndTime[3] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
-	DateAndTime[4] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
-	DateAndTime[5] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
-	DateAndTime[6] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//	GetDateAndTime[0] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[1] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[2] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[3] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[4] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[5] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
+//
+//	GetDateAndTime[6] = BCDToDec(recibeDataI2C(ptrHandlerI2C));
 
 	nACKI2C(ptrHandlerI2C);
 
 	stopI2C(ptrHandlerI2C);
 
-	return *DateAndTime;
+	//return *GetDateAndTime;
 }
+
+
+//*******************
+void RTC_ReadDateTimeFull(I2C_Handler_t *ptrHandlerI2C, uint8_t *GetDateAndTime){
+
+	GetDateAndTime[0] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x00));
+
+	GetDateAndTime[1] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x01));
+
+	GetDateAndTime[2] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x02));
+
+	GetDateAndTime[3] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x03));
+
+	GetDateAndTime[4] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x04));
+
+	GetDateAndTime[5] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x05));
+
+	GetDateAndTime[6] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x06));
+}
+
 
 uint8_t RTC_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
 
@@ -93,7 +139,6 @@ uint8_t RTC_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
 
 	startI2C(ptrHandlerI2C);
 
-	//reStartI2C(ptrHandlerI2C);
 
 	sendSlaveAddressReadI2C(ptrHandlerI2C);
 
@@ -103,9 +148,7 @@ uint8_t RTC_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
 
 	stopI2C(ptrHandlerI2C);
 
-	//uint8_t dataI2C = recibeDataI2C(ptrHandlerI2C);
-
-	return dataI2C;
+	return BCDToDec(dataI2C);
 
 }
 
