@@ -88,17 +88,17 @@ int main(void)
 	writeMsg(&handlerCommTerminal, bufferData);
 	writeMsg(&handlerCommTerminal, "\n");
 	// Función para inicializar el RTC
-	RTC_init(&handlerRTC);
-
-	dateAndTimeRTC.seconds 	= 0;
-	dateAndTimeRTC.minutes 	= 15;
-	dateAndTimeRTC.hour 	= 3;
-	dateAndTimeRTC.weekDay 	= 3;
-	dateAndTimeRTC.date		= 11;
-	dateAndTimeRTC.month 	= 5;
-	dateAndTimeRTC.year		= 7;
-
-	RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
+//	RTC_init(&handlerRTC);
+//
+//	dateAndTimeRTC.seconds 	= 0;
+//	dateAndTimeRTC.minutes 	= 15;
+//	dateAndTimeRTC.hour 	= 3;
+//	dateAndTimeRTC.weekDay 	= 3;
+//	dateAndTimeRTC.date		= 11;
+//	dateAndTimeRTC.month 	= 5;
+//	dateAndTimeRTC.year		= 7;
+//
+//	RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
 
 	/* Main Loop */
 	while(1){
@@ -110,7 +110,7 @@ int main(void)
 
 			//sensorConfig();
 			//sensorData();
-
+/*
 			// Leemos los valores del los segundos transcurridos
 			if(rxData == 's'){
 				uint8_t sec = RTC_readByte(&handlerRTC,0x00);
@@ -143,7 +143,7 @@ int main(void)
 				(int) dataRTC[4],(int) dataRTC[5],(int) dataRTC[6]);
 				writeMsg(&handlerCommTerminal, bufferReception);
 				rxData = '\0';
-			}
+			}*/
 			rxData = '\0';
 		}
 
@@ -181,27 +181,27 @@ void initSystem(void){
 
 	/* Configurando los pines sobre los que funciona el USART */
 	handlerPinTX.pGPIOx									= GPIOA;
-	handlerPinTX.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinNumber			= PIN_11;
 	handlerPinTX.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
 	handlerPinTX.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerPinTX.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_NOTHING;
 	handlerPinTX.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
-	handlerPinTX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF7;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF8;
 
 	GPIO_Config(&handlerPinTX);
 
 	handlerPinRX.pGPIOx									= GPIOA;
-	handlerPinRX.GPIO_PinConfig.GPIO_PinNumber			= PIN_10;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinNumber			= PIN_12;
 	handlerPinRX.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
 	handlerPinRX.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerPinRX.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_NOTHING;
 	handlerPinRX.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
-	handlerPinRX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF7;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF8;
 
 	GPIO_Config(&handlerPinRX);
 
 	// Configuración del USART del USB para RX
-	handlerCommTerminal.ptrUSARTx							= USART1;
+	handlerCommTerminal.ptrUSARTx							= USART6;
 	handlerCommTerminal.USART_Config.USART_mode				= USART_MODE_RXTX;
 	handlerCommTerminal.USART_Config.USART_baudrate			= USART_BAUDRATE_19200;
 	handlerCommTerminal.USART_Config.USART_datasize			= USART_DATASIZE_8BIT;
@@ -310,7 +310,7 @@ void initialMessage(void){
 }
 //***********// CallBacks //***********//
 
-void USART1_Callback(void){
+void USART6_Callback(void){
 	// Lectura de los datos recibidos
 	rxData = returnData();
 }

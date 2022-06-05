@@ -42,7 +42,7 @@ I2C_Handler_t  handlerAccelerometer = {0};
 
 
 // Variables auxiliar.
-char 		bufferData[256] 		= "¡Hola! Soy el USART del STM32 y estoy funcionando. \n";
+char 		bufferData[256] 	= "¡Hola! Soy el USART del STM32 y estoy funcionando. \n";
 uint8_t 	rxData				= '\0';
 uint8_t 	i2cBuffer 			= 0;
 uint8_t		MPU6050IsReady		= false;
