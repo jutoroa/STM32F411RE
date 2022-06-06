@@ -3,6 +3,7 @@
 "./Src/GPIOxDriver.o"
 "./Src/I2CxDriver.o"
 "./Src/MPU6050Driver.o"
+"./Src/OLEDDriver.o"
 "./Src/PWMxDriver.o"
 "./Src/SysTickDriver.o"
 "./Src/TIMxDriver.o"

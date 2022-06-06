@@ -10,6 +10,7 @@ C_SRCS += \
 ../Src/GPIOxDriver.c \
 ../Src/I2CxDriver.c \
 ../Src/MPU6050Driver.c \
+../Src/OLEDDriver.c \
 ../Src/PWMxDriver.c \
 ../Src/SysTickDriver.c \
 ../Src/TIMxDriver.c \
@@ -22,6 +23,7 @@ OBJS += \
 ./Src/GPIOxDriver.o \
 ./Src/I2CxDriver.o \
 ./Src/MPU6050Driver.o \
+./Src/OLEDDriver.o \
 ./Src/PWMxDriver.o \
 ./Src/SysTickDriver.o \
 ./Src/TIMxDriver.o \
@@ -34,6 +36,7 @@ C_DEPS += \
 ./Src/GPIOxDriver.d \
 ./Src/I2CxDriver.d \
 ./Src/MPU6050Driver.d \
+./Src/OLEDDriver.d \
 ./Src/PWMxDriver.d \
 ./Src/SysTickDriver.d \
 ./Src/TIMxDriver.d \
@@ -48,7 +51,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/AdcDriver.d ./Src/AdcDriver.o ./Src/AdcDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/MPU6050Driver.d ./Src/MPU6050Driver.o ./Src/MPU6050Driver.su ./Src/PWMxDriver.d ./Src/PWMxDriver.o ./Src/PWMxDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su ./Src/rtcDS1307Driver.d ./Src/rtcDS1307Driver.o ./Src/rtcDS1307Driver.su
+	-$(RM) ./Src/AdcDriver.d ./Src/AdcDriver.o ./Src/AdcDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/MPU6050Driver.d ./Src/MPU6050Driver.o ./Src/MPU6050Driver.su ./Src/OLEDDriver.d ./Src/OLEDDriver.o ./Src/OLEDDriver.su ./Src/PWMxDriver.d ./Src/PWMxDriver.o ./Src/PWMxDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su ./Src/rtcDS1307Driver.d ./Src/rtcDS1307Driver.o ./Src/rtcDS1307Driver.su
 
 .PHONY: clean-Src
 

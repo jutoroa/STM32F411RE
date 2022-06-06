@@ -1,14 +1,14 @@
-00:16:54 **** Incremental Build of configuration Debug for project examenFinal_jutoroaV2 ****
+03:34:29 **** Incremental Build of configuration Debug for project examenFinal_jutoroaV3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/examenFinalMainV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/examenFinalMainV2.d" -MT"Src/examenFinalMainV2.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/examenFinalMainV2.o"
-arm-none-eabi-gcc -o "examenFinal_jutoroaV2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/examenFinal_jutoroaV2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="examenFinal_jutoroaV2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: examenFinal_jutoroaV2.elf
+arm-none-eabi-gcc "../Src/examenFinalMainV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/examenFinalMainV3.d" -MT"Src/examenFinalMainV3.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/examenFinalMainV3.o"
+arm-none-eabi-gcc -o "examenFinal_jutoroaV3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/examenFinal_jutoroaV3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="examenFinal_jutoroaV3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: examenFinal_jutoroaV3.elf
  
-arm-none-eabi-size   examenFinal_jutoroaV2.elf 
-arm-none-eabi-objdump -h -S  examenFinal_jutoroaV2.elf  > "examenFinal_jutoroaV2.list"
+arm-none-eabi-size   examenFinal_jutoroaV3.elf 
+arm-none-eabi-objdump -h -S  examenFinal_jutoroaV3.elf  > "examenFinal_jutoroaV3.list"
    text	   data	    bss	    dec	    hex	filename
-  12032	    172	   2404	  14608	   3910	examenFinal_jutoroaV2.elf
+  20856	    692	   3156	  24704	   6080	examenFinal_jutoroaV3.elf
 Finished building: default.size.stdout
  
-Finished building: examenFinal_jutoroaV2.list
+Finished building: examenFinal_jutoroaV3.list
  

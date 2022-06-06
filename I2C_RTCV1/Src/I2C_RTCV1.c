@@ -85,17 +85,17 @@ int main(void)
 	writeMsg(&handlerCommTerminal, bufferData);
 	writeMsg(&handlerCommTerminal, "\n");
 	// Función para inicializar el RTC
-	RTC_init(&handlerRTC);
+//	RTC_init(&handlerRTC);
 
-	dateAndTimeRTC.seconds 	= 0;
-	dateAndTimeRTC.minutes 	= 15;
-	dateAndTimeRTC.hour 	= 3;
-	dateAndTimeRTC.weekDay 	= 3;
-	dateAndTimeRTC.date		= 11;
-	dateAndTimeRTC.month 	= 5;
-	dateAndTimeRTC.year		= 7;
-
-	RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
+//	dateAndTimeRTC.seconds 	= 0;
+//	dateAndTimeRTC.minutes 	= 15;
+//	dateAndTimeRTC.hour 	= 3;
+//	dateAndTimeRTC.weekDay 	= 3;
+//	dateAndTimeRTC.date		= 11;
+//	dateAndTimeRTC.month 	= 5;
+//	dateAndTimeRTC.year		= 7;
+//
+//	RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
 
 	/* Main Loop */
 	while(1){
@@ -116,7 +116,21 @@ int main(void)
 				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
-			// Leemos los valores del acelerómetro para y
+			else if(rxData == 'i'){
+				RTC_init(&handlerRTC);
+				dateAndTimeRTC.seconds 	= 0;
+				dateAndTimeRTC.minutes 	= 0;
+				dateAndTimeRTC.hour 	= 3;
+				dateAndTimeRTC.weekDay 	= 3;
+				dateAndTimeRTC.date		= 11;
+				dateAndTimeRTC.month 	= 5;
+				dateAndTimeRTC.year		= 7;
+
+				RTC_SetDateTime(&handlerRTC, &dateAndTimeRTC);
+				writeMsg(&handlerCommTerminal, "Inicializado correctamente");
+
+				rxData = '\0';
+			}
 			else if(rxData == 'm'){
 				uint8_t min = RTC_readByte(&handlerRTC,0x01);
 				//uint8_t minutes = (min & 0b00001111);
@@ -126,19 +140,17 @@ int main(void)
 			}
 			else if(rxData == 'f'){
 				//RTC_ReadDateTimeFull(&handlerRTC,dataRTC);
-				dataRTC[0] = BCDToDec(RTC_readByte(&handlerRTC, 0x01));
-				dataRTC[1] = BCDToDec(RTC_readByte(&handlerRTC, 0x02));
-				dataRTC[2] = BCDToDec(RTC_readByte(&handlerRTC, 0x03));
-				dataRTC[3] = BCDToDec(RTC_readByte(&handlerRTC, 0x04));
-				dataRTC[4] = BCDToDec(RTC_readByte(&handlerRTC, 0x05));
-				dataRTC[5] = BCDToDec(RTC_readByte(&handlerRTC, 0x06));
-				dataRTC[6] = BCDToDec(RTC_readByte(&handlerRTC, 0x07));
-				sprintf(bufferReception, "Seconds: %d | Minutes: %d | Hours: %d \n",
-				(int) dataRTC[0],(int) dataRTC[1],(int) dataRTC[2]);
-				writeMsg(&handlerCommTerminal, bufferReception);
-				sprintf(bufferReception, "Date: %d/%d/%d \n",
-				(int) dataRTC[4],(int) dataRTC[5],(int) dataRTC[6]);
-				writeMsg(&handlerCommTerminal, bufferReception);
+				uint8_t sec = RTC_readByte(&handlerRTC,0x00);
+				uint8_t min = RTC_readByte(&handlerRTC,0x01);
+				uint8_t hora = RTC_readByte(&handlerRTC,0x02);
+				uint8_t day = RTC_readByte(&handlerRTC,0x04);
+				uint8_t month = RTC_readByte(&handlerRTC,0x05);
+				uint8_t year = RTC_readByte(&handlerRTC,0x06);
+
+				sprintf(bufferData, "TIME: %d:%d:%d \n", (int) hora, (int) min, (int) sec);
+				writeMsg(&handlerCommTerminal, bufferData);
+				sprintf(bufferData, "La fecha actual es %d/%d/%d \n", (int) day, (int) month, (int) year);
+				writeMsg(&handlerCommTerminal, bufferData);
 				rxData = '\0';
 			}
 			rxData = '\0';
@@ -230,7 +242,7 @@ void initSystem(void){
 
 	// Configuramos los pines para el I2C SCL
 	handlerI2CSCL.pGPIOx								= GPIOB;
-	handlerI2CSCL.GPIO_PinConfig.GPIO_PinNumber			= PIN_6;
+	handlerI2CSCL.GPIO_PinConfig.GPIO_PinNumber			= PIN_10;
 	handlerI2CSCL.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
 	handlerI2CSCL.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_OPENDRAIN;
 	handlerI2CSCL.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_PULLUP;
@@ -241,16 +253,16 @@ void initSystem(void){
 
 	// Configuramos los pines para el I2C SDA
 	handlerI2CSDA.pGPIOx								= GPIOB;
-	handlerI2CSDA.GPIO_PinConfig.GPIO_PinNumber			= PIN_7;
+	handlerI2CSDA.GPIO_PinConfig.GPIO_PinNumber			= PIN_3;
 	handlerI2CSDA.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
 	handlerI2CSDA.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_OPENDRAIN;
 	handlerI2CSDA.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_PULLUP;
 	handlerI2CSDA.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
-	handlerI2CSDA.GPIO_PinConfig.GPIO_PinAltFunMode		= AF4;
+	handlerI2CSDA.GPIO_PinConfig.GPIO_PinAltFunMode		= AF9;
 
 	GPIO_Config(&handlerI2CSDA);
 
-	handlerRTC.ptrI2Cx		= I2C1;
+	handlerRTC.ptrI2Cx		= I2C2;
 	handlerRTC.modeI2C		= I2C_MODE_FM;
 	handlerRTC.slaveAddress	= 0b1101000;		// Dirección del Accel con Logic 0 (0x68)
 

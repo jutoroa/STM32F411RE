@@ -39,7 +39,7 @@ USART_Handler_t handlerCommTerminal		= {0};	// Usart para la terminal en USART 6
 /* Configuración para el I2C */
 GPIO_Handler_t handlerI2CSDA_MPU6050 			= {0};	// SDA para el I2C	MPU6050
 GPIO_Handler_t handlerI2CSCL_MPU6050			= {0};	// SCL para el I2C	MPU6050
-I2C_Handler_t  handlerRTC_MPU6050	 			= {0};	// I2C (1) para el RTC	MPU6050
+I2C_Handler_t  handler_MPU6050	 				= {0};	// I2C (1) para el RTC	MPU6050
 
 GPIO_Handler_t handlerI2CSDA_RTC 				= {0};	// SDA para el I2C	RTC DS1307
 GPIO_Handler_t handlerI2CSCL_RTC 				= {0};	// SCL para el I2C	RTC DS1307
@@ -53,18 +53,22 @@ I2C_Handler_t  handlerRTC_OLED	 				= {0};	// I2C (1) para el  OLED 1.3"
 rtc_t			dateAndTimeRTC = {0};
 
 /* Configuración para el MPU6050 */
-#define numberofsensor 	3								// Cantidad de sensores
+#define numberofsensor 	6								// Cantidad de sensores
 int16_t		MPUBuffer[numberofsensor]		= {0};		// Buffer para almacenar los datos
 uint8_t		MPU6050IsReady					= false;	// Bandera para controlar la lectura de datos
+uint8_t		accelFull						= false;
+uint8_t		gyrosFull						= false;
+int16_t 	dataPosition 					= 0;
+char		bufferPrintMPU[256];
 
 /* Variables auxiliar. */
-char 		bufferData[64] = "¡Hola! Soy el USART del STM32 y estoy funcionando.";		// Mensaje de Bienvenida
+char 		bufferData[256] = "¡Hola! Soy el USART del STM32 y estoy funcionando.";		// Mensaje de Bienvenida
 uint8_t 	rxData				= 0;				// Variable donde se guardarán los datos obtenidos por el RX
 uint8_t 	i2cBuffer 			= 0;				// Buffer para el I2C
 
 /* Variables para los commands */
 char		bufferReception[256];
-char 		cmd[16];
+char 		cmd[64];
 char 		userMsg[256];
 
 uint32_t		counterReception 		= 0;
@@ -112,26 +116,6 @@ int main(void)
 				bufferReception[counterReception] = '\0';
 				counterReception = 0;
 			}
-
-			//sensorConfig();
-			//sensorData();
-/*
-			// Leemos los valores del los segundos transcurridos
-			if(rxData == 's'){
-				uint8_t sec = RTC_readByte(&handlerRTC,0x00);
-				//uint8_t seconds = (sec & 0b00001111);
-				sprintf(bufferData, "Segundos = %d \n",(int) sec);
-				writeMsg(&handlerCommTerminal, bufferData);
-				rxData = '\0';
-			}
-			// Leemos los valores del acelerómetro para y
-			else if(rxData == 'm'){
-				uint8_t min = RTC_readByte(&handlerRTC,0x01);
-				//uint8_t minutes = (min & 0b00001111);
-				sprintf(bufferData, "Minutos = %d \n",(int) min);
-				writeMsg(&handlerCommTerminal, bufferData);
-				rxData = '\0';
-			}*/
 			rxData = '\0';
 		}
 
@@ -141,14 +125,41 @@ int main(void)
 			stringComplete = false;
 		}
 
-//		if(MPU6050IsReady == true){
-//			//sprintf(bufferData, "ADC = %u, %u \n\r",(unsigned int ) adcData,(unsigned int )counter);
-//			for(uint16_t j = 0; j < numberofsensor; j++){
-//				sprintf(bufferData, "Giros %u = %u\n\r",(uint16_t) j,(unsigned int) MPUBuffer[j]);
-//				writeMsg(&handlerCommTerminal, bufferData);
-//			}
-//			MPU6050IsReady = false;
-//		}
+		// Comparaciones para obtener los datos del MPU en modo continuo
+
+		/*
+		if((MPU6050IsReady == true)){
+			dataPosition = 0;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X)*(9.81/16384.0);
+			dataPosition++;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y)*(9.81/16384.0);
+			dataPosition++;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z)*(9.81/16384.0);
+			dataPosition++;
+			dataPosition = 0;
+
+			sprintf(bufferData, "MPU6050 - ACCEL: %d | %d | %d \n",
+					(int) MPUBuffer[0],(int) MPUBuffer[1],(int) MPUBuffer[2]);
+			writeMsg(&handlerCommTerminal, bufferData);
+
+			MPU6050IsReady = false;
+		}*/
+/*
+		if((MPU6050IsReady == true) && (gyrosFull = true)){
+			dataPosition = 3;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,GYRO_X)*(250.0/32768.0);
+			dataPosition++;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,GYRO_Y)*(250.0/32768.0);
+			dataPosition++;
+			MPUBuffer[dataPosition] = MPU6050_SensorValue(&handler_MPU6050,GYRO_Z)*(250.0/32768.0);
+			dataPosition = 3;
+
+			sprintf(bufferData, "MPU6050 - GYROS: %d | %d | %d \n",
+				(int) MPUBuffer[3],(int) MPUBuffer[4],(int) MPUBuffer[5]);
+			writeMsg(&handlerCommTerminal, bufferData);
+
+			MPU6050IsReady = false;
+		}*/
 	}
 }
 //***********// *********** // Definición de Funciones // *********** //***********//
@@ -248,11 +259,11 @@ void initSystem(void){
 	GPIO_Config(&handlerI2CSDA_MPU6050);
 
 	// Creamos la configuración para el I2C (1) del MPU6050
-	handlerRTC_MPU6050.ptrI2Cx		= I2C1;
-	handlerRTC_MPU6050.modeI2C		= I2C_MODE_FM;
-	handlerRTC_MPU6050.slaveAddress	= 0b1101001;		// Dirección del MPU6050 con Logic 1 (0x69)
+	handler_MPU6050.ptrI2Cx		= I2C1;
+	handler_MPU6050.modeI2C		= I2C_MODE_FM;
+	handler_MPU6050.slaveAddress	= 0b1101001;		// Dirección del MPU6050 con Logic 1 (0x69)
 
-	I2C_Config(&handlerRTC_MPU6050);
+	I2C_Config(&handler_MPU6050);
 
 	// Configuramos los pines para el I2C SCL para el RTC
 	handlerI2CSCL_RTC.pGPIOx								= GPIOB;
@@ -261,7 +272,7 @@ void initSystem(void){
 	handlerI2CSCL_RTC.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_OPENDRAIN;
 	handlerI2CSCL_RTC.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_PULLUP;
 	handlerI2CSCL_RTC.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
-	handlerI2CSCL_RTC.GPIO_PinConfig.GPIO_PinAltFunMode		= AF4;
+	handlerI2CSCL_RTC.GPIO_PinConfig.GPIO_PinAltFunMode		= AF9;
 
 	GPIO_Config(&handlerI2CSCL_MPU6050);
 
@@ -309,6 +320,11 @@ void parseCommands(char *ptrBufferReception){
 	sscanf(ptrBufferReception, "%s %u %u %s", cmd, &firstParameter, &secondParameter, userMsg);
 
 	if(strcmp(cmd, "help") == 0){
+		stopTimer(&handlerTimer3);
+//		accelFull = false;
+//		gyrosFull = false;
+//		MPU6050IsReady = false;
+
 		writeMsg(&handlerCommTerminal, "Help Menu CMDs:\n");
 		writeMsg(&handlerCommTerminal, "Seleccione el comando pertinente. \n");
 		writeMsg(&handlerCommTerminal, "1) help             -- Imprime el menú de ayuda. \n");
@@ -329,13 +345,61 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, "12) partyoled       -- Activa el modo Party de la pantalla oled. \n");
 	}
 	else if(strcmp(cmd, "initmpu") == 0){
+		//stopTimer(&handlerTimer3);
 
 		// Función para inicializar el MPU6050
-		//MPU6050_writeByte(&handlerRTC_MPU6050, MPU6050_RA_PWR_MGMT_1, 0x00);
+		MPU6050_writeByte(&handler_MPU6050, MPU6050_RA_PWR_MGMT_1, 0x00);
 		writeMsg(&handlerCommTerminal, "\n");
 		writeMsg(&handlerCommTerminal, "MPU6050 ha sido inicializado correctamente. \n");
 
+	}
+	else if(strcmp(cmd, "accelfull") == 0){
+//		stopTimer(&handlerTimer3);
+//		accelFull = false;
+//		gyrosFull = false;
+//		MPU6050IsReady = false;
+//
+//		// Conversión de modo continua
+//		startTimer(&handlerTimer3);
+//		accelFull = true;
+	}
+	else if(strcmp(cmd, "accel") == 0){
+		//stopTimer(&handlerTimer3);
+
+		// Mostrar en eje X la aceleración
+		if(firstParameter == 1){
+			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X);
+			sprintf(bufferData, "AccelX = %d \n",(int) AccelX);
+			writeMsg(&handlerCommTerminal, bufferData);
 		}
+		else if(firstParameter == 2){
+			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y);
+			sprintf(bufferData, "AccelY = %d \n",(int) AccelY);
+			writeMsg(&handlerCommTerminal, bufferData);
+		}
+		else if(firstParameter == 3){
+			int16_t AccelZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z);
+			sprintf(bufferData, "AccelZ = %d \n",(int) AccelZ);
+			writeMsg(&handlerCommTerminal, bufferData);
+		}
+	}
+	else if(strcmp(cmd, "gyrofull") == 0){
+//		stopTimer(&handlerTimer3);
+//		accelFull = false;
+//		gyrosFull = false;
+//		MPU6050IsReady = false;
+//
+//
+//		// Conversión de modo continua
+//		gyrosFull = true;
+//		startTimer(&handlerTimer3);
+//		gyrosFull = true;
+//		accelFull = false;
+	}
+
+
+
+	/*
 	else if(strcmp(cmd, "dummy") == 0){
 		writeMsg(&handlerCommTerminal, "CMD: dummy\n");
 		// Cambiando el formato para presentar el número por el puerto serial
@@ -350,7 +414,7 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, "CMD: usermsg\n");
 		writeMsg(&handlerCommTerminal, userMsg);
 		writeMsg(&handlerCommTerminal, "\n");
-	}
+	}*/
 	else{
 		// Se imprime el mensaje "Wrong CMD" si la escritura no corresponde a los CMD implementados.
 		writeMsg(&handlerCommTerminal, "Wrong CMD");
@@ -381,4 +445,9 @@ void USART2_Callback(void){
 // Timer encargado del StateLED
 void Timer2_Callback(void){
 	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
+}
+
+// Timer encargado del muestreo a través del MPU6050
+void Timer3_Callback(void){
+	MPU6050IsReady = true;
 }

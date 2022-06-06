@@ -99,16 +99,16 @@ int main(void)
 				dataPosition = 0;
 			}
 
-/*
+
 			sprintf(bufferData, "MPU6050: = ACCEL: %d | %d | %d GYROS: %d | %d | %d \n\r",
 					(int) MPUBuffer[0],(int) MPUBuffer[1],(int) MPUBuffer[2],(int) MPUBuffer[3],
 					(int) MPUBuffer[4],(int) MPUBuffer[5]);
 			writeMsg(&handlerCommTerminal, bufferData);
-*/
+/*
 			sprintf(bufferData, "X: %d Y: %d Z: %d \n\r",
 					(int) MPUBuffer[0],(int) MPUBuffer[1],(int) MPUBuffer[2]);
 			writeMsg(&handlerCommTerminal, bufferData);
-
+*/
 			/*
 			for(uint16_t j = 0; j < numberofsensor; j++){
 				sprintf(bufferData, "Giros %u = %u\n\r",(uint16_t) j,(unsigned int) MPUBuffer[j]);
@@ -212,7 +212,7 @@ void initSystem(void){
 
 	handlerAccelerometer.ptrI2Cx		= I2C1;
 	handlerAccelerometer.modeI2C		= I2C_MODE_FM;
-	handlerAccelerometer.slaveAddress	= 0b1101000;		// Dirección del Accel con Logic 0 (0x68)
+	handlerAccelerometer.slaveAddress	= 0b1101001;		// Dirección del Accel con Logic 0 (0x68)
 
 	I2C_Config(&handlerAccelerometer);
 
