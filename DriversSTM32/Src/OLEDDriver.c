@@ -107,12 +107,22 @@ char charOled7[8] = {0x00, 0b00000010, 0b11100010, 0b00010010, 0b00001010, 0b000
 char charOled8[8] = {0x00, 0b01101100, 0b10010010, 0b10010010, 0b10010010, 0b01101100, 0x00, 0x00};					// 8
 char charOled9[8] = {0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01111100, 0x00, 0x00};
 char charOled0[8] = {0x00, 0b01111100, 0b10100010, 0b10010010, 0b10001010, 0b01111100, 0x00, 0x00};
-char charOledPlus[8] = {0x00, 0x00, 0b00010000, 0b00111000, 0b00010000, 0x00, 0x00, 0x00};				// +
-char charOledSus[8] = {0x00, 0x00, 0b00010000, 0b00010000, 0b00010000, 0x00, 0x00, 0x00};
-char charOledExclamation[8] = {0x00, 0x00, 0x00, 0b1011110, 0x00, 0x00, 0x00, 0x00};								// !
-char charOledHeart[8] = {0x00, 0b00011000, 0b00111100, 0b01111000, 0b00111100, 0b00011000, 0x00, 0x00};		// <3
-char charOledCube[8] = {0x00, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0x00, 0x00};
+char charOledPlus[8] 			= {0x00, 0x00, 0b00010000, 0b00111000, 0b00010000, 0x00, 0x00, 0x00};				// +
+char charOledSus[8] 			= {0x00, 0x00, 0b00010000, 0b00010000, 0b00010000, 0x00, 0x00, 0x00};
+char charOledExclamation[8] 	= {0x00, 0x00, 0x00, 0b1011110, 0x00, 0x00, 0x00, 0x00};								// !
+char charOledHeart[8] 			= {0x00, 0b00011000, 0b00111100, 0b01111000, 0b00111100, 0b00011000, 0x00, 0x00};		// <3
+char charOledCube[8] 			= {0x00, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0x00, 0x00};
 
+char charOledPERIOD[8] 			= {0x00, 0x00, 0x00, 0x00, 0x00, 0b10000000, 0x00, 0x00};										// Punto
+char charOledCOMMA[8] 			= {0x00, 0x00, 0x00, 0x00, 0b10000000, 0b01000000, 0x00, 0x00};									// Coma
+char charOledCOLON[8] 			= {0x00, 0x00, 0x00, 0x00, 0b01001000, 0x00, 0x00, 0x00};										// Dos puntos
+char charOledQUEST_MARK[8] 		= {0x00, 0b00000100, 0b00000010, 0b10100010, 0b00010010, 0b00001100, 0x00, 0x00};				// Signo de interrogación
+char charOledSLASH[8]		 	= {0x00, 0b01000000, 0b00100000, 0b00010000, 0b00001000, 0b00000100, 0b00000010, 0x00};			// Signo slash
+char charOledUNDERSCORE[8]		= {0x00, 0x00, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0x00, 0x00};						// Guion bajo
+char charOledQUOTE[8]		 	= {0x00, 0x00, 0x00, 0b00000110, 0x00, 0b00000110, 0x00, 0x00};									// Comillas
+char charOledMULTIPLICATION[8] 	= {0x00, 0x00, 0b00101000, 0b00010000, 0b00101000, 0x00, 0x00, 0x00};							// Escribir signo de multiplicación
+char charOledDIVISION[8] 		= {0x00, 0b00010000, 0b00010000, 0b01010100, 0b00010000, 0b00010000, 0x00, 0x00};
+char charOledEQUAL[8] 			= {0x00, 0x00, 0b00101000, 0b00101000, 0b00101000, 0x00, 0x00, 0x00};							// Escribir signo igual
 /* Funciones para devolver los punteros a cada uno de los arreglos */
 
 
@@ -158,6 +168,17 @@ char* OLED_SUS(void){return charOledSus;}
 char* OLED_EXC(void){return charOledExclamation;}
 char* OLED_HEART(void){return charOledHeart;}
 char* OLED_CUBE(void){return charOledCube;}
+
+char* OLED_PERIOD(void){return charOledPERIOD;}
+char* OLED_COMMA(void){return charOledCOMMA;}
+char* OLED_COLON(void){return charOledCOLON;}
+char* OLED_QUEST(void){return charOledQUEST_MARK;}
+char* OLED_SLASH(void){return charOledSLASH;}
+char* OLED_UNDERSCORE(void){return charOledUNDERSCORE;}
+char* OLED_QUOTE(void){return charOledQUOTE;}
+char* OLED_MULTIPLICATION(void){return charOledMULTIPLICATION;}
+char* OLED_DIVISION(void){return charOledDIVISION;}
+char* OLED_EQUAL(void){return charOledEQUAL;}
 
 void OLED_Init(I2C_Handler_t *ptrHandlerI2C){
 
@@ -360,14 +381,41 @@ char* OLED_VarToChar(char character){
 	case('!'):
 	{return OLED_EXC();
 	break;}
-	case('~'):
-	{return OLED_HEART();
-	break;}
 	case('<'):
 	{return OLED_HEART();
 	break;}
 	case(';'):
 	{return OLED_CUBE();
+	break;}
+	case('.'):
+	{return OLED_PERIOD();
+	break;}
+	case(','):
+	{return OLED_COMMA();
+	break;}
+	case(':'):
+	{return OLED_COLON();
+	break;}
+	case('?'):
+	{return OLED_QUEST();
+	break;}
+	case('/'):
+	{return OLED_SLASH();
+	break;}
+	case('_'):
+	{return OLED_UNDERSCORE();
+	break;}
+	case('~'):
+	{return OLED_QUOTE();
+	break;}
+	case('*'):
+	{return OLED_MULTIPLICATION();
+	break;}
+	case('%'):
+	{return OLED_DIVISION();
+	break;}
+	case('='):
+	{return OLED_EQUAL();
 	break;}
 	default:
 	{return OLEDNull();
@@ -375,6 +423,44 @@ char* OLED_VarToChar(char character){
 	}
 }
 
+void OLED_FPrintPage(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint, uint8_t numberPage){
+	switch(numberPage){
+		case(PAGE_0):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB0);
+		 break;}
+		case(PAGE_1):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB1);
+		break;}
+		case(PAGE_2):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB2);
+		break;}
+		case(PAGE_3):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB3);
+		break;}
+		case(PAGE_4):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB4);
+		break;}
+		case(PAGE_5):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB5);
+		break;}
+		case(PAGE_6):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB6);
+		break;}
+		case(PAGE_7):
+		{OLED_CommandByte(ptrHandlerI2C, 0xB7);
+		break;}
+		default:
+		{OLED_CommandByte(ptrHandlerI2C, 0xB0);
+		break;}
+		}
+		OLED_CommandByte(ptrHandlerI2C, 0x02);
+		OLED_CommandByte(ptrHandlerI2C, 0x10);
+
+		for(uint8_t j = 0; j < 16; j++){
+			OLED_DataByte(ptrHandlerI2C, OLED_VarToChar(*ptrVarToPrint));
+			ptrVarToPrint++;
+		}
+}
 
 void OLED_FPrint(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint){
 	char* pageClean[16] = {OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),

@@ -1,5 +1,6 @@
 "./Src/AdcDriver.o"
 "./Src/EXTIxDriver.o"
+"./Src/FPUDriver.o"
 "./Src/GPIOxDriver.o"
 "./Src/I2CxDriver.o"
 "./Src/MPU6050Driver.o"

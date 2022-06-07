@@ -34,7 +34,7 @@ GPIO_Handler_t 	handlerStateLED 		= {0};	// StateLED
 GPIO_Handler_t 	handlerPinTX 			= {0};	// handlerPinTX
 GPIO_Handler_t 	handlerPinRX 			= {0};	// handlerPinRX
 TIMER_Handler_t handlerTimer2 			= {0};	// Timer2
-TIMER_Handler_t handlerTimer3 			= {0};	// Timer3
+TIMER_Handler_t handlerTimer5 			= {0};	// Timer5
 TIMER_Handler_t handlerTimer4 			= {0};	// Timer4
 USART_Handler_t handlerCommTerminal		= {0};	// Usart para la terminal en USART 6
 
@@ -106,7 +106,7 @@ int main(void)
 	// Cargamos la configuración Inicial en la OLED
 	OLED_Init(&handler_OLED);
 	OLED_Clean(&handler_OLED);
-	sprintf(bufferDataOLED, "HOLA!           SOY EL STM32");
+	sprintf(bufferDataOLED, "<<<<<<<<<<<<<<<<  HOLA!          SOY EL STM32   <<<<<<<<<<<<<<<<");
 	OLED_FPrint(&handler_OLED, bufferDataOLED);
 
 	/* Main Loop */
@@ -136,28 +136,45 @@ int main(void)
 		}
 
 		// Comparaciones para obtener los datos del MPU en modo continuo
-		if((MPU6050IsReady == true) && (accelFull = true)){
+		if((MPU6050IsReady == true) && (accelFull == true)){
 
-			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X)*(250.0/32768.0);
-			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y)*(250.0/32768.0);
-			int16_t AccelZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z)*(250.0/32768.0);
+			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X)*(9.81/16384.0);
+			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y)*(9.81/16384.0);
+			int16_t AccelZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z)*(9.81/16384.0);
 
-			sprintf(MPUBufferAccel, "ACCEL: %d | %d | %d \n \r",
+			sprintf(MPUBufferAccel, " %d | %d | %d \n \r",
 					(int) AccelX,(int) AccelY,(int) AccelZ);
 			writeMsg(&handlerCommTerminal, MPUBufferAccel);
+
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, " ACCELX: %d ",(int) AccelX);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_1);
+			sprintf(bufferDataOLEDx, " ACCELY: %d ",(int) AccelY);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
+			sprintf(bufferDataOLEDx, " ACCELZ: %d ",(int) AccelZ);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_5);
 
 
 			MPU6050IsReady = false;
 		}
-		else if((MPU6050IsReady == true) && (gyrosFull = true)){
+		else if((MPU6050IsReady == true) && (gyrosFull == true)){
 
-			int16_t GirosX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X)*(250.0/32768.0);
-			int16_t GirosY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y)*(250.0/32768.0);
-			int16_t GirosZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z)*(250.0/32768.0);
+			int16_t GirosX = MPU6050_SensorValue(&handler_MPU6050,GYRO_X)*(250.0/32768.0);
+			int16_t GirosY = MPU6050_SensorValue(&handler_MPU6050,GYRO_Y)*(250.0/32768.0);
+			int16_t GirosZ = MPU6050_SensorValue(&handler_MPU6050,GYRO_Z)*(250.0/32768.0);
 
-			sprintf(MPUBufferGyro, "GYROS: %d | %d | %d \n \r",
+			sprintf(MPUBufferGyro, " %d | %d | %d \n \r",
 					(int) GirosX,(int) GirosY,(int) GirosZ);
 			writeMsg(&handlerCommTerminal, MPUBufferGyro);
+
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, " GYROX: %d ",(int) GirosX);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_1);
+			sprintf(bufferDataOLEDx, " GYROY: %d ",(int) GirosY);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
+			sprintf(bufferDataOLEDx, " GYROZ: %d ",(int) GirosZ);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_5);
+
 
 			MPU6050IsReady = false;
 		}
@@ -175,8 +192,16 @@ int main(void)
 					(int) day, (int) month, (int) year);
 			writeMsg(&handlerCommTerminal, bufferData);
 
+
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, " HORA:                           FECHA:          %d/%d/%d",(int) day, (int) month, (int) year);
+			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
+			char bufferDataOLEDy[128] = {0};
+			sprintf(bufferDataOLEDy, " %d:%d:%d ",(int) hora, (int) min, (int) sec);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDy, PAGE_3);
+
 			rtcContIsReady = false;
-}
+		}
 	}
 }
 //***********// *********** // Definición de Funciones // *********** //***********//
@@ -241,13 +266,13 @@ void initSystem(void){
 
 	Timer_Config(&handlerTimer2);
 
-	// Configuración del timer3
-	handlerTimer3.ptrTIMx								= TIM3;
-	handlerTimer3.timerConfig.Timer_mode				= TIMER_MODE_UP;
-	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
-	handlerTimer3.timerConfig.Timer_period				= 250;
+	// Configuración del timer5
+	handlerTimer5.ptrTIMx								= TIM5;
+	handlerTimer5.timerConfig.Timer_mode				= TIMER_MODE_UP;
+	handlerTimer5.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
+	handlerTimer5.timerConfig.Timer_period				= 750;
 
-	Timer_Config(&handlerTimer3);
+	Timer_Config(&handlerTimer5);
 
 	// Configuración del timer4
 	handlerTimer4.ptrTIMx								= TIM4;
@@ -354,10 +379,10 @@ void defineSetAndTimeRTC(uint8_t hourx, uint8_t minutesx){
 	dateAndTimeRTC.seconds 	= 0;
 	dateAndTimeRTC.minutes 	= minutesx;
 	dateAndTimeRTC.hour 	= hourx;
-	dateAndTimeRTC.weekDay 	= 3;
-	dateAndTimeRTC.date		= 18;
-	dateAndTimeRTC.month 	= 10;
-	dateAndTimeRTC.year		= 20;
+	dateAndTimeRTC.weekDay 	= 1;
+	dateAndTimeRTC.date		= 6;
+	dateAndTimeRTC.month 	= 6;
+	dateAndTimeRTC.year		= 22;
 }
 
 //***********// parseCommands //***********//
@@ -392,6 +417,11 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, "10) showtimecont    -- Muestra la hora (tiempo) cada 1s. \n");
 		writeMsg(&handlerCommTerminal, "11) partyrgb        -- Activa el modo Party del rgb. \n");
 		writeMsg(&handlerCommTerminal, "12) partyoled       -- Activa el modo Party de la pantalla oled. \n");
+
+		OLED_Clean(&handler_OLED);
+		char bufferDataOLEDx[128] = {0};
+		sprintf(bufferDataOLEDx, " BIENVENIDO AL   MODO DE AYUDA   DEL STM32");
+		OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 	}
 	else if(strcmp(cmd, "initmpu") == 0){
 		stopMPU();
@@ -423,7 +453,7 @@ void parseCommands(char *ptrBufferReception){
 
 			OLED_Clean(&handler_OLED);
 			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "ACCELX = %d \n",(int) AccelX);
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   ACCELX = %d \n",(int) AccelX);
 			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else if(firstParameter == 2){
@@ -433,7 +463,7 @@ void parseCommands(char *ptrBufferReception){
 
 			OLED_Clean(&handler_OLED);
 			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "ACCELY = %d \n",(int) AccelY);
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   ACCELY = %d \n",(int) AccelY);
 			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else if(firstParameter == 3){
@@ -443,7 +473,7 @@ void parseCommands(char *ptrBufferReception){
 
 			OLED_Clean(&handler_OLED);
 			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "ACCELZ = %d \n",(int) AccelZ);
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   ACCELZ = %d \n",(int) AccelZ);
 			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else{
@@ -464,38 +494,61 @@ void parseCommands(char *ptrBufferReception){
 			int16_t GirosX = MPU6050_SensorValue(&handler_MPU6050,GYRO_X);
 			sprintf(bufferData, "GirosX = %d \n",(int) GirosX);
 			writeMsg(&handlerCommTerminal, bufferData);
+
+			OLED_Clean(&handler_OLED);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   GYROX = %d \n",(int) GirosX);
+			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else if(firstParameter == 2){
 			int16_t GirosY = MPU6050_SensorValue(&handler_MPU6050,GYRO_Y);
 			sprintf(bufferData, "GirosY = %d \n",(int) GirosY);
 			writeMsg(&handlerCommTerminal, bufferData);
+
+			OLED_Clean(&handler_OLED);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   GYROY = %d \n",(int) GirosY);
+			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else if(firstParameter == 3){
 			int16_t GirosZ = MPU6050_SensorValue(&handler_MPU6050,GYRO_Z);
 			sprintf(bufferData, "GirosZ = %d \n",(int) GirosZ);
 			writeMsg(&handlerCommTerminal, bufferData);
+
+			OLED_Clean(&handler_OLED);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, "  MODE SINGLE   GYROZ = %d \n",(int) GirosZ);
+			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 		else{
 			writeMsg(&handlerCommTerminal, "Giroscopio no disponible \n");
+			OLED_Clean(&handler_OLED);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, "                !!!! ERROR !!!!");
+			OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 	}
 	else if(strcmp(cmd, "accelfull") == 0){
 		stopMPU();
 		rtcContFlag = false;
 
-		accelFull = true;
+		writeMsg(&handlerCommTerminal, "Aceleración Modo Continuo \n");
+		writeMsg(&handlerCommTerminal, "X | Y | Z \n");
+
 		// Conversión de modo continua
-		startTimer(&handlerTimer3);
 		accelFull = true;
+		OLED_Clean(&handler_OLED);
 	}
 	else if(strcmp(cmd, "gyrofull") == 0){
 		stopMPU();
 		rtcContFlag = false;
 
-		gyrosFull = true;
+		writeMsg(&handlerCommTerminal, "Giroscopio Modo Continuo \n");
+		writeMsg(&handlerCommTerminal, "X | Y | Z \n");
+
 		// Conversión de modo continua
-		startTimer(&handlerTimer3);
 		gyrosFull = true;
+		OLED_Clean(&handler_OLED);
 	}
 	else if(strcmp(cmd, "initrtc") == 0){
 		stopMPU();
@@ -505,6 +558,11 @@ void parseCommands(char *ptrBufferReception){
 		RTC_init(&handler_RTC);
 		writeMsg(&handlerCommTerminal, "\n");
 		writeMsg(&handlerCommTerminal, "Su RTC DS1307 ha sido inicializado correctamente. \n");
+
+		OLED_Clean(&handler_OLED);
+		char bufferDataOLEDx[128] = {0};
+		sprintf(bufferDataOLEDx, " EL RTC HA       SIDO INICIADO   CORRECTAMENTE");
+		OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 	}
 	else if(strcmp(cmd, "setrtc") == 0){
 		stopMPU();
@@ -517,6 +575,12 @@ void parseCommands(char *ptrBufferReception){
 		sprintf(bufferData, "Se ha configurado la hora a %d:%d:%d \n",(int) dateAndTimeRTC.hour,
 				(int) dateAndTimeRTC.minutes, (int) dateAndTimeRTC.seconds);
 		writeMsg(&handlerCommTerminal, bufferData);
+
+		OLED_Clean(&handler_OLED);
+		char bufferDataOLEDx[128] = {0};
+		sprintf(bufferDataOLEDx, " HORA INICIAL:    %d:%d:%d \n",(int) dateAndTimeRTC.hour,
+				(int) dateAndTimeRTC.minutes, (int) dateAndTimeRTC.seconds);
+		OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 		}
 	else if(strcmp(cmd, "showtime") == 0){
 		stopMPU();
@@ -531,6 +595,11 @@ void parseCommands(char *ptrBufferReception){
 		writeMsg(&handlerCommTerminal, "\n");
 		sprintf(bufferData, "La hora actual es %d:%d:%d \n", (int) hora, (int) min, (int) sec);
 		writeMsg(&handlerCommTerminal, bufferData);
+
+		OLED_Clean(&handler_OLED);
+		char bufferDataOLEDx[128] = {0};
+		sprintf(bufferDataOLEDx, " HORA ACTUAL:    %d:%d:%d \n",(int) hora, (int) min, (int) sec);
+		OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 	}
 	else if(strcmp(cmd, "showdate") == 0){
 		stopMPU();
@@ -545,15 +614,18 @@ void parseCommands(char *ptrBufferReception){
 		sprintf(bufferData, "La fecha actual es %d/%d/%d \n", (int) day, (int) month, (int) year);
 		writeMsg(&handlerCommTerminal, bufferData);
 
+		OLED_Clean(&handler_OLED);
+		char bufferDataOLEDx[128] = {0};
+		sprintf(bufferDataOLEDx, " FECHA ACTUAL:   %d:%d:%d \n",(int) day, (int) month, (int) year);
+		OLED_FPrint(&handler_OLED, bufferDataOLEDx);
 	}
 	else if(strcmp(cmd, "showtimecont") == 0){
 		stopMPU();
 
-		// Función para leer la fecha en formato DD/MM/YY
-
+		// Función para leer la hora en tiempo real
 		rtcContFlag = true;
-
 		writeMsg(&handlerCommTerminal, "// ***** // RTC MODO CONTINUO // ***** // \n");
+		OLED_Clean(&handler_OLED);
 
 	}
 	else{
@@ -568,7 +640,6 @@ void parseCommands(char *ptrBufferReception){
 //***********// stopMPU //***********//
 
 void stopMPU(void){
-	stopTimer(&handlerTimer3);
 	accelFull = false;
 	gyrosFull = false;
 	MPU6050IsReady = false;
@@ -601,11 +672,11 @@ void Timer2_Callback(void){
 	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
 }
 
-// Timer encargado del muestreo a través del MPU6050
-void Timer3_Callback(void){
-	MPU6050IsReady = true;
-}
-
 void Timer4_Callback(void){
 	rtcContIsReady = true;
+}
+
+// Timer encargado del muestreo a través del MPU6050
+void Timer5_Callback(void){
+	MPU6050IsReady = true;
 }

@@ -80,6 +80,8 @@ void OLED_SETPage(I2C_Handler_t *ptrHandlerI2C, char* *dataPage, uint8_t numberP
 
 char* OLED_VarToChar(char character);
 
+void OLED_FPrintPage(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint, uint8_t numberPage);
+
 void OLED_FPrint(I2C_Handler_t *ptrHandlerI2C, char *varToPrint);
 
 #endif /* OLEDDRIVER_H_ */
