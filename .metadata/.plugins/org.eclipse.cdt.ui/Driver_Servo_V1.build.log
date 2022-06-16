@@ -1,14 +1,10 @@
-17:00:00 **** Build of configuration Debug for project Driver_Servo_V1 ****
+06:21:10 **** Incremental Build of configuration Debug for project Driver_Servo_V1 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/mainServoV1.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainServoV1.d" -MT"Src/mainServoV1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/mainServoV1.o"
-../Src/mainServoV1.c: In function 'main':
-../Src/mainServoV1.c:114:5: error: 'PWM1Bufaddfer' undeclared (first use in this function); did you mean 'PWM1Buffer'?
-  114 |     PWM1Bufaddfer = dutyCounter;
-      |     ^~~~~~~~~~~~~
-      |     PWM1Buffer
-../Src/mainServoV1.c:114:5: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [Src/subdir.mk:25: Src/mainServoV1.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-size   Driver_Servo_V1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19788	    540	   1804	  22132	   5674	Driver_Servo_V1.elf
+Finished building: default.size.stdout
+ 
 
-17:00:01 Build Failed. 2 errors, 0 warnings. (took 520ms)
+06:21:11 Build Finished. 0 errors, 0 warnings. (took 1s.200ms)
 

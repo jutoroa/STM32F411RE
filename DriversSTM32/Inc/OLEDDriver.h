@@ -13,9 +13,11 @@
 
 /* Archivo que contendrá la configuración para controlar la pantalla OLED 1.3" con el controlador SH1106 */
 
+// Valores para mandar un dato o un comando
 #define OLED_CONTROL_COMMAND_BYTE 	0x00
 #define OLED_CONTROL_DATA_BYTE 	  	0x40
 
+// Funciones que retornan la configuración para cada letra
 char* OLEDNull(void);
 char* OLED_A(void);
 char* OLED_B(void);
@@ -58,6 +60,7 @@ char* OLED_SUS(void);
 char* OLED_EXC(void);
 char* OLED_HEART(void);
 
+// Valores para cada una de las páginas
 #define PAGE_0 0
 #define PAGE_1 1
 #define PAGE_2 2
@@ -67,21 +70,28 @@ char* OLED_HEART(void);
 #define PAGE_6 6
 #define PAGE_7 7
 
-
+// Función para mandar un comando
 void OLED_CommandByte(I2C_Handler_t *ptrHandlerI2C, uint8_t dataToWrite);
 
+// Función para mandar un datos
 void OLED_DataByte(I2C_Handler_t *ptrHandlerI2C, char *dataToWrite);
 
+// Función con los comando necesarios para inicializar la pantalla
 void OLED_Init(I2C_Handler_t *ptrHandlerI2C);
 
+// Función que limpia la pantalla completamente (Escribe el caractér nulo)
 void OLED_Clean(I2C_Handler_t *ptrHandlerI2C);
 
+// Función que escribe en una página, los elementos de un arreglo
 void OLED_SETPage(I2C_Handler_t *ptrHandlerI2C, char* *dataPage, uint8_t numberPage);
 
+// Función que convierte de ascci a la configuración para cada caracter
 char* OLED_VarToChar(char character);
 
+// Función para imprimir un string en una página en específico
 void OLED_FPrintPage(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint, uint8_t numberPage);
 
+// Función para imprimir un string en toda la pantalla
 void OLED_FPrint(I2C_Handler_t *ptrHandlerI2C, char *varToPrint);
 
 #endif /* OLEDDRIVER_H_ */

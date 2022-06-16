@@ -68,7 +68,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 
 	/* 7. Configuramos el OutPut Register CCMR1 y CCMR2 */
 
-	if(prtPWMConfig -> timerConfig.channel == PWD_CHANNEL_1){
+	if(prtPWMConfig -> timerConfig.channel == PWM_CHANNEL_1){
 		// Escogemos el canal 1 como salida
 		prtPWMConfig -> ptrTIMx -> CCMR1 &= ~TIM_CCMR1_CC1S;	// Ponemos 00: CC1 channel is configured as output.
 		// Escoger si el Preload está activado
@@ -78,7 +78,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 		// Activamos el enable a través del CCER
 		prtPWMConfig -> ptrTIMx -> CCER |= TIM_CCER_CC1E;
 
-	} else if(prtPWMConfig -> timerConfig.channel == PWD_CHANNEL_2){
+	} else if(prtPWMConfig -> timerConfig.channel == PWM_CHANNEL_2){
 		// Escogemos el canal 2 como salida
 		prtPWMConfig -> ptrTIMx -> CCMR1 &= ~TIM_CCMR1_CC2S;	// Ponemos 00: CC1 channel is configured as output.
 		// Escoger si el Preload está activado
@@ -88,7 +88,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 		// Activamos el enable a través del CCER
 		prtPWMConfig -> ptrTIMx -> CCER |= TIM_CCER_CC2E;
 
-	} else if(prtPWMConfig -> timerConfig.channel == PWD_CHANNEL_3){
+	} else if(prtPWMConfig -> timerConfig.channel == PWM_CHANNEL_3){
 		// Escogemos el canal 3 como salida
 		prtPWMConfig -> ptrTIMx -> CCMR2 &= ~TIM_CCMR2_CC3S;	// Ponemos 00: CC1 channel is configured as output.
 		// Escoger si el Preload está activado
@@ -98,7 +98,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 		// Activamos el enable a través del CCER
 		prtPWMConfig -> ptrTIMx -> CCER |= TIM_CCER_CC3E;
 
-	} else if(prtPWMConfig -> timerConfig.channel == PWD_CHANNEL_4){
+	} else if(prtPWMConfig -> timerConfig.channel == PWM_CHANNEL_4){
 		// Escogemos el canal 4 como salida
 		prtPWMConfig -> ptrTIMx -> CCMR2 &= ~TIM_CCMR2_CC4S;	// Ponemos 00: CC1 channel is configured as output.
 		// Escoger si el Preload está activado
@@ -108,4 +108,27 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 		// Activamos el enable a través del CCER
 		prtPWMConfig -> ptrTIMx -> CCER |= TIM_CCER_CC4E;
 	}
+}
+
+
+void setDutty(PWM_Handler_t *ptrPWMHandler, uint16_t newDuty){
+	ptrPWMHandler -> timerConfig.pwmDuty = newDuty;
+
+	if(ptrPWMHandler -> timerConfig.channel == PWM_CHANNEL_1){
+		/* Se configura el dutty cycle para el canal 1*/
+		ptrPWMHandler -> ptrTIMx -> CCR1 = ptrPWMHandler -> timerConfig.pwmDuty - 1;
+	}
+	else if(ptrPWMHandler-> timerConfig.channel == PWM_CHANNEL_2){
+		/* Se configura el dutty cycle para el canal2*/
+		ptrPWMHandler -> ptrTIMx -> CCR2 = ptrPWMHandler -> timerConfig.pwmDuty - 1;
+	}
+	else if(ptrPWMHandler-> timerConfig.channel == PWM_CHANNEL_3){
+		/* Se configura el dutty cycle para el canal3*/
+		ptrPWMHandler -> ptrTIMx -> CCR3 = ptrPWMHandler -> timerConfig.pwmDuty - 1;
+	}
+	else if(ptrPWMHandler-> timerConfig.channel == PWM_CHANNEL_4){
+		/* Se configura el dutty cycle para el canal4*/
+		ptrPWMHandler -> ptrTIMx -> CCR4 = ptrPWMHandler -> timerConfig.pwmDuty - 1;
+	}
+
 }

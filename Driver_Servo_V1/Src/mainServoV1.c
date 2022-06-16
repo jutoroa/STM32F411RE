@@ -6,7 +6,6 @@
  *
  */
 
-
 // *************** // INCLUDES // *************** //
 
 #include <stm32f4xx.h>
@@ -104,14 +103,14 @@ int main(void)
 					writeMsg(&handlerCommTerminal, bufferData);
 					// ***** //
 				}
-				rxData = '\0';
+				rxData = '\0';d
 			}
 			else if(rxData == 'l'){
 				dutyCounter = 1;
 				handlerPWM1.timerConfig.pwmDuty = dutyCounter;
 				PWM_Config(&handlerPWM1);
 				// *****  //
-				PWM1Bufaddfer = dutyCounter;
+				PWM1Buffer = dutyCounter;
 				sprintf(bufferData, "DutyValue= %2x \n", (unsigned int) PWM1Buffer);
 				writeMsg(&handlerCommTerminal, bufferData);
 				// ***** //
@@ -215,7 +214,7 @@ void initSystem(void){
 	handlerPWM1.timerConfig.pwmSpeed				= TIMER_INCR_SPEED_1ms;
 	handlerPWM1.timerConfig.pwmPeriod				= 20;
 	handlerPWM1.timerConfig.pwmDuty					= dutyCounter;
-	handlerPWM1.timerConfig.channel					= PWD_CHANNEL_1;
+	handlerPWM1.timerConfig.channel					= PWM_CHANNEL_1;
 
 	PWM_Config(&handlerPWM1);
 }

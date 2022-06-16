@@ -19,10 +19,10 @@
 #define TIMER_INCR_SPEED_100us	1600
 #define TIMER_INCR_SPEED_10us	160
 
-#define PWD_CHANNEL_1		0
-#define PWD_CHANNEL_2		1
-#define PWD_CHANNEL_3		2
-#define PWD_CHANNEL_4		3
+#define PWM_CHANNEL_1		0
+#define PWM_CHANNEL_2		1
+#define PWM_CHANNEL_3		2
+#define PWM_CHANNEL_4		3
 
 
 typedef struct
@@ -43,6 +43,6 @@ typedef struct
 /* Prototipos de las funciones */ /* Son las las funciones pública */
 
 void PWM_Config(PWM_Handler_t *prtPWMConfig);
-
+void setDutty(PWM_Handler_t *ptrPWMHandler, uint16_t newDuty);
 
 #endif /* PWMXDRIVER_H_ */

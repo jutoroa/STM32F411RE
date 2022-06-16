@@ -17,7 +17,7 @@
 #define TIMER_INCR_SPEED_1ms	16000
 #define TIMER_INCR_SPEED_100us	1600
 #define TIMER_INCR_SPEED_10us	160
-
+#define TIMER_INCR_SPEED_1us	16
 
 
 typedef struct

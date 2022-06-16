@@ -15,6 +15,7 @@ void RTC_init(I2C_Handler_t *ptrHandlerI2C){
 
 }
 
+// Función para definir el tiempo y la fecha
 void RTC_SetDateTime(I2C_Handler_t *ptrHandlerI2C, rtc_t *rtc){
 
 	startI2C(ptrHandlerI2C);
@@ -42,6 +43,7 @@ void RTC_SetDateTime(I2C_Handler_t *ptrHandlerI2C, rtc_t *rtc){
 	stopI2C(ptrHandlerI2C);
 }
 
+// Función para leer todos los registros
 void RTC_ReadDateTime(I2C_Handler_t *ptrHandlerI2C, getTime_t *ptrGetTime){
 
 	startI2C(ptrHandlerI2C);
@@ -108,7 +110,7 @@ void RTC_ReadDateTime(I2C_Handler_t *ptrHandlerI2C, getTime_t *ptrGetTime){
 }
 
 
-//*******************
+// Función para leer todos los registros
 void RTC_ReadDateTimeFull(I2C_Handler_t *ptrHandlerI2C, uint8_t *GetDateAndTime){
 
 	GetDateAndTime[0] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x00));
@@ -126,7 +128,7 @@ void RTC_ReadDateTimeFull(I2C_Handler_t *ptrHandlerI2C, uint8_t *GetDateAndTime)
 	GetDateAndTime[6] = BCDToDec(RTC_readByte(ptrHandlerI2C, 0x06));
 }
 
-
+// Funciones para leer un Byte en el RTC
 uint8_t RTC_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
 
 	startI2C(ptrHandlerI2C);
@@ -152,6 +154,7 @@ uint8_t RTC_readByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr){
 
 }
 
+// Funciones para escribir un Byte en el RTC
 void RTC_writeByte(I2C_Handler_t *ptrHandlerI2C, uint8_t memAddr, uint8_t dataToWrite){
 
 	startI2C(ptrHandlerI2C);

@@ -319,3 +319,69 @@
 2022-06-06 18:18:03,510 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
 2022-06-06 18:18:03,511 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
 2022-06-06 19:25:24,894 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-06 21:13:35,555 [INFO] Activator:177 - 
+
+
+2022-06-06 21:13:35,557 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-06 21:13:48,529 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-06 21:13:51,846 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 06, 2022 9:13:51 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-06 21:13:51,846 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1593]
+2022-06-06 21:13:51,846 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-06 21:13:51,847 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 06, 2022 9:13:51 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-06 21:13:51,847 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-06 21:13:51,847 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-07 00:10:22,386 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 10:52:27,313 [INFO] Activator:177 - 
+
+
+2022-06-13 10:52:27,315 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-13 10:52:32,352 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-13 10:52:33,929 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 13, 2022 10:52:33 AM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-13 10:52:33,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1593]
+2022-06-13 10:52:33,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 10:52:33,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 13, 2022 10:52:33 AM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-13 10:52:33,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-13 10:52:33,930 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 13:23:59,869 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 20:42:54,042 [INFO] Activator:177 - 
+
+
+2022-06-13 20:42:54,053 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-13 20:43:05,295 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-13 20:43:07,681 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 13, 2022 8:43:07 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-13 20:43:07,682 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1595]
+2022-06-13 20:43:07,682 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 20:43:07,683 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 13, 2022 8:43:07 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-13 20:43:07,684 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-13 20:43:07,684 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-13 23:01:40,554 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-14 06:12:50,047 [INFO] Activator:177 - 
+
+
+2022-06-14 06:12:50,049 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-14 06:12:59,847 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-14 06:13:03,825 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 14, 2022 6:13:03 AM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-14 06:13:03,825 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1596]
+2022-06-14 06:13:03,825 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-14 06:13:03,826 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 14, 2022 6:13:03 AM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-14 06:13:03,826 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-14 06:13:03,826 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-14 06:16:27,541 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_External_tool_project_builders_migration_2 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-14 06:16:27,543 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-14 06:16:27,544 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-14 09:16:19,116 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-15 13:28:32,203 [INFO] Activator:177 - 
+
+
+2022-06-15 13:28:32,205 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-15 13:28:40,429 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-15 13:28:44,818 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 15, 2022 1:28:44 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-15 13:28:44,820 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1594]
+2022-06-15 13:28:44,821 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-15 13:28:44,824 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 15, 2022 1:28:44 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-15 13:28:44,826 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-15 13:28:44,827 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-15 13:51:57,570 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_External_tool_project_builders_migration_2 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-15 13:51:57,571 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-15 13:51:57,571 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-15 19:07:40,355 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 

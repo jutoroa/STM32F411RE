@@ -60,7 +60,7 @@ main-build: Driver_Servo_V1.elf secondary-outputs
 
 # Tool invocations
 Driver_Servo_V1.elf Driver_Servo_V1.map: $(OBJS) $(USER_OBJS) /home/jutoroa/workspace/STMDirectory/Driver_Servo_V1/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Driver_Servo_V1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Servo_V1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Servo_V1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Driver_Servo_V1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Servo_V1/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Servo_V1.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

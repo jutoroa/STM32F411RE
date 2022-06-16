@@ -69,6 +69,7 @@ void OLED_DataByte(I2C_Handler_t *ptrHandlerI2C, char *dataToWrite){
 	stopI2C(ptrHandlerI2C);
 }
 
+// Configuración para los pixeles por caracter
 
 char charOledNull[8]  = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 char charOledA[8] = {0x00, 0b11111100, 0b00010010, 0b00010010, 0b00010010, 0b11111100, 0x00, 0x00};// Escribir la letra A
@@ -84,21 +85,21 @@ char charOledJ[8] = {0x00, 0b01100000, 0b10000000, 0b10000000, 0b10000000, 0b011
 char charOledK[8] = {0x00, 0b11111110, 0b00010000, 0b00101000, 0b01000100, 0b10000010, 0x00, 0x00};// Escribir la letra K
 char charOledL[8] = {0x00, 0b11111110, 0b10000000, 0b10000000, 0b10000000, 0b00000000, 0x00, 0x00};// Escribir la letra L
 char charOledM[8] = {0x00, 0b11111110, 0b00000100, 0b00001000, 0b00000100, 0b11111110, 0x00, 0x00};// Escribir la letra M
-char charOledN[8] = {0x00, 0b11111110, 0b00001000, 0b00010000, 0b00100000, 0b11111110, 0x00, 0x00};
-char charOledO[8] = {0x00, 0b01111100, 0b10000010, 0b10000010, 0b10000010, 0b01111100, 0x00, 0x00};
-char charOledP[8] = {0x00, 0b11111110, 0b00010010, 0b00010010, 0b00010010, 0b00001100, 0x00, 0x00};
-char charOledQ[8] = {0x00, 0b01111100, 0b10000010, 0b10100010, 0b01000010, 0b10111100, 0x00, 0x00};
-char charOledR[8] = {0x00, 0b11111110, 0b00010010, 0b00010010, 0b00010010, 0b11101100, 0x00, 0x00};
-char charOledS[8] = {0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01100100, 0x00, 0x00};
-char charOledT[8] = {0x00, 0b00000010, 0b00000010, 0b11111110, 0b00000010, 0b00000010, 0x00, 0x00};
-char charOledU[8] = {0x00, 0b01111110, 0b10000000, 0b10000000, 0b10000000, 0b01111110, 0x00, 0x00};
-char charOledV[8] = {0x00, 0b00111110, 0b01000000, 0b10000000, 0b01000000, 0b00111110, 0x00, 0x00};
-char charOledW[8] = {0x00, 0b01111110, 0b10000000, 0b01100000, 0b10000000, 0b01111110, 0x00, 0x00};
-char charOledX[8] = {0x00, 0b11000110, 0b00101000, 0b00010000, 0b00101000, 0b11000110, 0x00, 0x00};
-char charOledY[8] = {0x00, 0b00000110, 0b00001000, 0b11110000, 0b00001000, 0b00000110, 0x00, 0x00};
-char charOledZ[8] = {0x00, 0b11000010, 0b10100010, 0b10010010, 0b10001010, 0b10000110, 0x00, 0x00};
-char charOled1[8] = {0x00, 0b00000000, 0b10000100, 0b11111110, 0b10000000, 0b00000000, 0x00, 0x00};					// 1
-char charOled2[8] = {0x00, 0b11000100, 0b10100010, 0b10010010, 0b10010010, 0b10001100, 0x00, 0x00};				// 2
+char charOledN[8] = {0x00, 0b11111110, 0b00001000, 0b00010000, 0b00100000, 0b11111110, 0x00, 0x00};// Escribir la letra N
+char charOledO[8] = {0x00, 0b01111100, 0b10000010, 0b10000010, 0b10000010, 0b01111100, 0x00, 0x00};// Escribir la letra O
+char charOledP[8] = {0x00, 0b11111110, 0b00010010, 0b00010010, 0b00010010, 0b00001100, 0x00, 0x00};// Escribir la letra P
+char charOledQ[8] = {0x00, 0b01111100, 0b10000010, 0b10100010, 0b01000010, 0b10111100, 0x00, 0x00};// Escribir la letra Q
+char charOledR[8] = {0x00, 0b11111110, 0b00010010, 0b00010010, 0b00010010, 0b11101100, 0x00, 0x00};// Escribir la letra R
+char charOledS[8] = {0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01100100, 0x00, 0x00};// Escribir la letra S
+char charOledT[8] = {0x00, 0b00000010, 0b00000010, 0b11111110, 0b00000010, 0b00000010, 0x00, 0x00};// Escribir la letra T
+char charOledU[8] = {0x00, 0b01111110, 0b10000000, 0b10000000, 0b10000000, 0b01111110, 0x00, 0x00};// Escribir la letra U
+char charOledV[8] = {0x00, 0b00111110, 0b01000000, 0b10000000, 0b01000000, 0b00111110, 0x00, 0x00};// Escribir la letra V
+char charOledW[8] = {0x00, 0b01111110, 0b10000000, 0b01100000, 0b10000000, 0b01111110, 0x00, 0x00};// Escribir la letra W
+char charOledX[8] = {0x00, 0b11000110, 0b00101000, 0b00010000, 0b00101000, 0b11000110, 0x00, 0x00};// Escribir la letra X
+char charOledY[8] = {0x00, 0b00000110, 0b00001000, 0b11110000, 0b00001000, 0b00000110, 0x00, 0x00};// Escribir la letra Y
+char charOledZ[8] = {0x00, 0b11000010, 0b10100010, 0b10010010, 0b10001010, 0b10000110, 0x00, 0x00};// Escribir la letra Z
+char charOled1[8] = {0x00, 0b00000000, 0b10000100, 0b11111110, 0b10000000, 0b00000000, 0x00, 0x00};					// 1/
+char charOled2[8] = {0x00, 0b11000100, 0b10100010, 0b10010010, 0b10010010, 0b10001100, 0x00, 0x00};					// 2
 char charOled3[8] = {0x00, 0b01000100, 0b10000010, 0b10010010, 0b10010010, 0b01101100, 0x00, 0x00};					// 3
 char charOled4[8] = {0x00, 0b00110000, 0b00101000, 0b00100100, 0b00100010, 0b11111110, 0x00, 0x00};					// 4
 char charOled5[8] = {0x00, 0b01001110, 0b10001010, 0b10001010, 0b10001010, 0b01110010, 0x00, 0x00};					// 5
@@ -107,11 +108,11 @@ char charOled7[8] = {0x00, 0b00000010, 0b11100010, 0b00010010, 0b00001010, 0b000
 char charOled8[8] = {0x00, 0b01101100, 0b10010010, 0b10010010, 0b10010010, 0b01101100, 0x00, 0x00};					// 8
 char charOled9[8] = {0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01111100, 0x00, 0x00};
 char charOled0[8] = {0x00, 0b01111100, 0b10100010, 0b10010010, 0b10001010, 0b01111100, 0x00, 0x00};
-char charOledPlus[8] 			= {0x00, 0x00, 0b00010000, 0b00111000, 0b00010000, 0x00, 0x00, 0x00};				// +
-char charOledSus[8] 			= {0x00, 0x00, 0b00010000, 0b00010000, 0b00010000, 0x00, 0x00, 0x00};
+char charOledPlus[8] 			= {0x00, 0x00, 0b00010000, 0b00111000, 0b00010000, 0x00, 0x00, 0x00};					// +
+char charOledSus[8] 			= {0x00, 0x00, 0b00010000, 0b00010000, 0b00010000, 0x00, 0x00, 0x00};					// -
 char charOledExclamation[8] 	= {0x00, 0x00, 0x00, 0b1011110, 0x00, 0x00, 0x00, 0x00};								// !
 char charOledHeart[8] 			= {0x00, 0b00011000, 0b00111100, 0b01111000, 0b00111100, 0b00011000, 0x00, 0x00};		// <3
-char charOledCube[8] 			= {0x00, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0x00, 0x00};
+char charOledCube[8] 			= {0x00, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0b11111110, 0x00, 0x00};		// Cubo
 
 char charOledPERIOD[8] 			= {0x00, 0x00, 0x00, 0x00, 0x00, 0b10000000, 0x00, 0x00};										// Punto
 char charOledCOMMA[8] 			= {0x00, 0x00, 0x00, 0x00, 0b10000000, 0b01000000, 0x00, 0x00};									// Coma
@@ -123,8 +124,10 @@ char charOledQUOTE[8]		 	= {0x00, 0x00, 0x00, 0b00000110, 0x00, 0b00000110, 0x00
 char charOledMULTIPLICATION[8] 	= {0x00, 0x00, 0b00101000, 0b00010000, 0b00101000, 0x00, 0x00, 0x00};							// Escribir signo de multiplicación
 char charOledDIVISION[8] 		= {0x00, 0b00010000, 0b00010000, 0b01010100, 0b00010000, 0b00010000, 0x00, 0x00};
 char charOledEQUAL[8] 			= {0x00, 0x00, 0b00101000, 0b00101000, 0b00101000, 0x00, 0x00, 0x00};							// Escribir signo igual
-/* Funciones para devolver los punteros a cada uno de los arreglos */
 
+
+
+/* Funciones para devolver los punteros a cada uno de los arreglos */
 
 char* OLEDNull(void){return charOledNull;}
 char* OLED_A(void){return charOledA;}
@@ -180,6 +183,7 @@ char* OLED_MULTIPLICATION(void){return charOledMULTIPLICATION;}
 char* OLED_DIVISION(void){return charOledDIVISION;}
 char* OLED_EQUAL(void){return charOledEQUAL;}
 
+/* Función para inicializar la pantalla OLED */
 void OLED_Init(I2C_Handler_t *ptrHandlerI2C){
 
 	OLED_CommandByte(ptrHandlerI2C, 0xAE);
@@ -211,6 +215,7 @@ void OLED_Init(I2C_Handler_t *ptrHandlerI2C){
 	OLED_CommandByte(ptrHandlerI2C, 0x40);
 }
 
+/* Función para limpiar la pantalla */
 void OLED_Clean(I2C_Handler_t *ptrHandlerI2C){
 	char* pageClean[16] = {OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),
 			OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull()};
@@ -219,6 +224,7 @@ void OLED_Clean(I2C_Handler_t *ptrHandlerI2C){
 	}
 }
 
+// Función que escribe en una página, los elementos de un arreglo
 void OLED_SETPage(I2C_Handler_t *ptrHandlerI2C, char* *dataPage, uint8_t numberPage){
 
 	switch(numberPage){
@@ -259,6 +265,7 @@ void OLED_SETPage(I2C_Handler_t *ptrHandlerI2C, char* *dataPage, uint8_t numberP
 	}
 }
 
+// Función que convierte de ascci a la configuración para cada caracter
 char* OLED_VarToChar(char character){
 	switch(character){
 	case(' '):
@@ -423,6 +430,7 @@ char* OLED_VarToChar(char character){
 	}
 }
 
+// Función para imprimir un string en una página en específico
 void OLED_FPrintPage(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint, uint8_t numberPage){
 	switch(numberPage){
 		case(PAGE_0):
@@ -462,6 +470,7 @@ void OLED_FPrintPage(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint, uint8_t 
 		}
 }
 
+// Función para imprimir un string en toda la pantalla
 void OLED_FPrint(I2C_Handler_t *ptrHandlerI2C, char *ptrVarToPrint){
 	char* pageClean[16] = {OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),
 				OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull(),OLEDNull()};

@@ -1,1 +1,2 @@
 ../Src/PWMxDriver.c:22:6:PWM_Config	16	static
+../Src/PWMxDriver.c:114:6:setDutty	16	static

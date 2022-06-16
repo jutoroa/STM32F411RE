@@ -22,6 +22,7 @@
 #define RTC_DS1307_YEAR					0x06
 #define RTC_DS1307_CONTROLREGISTER		0x07
 
+// Estructura para definir los valores iniciales
 typedef struct{
 	uint8_t seconds;
 	uint8_t minutes;
@@ -32,6 +33,7 @@ typedef struct{
 	uint8_t year;
 }rtc_t;
 
+// Estructura para obtener los datos
 typedef struct{
 	uint8_t seconds;
 	uint8_t minutes;
