@@ -385,3 +385,18 @@
 2022-06-15 13:51:57,571 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
 2022-06-15 13:51:57,571 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
 2022-06-15 19:07:40,355 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-19 16:30:23,679 [INFO] Activator:177 - 
+
+
+2022-06-19 16:30:23,680 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-19 16:30:28,115 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-19 16:30:29,603 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 19, 2022 4:30:29 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-19 16:30:29,604 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1593]
+2022-06-19 16:30:29,604 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-19 16:30:29,604 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 19, 2022 4:30:29 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-19 16:30:29,604 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-19 16:30:29,605 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-19 16:56:06,671 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_External_tool_project_builders_migration_2 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-19 16:56:06,673 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-19 16:56:06,674 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-06-20 00:20:35,553 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 

@@ -60,7 +60,7 @@ main-build: Driver_Nema17_V3.elf secondary-outputs
 
 # Tool invocations
 Driver_Nema17_V3.elf Driver_Nema17_V3.map: $(OBJS) $(USER_OBJS) /home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

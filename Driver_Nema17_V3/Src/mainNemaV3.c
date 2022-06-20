@@ -62,7 +62,8 @@ int main(void)
 {
 	// Inicializamos el sistema
 	initSystem();
-	writeChar(&handlerUsart2,dataValue);
+	writeMsg(&handlerUsart2, "Estoy funcionando.");
+	//writeChar(&handlerUsart2,dataValue);
     /* Ciclo principal */
 	while(1){
 
