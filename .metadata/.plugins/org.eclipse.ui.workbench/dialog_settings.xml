@@ -52,6 +52,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="/home/jutoroa/workspace/STMDirectory/tarea5_jutoroa.zip"/>
 			<item value="/home/jutoroa/Documents/examenFinal_jutoroa.zip"/>
 		</list>
 	</section>

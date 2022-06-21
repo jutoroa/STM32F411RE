@@ -1,8 +1,14 @@
 /*
- * mainADC.c
+ * Tarea5Main.c
  *
- *  Created on: 4/05/2022
- *  Author: Juan Pablo
+ *  Created on: 20/06/22
+ *  Author: Juan Pablo Toro
+ *
+ *  // *************** // Tarea 5 // *************** //
+ *
+ *  Código que permite la adquisición de datos de una señal a 1.1 kHz aproximadamente. Estos se dan a través del
+ *  puerto PA0. Para realizar el muestreo de datos se debe presionar la tecla 'c', y se imprimirán todos los datos 'de golpe'
+ *  por la terminal.
  */
 
 
@@ -19,13 +25,13 @@
 
 GPIO_Handler_t 	handlerStateLED 	= {0};	// StateLED
 ADC_Config_t 	handlerADC			= {0};	// ADC
-TIMER_Handler_t handlerTimer2 		= {0};	// Timer2
-TIMER_Handler_t	handlerTimer3		= {0};	// Timer3
+TIMER_Handler_t handlerTimer2 		= {0};	// Timer2 (Timer encargado del StateLED)
+TIMER_Handler_t	handlerTimer3		= {0};	// Timer3 (Timer encargado del muestreo de datos del ADC)
 GPIO_Handler_t 	handlerUSBRX 		= {0};	// Pin USB PA3 RX
 GPIO_Handler_t 	handlerUSBTX 		= {0};	// Pin USB PA2 TX
 USART_Handler_t handlerUsart2   	= {0};	// Usart RX
 
-#define ADC_SAMPLING_SIZE	100
+#define ADC_SAMPLING_SIZE	100				// Número de datos a muestrear
 
 // Variables auxiliar.
 
@@ -35,7 +41,7 @@ uint16_t 	adcData								= 0;		// Valor obtenido por el ADC
 uint16_t 	counterADC							= 0;		// Contador para cada iteración del ADC
 uint16_t	ADCBufferSignal[ADC_SAMPLING_SIZE]	= {0};		// Almacenamiento para los datos del ADC
 char		bufferData[64]						= {0};		// Buffer para envío de datos del ADC
-uint16_t	dataPosition						= 0;
+uint16_t	dataPosition						= 0;		// Contador (índice) para poder barrer cada uno de los datos de ADCBufferSignal
 
 // *************** // Headers // *************** //
 
@@ -60,12 +66,7 @@ int main(void)
 				}
 				if(rxData == 'c'){
 					// Conversión de modo continua
-					//startContinuousADC();
 					startTimer(&handlerTimer3);
-				}
-				if(rxData == 'm'){
-					// Conversión de modo continua
-					startContinuousADC();
 				}
 				if(rxData == 'p'){
 					stopContinousADC();
@@ -75,14 +76,25 @@ int main(void)
 				rxData = '\0';
 			}
 
+			// Si la conversión ADC se realizó n veces (donde n es la cantidad de datos del buffer)
+			if (dataPosition >= ADC_SAMPLING_SIZE){
+				// Reinicie el contador
+				dataPosition = 0;
+				// Levante la bandera de que se completaron todas las conversiones
+				adcIsComplete = true;
+				// Detenga el timer3 encargado de la conversión ADC
+				stopTimer(&handlerTimer3);
+			}
+
+			// Si la conversión ADC se completó con todos los datos dados en ADC_SAMPLING_SIZE
 			if(adcIsComplete == true){
-//				ADC1 -> CR2 &= ~(ADC_CR2_SWSTART);
-//				stopContinousADC();
-				//sprintf(bufferData, "ADC = %u, %u \n\r",(unsigned int ) adcData,(unsigned int )counter);
+
+				// Imprima cada dato por el terminal
 				for(uint16_t j = 0; j < ADC_SAMPLING_SIZE; j++){
 					sprintf(bufferData, "%u\n\r",(unsigned int) ADCBufferSignal[j]);
 					writeMsg(&handlerUsart2, bufferData);
 				}
+				// Se baja la bandera de la conversión ADC
 				adcIsComplete = false;
 		}
 	}
@@ -170,7 +182,6 @@ void Timer2_Callback(void){
 
 void Timer3_Callback(void){
 	startSingleADC();									// Lanzamos la conversión ADC
-
 }
 
 void USART2_Callback(void){
@@ -179,14 +190,8 @@ void USART2_Callback(void){
 }
 
 void adc_Complete_Callback(void){
-// Cambiamos el valor de adcIsComplete
-
+// Leemos los datos del ADC y los guardamos en la iésima posición del ADCBufferSignal. Posteriormente avanzamos a la siguiente posición
+// para la próxima conversión.
 	ADCBufferSignal[dataPosition] = getADC();
 	dataPosition++;
-	if (dataPosition >= ADC_SAMPLING_SIZE){
-		dataPosition = 0;
-		adcIsComplete = true;
-		stopContinousADC();
-		stopTimer(&handlerTimer3);
-	}
 }

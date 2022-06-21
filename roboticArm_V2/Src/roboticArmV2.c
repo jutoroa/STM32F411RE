@@ -85,17 +85,23 @@ char		MPUBufferGyro[256];							// Buffer para almacenar los datos
 uint8_t		MPU6050IsReady					= false;	// Bandera para controlar la lectura de datos
 uint16_t	counterMPU6050					= 0;		// COUNTER MPU6050
 
+uint32_t counterMillis				= 0;				// Contador para medir el tiempo
+uint32_t timePrev					= 0;				// Variable que almacenará el tiempo inmediatamente anterior
+uint32_t dt							= 0;				// Variable para medir el diferencial de tiempo
+double girosc_ang_x, girosc_ang_y;						// Variables para calcular los angulos a través del giroscopio
+double girosc_ang_x_prev = 0, girosc_ang_y_prev = 0;
+
+double ang_x,ang_y;										// Variables para calcular los angulos a través del filtro complementario
+double ang_x_prev, ang_y_prev;
+
 /* Variables para la conversión ADC */
 
 uint8_t		adcIsComplete   = false;			// Variable que nos permite saber el estado de si se completó la conversión ADC
 uint16_t 	adcData			= 0;				// Valor obtenido por el ADC
 
 /* Variables auxiliares */
-uint32_t counterMillis				= 0;				// Contador para medir el tiempo
-uint32_t timePrev					= 0;
-uint32_t dt							= 0;
-double girosc_ang_x, girosc_ang_y;
-double girosc_ang_x_prev = 0, girosc_ang_y_prev = 0;
+
+
 uint8_t 	i2cBuffer 				= 0;				// Buffer para el I2C
 uint16_t counterStateLED			= 0;
 int  counterDelay 					= 0;
@@ -136,7 +142,7 @@ int main(void)
 			handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
 			counterStateLED = 0;
 		}*/
-		if(counterMPU6050 >= 100){
+		if(counterMPU6050 >= 10){
 			// Activamos la lectura del MPU y del ADC cada 150 ms
 			MPU6050IsReady = true;
 			counterMPU6050 = 0;
@@ -145,52 +151,48 @@ int main(void)
 
 		if(MPU6050IsReady == true){
 			// Leemos las aceleraciones del MPU6050 en x,y, y z.
-//			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X);
-//			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y);
-//			int16_t AccelZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z);
+			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X);
+			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y);
+			int16_t AccelZ = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Z);
 
 //			double fAccelX = ((AccelX*85)/17000)+145;
 //			double fAccelY = ((AccelY*85)/17000)+145;
 //			double fAccelZ = AccelZ*(9.81/16384.0);
-
-
 
 			// Leemos los valores del giroscopio del MPU6050 en x,y, y z.
 			int16_t GirosX = MPU6050_SensorValue(&handler_MPU6050,GYRO_X);
 			int16_t GirosY = MPU6050_SensorValue(&handler_MPU6050,GYRO_Y);
 //			int16_t GirosZ = MPU6050_SensorValue(&handler_MPU6050,GYRO_Z);
 
-			double fGirosX = GirosX*(250.0/32768.0);
-			double fGirosY = GirosY*(250.0/32768.0);
+			double fGirosX = GirosX*(250.0/32768.0);		// Convertimos los datos de ADC a grados/s
+			double fGirosY = GirosY*(250.0/32768.0);		// Convertimos los datos de ADC a grados/s
 //			double fGirosZ = GirosZ*(250.0/32768.0);
 
-			dt = counterMillis - timePrev;			// Calculamos el dt
-			timePrev = counterMillis;				// Actualizamos el to
+			dt = (counterMillis - timePrev)/1000.0;			// Calculamos el dt
+			timePrev = counterMillis;						// Actualizamos el to
+
+			//Calculamos los ángulos con el acelerometro
+			double accel_ang_x = atan(AccelY/sqrt(pow(AccelX,2) + pow(AccelZ,2)))*(180.0/3.14159);
+			double accel_ang_y = atan(-AccelX/sqrt(pow(AccelY,2) + pow(AccelZ,2)))*(180.0/3.14159);
+
+			//Calculamos el angulo de rotación con giroscopio y filtro complemento
+			ang_x = 0.98*(ang_x_prev+(fGirosX)*dt) + 0.02*accel_ang_x;
+			ang_y = 0.98*(ang_y_prev+(fGirosY)*dt) + 0.02*accel_ang_y;
+
+			ang_x_prev = ang_x;
+			ang_y_prev = ang_y;
 
 			// Cálculamos los ángulos con el factor de escala
-			girosc_ang_x = ((fGirosX)*dt)/1000.0 + girosc_ang_x_prev;      // Cálculamos los ángulos con el factor de escala
-			girosc_ang_y = ((fGirosY)*dt)/1000.0 + girosc_ang_y_prev;
+//			girosc_ang_x = ((fGirosX)*dt)/1000.0 + girosc_ang_x_prev;      // Cálculamos los ángulos con el factor de escala
+//			girosc_ang_y = ((fGirosY)*dt)/1000.0 + girosc_ang_y_prev;
 
 			// Actualizamos para el siguiente ángulo
+//			girosc_ang_x_prev = girosc_ang_x;
+//			girosc_ang_y_prev = girosc_ang_y;
 
-//			if((girosc_ang_x_prev - 2 <= girosc_ang_x) && (girosc_ang_x_prev + 2 >= girosc_ang_x)){
-//				girosc_ang_x = girosc_ang_x_prev;      // Cálculamos los ángulos con el factor de escala
-//				girosc_ang_y = girosc_ang_y_prev;
-//			}
-//			else{
-//				girosc_ang_x = ((fGirosX)*dt)/1000.0 + girosc_ang_x_prev;      // Cálculamos los ángulos con el factor de escala
-//				girosc_ang_y = ((fGirosY)*dt)/1000.0 + girosc_ang_y_prev;
-//			}
-
-			girosc_ang_x_prev = girosc_ang_x;
-			girosc_ang_y_prev = girosc_ang_y;
-
-
-
-			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "%f \n", girosc_ang_x);
-			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
-
+//			char bufferDataOLEDx[128] = {0};
+//			sprintf(bufferDataOLEDx, "%f \n", ang_x);
+//			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
 
 //			setDutty(&handlerPWMServo1, girosc_ang_x);
 //			setDutty(&handlerPWMServo2, girosc_ang_y);
@@ -210,9 +212,9 @@ int main(void)
 			// Bajamos la bandera del ADC
 			adcIsComplete = false;
 
-//			char bufferDataOLEDx[128] = {0};
-//			sprintf(bufferDataOLEDx, "%f ", fAdcData);
-//			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, "%d \n", adcData);
+			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
 		}
 
 		if(dataValue != '\0'){
