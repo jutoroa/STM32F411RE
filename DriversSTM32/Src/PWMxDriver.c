@@ -49,7 +49,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 	}
 	else{
 		// Configuramos el timer en modo DOWN
-		prtPWMConfig -> ptrTIMx -> CR1 |= ~(TIM_CR1_DIR);
+		prtPWMConfig -> ptrTIMx -> CR1 |= (TIM_CR1_DIR);
 		// Ponemos en el contador (CNT) el valor del periodo
 		prtPWMConfig -> ptrTIMx -> CNT = prtPWMConfig -> timerConfig.pwmPeriod -1;
 	}
@@ -102,7 +102,7 @@ void PWM_Config(PWM_Handler_t *prtPWMConfig){
 		// Escogemos el canal 4 como salida
 		prtPWMConfig -> ptrTIMx -> CCMR2 &= ~TIM_CCMR2_CC4S;	// Ponemos 00: CC1 channel is configured as output.
 		// Escoger si el Preload está activado
-		prtPWMConfig -> ptrTIMx -> CCMR2 |= TIM_CCMR2_OC3PE;
+		prtPWMConfig -> ptrTIMx -> CCMR2 |= TIM_CCMR2_OC4PE;
 		// Configurar el Output compare 1 mode
 		prtPWMConfig -> ptrTIMx -> CCMR2 |= (0b110 << TIM_CCMR2_OC4M_Pos);
 		// Activamos el enable a través del CCER

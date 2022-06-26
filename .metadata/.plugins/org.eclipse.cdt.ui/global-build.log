@@ -1,101 +1,77 @@
-22:27:02 **** Build of configuration Debug for project roboticArm_V2 ****
+15:43:13 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
+arm-none-eabi-gcc "../Src/roboticArmV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV3.d" -MT"Src/roboticArmV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV3.o"
+arm-none-eabi-gcc -o "roboticArm_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: roboticArm_V3.elf
  
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
+arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-objdump -h -S  roboticArm_V3.elf  > "roboticArm_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34836	   1148	   2440	  38424	   9618	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-Finished building: roboticArm_V2.list
+Finished building: roboticArm_V3.list
  
-22:27:12 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
+15:43:18 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-arm-none-eabi-size   roboticArm_V2.elf 
+arm-none-eabi-size   roboticArm_V3.elf 
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34836	   1148	   2440	  38424	   9618	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-22:28:57 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
+15:44:24 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
+arm-none-eabi-gcc "../Src/roboticArmV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV3.d" -MT"Src/roboticArmV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV3.o"
+arm-none-eabi-gcc -o "roboticArm_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: roboticArm_V3.elf
  
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
+arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-objdump -h -S  roboticArm_V3.elf  > "roboticArm_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34844	   1148	   2440	  38432	   9620	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-Finished building: roboticArm_V2.list
+Finished building: roboticArm_V3.list
  
-22:34:28 **** Build of configuration Debug for project DriversSTM32 ****
+15:44:43 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-make: Nothing to be done for 'all'.
-22:34:37 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
+arm-none-eabi-gcc "../Src/roboticArmV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV3.d" -MT"Src/roboticArmV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV3.o"
+arm-none-eabi-gcc -o "roboticArm_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: roboticArm_V3.elf
  
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
+arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-objdump -h -S  roboticArm_V3.elf  > "roboticArm_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34844	   1148	   2440	  38432	   9620	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-Finished building: roboticArm_V2.list
+Finished building: roboticArm_V3.list
  
-22:35:23 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
+15:44:56 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
+arm-none-eabi-gcc "../Src/roboticArmV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV3.d" -MT"Src/roboticArmV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV3.o"
+arm-none-eabi-gcc -o "roboticArm_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: roboticArm_V3.elf
  
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
+arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-objdump -h -S  roboticArm_V3.elf  > "roboticArm_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34844	   1148	   2440	  38432	   9620	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-Finished building: roboticArm_V2.list
+Finished building: roboticArm_V3.list
  
-22:36:20 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
+15:45:08 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-../Src/roboticArmV2.c: In function 'main':
-../Src/roboticArmV2.c:216:31: warning: format '%f' expects argument of type 'double', but argument 3 has type 'int' [-Wformat=]
-  216 |    sprintf(bufferDataOLEDx, "%f \n", adcData);
-      |                              ~^      ~~~~~~~
-      |                               |      |
-      |                               double int
-      |                              %d
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
+arm-none-eabi-gcc "../Src/roboticArmV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV3.d" -MT"Src/roboticArmV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV3.o"
+arm-none-eabi-gcc -o "roboticArm_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: roboticArm_V3.elf
  
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
+arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-objdump -h -S  roboticArm_V3.elf  > "roboticArm_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
+  34852	   1148	   2440	  38440	   9628	roboticArm_V3.elf
 Finished building: default.size.stdout
  
-Finished building: roboticArm_V2.list
- 
-22:36:30 **** Incremental Build of configuration Debug for project roboticArm_V2 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/roboticArmV2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/roboticArmV2.d" -MT"Src/roboticArmV2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/roboticArmV2.o"
-arm-none-eabi-gcc -o "roboticArm_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/roboticArm_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="roboticArm_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: roboticArm_V2.elf
- 
-arm-none-eabi-size   roboticArm_V2.elf 
-arm-none-eabi-objdump -h -S  roboticArm_V2.elf  > "roboticArm_V2.list"
-   text	   data	    bss	    dec	    hex	filename
-  30492	    740	   2088	  33320	   8228	roboticArm_V2.elf
-Finished building: default.size.stdout
- 
-Finished building: roboticArm_V2.list
+Finished building: roboticArm_V3.list
  

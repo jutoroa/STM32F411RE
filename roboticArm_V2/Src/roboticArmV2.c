@@ -78,6 +78,10 @@ GPIO_Handler_t handlerI2CSDA_MPU6050 			= {0};	// SDA para el I2C	MPU6050
 GPIO_Handler_t handlerI2CSCL_MPU6050			= {0};	// SCL para el I2C	MPU6050
 I2C_Handler_t  handler_MPU6050	 				= {0};	// I2C (1) para el RTC	MPU6050
 
+GPIO_Handler_t handlerI2CSDA_OLED 				= {0};	// SDA para el I2C	OLED 1.3"
+GPIO_Handler_t handlerI2CSCL_OLED 				= {0};	// SCL para el I2C	OLED 1.3"
+I2C_Handler_t  handler_OLED	 					= {0};	// I2C (3) para el  OLED 1.3"
+
 /* Variables para la configuración del MPU6050 */
 #define numberofsensor 	3								// Cantidad de sensores
 char		MPUBufferAccel[256];						// Buffer para almacenar los datos
@@ -93,6 +97,7 @@ double girosc_ang_x_prev = 0, girosc_ang_y_prev = 0;
 
 double ang_x,ang_y;										// Variables para calcular los angulos a través del filtro complementario
 double ang_x_prev, ang_y_prev;
+double duty_x, duty_y;
 
 /* Variables para la conversión ADC */
 
@@ -101,6 +106,8 @@ uint16_t 	adcData			= 0;				// Valor obtenido por el ADC
 
 /* Variables auxiliares */
 
+/* Configuración para la OLED */
+char 		bufferDataOLED[128] = {0};
 
 uint8_t 	i2cBuffer 				= 0;				// Buffer para el I2C
 uint16_t counterStateLED			= 0;
@@ -131,6 +138,12 @@ int main(void)
 	sprintf(bufferData, "Registro PWR MGMT = 0x%2x \n", (unsigned int) i2cBuffer);
 	writeMsg(&handlerCommTerminal, bufferData);
 	writeMsg(&handlerCommTerminal, "MPU6050 ha sido inicializado correctamente. \n");
+
+	// Cargamos la configuración Inicial en la OLED
+	OLED_Init(&handler_OLED);
+	OLED_Clean(&handler_OLED);
+	sprintf(bufferDataOLED, "<<<<<<<<<<<<<<<<  HOLA!          SOY EL STM32   <<<<<<<<<<<<<<<<");
+	OLED_FPrint(&handler_OLED, bufferDataOLED);
 
 	timePrev = counterMillis;					// Actualizamos el to
 
@@ -182,6 +195,9 @@ int main(void)
 			ang_x_prev = ang_x;
 			ang_y_prev = ang_y;
 
+			duty_x = ((ang_x + 80.0) * (100.0/160.0)) + 80.0;
+			duty_y = ((ang_y + 80.0) * (100.0/160.0)) + 80.0;
+
 			// Cálculamos los ángulos con el factor de escala
 //			girosc_ang_x = ((fGirosX)*dt)/1000.0 + girosc_ang_x_prev;      // Cálculamos los ángulos con el factor de escala
 //			girosc_ang_y = ((fGirosY)*dt)/1000.0 + girosc_ang_y_prev;
@@ -191,11 +207,17 @@ int main(void)
 //			girosc_ang_y_prev = girosc_ang_y;
 
 //			char bufferDataOLEDx[128] = {0};
-//			sprintf(bufferDataOLEDx, "%f \n", ang_x);
+//			sprintf(bufferDataOLEDx, "%f \n", duty_x);
 //			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
 
-//			setDutty(&handlerPWMServo1, girosc_ang_x);
-//			setDutty(&handlerPWMServo2, girosc_ang_y);
+			char bufferDataOLEDx[128] = {0};
+			sprintf(bufferDataOLEDx, " ANGX: %f ", duty_x);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_1);
+			sprintf(bufferDataOLEDx, " ANGY: %f ", duty_y);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
+
+			setDutty(&handlerPWMServo1, duty_x);
+			setDutty(&handlerPWMServo2, duty_y);
 
 			// Bajamos la bandera del MPU6050
 			MPU6050IsReady	= false;
@@ -206,15 +228,20 @@ int main(void)
 
 		if(adcIsComplete == true){
 			// Calculamos la escala para convertir la conversión ADC en movimiento del servo
-			double fAdcData = ((adcData*100)/3500)+80;
+			double fAdcData = (((adcData - 2100.0)*100.0)/1500.0) + 80.0;
 			setDutty(&handlerPWMServo3, fAdcData);
 
 			// Bajamos la bandera del ADC
 			adcIsComplete = false;
 
 			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "%d \n", adcData);
-			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
+			sprintf(bufferDataOLEDx, " ADC: %f ", fAdcData);
+			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_5);
+
+
+//			char bufferDataOLEDx[128] = {0};
+//			sprintf(bufferDataOLEDx, "%d \n", adcData);
+//			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
 		}
 
 		if(dataValue != '\0'){
@@ -342,7 +369,7 @@ void initSystem(void){
 	// Definimos el handler para el servomotor 1 - Timer5 Channel 1
 
 	handlerPinServo1.pGPIOx 									= GPIOA;
-	handlerPinServo1.GPIO_PinConfig.GPIO_PinNumber				= PIN_0;
+	handlerPinServo1.GPIO_PinConfig.GPIO_PinNumber				= PIN_6;
 	handlerPinServo1.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_ALTFN;
 	handlerPinServo1.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerPinServo1.GPIO_PinConfig.GPIO_PinPuPdControl			= GPIO_PUPDR_NOTHING;
@@ -354,7 +381,7 @@ void initSystem(void){
 	// Definimos el handler para el servomotor 2 - Timer5 Channel 2
 
 	handlerPinServo2.pGPIOx 									= GPIOA;
-	handlerPinServo2.GPIO_PinConfig.GPIO_PinNumber				= PIN_1;
+	handlerPinServo2.GPIO_PinConfig.GPIO_PinNumber				= PIN_7;
 	handlerPinServo2.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_ALTFN;
 	handlerPinServo2.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerPinServo2.GPIO_PinConfig.GPIO_PinPuPdControl			= GPIO_PUPDR_NOTHING;
@@ -363,10 +390,10 @@ void initSystem(void){
 
 	GPIO_Config(&handlerPinServo2);
 
-	// Definimos el handler para el servomotor 3 - Timer5 Channel 3
+	// Definimos el handler para el servomotor 3 - Timer5 Channel 4
 
-	handlerPinServo3.pGPIOx 									= GPIOA;
-	handlerPinServo3.GPIO_PinConfig.GPIO_PinNumber				= PIN_3;
+	handlerPinServo3.pGPIOx 									= GPIOB;
+	handlerPinServo3.GPIO_PinConfig.GPIO_PinNumber				= PIN_1;
 	handlerPinServo3.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_ALTFN;
 	handlerPinServo3.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerPinServo3.GPIO_PinConfig.GPIO_PinPuPdControl			= GPIO_PUPDR_NOTHING;
@@ -376,7 +403,7 @@ void initSystem(void){
 	GPIO_Config(&handlerPinServo3);
 
 	// Definimos el handler para el servomotor 1 - Timer5 Channel 1
-	handlerPWMServo1.ptrTIMx								= TIM5;
+	handlerPWMServo1.ptrTIMx								= TIM3;
 	handlerPWMServo1.timerConfig.pwmMode					= TIMER_MODE_UP;
 	handlerPWMServo1.timerConfig.pwmSpeed					= TIMER_INCR_SPEED_10us;
 	handlerPWMServo1.timerConfig.pwmPeriod					= 2000;
@@ -386,7 +413,7 @@ void initSystem(void){
 	PWM_Config(&handlerPWMServo1);
 
 	// Definimos el handler para el servomotor 2 - Timer5 Channel 2
-	handlerPWMServo2.ptrTIMx								= TIM5;
+	handlerPWMServo2.ptrTIMx								= TIM3;
 	handlerPWMServo2.timerConfig.pwmMode					= TIMER_MODE_UP;
 	handlerPWMServo2.timerConfig.pwmSpeed					= TIMER_INCR_SPEED_10us;
 	handlerPWMServo2.timerConfig.pwmPeriod					= 2000;
@@ -396,7 +423,7 @@ void initSystem(void){
 	PWM_Config(&handlerPWMServo2);
 
 	// Definimos el handler para el servomotor 3 - Timer5 Channel 3
-	handlerPWMServo3.ptrTIMx								= TIM5;
+	handlerPWMServo3.ptrTIMx								= TIM3;
 	handlerPWMServo3.timerConfig.pwmMode					= TIMER_MODE_UP;
 	handlerPWMServo3.timerConfig.pwmSpeed					= TIMER_INCR_SPEED_10us;
 	handlerPWMServo3.timerConfig.pwmPeriod					= 2000;
@@ -484,6 +511,36 @@ void initSystem(void){
 	handlerTimer2.timerConfig.Timer_mode				= TIMER_MODE_UP;
 	handlerTimer2.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
 	handlerTimer2.timerConfig.Timer_period				= 10;
+
+	// Configuramos los pines para el I2C SCL para el OLED
+	handlerI2CSCL_OLED.pGPIOx								= GPIOA;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinNumber		= PIN_8;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinOPType		= GPIO_OTYPE_OPENDRAIN;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_PULLUP;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
+	handlerI2CSCL_OLED.GPIO_PinConfig.GPIO_PinAltFunMode	= AF4;
+
+	GPIO_Config(&handlerI2CSCL_OLED);
+
+	// Configuramos los pines para el I2C SDA para el OLED
+	handlerI2CSDA_OLED.pGPIOx								= GPIOB;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinNumber		= PIN_8;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinOPType		= GPIO_OTYPE_OPENDRAIN;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_PULLUP;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
+	handlerI2CSDA_OLED.GPIO_PinConfig.GPIO_PinAltFunMode	= AF9;
+
+	GPIO_Config(&handlerI2CSDA_OLED);
+
+	// Creamos la configuración para el I2C (3) del OLED
+
+	handler_OLED.ptrI2Cx		= I2C3;
+	handler_OLED.modeI2C		= I2C_MODE_FM;
+	handler_OLED.slaveAddress	= 0x3C;				// Dirección del OLED.
+
+	I2C_Config(&handler_OLED);
 
 	Timer_Config(&handlerTimer2);
 
