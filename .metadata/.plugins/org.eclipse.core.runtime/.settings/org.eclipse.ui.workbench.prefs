@@ -17,6 +17,7 @@ org.eclipse.compare.contentmergeviewer.TextMergeViewer=1|Monospace|14.0|0|GTK|1|
 org.eclipse.debug.ui.DetailPaneFont=1|Monospace|14.0|0|GTK|1|;
 org.eclipse.debug.ui.MemoryViewTableFont=1|Monospace|14.0|0|GTK|1|;
 org.eclipse.debug.ui.consoleFont=1|Monospace|14.0|0|GTK|1|;
+org.eclipse.jdt.ui.ColoredLabels.match_highlight=73,83,90
 org.eclipse.jface.textfont=1|Monospace|14.0|0|GTK|1|;
 org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_START=37,41,45
 org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_TEXT_COLOR=204,204,204
