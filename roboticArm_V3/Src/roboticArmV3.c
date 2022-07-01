@@ -91,7 +91,7 @@ uint16_t 	adcData			= 0;				// Valor obtenido por el ADC
 /* Variables auxiliares */
 
 #define numberOfData 		  3
-double dataValueBluetoth[numberOfData] 	= {0};
+unsigned int dataValueBluetoth[numberOfData] 	= {0};
 uint16_t dataPosition 	= 0;
 uint8_t MPU6050IsReady = false;
 /* Configuración para la OLED */
@@ -101,6 +101,18 @@ uint8_t 	i2cBuffer 				= 0;				// Buffer para el I2C
 uint16_t counterStateLED			= 0;
 int  counterDelay 					= 0;
 char bufferData[256] 				= "¡Hola! Soy el USART del STM32 y estoy funcionando.";		// Mensaje de Bienvenida
+
+/* Variables para los commands */
+uint8_t 	rxData					= '\0';				// Variable donde se guardarán los datos obtenidos por el RX
+char		bufferReception[256];						// Buffer de recepción
+char 		cmd[64];									// Buffer para el cmd
+char 		userMsg[256];								// Buffer para el mensaje del usuario
+int duty_x			= 0;
+int duty_y			= 0;
+int duty_ADC		= 0;
+
+uint32_t		counterReception 		= 0;
+uint8_t			stringComplete			= false;
 
 // *************** // Headers // *************** //
 
@@ -128,28 +140,60 @@ int main(void)
     /* Ciclo principal */
 	while(1){
 
-		if(MPU6050IsReady == true){
+		if(rxData != '\0'){
+//			writeChar(&handlerCommTerminal,rxData);
+			//Guardamos las cadenas para los comandos
+			bufferReception[counterReception] = rxData;
+			counterReception++;
 
-			double duty_x	 	= dataValueBluetoth[0];
-			double duty_y 		= dataValueBluetoth[1];
-			double duty_ADC 	= dataValueBluetoth[2];
+			// Levantamos una bandera para indicar que se completó el comando
+			if(rxData == '='){
+				stringComplete = true;
+				// Agrego esta línea para crear el string con el null al final del arreglo
+				bufferReception[counterReception] = '\0';
+				counterReception = 0;
+//				writeMsg(&handlerCommTerminal,bufferReception);
 
-			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, " ANGX: %f ", duty_x);
-			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_1);
-			sprintf(bufferDataOLEDx, " ANGY: %f ", duty_y);
-			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
-			sprintf(bufferDataOLEDx, " ADC: %f ", duty_ADC);
-			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_5);
+			}
+			rxData = '\0';
+		}
+
+		// Hacemos un análisis de la cadena de datos obtenida
+		if(stringComplete){
+			// Llamamos a la función para implementar los comandos
+			sscanf(bufferReception, "%d %d %d", &duty_x,&duty_y,&duty_ADC);
+
+			sprintf(bufferData,"%d %d %d \n",duty_x, duty_y, duty_ADC);
+			writeMsg(&handlerCommTerminal,bufferData);
+
+			MPU6050IsReady = true;
+			stringComplete = false;
 
 			setDutty(&handlerPWMServo1, duty_x);
 			setDutty(&handlerPWMServo2, duty_y);
 			setDutty(&handlerPWMServo3, duty_ADC);
-
-			// Bajamos la bandera del MPU6050
-			MPU6050IsReady	= false;
-
 		}
+
+//		if(MPU6050IsReady == true){
+//
+////			char bufferDataOLEDx[128] = {0};
+////			sprintf(bufferDataOLEDx, " ANGX: %d ", duty_x);
+////			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_1);
+////			sprintf(bufferDataOLEDx, " ANGY: %d ", duty_y);
+////			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
+////			sprintf(bufferDataOLEDx, " ADC: %d ", duty_ADC);
+////			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_5);
+//
+//			setDutty(&handlerPWMServo1, duty_x);
+//			setDutty(&handlerPWMServo2, duty_y);
+//			setDutty(&handlerPWMServo3, duty_ADC);
+//
+//
+//
+//			// Bajamos la bandera del MPU6050
+//			MPU6050IsReady	= false;
+//
+//		}
 
 		if(dataValue != '\0'){
 			writeChar(&handlerCommTerminal,dataValue);
@@ -398,9 +442,9 @@ void initSystem(void){
 	// Configuración del USART del USB para RXTX
 	handlerCommTerminal.ptrUSARTx							= USART2;
 	handlerCommTerminal.USART_Config.USART_mode				= USART_MODE_RXTX;
-	handlerCommTerminal.USART_Config.USART_baudrate			= USART_BAUDRATE_19200;
+	handlerCommTerminal.USART_Config.USART_baudrate			= USART_BAUDRATE_38400;
 	handlerCommTerminal.USART_Config.USART_datasize			= USART_DATASIZE_8BIT;
-	handlerCommTerminal.USART_Config.USART_parity			= USART_PARITY_ODD;
+	handlerCommTerminal.USART_Config.USART_parity			= USART_PARITY_NONE;
 	handlerCommTerminal.USART_Config.USART_stopbits			= USART_STOPBIT_1;
 	handlerCommTerminal.USART_Config.USART_interrupt 		= USART_INTERRUPT_RX_ENABLE;
 
@@ -410,9 +454,9 @@ void initSystem(void){
 	// Configuración del USART Bluetooth para la conexión a través del HC-05
 	handlerUsartBluetooth.ptrUSARTx							= USART6;
 	handlerUsartBluetooth.USART_Config.USART_mode			= USART_MODE_RXTX;
-	handlerUsartBluetooth.USART_Config.USART_baudrate		= USART_BAUDRATE_19200;
+	handlerUsartBluetooth.USART_Config.USART_baudrate		= USART_BAUDRATE_38400;
 	handlerUsartBluetooth.USART_Config.USART_datasize		= USART_DATASIZE_8BIT;
-	handlerUsartBluetooth.USART_Config.USART_parity			= USART_PARITY_ODD;
+	handlerUsartBluetooth.USART_Config.USART_parity			= USART_PARITY_NONE;
 	handlerUsartBluetooth.USART_Config.USART_stopbits		= USART_STOPBIT_1;
 	handlerUsartBluetooth.USART_Config.USART_interrupt 		= USART_INTERRUPT_RX_ENABLE;
 
@@ -618,10 +662,11 @@ void USART2_Callback(void){
 }
 
 void USART6_Callback(void){
-	dataValueBluetoth[dataPosition] = returnData();
-	dataPosition++;
-	if (dataPosition >= numberOfData){
-		dataPosition = 0;
-		MPU6050IsReady = true;
-	}
+	rxData = returnData();
+//	dataValueBluetoth[dataPosition] = returnData();
+//	dataPosition++;
+//	if (dataPosition >= numberOfData){
+//		dataPosition = 0;
+//		MPU6050IsReady = true;
+//	}
 }

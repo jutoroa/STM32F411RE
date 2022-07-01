@@ -2179,3 +2179,51 @@
 2022-06-26 18:24:25,330 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
 2022-06-26 18:24:25,330 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
 2022-06-27 01:33:35,851 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-27 14:41:51,623 [INFO] Activator:177 - 
+
+
+2022-06-27 14:41:51,632 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-27 14:42:01,695 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-27 14:42:07,333 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 27, 2022 2:42:07 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-27 14:42:07,335 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1598]
+2022-06-27 14:42:07,336 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-27 14:42:07,340 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 27, 2022 2:42:07 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-27 14:42:07,342 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-27 14:42:07,344 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-27 19:25:30,642 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-28 11:34:42,921 [INFO] Activator:177 - 
+
+
+2022-06-28 11:34:42,922 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-28 11:34:47,271 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-28 11:34:48,826 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 28, 2022 11:34:48 AM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-28 11:34:48,827 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1598]
+2022-06-28 11:34:48,827 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-28 11:34:48,827 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 28, 2022 11:34:48 AM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-28 11:34:48,828 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-28 11:34:48,828 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-28 20:04:49,063 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-29 15:15:08,791 [INFO] Activator:177 - 
+
+
+2022-06-29 15:15:08,796 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-29 15:15:17,777 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-29 15:15:21,645 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 29, 2022 3:15:21 PM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-29 15:15:21,645 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1593]
+2022-06-29 15:15:21,646 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-29 15:15:21,646 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 29, 2022 3:15:21 PM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-29 15:15:21,647 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-29 15:15:21,647 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-30 00:08:08,939 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-30 11:16:59,795 [INFO] Activator:177 - 
+
+
+2022-06-30 11:16:59,800 [INFO] Activator:178 - !SESSION log4j initialized
+2022-06-30 11:17:08,207 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-06-30 11:17:11,321 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 30, 2022 11:17:11 AM org.glassfish.grizzly.http.server.NetworkListener start
+2022-06-30 11:17:11,321 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [localhost:1596]
+2022-06-30 11:17:11,321 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-30 11:17:11,322 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Jun 30, 2022 11:17:11 AM org.glassfish.grizzly.http.server.HttpServer start
+2022-06-30 11:17:11,322 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2022-06-30 11:17:11,323 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-30 23:52:04,889 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 

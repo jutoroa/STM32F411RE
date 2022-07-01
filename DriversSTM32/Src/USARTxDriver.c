@@ -156,10 +156,18 @@ void USART_Config(USART_Handler_t *ptrUsartHandler){
 
 	else if(ptrUsartHandler -> USART_Config.USART_baudrate == USART_BAUDRATE_115200){	//**************************************DUDAAAAAA
 		// El valor a cargar es 8.6875 -> Mantiza = 8, fraction = 0.6875
-		// Mantiza = 8 = 0x8, fraction = 16 * 0.6875 = 11
-		// Valor a cargar 0x0081
+		// Mantiza = 8 = 0x8, fraction = 16 * 0.6875 = 11 = 0xB
+		// Valor a cargar 0x008B
 		// Configurando el Baudrate generator para una velocidad de 115200bps
 		ptrUsartHandler -> ptrUSARTx -> BRR = 0x08B;//0x0081;
+	}
+
+	else if(ptrUsartHandler -> USART_Config.USART_baudrate == USART_BAUDRATE_38400){	//**************************************DUDAAAAAA
+		// El valor a cargar es 26.0625 -> Mantiza = 26, fraction = 0.0625
+		// Mantiza = 26 = 0x1A, fraction = 16 * 0.0625 = 1
+		// Valor a cargar 0x1A1
+		// Configurando el Baudrate generator para una velocidad de 38400bps
+		ptrUsartHandler -> ptrUSARTx -> BRR = 0x1A1;
 	}
 
 	// 2.5 Configuramos el modo: TX only, RX only, RXTX, disable

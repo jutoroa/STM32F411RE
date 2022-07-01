@@ -1,10 +1,17 @@
-16:05:34 **** Build of configuration Debug for project Driver_Nema17_V3 ****
+12:58:04 **** Build of configuration Debug for project Driver_Nema17_V3 ****
 make -j8 all 
+arm-none-eabi-gcc "../Src/mainNemaV3.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/mainNemaV3.d" -MT"Src/mainNemaV3.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/mainNemaV3.o"
+arm-none-eabi-gcc -o "Driver_Nema17_V3.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/Driver_Nema17_V3/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_Nema17_V3.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Driver_Nema17_V3.elf
+ 
 arm-none-eabi-size   Driver_Nema17_V3.elf 
+arm-none-eabi-objdump -h -S  Driver_Nema17_V3.elf  > "Driver_Nema17_V3.list"
    text	   data	    bss	    dec	    hex	filename
-  19604	    480	   1864	  21948	   55bc	Driver_Nema17_V3.elf
+  19628	    480	   1864	  21972	   55d4	Driver_Nema17_V3.elf
 Finished building: default.size.stdout
  
+Finished building: Driver_Nema17_V3.list
+ 
 
-16:05:35 Build Finished. 0 errors, 0 warnings. (took 586ms)
+12:58:05 Build Finished. 0 errors, 0 warnings. (took 622ms)
 

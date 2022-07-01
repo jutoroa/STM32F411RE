@@ -1,14 +1,21 @@
-00:07:37 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
+23:33:35 **** Incremental Build of configuration Debug for project ADC_V2 ****
 make -j8 all 
-arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-gcc "../Src/ADCMAIN_V2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/ADCMAIN_V2.d" -MT"Src/ADCMAIN_V2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/ADCMAIN_V2.o"
+arm-none-eabi-gcc -o "ADC_V2.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/ADC_V2/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_V2.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_V2.elf
+ 
+arm-none-eabi-size   ADC_V2.elf 
+arm-none-eabi-objdump -h -S  ADC_V2.elf  > "ADC_V2.list"
    text	   data	    bss	    dec	    hex	filename
-  28052	   1148	   2376	  31576	   7b58	roboticArm_V3.elf
+  28916	    476	   1892	  31284	   7a34	ADC_V2.elf
 Finished building: default.size.stdout
  
-00:07:40 **** Incremental Build of configuration Debug for project roboticArm_V3 ****
+Finished building: ADC_V2.list
+ 
+23:33:37 **** Incremental Build of configuration Debug for project ADC_V2 ****
 make -j8 all 
-arm-none-eabi-size   roboticArm_V3.elf 
+arm-none-eabi-size   ADC_V2.elf 
    text	   data	    bss	    dec	    hex	filename
-  28052	   1148	   2376	  31576	   7b58	roboticArm_V3.elf
+  28916	    476	   1892	  31284	   7a34	ADC_V2.elf
 Finished building: default.size.stdout
  

@@ -82,11 +82,13 @@ int main(void)
 				ADC1 -> CR2 &= ~(ADC_CR2_SWSTART);
 				stopContinousADC();
 				//sprintf(bufferData, "ADC = %u, %u \n\r",(unsigned int ) adcData,(unsigned int )counter);
-				for(uint16_t j = 0; j < ADC_SIGNAL_SIZE; j++){
-					sprintf(bufferData, "%u\n\r",(unsigned int) adcSignal[j]);
-					writeMsg(&handlerUsart2, bufferData);
-				}
-//				writeMsg(&handlerUsart2, bufferData);
+//				for(uint16_t j = 0; j < ADC_SIGNAL_SIZE; j++){
+//					sprintf(bufferData, "%u\n\r",(unsigned int) adcSignal[j]);
+//					writeMsg(&handlerUsart2, bufferData);
+//				}
+				sprintf(bufferData, "%d %d %d \n\r",(int) adcSignal[0],(int) adcSignal[1],
+						(int) adcSignal[2]);
+				writeMsg(&handlerUsart2, bufferData);
 //				counter++;
 				adcIsComplete = false;
 		}
@@ -108,6 +110,10 @@ void initSystem(void){
 	handlerStateLED.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_NOTHING;
 	handlerStateLED.GPIO_PinConfig.GPIO_PinSpeed		= GPIO_OSPEED_MEDIUM;
 
+	GPIO_Config(&handlerStateLED);
+
+	GPIO_WritePin(&handlerStateLED, SET);
+
 	// Configuración del ADC1
 
 	//configADC1.channel									= ADC_CHANNEL_4;
@@ -116,9 +122,9 @@ void initSystem(void){
 	configADC1.dataAlignment							= ADC_ALIGNMENT_RIGHT;
 	configADC1.numberOfChannels							= 3;
 	configADC1.channelMode								= ADC_MULTI_CHANNEL;
-	configADC1.channel_First							= ADC_CHANNEL_4;
-	configADC1.channel_Second							= ADC_CHANNEL_6;
-	configADC1.channel_Third							= ADC_CHANNEL_7;
+	configADC1.channel_First							= ADC_CHANNEL_8;
+	configADC1.channel_Second							= ADC_CHANNEL_0;
+	configADC1.channel_Third							= ADC_CHANNEL_1;
 
 	adc_Config(&configADC1);
 
@@ -162,7 +168,7 @@ void initSystem(void){
 	handlerTimer3.ptrTIMx								= TIM3;
 	handlerTimer3.timerConfig.Timer_mode				= TIMER_MODE_UP;
 	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
-	handlerTimer3.timerConfig.Timer_period				= 500;
+	handlerTimer3.timerConfig.Timer_period				= 100;
 
 	//Cargamos la configuración
 	GPIO_Config(&handlerStateLED);

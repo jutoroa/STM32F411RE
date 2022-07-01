@@ -166,14 +166,14 @@ int main(void)
 
 			char bufferDataBluetooth[128] = {0};
 			// Mandamos para X (Servo 1)
-			sprintf(bufferDataBluetooth, "%f", duty_x);
+			sprintf(bufferDataBluetooth, "%d %d %d =", (int) duty_x,(int) duty_y,(int) fAdcData);
 			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
-			// Mandamos para Y (Servo 2)
-			sprintf(bufferDataBluetooth, "%f", duty_y);
-			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
-			// Mandamos para ADC (Servo 3)
-			sprintf(bufferDataBluetooth, "%f", fAdcData);
-			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
+//			// Mandamos para Y (Servo 2)
+//			sprintf(bufferDataBluetooth, "%u @",2);
+//			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
+//			// Mandamos para ADC (Servo 3)
+//			sprintf(bufferDataBluetooth, "%u @",3);
+//			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
 
 			// Mostramos los valores en la pantalla OLED
 //			char bufferDataOLEDx[128] = {0};
@@ -183,7 +183,7 @@ int main(void)
 //			OLED_FPrintPage(&handler_OLED, bufferDataOLEDx, PAGE_3);
 
 			char bufferDataOLEDx[128] = {0};
-			sprintf(bufferDataOLEDx, "ANGX:%f,ANGY:%f,ADC:%f\n", duty_x, duty_y, fAdcData);
+			sprintf(bufferDataOLEDx, "ANGX:%d,ANGY:%d,ADC:%d\n",(int) duty_x,(int) duty_y,(int) fAdcData);
 			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
 
 			// Bajamos la bandera del MPU6050
@@ -270,9 +270,9 @@ void initSystem(void){
 	// Configuración del USART Bluetooth para la conexión a través del HC-05
 	handlerUsartBluetooth.ptrUSARTx							= USART6;
 	handlerUsartBluetooth.USART_Config.USART_mode			= USART_MODE_RXTX;
-	handlerUsartBluetooth.USART_Config.USART_baudrate		= USART_BAUDRATE_19200;
+	handlerUsartBluetooth.USART_Config.USART_baudrate		= USART_BAUDRATE_38400;
 	handlerUsartBluetooth.USART_Config.USART_datasize		= USART_DATASIZE_8BIT;
-	handlerUsartBluetooth.USART_Config.USART_parity			= USART_PARITY_ODD;
+	handlerUsartBluetooth.USART_Config.USART_parity			= USART_PARITY_NONE;
 	handlerUsartBluetooth.USART_Config.USART_stopbits		= USART_STOPBIT_1;
 	handlerUsartBluetooth.USART_Config.USART_interrupt 		= USART_INTERRUPT_RX_ENABLE;
 
