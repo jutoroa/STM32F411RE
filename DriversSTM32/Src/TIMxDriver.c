@@ -66,13 +66,11 @@ void Timer_Config(TIMER_Handler_t *ptrTimerConfig){
 	/* 4. Configuramos el periodo de las interrupciones */
 	ptrTimerConfig -> ptrTIMx -> ARR = ptrTimerConfig -> timerConfig.Timer_period -1;
 
-	/* 5. Activamos al timer para que comience a incrementarse  */
-	ptrTimerConfig -> ptrTIMx -> CR1 |= TIM_CR1_CEN;
+//	/* 5. Activamos al timer para que comience a incrementarse  */
+//	ptrTimerConfig -> ptrTIMx -> CR1 |= TIM_CR1_CEN;
 
 	/* 6. Activamos la interrupción debida a un "update event" */
-	if(ptrTimerConfig -> ptrTIMx != TIM3){
-		ptrTimerConfig -> ptrTIMx -> DIER |= TIM_DIER_UIE;
-	}
+	ptrTimerConfig -> ptrTIMx -> DIER |= TIM_DIER_UIE;
 
 	/* 7. Activamos la señal de la interrupcuón en el NVIC */
 
@@ -85,7 +83,7 @@ void Timer_Config(TIMER_Handler_t *ptrTimerConfig){
 
 	}else if(ptrTimerConfig -> ptrTIMx == TIM3){
 		// Activamos la IRQ del TIM3
-		__NVIC_DisableIRQ(TIM3_IRQn);
+		__NVIC_EnableIRQ(TIM3_IRQn);
 
 	}else if(ptrTimerConfig -> ptrTIMx == TIM4){
 		// Activamos la IRQ del TIM4
@@ -102,15 +100,14 @@ void Timer_Config(TIMER_Handler_t *ptrTimerConfig){
 }
 
 void startTimer(TIMER_Handler_t *ptrTimerConfig){
-	ptrTimerConfig -> ptrTIMx -> DIER |= TIM_DIER_UIE;
-
-
-	__NVIC_EnableIRQ(TIM3_IRQn);
+	/* 5. Activamos al timer para que comience a incrementarse  */
+	ptrTimerConfig -> ptrTIMx -> CR1 |= TIM_CR1_CEN;
 }
 
 void stopTimer(TIMER_Handler_t *ptrTimerConfig){
-	ptrTimerConfig -> ptrTIMx -> DIER &= ~TIM_DIER_UIE;
-	__NVIC_DisableIRQ(TIM3_IRQn);
+	/* 5. Desactivamos el timer para que comience a incrementarse  */
+	ptrTimerConfig -> ptrTIMx -> CR1 &= ~(TIM_CR1_CEN);
+
 }
 
 

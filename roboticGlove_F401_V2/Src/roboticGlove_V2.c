@@ -125,6 +125,8 @@ int main(void)
 	while(1){
 
 		if(counterFilter >= 10){
+			startSingleADC();									// Lanzamos la conversión ADC
+
 			// Leemos las aceleraciones del MPU6050 en x,y, y z.
 			int16_t AccelX = MPU6050_SensorValue(&handler_MPU6050,ACCEL_X);
 			int16_t AccelY = MPU6050_SensorValue(&handler_MPU6050,ACCEL_Y);
@@ -159,8 +161,6 @@ int main(void)
 			duty_x = ((ang_x + 80.0) * (100.0/160.0)) + 80.0;
 			duty_y = ((ang_y + 80.0) * (100.0/160.0)) + 80.0;
 
-			startSingleADC();									// Lanzamos la conversión ADC
-
 			// Bajamos la bandera
 			counterFilter  = 0;
 		}
@@ -174,29 +174,25 @@ int main(void)
 					(int) dataPotX,(int) dataPotY);
 			writeMsg(&handlerUsartBluetooth, bufferDataBluetooth);
 
-			MPU6050IsReady = true;
+
+//			char bufferDataOLEDx[256] = {0};
+//			sprintf(bufferDataOLEDx, "POTX: %d POTY: %d \n",(int) dataPotX,
+//					(int) dataPotY);
+//			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
+
+//			char bufferDataOLEDx[256] = {0};
+//			sprintf(bufferDataOLEDx, "ANGX:%d,ANGY:%d,ADC:%d POTX: %d POTY: %d \n",(int) duty_x,
+//					(int) duty_y,(int) adcSignal[0],(int) adcSignal[1],(int) adcSignal[2]);
+//			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
+
 			counterMPU6050 = 0;
-		}
-
-
-		if(MPU6050IsReady == true){
-			// Calculamos los Duty para cada motor y los mandamos por Bluetooth
-			// Bloque de código para imprimir por serial los datos valores obtenidos
-			char bufferDataOLEDx[256] = {0};
-			sprintf(bufferDataOLEDx, "ANGX:%d,ANGY:%d,ADC:%d POTX: %d POTY: %d \n",(int) duty_x,
-					(int) duty_y,(int) fAdcData,(int) adcDataPotX,(int) adcDataPotY);
-			writeMsg(&handlerCommTerminal, bufferDataOLEDx);
-
-			// Bajamos la bandera del MPU6050
-			MPU6050IsReady	= false;
-
 		}
 
 
 
 		if(adcIsComplete == true){
 			// Calculamos la escala para convertir la conversión ADC en movimiento del servo
-//			fAdcData = (((adcData - 2100.0)*100.0)/1500.0) + 80.0;
+			fAdcData = (((adcData - 2100.0)*100.0)/1500.0) + 80.0;
 
 			//******************************
 			adcDataFlexSensor = adcSignal[0];
@@ -253,10 +249,10 @@ void initSystem(void){
 	// Configuración del ADC
 //	handlerADC.channel									= ADC_CHANNEL_8;
 	handlerADC.resolution								= ADC_RESOLUTION_12_BIT;
-	handlerADC.samplingPeriod							= ADC_SAMPLING_PERIOD_3_CYCLES;
+	handlerADC.samplingPeriod							= ADC_SAMPLING_PERIOD_56_CYCLES;
 	handlerADC.dataAlignment							= ADC_ALIGNMENT_RIGHT;
-	handlerADC.numberOfChannels							= 1;
-	handlerADC.channelMode								= ADC_SINGLE_CHANNEL;
+//	handlerADC.numberOfChannels							= 1;
+//	handlerADC.channelMode								= ADC_SINGLE_CHANNEL;
 
 	handlerADC.numberOfChannels							= 3;
 	handlerADC.channelMode								= ADC_MULTI_CHANNEL;
@@ -408,5 +404,6 @@ void adc_Complete_Callback(void){
 	if (dataPosition >= ADC_SIGNAL_SIZE){
 		dataPosition = 0;
 		adcIsComplete = true;
+		ADC1 -> CR2 &= ~(ADC_CR2_SWSTART);
 	}
 }

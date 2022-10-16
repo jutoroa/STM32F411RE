@@ -34,6 +34,7 @@
 // *************** // VARIABLES PROYECTO // *************** //
 
 GPIO_Handler_t handlerStateLED 		= {0};	// StateLED
+GPIO_Handler_t handlerStateLED2 		= {0};	// StateLED2
 TIMER_Handler_t handlerTimer2 		= {0};	// Timer2
 TIMER_Handler_t handlerTimer3 		= {0};	// Timer3
 TIMER_Handler_t handlerTimer4 		= {0};	// Timer4
@@ -60,7 +61,7 @@ GPIO_Handler_t handlerDir3Config 	= {0};
 uint32_t 	nMotor 			= 0;
 uint8_t 	dataValue 	 	= '\0';
 uint32_t 	pasos 			= 5;						//Variable que define la cantidad de pasos
-uint32_t 	delayTime 		= 10;						//Tiempo de delay entre paso y paso del motor en ms
+uint32_t 	delayTime 		= 1;						//Tiempo de delay entre paso y paso del motor en ms
 uint32_t 	auxLedState 	= 0;
 
 
@@ -94,8 +95,9 @@ uint16_t 	adcData			= 0;				// Valor obtenido por el ADC
 unsigned int dataValueBluetoth[numberOfData] 	= {0};
 uint16_t dataPosition 	= 0;
 uint8_t MPU6050IsReady = false;
-int adcDataPotX = 0;
-int adcDataPotY = 0;
+int dataPotX = 0;
+int dataPotY = 0;
+uint32_t counterAux = 0;
 
 /* Configuración para la OLED */
 char 		bufferDataOLED[128] = {0};
@@ -143,6 +145,25 @@ int main(void)
     /* Ciclo principal */
 	while(1){
 
+		if(counterStateLED >= 250){
+			handlerStateLED2.pGPIOx -> ODR ^= GPIO_ODR_OD7;		// Encendido y apagado StateLED
+			counterStateLED = 0;
+		}
+
+//		if(dataValue != '\0'){
+//		writeChar(&handlerCommTerminal,dataValue);
+//		// Comparación de los valores recibidos.
+//		if(dataValue == '1'){
+//			nMotor = 1;				// Acción cada vez que se oprima el interruptor
+//			auxLedState = 1;
+//		}else if(dataValue == '2'){
+//			nMotor = 2;				// Acción cada vez que se oprima el interruptor
+//			auxLedState = 2;
+//		}else if(dataValue == '3'){
+//			nMotor = 3;				// Acción cada vez que se oprima el interruptor
+//			auxLedState = 3;
+//		}
+//	}
 		if(rxData != '\0'){
 //			writeChar(&handlerCommTerminal,rxData);
 			//Guardamos las cadenas para los comandos
@@ -164,36 +185,71 @@ int main(void)
 		// Hacemos un análisis de la cadena de datos obtenida
 		if(stringComplete){
 			// Llamamos a la función para implementar los comandos
-			sscanf(bufferReception, "%d %d %d %d %d", &duty_x,&duty_y,&duty_ADC, &adcDataPotX, &adcDataPotY);
+			sscanf(bufferReception, "%d %d %d %d %d", &duty_x,&duty_y,&duty_ADC, &dataPotX, &dataPotY);
 
-			sprintf(bufferData,"%d %d %d %d %d \n",duty_x, duty_y, duty_ADC, adcDataPotX, adcDataPotY);
+			sprintf(bufferData,"%d %d %d %d %d \n",duty_x, duty_y, duty_ADC, dataPotX, dataPotY);
 			writeMsg(&handlerCommTerminal,bufferData);
 
-			MPU6050IsReady = true;
 			stringComplete = false;
 
 			setDutty(&handlerPWMServo1, duty_x);
 			setDutty(&handlerPWMServo2, duty_y);
 			setDutty(&handlerPWMServo3, duty_ADC);
+
+			counterAux++;
 		}
 
-		if(dataValue != '\0'){
-			writeChar(&handlerCommTerminal,dataValue);
-			// Comparación de los valores recibidos.
-			if(dataValue == '1'){
-				nMotor = 1;				// Acción cada vez que se oprima el interruptor
-				auxLedState = 1;
-			}else if(dataValue == '2'){
-				nMotor = 2;				// Acción cada vez que se oprima el interruptor
-				auxLedState = 2;
-			}else if(dataValue == '3'){
-				nMotor = 3;				// Acción cada vez que se oprima el interruptor
-				auxLedState = 3;
+		if(dataPotX != 5){
+			nMotor = 2;				// Acción cada vez que se oprima el interruptor
+			auxLedState = 2;
+
+			if(dataPotX == 0){
+				dataValue = 'a';
 			}
-			ledControl();
-			motorConfig();
-			dataValue = '\0';
+			else if(dataPotX == 1){
+				dataValue = 'd';
+			}
+			else{
+				dataValue = '\0';
+			}
 		}
+
+		if(dataPotY != 5){
+			nMotor = 1;				// Acción cada vez que se oprima el interruptor
+			auxLedState = 1;
+			if(dataPotY == 0){
+				dataValue = 'a';
+			}
+			else if(dataPotY == 1){
+				dataValue = 'd';
+			}
+			else{
+				dataValue = '\0';
+			}
+		}
+		if(dataPotX != 5 && dataPotY != 5){
+			nMotor = 3;				// Acción cada vez que se oprima el interruptor
+			auxLedState = 3;
+			if(dataPotX == 0 && dataPotY == 0){
+				dataValue = 'a';
+			}
+			else if(dataPotX == 1 && dataPotY == 1){
+				dataValue = 'd';
+			}
+			else{
+				dataValue = '\0';
+			}
+		}
+//			counterAux = 0;
+		ledControl();
+
+		if(counterAux >= 2){
+			motorConfig();
+			counterAux = 0;
+		}
+
+		dataValue = '\0';
+
 	}
 }
 
@@ -222,6 +278,16 @@ void initSystem(void){
 	handlerStateLED.GPIO_PinConfig.GPIO_PinSpeed		= GPIO_OSPEED_HIGH;
 
 	GPIO_Config(&handlerStateLED);
+
+	// Configuración el State LED
+	handlerStateLED2.pGPIOx								= GPIOB;
+	handlerStateLED2.GPIO_PinConfig.GPIO_PinNumber		= PIN_7;
+	handlerStateLED2.GPIO_PinConfig.GPIO_PinMode		= GPIO_MODE_OUT;
+	handlerStateLED2.GPIO_PinConfig.GPIO_PinOPType		= GPIO_OTYPE_PUSHPULL;
+	handlerStateLED2.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_NOTHING;
+	handlerStateLED2.GPIO_PinConfig.GPIO_PinSpeed		= GPIO_OSPEED_HIGH;
+
+	GPIO_Config(&handlerStateLED2);
 
 	// Definimos el handler para la configuración del STEP del motor1
 
@@ -277,8 +343,8 @@ void initSystem(void){
 
 	// Definimos el handler para la configuración del STEP del motor3
 
-	handlerStep3Config.pGPIOx 									= GPIOA;
-	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_9;
+	handlerStep3Config.pGPIOx 									= GPIOB;
+	handlerStep3Config.GPIO_PinConfig.GPIO_PinNumber			= PIN_4;
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
 	handlerStep3Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -290,7 +356,7 @@ void initSystem(void){
 	// Definimos el handler para la dirección del motor3
 
 	handlerDir3Config.pGPIOx 									= GPIOB;
-	handlerDir3Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_2;
+	handlerDir3Config.GPIO_PinConfig.GPIO_PinNumber				= PIN_5;
 	handlerDir3Config.GPIO_PinConfig.GPIO_PinMode				= GPIO_MODE_OUT;
 	handlerDir3Config.GPIO_PinConfig.GPIO_PinOPType				= GPIO_OTYPE_PUSHPULL;
 	handlerDir3Config.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_PULLUP;
@@ -598,7 +664,7 @@ void ledControl(void){
 
 	// Prendemos el motor 1
 	if(auxLedState == 1){
-		handlerTimer2.timerConfig.Timer_period				= 400;
+		handlerTimer2.timerConfig.Timer_period				= 600;
 		Timer_Config(&handlerTimer2);
 		auxLedState = 0;
 	}
@@ -622,10 +688,10 @@ void Timer2_Callback(void){
 	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
 }
 
-/*
-void Timer3_Callback(void){
-	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
-}*/
+
+//void Timer3_Callback(void){
+//	handlerStep1Config.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
+//}
 
 // Timer encargado de los delay y del muestreo del MPU6050
 void Timer4_Callback(void){

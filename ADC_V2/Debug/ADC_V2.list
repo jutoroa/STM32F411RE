@@ -1226,14 +1226,14 @@ void initSystem(void){
 
 	// Configuración del ADC1
 
-	//configADC1.channel									= ADC_CHANNEL_4;
+	//configADC1.channel								= ADC_CHANNEL_4;
 	configADC1.resolution								= ADC_RESOLUTION_12_BIT;
  8000dfa:	4b46      	ldr	r3, [pc, #280]	; (8000f14 <initSystem+0x150>)
  8000dfc:	2200      	movs	r2, #0
  8000dfe:	705a      	strb	r2, [r3, #1]
-	configADC1.samplingPeriod							= ADC_SAMPLING_PERIOD_144_CYCLES;
+	configADC1.samplingPeriod							= ADC_SAMPLING_PERIOD_28_CYCLES;
  8000e00:	4b44      	ldr	r3, [pc, #272]	; (8000f14 <initSystem+0x150>)
- 8000e02:	2206      	movs	r2, #6
+ 8000e02:	2202      	movs	r2, #2
  8000e04:	805a      	strh	r2, [r3, #2]
 	configADC1.dataAlignment							= ADC_ALIGNMENT_RIGHT;
  8000e06:	4b43      	ldr	r3, [pc, #268]	; (8000f14 <initSystem+0x150>)
@@ -1384,13 +1384,13 @@ void initSystem(void){
  8000ed0:	4b16      	ldr	r3, [pc, #88]	; (8000f2c <initSystem+0x168>)
  8000ed2:	2200      	movs	r2, #0
  8000ed4:	711a      	strb	r2, [r3, #4]
-	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
+	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_100us;
  8000ed6:	4b15      	ldr	r3, [pc, #84]	; (8000f2c <initSystem+0x168>)
- 8000ed8:	f44f 527a 	mov.w	r2, #16000	; 0x3e80
+ 8000ed8:	f44f 62c8 	mov.w	r2, #1600	; 0x640
  8000edc:	80da      	strh	r2, [r3, #6]
-	handlerTimer3.timerConfig.Timer_period				= 100;
+	handlerTimer3.timerConfig.Timer_period				= 10;
  8000ede:	4b13      	ldr	r3, [pc, #76]	; (8000f2c <initSystem+0x168>)
- 8000ee0:	2264      	movs	r2, #100	; 0x64
+ 8000ee0:	220a      	movs	r2, #10
  8000ee2:	609a      	str	r2, [r3, #8]
 
 	//Cargamos la configuración

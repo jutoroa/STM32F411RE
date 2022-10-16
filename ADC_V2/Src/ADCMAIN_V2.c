@@ -116,9 +116,9 @@ void initSystem(void){
 
 	// Configuración del ADC1
 
-	//configADC1.channel									= ADC_CHANNEL_4;
+	//configADC1.channel								= ADC_CHANNEL_4;
 	configADC1.resolution								= ADC_RESOLUTION_12_BIT;
-	configADC1.samplingPeriod							= ADC_SAMPLING_PERIOD_144_CYCLES;
+	configADC1.samplingPeriod							= ADC_SAMPLING_PERIOD_28_CYCLES;
 	configADC1.dataAlignment							= ADC_ALIGNMENT_RIGHT;
 	configADC1.numberOfChannels							= 3;
 	configADC1.channelMode								= ADC_MULTI_CHANNEL;
@@ -167,8 +167,8 @@ void initSystem(void){
 	// Configuración del timer3
 	handlerTimer3.ptrTIMx								= TIM3;
 	handlerTimer3.timerConfig.Timer_mode				= TIMER_MODE_UP;
-	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
-	handlerTimer3.timerConfig.Timer_period				= 100;
+	handlerTimer3.timerConfig.Timer_speed				= TIMER_INCR_SPEED_100us;
+	handlerTimer3.timerConfig.Timer_period				= 10;
 
 	//Cargamos la configuración
 	GPIO_Config(&handlerStateLED);

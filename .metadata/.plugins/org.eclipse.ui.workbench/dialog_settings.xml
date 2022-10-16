@@ -13,23 +13,23 @@
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="orderedElements">
 			<item value="org.eclipse.cdt.ui.preferences.CodeColoringPreferencePage"/>
+			<item value="com.genuitec.eclipse.theming.preferences.themes"/>
 			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
 			<item value="org.eclipse.epp.mpc.ui.command.showInstalled"/>
-			<item value="com.genuitec.eclipse.theming.preferences.themes"/>
 			<item value="org.eclipse.ui.window.preferences"/>
 			<item value="org.eclipse.ui.preferencePages.AutoSave"/>
 		</list>
 		<list key="orderedProviders">
 			<item value="org.eclipse.ui.preferences"/>
 			<item value="org.eclipse.ui.preferences"/>
-			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.preferences"/>
+			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.preferences"/>
 		</list>
 		<list key="textEntries">
 			<item value="1"/>
-			<item value="1"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 			<item value="1"/>
@@ -37,9 +37,10 @@
 		</list>
 		<list key="textArray">
 			<item value="synta"/>
+			<item value="theme"/>
+			<item value="them"/>
 			<item value="color"/>
 			<item value="plug"/>
-			<item value="colo"/>
 			<item value="prefe"/>
 			<item value="auto"/>
 		</list>
@@ -52,6 +53,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="/home/jutoroa/workspace/STMDirectory/Robotic_Arm_Final_Project_jutoroa.zip"/>
 			<item value="/home/jutoroa/workspace/STMDirectory/tarea5_jutoroa.zip"/>
 			<item value="/home/jutoroa/Documents/examenFinal_jutoroa.zip"/>
 		</list>
