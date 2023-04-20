@@ -1,4 +1,4 @@
-/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+/home/jutoroa/workspace/CMSIS_REPO/STM32CubeF4-master/Drivers/CMSIS/Core/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
 ../Src/USARTxDriver.c:19:6:USART_Config	16	static,ignoring_inline_asm
 ../Src/USARTxDriver.c:295:28:USART1_Callback	4	static,ignoring_inline_asm
 ../Src/USARTxDriver.c:300:28:USART2_Callback	4	static,ignoring_inline_asm

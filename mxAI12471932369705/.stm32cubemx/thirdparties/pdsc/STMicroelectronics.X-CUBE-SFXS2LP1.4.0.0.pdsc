@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-SFXS2LP1</name>
+  <description>Drivers and sample applications for SFXS2LP1 components</description>
+  <license>en.DM00751078.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+
+   <releases>
+    <release version="4.0.0" date="2022-05-26">
+	  - Sigfox pack updated for Middlware access from any other pack
+	  - Migration from older version of pack to v4.0.0 is not supported
+    </release>
+    <release version="3.1.0" date="2021-05-31">
+	  - Sigfox pack updated with Bug Fixes
+      - Example selector support added
+    </release>
+    <release version="3.0.0" date="2021-02-05">
+	  - Sigfox Library updated with Bug Fixes
+      - This software package includes drivers for S2-LP and library for the Sigfox proprietary protocol with Monarch feature
+    </release>
+	<release version="2.0.0" date="2020-11-02">
+	  - This was the 1st release on CubeMX
+      - Add the support to X-NUCLEO-S2915A1 and X-NUCLEO-S2868A2.
+      - This software package includes drivers for S2-LP and library for the Sigfox proprietary protocol with Monarch feature
+    </release>
+  </releases>
+  
+  <taxonomy>
+	<description  Cclass="Board Extension">The expansion boards support class</description>
+  </taxonomy>
+
+  <keywords>    
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    <keyword>SIGFOX</keyword>
+	<keyword>THIRD</keyword>
+  </keywords>
+  
+  <requirements>
+   <packages>
+   <package name="X-CUBE-SUBG2" vendor="STMicroelectronics" version="5.0.0"/>
+   </packages>
+  </requirements>
+
+  <apis>
+    <api Cclass="Board Extension" Cgroup="S2868A1" Capiversion="5.0.0" exclusive="0">   
+      <description>S2LP software for X-NUCLEO-S2868A1</description>
+      <files>
+        <file category="doc"     name="Documentation/X-CUBE-SFXS2LP1.chm" />
+      </files>
+    </api>
+    <api Cclass="Board Extension" Cgroup="S2868A2" Capiversion="5.0.0" exclusive="0">   
+      <description>S2LP software for X-NUCLEO-S2868A2</description>
+      <files>
+        <file category="doc"     name="Documentation/X-CUBE-SFXS2LP1.chm" />
+      </files>
+    </api>
+    <api Cclass="Board Extension" Cgroup="S2915A1" Capiversion="5.0.0" exclusive="0">   
+      <description>S2LP software for X-NUCLEO-S2915A1</description>
+      <files>
+        <file category="doc"     name="Documentation/X-CUBE-SFXS2LP1.chm" />
+      </files>
+    </api>
+  </apis> 
+  
+  
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4</description>
+      <!-- STM32F0 -->
+      <accept Dcore="Cortex-M0"/>
+	  
+      <!-- STM32L0 -->
+      <accept Dcore="Cortex-M0+"/>
+      
+      <!-- STM32F1, STM32F2 and STM32L1 -->
+	  <accept Dcore="Cortex-M3"/>
+      
+      <!-- STM32F4, STM32F3 and STM32L4 series -->
+      <accept Dcore="Cortex-M4"/>  
+    </condition>
+
+    <condition id="CM0_GCC">
+      <accept Dcore="Cortex-M0"/>
+	  <accept Dcore="Cortex-M0+"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM0_IAR">
+      <accept Dcore="Cortex-M0"/>
+	  <accept Dcore="Cortex-M0+"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM0_Keil">
+      <accept Dcore="Cortex-M0"/>
+	  <accept Dcore="Cortex-M0+"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+	
+	<condition id="CM3_GCC">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM3_IAR">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM3_Keil">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+    <condition id="CM4_GCC">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM4_IAR">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM4_Keil">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+	<condition id="supported_families">	
+	  <description>Supported MCU Families(L0/L1/L4)</description> 
+	  <accept Dname="STM32L0*"/>
+	  <accept Dname="STM32L1*"/>
+	  <accept Dname="STM32L4*"/>	  
+    </condition>
+	
+	<condition id="S2868A1_Condition">	
+	  <description>Cortex-M Device and board setup (X-NUCLEO-S2868A1)</description> 
+	  <require condition="Cortex-M Device"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>  
+	  <deny Cclass="Board Extension" Cgroup="S2868A2"/> 		  
+    </condition>
+    <condition id="S2868A2_Condition">	
+	  <description>Cortex-M Device and board setup (X-NUCLEO-S2868A2)</description> 
+	  <require condition="Cortex-M Device"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+	  <deny Cclass="Board Extension" Cgroup="S2868A1"/> 		  
+    </condition>
+    
+    <condition id="S2915A1_Condition">	
+	  <description>Cortex-M Device and board setup (X-NUCLEO-S2915A1)</description> 
+	  <require condition="Cortex-M Device"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/>   
+	  <deny Cclass="Board Extension" Cgroup="S2868A1"/> 
+    </condition>
+	
+	<condition id="SIGFOX SERIAL Condition">
+        <description>Cortex-M Device and board setup </description>      
+        <require condition="Cortex-M Device"/>   
+	    <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	    <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	    <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+    </condition>
+	
+   <!-- S2868A1 CLI Examples condition -->
+    <condition id="S2868A1_Sigfox_CLI_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A1" Cversion = "4.1.0"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/> 
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>	  
+    </condition>
+    
+    <!-- S2868A1 CLI Examples MONARCH condition -->
+    <condition id="S2868A1_Sigfox_CLI_MONARCH_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A1" Cversion = "4.1.0"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/> 	  
+    </condition>
+
+    <!-- S2868A1 Push Button Examples condition -->
+    <condition id="S2868A1_Sigfox_Push_Button_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A1" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <deny Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/> 
+	  <deny Cclass="Board Extension" Cgroup="S2868A2"/> 	  
+    </condition>
+	
+   <!-- S2868A2 CLI Examples condition -->
+    <condition id="S2868A2_Sigfox_CLI_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A2" Cversion = "4.1.0"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A1"/> 	
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>	  
+    </condition>
+    
+    <!-- S2868A2 CLI Examples MONARCH condition -->
+    <condition id="S2868A2_Sigfox_CLI_MONARCH_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A2" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A1"/> 	  
+    </condition>
+
+    <!-- S2868A2 Push Button Examples condition -->
+    <condition id="S2868A2_Sigfox_Push_Button_Condition">
+      <require Cclass="Board Extension" Cgroup="S2868A2" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <deny Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2915A1"/> 
+	  <deny Cclass="Board Extension" Cgroup="S2868A1"/> 	  
+    </condition>
+
+    <!-- S2915A1 CLI Examples condition -->
+    <condition id="S2915A1_Sigfox_CLI_Condition">
+      <require Cclass="Board Extension" Cgroup="S2915A1" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+      <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>	  
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+	  <deny Cclass="Board Extension" Cgroup="S2868A1"/>   	  
+    </condition>
+
+    <!-- S2915A1 CLI Examples condition -->
+    <condition id="S2915A1_Sigfox_CLI_MONARCH_Condition">
+      <require Cclass="Board Extension" Cgroup="S2915A1" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <require Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/> 
+	  <deny Cclass="Board Extension" Cgroup="S2868A1"/>   	  
+    </condition>
+
+    <!-- S2915A1 Push Button Examples condition -->
+    <condition id="S2915A1_Sigfox_Push_Button_Condition">
+      <require Cclass="Board Extension" Cgroup="S2915A1" Cversion = "4.1.0"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cversion="2.8.1"/>
+	  <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cversion="2.8.1"/>
+	  <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	  <deny Cbundle="Utilities" Cclass="Utility" Cgroup="Serial"/>
+      <deny Cclass="Board Extension" Cgroup="S2868A2"/>  	
+      <deny Cclass="Board Extension" Cgroup="S2868A1"/>  	  
+    </condition>
+
+    <!-- SIGFOX STM32 library Condition -->
+    <condition id="SIGFOX STM32 LIB Condition">
+	 <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	 <require condition="Cortex-M Device" />
+	 <accept Cclass="Board Extension" Cgroup="S2868A1" Cversion = "4.1.0"/>
+	 <accept Cclass="Board Extension" Cgroup="S2868A2" Cversion = "4.1.0"/>
+	 <accept Cclass="Board Extension" Cgroup="S2915A1" Cversion = "4.1.0"/>
+    </condition>
+	
+    <!-- SIGFOX Third party Library condition -->
+	<condition id="Sigfox Third Party LIB Condition">
+	 <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+	 <require condition="Cortex-M Device" />
+	 <accept Cclass="Board Extension" Cgroup="S2868A1" Cversion = "4.1.0"/>
+	 <accept Cclass="Board Extension" Cgroup="S2868A2" Cversion = "4.1.0"/>
+	 <accept Cclass="Board Extension" Cgroup="S2915A1" Cversion = "4.1.0"/>
+    </condition>
+  </conditions>
+  
+   <components>
+	<component Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library" Cvendor="Sigfox" condition="SIGFOX STM32 LIB Condition" Cversion="2.8.1" maxInstances="1">
+       <description>Sigfox STM library</description>
+        <files>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/fifo_ramps_etsi.h"/>   
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/fifo_ramps_fcc.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/fifo_ramps_fcc_SKY66420.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/nvm_api.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/retriever_api.h"/>	
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/sigfox_stack.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/st_mcu_api.h"/>	
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/st_monarch_api.h"/>	
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Inc/st_rf_api.h"/>		
+	      <file category="source"  name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Src/mcu_api.c" />
+          <file category="source"  name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Src/nvm_api.c" />
+	      <file category="source"  name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Src/rf_api.c" />	 
+          <file category="library" condition="CM0_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM0+_GCC.a"/>      
+          <file category="library" condition="CM0_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM0+_IAR.a"/>
+          <file category="library" condition="CM0_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM0+_Keil.a"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM3_GCC.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM3_IAR.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM3_Keil.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM4_GCC.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM4_IAR.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Monarch/ST_MONARCH_LIB_CM4_Keil.a"/>
+          <file category="library" condition="CM0_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM0+_GCC.a"/>
+	      <file category="library" condition="CM0_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM0+_IAR.a"/>
+          <file category="library" condition="CM0_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM0+_Keil.a"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM3_GCC.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM3_IAR.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM3_Keil.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM4_GCC.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM4_IAR.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox_STM32_Library/Lib/Retriever/ST_RETRIEVER_LIB_CM4_Keil.a"/>
+        </files>
+    </component>
+
+    <component Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library" Cvendor="Sigfox" condition="Sigfox Third Party LIB Condition" Cversion="2.8.1" maxInstances="1">
+       <description>SIGFOX THIRD PARTY LIBRARY</description>
+        <files>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/addon_sigfox_rf_protocol_api.h"/>   
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/mcu_api.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/monarch_api.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/rf_api.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/sigfox_api.h"/>	
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/sigfox_monarch_api.h"/>
+          <file category="header" name="Middlewares/Third_Party/Sigfox/Sigfox/Inc/sigfox_types.h"/>			 
+          <file category="library" condition="CM0_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM0+_GCC.a"/>      
+          <file category="library" condition="CM0_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM0+_IAR.a"/>
+          <file category="library" condition="CM0_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM0+_Keil.a"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM3_GCC.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM3_IAR.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM3_Keil.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM4_GCC.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM4_IAR.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/RF_Library/ADDON_RF_PROTOCOL_MON_CM4_Keil.a"/>
+          <file category="library" condition="CM0_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM0+_GCC.a"/>
+	      <file category="library" condition="CM0_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM0+_IAR.a"/>
+          <file category="library" condition="CM0_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM0+_Keil.a"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM3_GCC.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM3_IAR.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM3_Keil.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM4_GCC.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM4_IAR.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/Third_Party/Sigfox/Sigfox/Lib/Sigfox_Library/SFX_LIB_MON_CM4_Keil.a"/>
+        </files>
+    </component>
+
+	
+	<bundle Cbundle = "Utilities" Cvendor="STMicroelectronics" Cclass="Utility" Cversion="1.2.0">
+      <description>Sigfox Serial Utility</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-SFXS2LP1_GettingStarted.pdf</doc>
+      <component Cgroup="Serial" condition="SIGFOX SERIAL Condition" isDefaultVariant="true" maxInstances="1">
+        <!-- short component description -->
+        <description>Serial Utility</description>
+		<RTE_Components_h>#define USE_SERIAL</RTE_Components_h>
+        <files>
+		    <file category="header" name="Utilities/CLI/command-interpreter2.h"/>  
+            <file category="header" name="Utilities/CLI/serial_utils.h"/>
+            <file category="header" name="Utilities/CLI/utils.h"/>		
+	        <file category="source"  name="Utilities/CLI/command-interpreter2.c" />
+            <file category="source"  name="Utilities/CLI/response.c" />
+	        <file category="source"  name="Utilities/CLI/serial_utils.c" />	
+	        <file category="source"  name="Utilities/CLI/utils.c" />
+        </files>                           
+      </component>
+    </bundle>   
+
+	<bundle Cvendor="STMicroelectronics" Cbundle="Type" Cclass="Memory" Cversion="4.0.0"> 
+	  <description>Memory Type Selection</description>	
+	  <doc>Documentation/STMicroelectronics.X-CUBE-SFXS2LP1_GettingStarted.pdf</doc>	
+      <component Cgroup="NVM Type" Cvariant="EEPROM" isDefaultVariant="false" condition="Cortex-M Device" maxInstances="1">
+	     <!-- short component description -->
+        <description>Memory Type selection is EEPROM</description>
+        <RTE_Components_h>#define USE_EEPROM</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="NVM Type" Cvariant="FLASH" isDefaultVariant="false" condition="supported_families" maxInstances="1">
+	     <!-- short component description -->
+        <description>Memory Type selection is internal FLASH</description>
+        <RTE_Components_h>#define USE_FLASH</RTE_Components_h>
+        <files/>
+      </component>
+    </bundle>    
+	
+	
+    <bundle Cvendor="STMicroelectronics" Cbundle="Application" Cclass="Device" Cversion="4.0.0"> 
+	  <description>Sigfox example</description>	
+	  <doc>Documentation/STMicroelectronics.X-CUBE-SFXS2LP1_GettingStarted.pdf</doc>	
+      <component Cgroup="Application" Cvariant="S2868A1_Sigfox_CLI" isDefaultVariant="false" condition="S2868A1_Sigfox_CLI_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI  for X-NUCLEO-S2868A1</description>
+        <RTE_Components_h>#define S2868A1_SIGFOX_CLI</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2868A1_Sigfox_CLI_MONARCH" isDefaultVariant="false" condition="S2868A1_Sigfox_CLI_MONARCH_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI with MONARCH for X-NUCLEO-S2868A1</description>
+        <RTE_Components_h>#define S2868A1_SIGFOX_CLI_MONARCH</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2868A1_Sigfox_Push_Button" isDefaultVariant="false" condition="S2868A1_Sigfox_Push_Button_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox Push Button for X-NUCLEO-S2868A1</description>
+	    <RTE_Components_h>#define S2868A1_SIGFOX_PUSH_BUTTON</RTE_Components_h>
+        <files/>
+      </component>	
+      <component Cgroup="Application" Cvariant="S2868A2_Sigfox_CLI" isDefaultVariant="false" condition="S2868A2_Sigfox_CLI_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI  for X-NUCLEO-S2868A2</description>
+        <RTE_Components_h>#define S2868A2_SIGFOX_CLI</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2868A2_Sigfox_CLI_MONARCH" isDefaultVariant="false" condition="S2868A2_Sigfox_CLI_MONARCH_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI with MONARCH for X-NUCLEO-S2868A2</description>
+        <RTE_Components_h>#define S2868A2_SIGFOX_CLI_MONARCH</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2868A2_Sigfox_Push_Button" isDefaultVariant="false" condition="S2868A2_Sigfox_Push_Button_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox Push Button for X-NUCLEO-S2868A2</description>
+	    <RTE_Components_h>#define S2868A2_SIGFOX_PUSH_BUTTON</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2915A1_Sigfox_CLI" isDefaultVariant="false" condition="S2915A1_Sigfox_CLI_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI for X-NUCLEO-S2915A1</description>
+	    <RTE_Components_h>#define S2915A1_SIGFOX_CLI</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2915A1_Sigfox_CLI_MONARCH" isDefaultVariant="false" condition="S2915A1_Sigfox_CLI_MONARCH_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox CLI with MONARCH for X-NUCLEO-S2915A1</description>
+	    <RTE_Components_h>#define S2915A1_SIGFOX_CLI_MONARCH</RTE_Components_h>
+        <files/>
+      </component>
+      <component Cgroup="Application" Cvariant="S2915A1_Sigfox_Push_Button" isDefaultVariant="false" condition="S2915A1_Sigfox_Push_Button_Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Sigfox Push Button for X-NUCLEO-S2915A1</description>
+	    <RTE_Components_h>#define S2915A1_SIGFOX_PUSH_BUTTON</RTE_Components_h>
+      <files/>
+     </component>
+
+    </bundle>    
+	</components>
+</package>
+

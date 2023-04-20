@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+</head>
+<body>
+<font color="blue"><b><u>STM32CubeF4 Firmware Package V1.24.0 / 08-February-2019</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<ul>
+<li><b>HAL</b></li>
+<ul>
+<li>General updates to fix known defects and enhancements implementation.</li>
+<li>General updates to fix SW4STM32 compilation errors under Linux.</li>
+<li>General updates to fix CodeSonar compilation warnings.</li>
+<li>General updates to fix the user manual .chm files.</li>
+<li>Add support of HAL callback registration feature.</li>
+<li>Add new HAL EXTI driver.</li>
+<li>Add new HAL SMBUS driver.</li>
+<li>The following changes done on the HAL drivers require an update on the application code based on older HAL versions:</li>
+<ul>
+<li>Rework of HAL CRYP driver <b>(compatibility break)</b>.</li>
+<ul>
+<li>HAL CRYP driver has been redesigned with new API's, to bypass limitations on data Encryption/Decryption management present with previous HAL CRYP driver version.</li>
+<li>The new HAL CRYP driver is the recommended version. It is located as usual in Drivers/STM32F4xx_HAL_Driver/Src and Drivers/STM32f4xx_HAL_Driver/Inc folders. It can be enabled through switch HAL_CRYP_MODULE_ENABLED in stm32f4xx_hal_conf.h.</li>
+<li>The legacy HAL CRYP driver is no longer supported.</li>
+</ul>
+<li>For USB Host application add the following USB callback in usbh_conf.c user file to be compliant with latest changes done on USB Host (HAL/Stack).</li>
+<ul>
+<li>HAL_HCD_PortEnabled_Callback().</li>
+<li>HAL_HCD_PortDisabled_Callback().</li>
+</ul>
+</ul>
+</ul>
+<li><b>Middleware:</b></li>
+<ul>
+<li>Update to use FreeRTOS V10.0.1 ST modified 20180813.</li>
+<li>Update to use FatFS R0.12c ST modified 20190125.</li>
+<li>Update to use LwIP V2.0.3 ST modified 20180813.</li>
+<li>Update to use mbedTLS V2.11.0 ST modified 20180706.</li>
+<li>Update to use USB Device V2.5.1.</li>
+<li>Update to use USB Host V3.3.2.</li>
+</ul>
+</ul>
+</body></html>

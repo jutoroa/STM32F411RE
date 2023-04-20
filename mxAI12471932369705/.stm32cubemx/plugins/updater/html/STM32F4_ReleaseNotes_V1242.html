@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+</head>
+<body>
+<font color="blue"><b><u>STM32CubeF4 Firmware Package V1.24.2 / 06-december-2019</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<li>Patch release to fix known defects and enhancements implementation</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin's</li>
+<li>General update to enhance HAL EXTI driver robustness </li>
+<li>MISRAC-2012 rule R.5.1 (identifiers shall be distinct in the first 31 characters) deployed on HAL HASH diriver</li>
+<li>Rename the defined MMC card capacity type to be more meaningful</li>
+<li>Implement SDIO hardware flow control Errata Sheet limitation</li>
+<li>Fix USART baudrate calculation error for clock higher than 172Mhz</li>
+<li>Update HAL_I2C_Init() API to force software reset before setting new I2C configuration</li>
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren't initialized (NULL pointer).</li>
+</ul>
+</body></html>

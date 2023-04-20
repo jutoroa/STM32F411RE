@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<Computer DBVersion="2.0">
+    <Software>
+        <PackDescription Release="MX.6.5.0"/>
+    </Software>
+    <DataBase>
+        <PackDescription Release="DB.6.0.50"/>
+    </DataBase>
+    <Firmware>
+        <PackDescription InstallPath="/home/jutoroa/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1" Patch="FW.F4.1.27.1" Release="FW.F4.1.27.0">
+            <Note Patch="ReleaseNotes_Patch.html" Release="ReleaseNotes.html"/>
+        </PackDescription>
+    </Firmware>
+    <Firmware>
+        <PackDescription InstallPath="/home/jutoroa/STM32Cube/Repository/STM32Cube_FW_F0_V1.11.3" Patch="FW.F0.1.11.3" Release="FW.F0.1.11.0">
+            <Note Patch="ReleaseNotes_Patch.html" Release="ReleaseNotes.html"/>
+        </PackDescription>
+    </Firmware>
+    <ThirdParty Name="X-CUBE-AI" Vendor="STMicroelectronics">
+        <ShortDescription>Artificial Intelligence</ShortDescription>
+        <PackDescription InstallPath="/home/jutoroa/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/5.1.2" Release="5.1.2" ReleaseUrl="http://sw-center.st.com/packs/x-cube/STMicroelectronics.X-CUBE-AI.5.1.2.pack" Status="New">
+            <Note Release="&#10;Release information :&#10;&#10;Artificial Intelligence Pack version 5.1.2 for STM32 Cortex M7 and M4 MCUs&#10;What's new in this release:&#10;Enhancements of the User Interface&#10;    New graph to display the C-graph (operators and associated tensors)&#10;    New graph to display the usage of the activations buffer&#10;&#10;C-Code generation&#10;    Adding support to generate a c-array by weight/bias tensors&#10;    Adding textual c-graph description (operators and associated tensors) in the reports&#10;&#10;Embedded inference client API extension&#10;    Adding platform observer API&#10;&#10;Validation&#10;    Adding support for int8/uint8 validation files&#10;&#10;&#9;&#9;"/>
+        </PackDescription>
+    </ThirdParty>
+</Computer>

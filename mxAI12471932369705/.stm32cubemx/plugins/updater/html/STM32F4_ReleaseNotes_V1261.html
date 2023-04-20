@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+</head>
+<body>
+<font color="blue"><b><u>STM32CubeF4 Firmware Package V1.26.1 / 26-March-2021</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<li>Fix typo in USART_Receive_IT() and USART_TransmitReceive_IT() APIs to avoid possible compilation issues if the UART driver files are not included.</li>
+<li>Update STM32F411/412/413 projects to set the correct regulator voltage scaling output selection (VOS) depending on the system clock frequency (SYSCLK):
+<ul>
+<li>Scale 1 mode <= 100 MHz.</li>
+<li>Scale 2 mode <= 84 MHz.</li>
+</ul>
+</li>
+</ul>
+</body></html>

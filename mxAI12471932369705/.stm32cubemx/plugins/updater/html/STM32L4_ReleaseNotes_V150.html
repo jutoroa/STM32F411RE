@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeL4 Firmware Package V1.5.0 / 29-April-2016</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<li>Maintenance release candidate version with several enhancements in CMSIS device files and HAL drivers that impact user code application.</li>
+<ul>
+<li>New _Pos and _Msk defines deployed in STM32L4 CMSIS device files.</li>
+<li>User application impact due to the following changes.</li>
+<ul>
+<li>New simplified HAL IWDG and HAL WWDG API - Projects IWDG_Reset/IWDG_WindowMode/WWDG_Example updated.</li>
+<li>New PLLSAI1/PLLSAI2 source management in HAL RCC (HAL_RCCEx_PeriphCLKConfig()) - Projects SAI_AudioPlay and DFSDM_AudioRecord updated.</li>
+<li>New HAL timebase template using TIM peripheral (stm32l4xx_hal_timebase_tim_template.c) - All FreeRTOS-based applications updated.</li>
+<li>HAL I2C, IRDA, SMARTCARD, UART, USART, SPI, QSPI and SAI updated.</li>
+<ul>
+<li>Enable peripheral error interrupt management during DMA processes (PPP_IRQn to be added in HAL_PPP_MspInit() and need for HAL_PPP_ErrorCallback()).</li>
+<li>Fake usage of HAL_DMA_Abort_IT() for DMA abortion upon error detection.</li>
+<li>Fix timeout management in polling processes (set for the whole transfer).</li>
+</ul>
+</ul>
+</ul>
+</ul>
+</html>

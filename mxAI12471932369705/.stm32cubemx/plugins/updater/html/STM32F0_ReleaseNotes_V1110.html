@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color=blue><b><u>STM32CubeF0 Firmware Package V1.11.0 / 12-September-2019</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<li>General updates to fix known defects and enhancements implementation</li>
+<li>Add support of HAL callback registration feature</li>
+<li>Add new HAL EXTI driver</li>
+<li>The following changes done on the HAL drivers require an update on the application code based on older HAL versions</li>
+	<ul>
+	<li>HAL/LL Generic update</li>
+		<ul>
+		<li>Add support of HAL callback registration feature</li>
+			<ul>
+			<li>The feature disabled by default is available for the following HAL drivers:</li>
+				<ul>
+				<li>ADC, CAN, COMP, CEC, DAC, I2C, SMBUS, UART, USART, WWDG, RTC, SPI, I2S, TIM, TSC and PCD</li>
+				</ul>	
+
+			<li>The feature may be enabled individually per HAL PPP driver by setting the corresponding 
+			definition USE_HAL_PPP_REGISTER_CALLBACKS to 1U in stm32f3xx_hal_conf.h project 
+			configuration file (template file stm32f3xx_hal_conf_template.h available from Drivers/STM32F3xx_HAL_Driver/Inc)</li>
+
+			<li>Once enabled , the user application may resort to HAL_PPP_RegisterCallback() to register
+			specific callback function(s) and unregister it(them) with HAL_PPP_UnRegisterCallback()</li>
+
+			</ul>
+		</ul>
+	</ul>	
+<li>Demonstrations binaries are no more delivered within the STM32CubeF0 MCU package. 
+They are available for download, in addition to their required media files if any, in a standalone package accessible through each hardware board official web page. Please refer to the corresponding demonstration binary readme.txt to get web page for each board.</li>
+
+<li>HAL</li>
+	<ul>
+	<li>Add support of HAL callback registration feature</li>
+	<li>Add new HAL EXTI driver</li>
+	<li>Here below the new features introduced on HAL drivers</li>
+		<ul>
+		<li>Add support of I2C repeated start feature in DMA Mode With the following new APIs</li>
+			<ul>
+			<li>HAL_I2C_Master_Seq_Transmit_DMA()</li>
+			<li>HAL_I2C_Master_Seq_Receive_DMA()</li>
+			<li>HAL_I2C_Slave_Seq_Transmit_DMA()</li>
+			<li>HAL_I2C_Slave_Seq_Receive_DMA()</li>
+			</ul>
+		</ul>
+	</ul>
+
+<li>CMSIS</li>
+	<ul>
+	<li>Fix known defects and several implementation enhancement</li>
+	</ul>
+<li>Middleware</li>
+	<ul>
+	<li>Update to use FreeRTOS 10.0.1 ST modified 20190329</li>
+	<li>Update to use TouchSensing Library V2.2.4</li>
+	<li>Update to use USB Device Library V2.5.3</li>
+	</ul>
+</ul>
+<br>
+</html>

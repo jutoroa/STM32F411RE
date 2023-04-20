@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>STMicroelectronics</vendor>
+    <name>X-CUBE-ALS</name>
+    <description>Drivers and sample applications for ALS sensors</description>
+    <url>http://sw-center.st.com/packs/x-cube/</url>
+    <license>en.DM00484327.pdf</license>
+    <releases>
+        <release version="1.0.1">This maintenance release fix issues encoutered in MDK-ARM IDE projects:
+- Remove snprintf calls from sample applications
+- Add define in Nucleo BSP common to enable printf through stdio library in ARMCC v6
+
+Include support for the following STM32 expansion boards:
+- X-NUCLEO-6283A1
+
+Include support for the following board parts:
+- VD6283TX
+
+This pack sample applications have been generated with STM32CubeMX v6.2.1
+This pack is compatible with STM32CubeMX v6.2.1</release>
+        <release version="1.0.0">First release of the X-CUBE-ALS software pack.
+
+Include support for the following STM32 expansion boards:
+  - X-NUCLEO-6283A1
+
+Include support for the following board parts:
+  - VD6283TX
+
+This pack sample applications have been generated with STM32CubeMX v6.2.1
+This pack is compatible with STM32CubeMX v6.2.1</release>
+    </releases>
+    <keywords>
+        <keyword>ARM</keyword>
+        <keyword>Cortex-M</keyword>
+        <keyword>STMicroelectronics</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+        <keyword>ALS</keyword>
+        <keyword>IS_CONTEXT_EXCLUSIVE</keyword>
+        <keyword>DNS_BUSIO_X_CONTEXT_SHARING</keyword>
+        <keyword>DOES_NOT_SUPPORT_SECURE</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Board Part">Board Part</description>
+        <description Cclass="DSP Library">DSP Library</description>
+        <description Cclass="Board Extension">Board Extension</description>
+    </taxonomy>
+    <conditions>
+        <condition id="Cortex-M Device">
+            <description>Cortex-M processor based device</description>
+            <accept Dcore="Cortex-M0"/>
+            <accept Dcore="Cortex-M0+"/>
+            <accept Dcore="Cortex-M3"/>
+            <accept Dcore="Cortex-M4"/>
+            <accept Dcore="Cortex-M7"/>
+            <accept Dcore="Cortex-M33"/>
+        </condition>
+        <condition id="CM0_GCC">
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM0+_GCC">
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM3_GCC">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM4_GCC">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM7_GCC">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM33_GCC">
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM0_IAR">
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM0+_IAR">
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM3_IAR">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM4_IAR">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM7_IAR">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM33_IAR">
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM0_Keil">
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM0+_Keil">
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM3_Keil">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM4_Keil">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM7_Keil">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM33_Keil">
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Exclude custom ALS components">
+            <deny Cclass="Board Part" Cgroup="Light"/>
+        </condition>
+        <condition id="Exclude Applications for 6283A1">
+            <deny Cbundle="ALS_Applications" Cclass="Device" Cvariant="6283A1_LuxCCT"/>
+            <deny Cbundle="ALS_Applications" Cclass="Device" Cvariant="6283A1_ALSValues"/>
+        </condition>
+        <condition id="VD6283TX Condition">
+            <description>Cortex-M Device and board setup (VD6283TX Driver)</description>
+            <require condition="Cortex-M Device"/>
+            <require condition="Exclude Applications for 6283A1"/>
+            <deny Cclass="Board Extension" Cgroup="6283A1"/>
+        </condition>
+        <condition id="VD6283TX HW Condition">
+            <description>Condition for sample applications</description>
+            <require Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="LIGHT_SENSOR"/>
+            <require Cclass="Board Part" Cgroup="Light" Csub="VD6283TX"/>
+            <deny Cclass="Board Extension" Cgroup="6283A1"/>
+        </condition>
+        <condition id="6283A1 Condition">
+            <require condition="Exclude custom ALS components"/>
+            <require condition="Cortex-M Device"/>
+        </condition>
+        <condition id="6283A1 Examples Condition">
+            <require Cclass="Board Extension" Cgroup="6283A1"/>
+            <require condition="Cortex-M Device"/>
+            <require condition="Exclude custom ALS components"/>
+        </condition>
+    </conditions>
+    <components>
+        <component Cclass="Board Extension" Cgroup="6283A1" Cversion="1.0.0" condition="6283A1 Condition" maxInstances="1">
+            <description>X-NUCLEO-6283A1 BSP drivers</description>
+            <RTE_Components_h>#define VD6283A1</RTE_Components_h>
+            <files>
+                <file category="header" name="Drivers/BSP/6283A1/6283a1_conf_template.h"/>
+                <file category="source" name="Drivers/BSP/6283A1/6283a1_light_sensor.c"/>
+                <file category="header" name="Drivers/BSP/6283A1/6283a1_light_sensor.h"/>
+                <file category="doc" name="Drivers/BSP/6283A1/readme.txt"/>
+                <file category="doc" name="Drivers/BSP/6283A1/Release_notes.html"/>
+                <file category="other" name="Drivers/BSP/6283A1/Release_notes.md"/>
+                <file category="other" name="Drivers/BSP/6283A1/_htmresc/Add button.svg"/>
+                <file category="other" name="Drivers/BSP/6283A1/_htmresc/favicon.png"/>
+                <file category="other" name="Drivers/BSP/6283A1/_htmresc/mini-st_2020.css"/>
+                <file category="other" name="Drivers/BSP/6283A1/_htmresc/st_logo_2020.png"/>
+                <file category="other" name="Drivers/BSP/6283A1/_htmresc/Update.svg"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/modules/STALS.h"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/modules/VD6283.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/modules/VD6283_map.h"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/porting/platform.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/porting/STALS_compat.h"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/porting/STALS_platform.h"/>
+                <file category="doc" name="Drivers/BSP/Components/vd6283tx/Release_notes.html"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/Release_notes.md"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/vd6283tx.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/vd6283tx.h"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/Add button.svg"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/favicon.png"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/mini-st_2020.css"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/st_logo_2020.png"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/Update.svg"/>
+                <file category="header" name="Drivers/BSP/Components/Common/light_sensor.h"/>
+            </files>
+        </component>
+        <component Cclass="Board Part" Cgroup="Light" Csub="VD6283TX" Cversion="1.0.0" condition="VD6283TX Condition" maxInstances="1">
+            <description>VD6283TX Component Driver</description>
+            <RTE_Components_h>#define VD6283TX</RTE_Components_h>
+            <files>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/modules/STALS.h"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/modules/VD6283.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/modules/VD6283_map.h"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/porting/platform.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/porting/STALS_compat.h"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/porting/STALS_platform.h"/>
+                <file category="doc" name="Drivers/BSP/Components/vd6283tx/Release_notes.html"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/Release_notes.md"/>
+                <file category="source" name="Drivers/BSP/Components/vd6283tx/vd6283tx.c"/>
+                <file category="header" name="Drivers/BSP/Components/vd6283tx/vd6283tx.h"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/Add button.svg"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/favicon.png"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/mini-st_2020.css"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/st_logo_2020.png"/>
+                <file category="other" name="Drivers/BSP/Components/vd6283tx/_htmresc/Update.svg"/>
+            </files>
+        </component>
+        <bundle Cbundle="ALS_Applications" Cclass="Device" Cversion="1.0.0">
+            <description>ALS application library</description>
+            <doc>Documentation/STMicroelectronics.X-CUBE-ALS_GettingStarted.pdf</doc>
+            <component Cgroup="Application" Cvariant="6283A1_LuxCCT" condition="6283A1 Examples Condition" isDefaultVariant="true" maxInstances="1">
+                <description>Lux and CCT sample application for X-NUCLEO-6283A1</description>
+                <RTE_Components_h>#define VD6283A1_LUX_CCT</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="6283A1_ALSValues" condition="6283A1 Examples Condition" maxInstances="1">
+                <description>ALS Values sample application for X-NUCLEO-6283A1</description>
+                <RTE_Components_h>#define VD6283A1_ALS_VALUES</RTE_Components_h>
+                <files/>
+            </component>
+        </bundle>
+    </components>
+</package>

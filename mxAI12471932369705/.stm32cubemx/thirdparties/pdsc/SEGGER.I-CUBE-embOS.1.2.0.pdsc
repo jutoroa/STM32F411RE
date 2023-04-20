@@ -1,0 +1,1447 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>SEGGER</vendor>
+    <name>I-CUBE-embOS</name>
+    <description>SEGGER.I-CUBE-embOS</description>
+    <url>https://download.segger.com/cmsis/</url>
+    <license>License.txt</license>
+    <supportContact>support_embos@segger.com</supportContact>
+    <releases>
+        <release date="2021-03-08" version="1.2.0">
+      Initial version:
+      - embOS kernel (RTOS)
+      - CMSIS-RTOS layer for embOS for Cortex-M
+      - CMSIS-RTOS2 layer for embOS for Cortex-M
+    </release>
+    </releases>
+    <keywords>
+        <keyword>SEGGER</keyword>
+        <keyword>RTOS</keyword>
+        <keyword>embOS</keyword>
+        <keyword>OS</keyword>
+        <keyword>operating system</keyword>
+        <keyword>real-time</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="RTOS">RTOS</description>
+    </taxonomy>
+    <requirements>
+        <compilers>
+            <compiler name="ARMCC" version="4.0.0"/>
+            <compiler name="GCC" version="1.0.0"/>
+            <compiler name="IAR" version="8.11.1"/>
+        </compilers>
+    </requirements>
+    <conditions>
+        <condition id="ARMCC5">
+            <description>ARM Compiler 5</description>
+            <require Tcompiler="ARMCC" Toptions="AC5"/>
+        </condition>
+        <condition id="ARMCC6">
+            <description>ARM Compiler 6</description>
+            <accept Tcompiler="ARMCC" Toptions="AC6"/>
+            <accept Tcompiler="ARMCC" Toptions="AC6LTO"/>
+        </condition>
+        <condition id="GCC">
+            <description>GNU Compiler</description>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="IAR">
+            <description>IAR Compiler</description>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM0">
+            <description>Cortex-M0, Cortex-M0+ or SC000</description>
+            <accept Dcore="Cortex-M0"/>
+            <accept Dcore="Cortex-M0+"/>
+            <accept Dcore="SC000"/>
+        </condition>
+        <condition id="CM3">
+            <description>Cortex-M3 or SC300</description>
+            <accept Dcore="Cortex-M3"/>
+            <accept Dcore="SC300"/>
+        </condition>
+        <condition id="CM4">
+            <description>Cortex-M4</description>
+            <require Dcore="Cortex-M4" Dfpu="NO_FPU"/>
+        </condition>
+        <condition id="CM4F">
+            <description>Cortex-M4 using FPU</description>
+            <accept Dcore="Cortex-M4" Dfpu="FPU"/>
+            <accept Dcore="Cortex-M4" Dfpu="SP_FPU"/>
+            <accept Dcore="Cortex-M4" Dfpu="DP_FPU"/>
+        </condition>
+        <condition id="CM7">
+            <description>Cortex-M7</description>
+            <require Dcore="Cortex-M7" Dfpu="NO_FPU"/>
+        </condition>
+        <condition id="CM7F">
+            <description>Cortex-M7 using FPU</description>
+            <accept Dcore="Cortex-M7" Dfpu="FPU"/>
+            <accept Dcore="Cortex-M7" Dfpu="SP_FPU"/>
+            <accept Dcore="Cortex-M7" Dfpu="DP_FPU"/>
+        </condition>
+        <condition id="CM23">
+            <description>Cortex-M23</description>
+            <require Dcore="Cortex-M23" Dtz="NO_TZ"/>
+        </condition>
+        <condition id="CM33">
+            <description>Cortex-M33</description>
+            <require Dcore="Cortex-M33" Dfpu="NO_FPU" Dtz="NO_TZ"/>
+        </condition>
+        <condition id="CM33F">
+            <description>Cortex-M33 using FPU</description>
+            <accept Dcore="Cortex-M33" Dfpu="FPU" Dtz="NO_TZ"/>
+            <accept Dcore="Cortex-M33" Dfpu="SP_FPU" Dtz="NO_TZ"/>
+            <accept Dcore="Cortex-M33" Dfpu="DP_FPU" Dtz="NO_TZ"/>
+        </condition>
+        <condition id="Little">
+            <deny Dendian="Big-endian"/>
+            <deny Dendian="Configurable"/>
+        </condition>
+        <condition id="Big">
+            <require Dendian="Big-endian"/>
+        </condition>
+        <condition id="CM0_ARMCC5_LE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the ARM Compiler 5, little endian</description>
+            <require condition="CM0"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM0_ARMCC5_BE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the ARM Compiler 5, big endian</description>
+            <require condition="CM0"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM3_ARMCC5_LE">
+            <description>Cortex-M3 or SC300 for the ARM Compiler 5, little endian</description>
+            <require condition="CM3"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM3_ARMCC5_BE">
+            <description>Cortex-M3 or SC300 for the ARM Compiler 5, big endian</description>
+            <require condition="CM3"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4_ARMCC5_LE">
+            <description>Cortex-M4 for the ARM Compiler 5, little endian</description>
+            <require condition="CM4"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4_ARMCC5_BE">
+            <description>Cortex-M4 for the ARM Compiler 5, big endian</description>
+            <require condition="CM4"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4F_ARMCC5_LE">
+            <description>Cortex-M4 using FPU for the ARM Compiler 5, little endian</description>
+            <require condition="CM4F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4F_ARMCC5_BE">
+            <description>Cortex-M4 using FPU for the ARM Compiler 5, big endian</description>
+            <require condition="CM4F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7_ARMCC5_LE">
+            <description>Cortex-M7 for the ARM Compiler 5, little endian</description>
+            <require condition="CM7"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7_ARMCC5_BE">
+            <description>Cortex-M7 for the ARM Compiler 5, big endian</description>
+            <require condition="CM7"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7F_ARMCC5_LE">
+            <description>Cortex-M7 using FPU for the ARM Compiler 5, little endian</description>
+            <require condition="CM7F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7F_ARMCC5_BE">
+            <description>Cortex-M7 using FPU for the ARM Compiler 5, big endian</description>
+            <require condition="CM7F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33_ARMCC5_LE">
+            <description>Cortex-M33 for the ARM Compiler 5, little endian</description>
+            <require condition="CM33"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33_ARMCC5_BE">
+            <description>Cortex-M33 for the ARM Compiler 5, big endian</description>
+            <require condition="CM33"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33F_ARMCC5_LE">
+            <description>Cortex-M33 using FPU for the ARM Compiler 5, little endian</description>
+            <require condition="CM33F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33F_ARMCC5_BE">
+            <description>Cortex-M33 using FPU for the ARM Compiler 5, big endian</description>
+            <require condition="CM33F"/>
+            <require condition="ARMCC5"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM0_ARMCC6_LE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the ARM Compiler 6, little endian</description>
+            <require condition="CM0"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM0_ARMCC6_BE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the ARM Compiler 6, big endian</description>
+            <require condition="CM0"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM3_ARMCC6_LE">
+            <description>Cortex-M3 or SC300 for the ARM Compiler 6, little endian</description>
+            <require condition="CM3"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM3_ARMCC6_BE">
+            <description>Cortex-M3 or SC300 for the ARM Compiler 6, big endian</description>
+            <require condition="CM3"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4_ARMCC6_LE">
+            <description>Cortex-M4 for the ARM Compiler 6, little endian</description>
+            <require condition="CM4"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4_ARMCC6_BE">
+            <description>Cortex-M4 for the ARM Compiler 6, big endian</description>
+            <require condition="CM4"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4F_ARMCC6_LE">
+            <description>Cortex-M4 using FPU for the ARM Compiler 6, little endian</description>
+            <require condition="CM4F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4F_ARMCC6_BE">
+            <description>Cortex-M4 using FPU for the ARM Compiler 6, big endian</description>
+            <require condition="CM4F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7_ARMCC6_LE">
+            <description>Cortex-M7 for the ARM Compiler 6, little endian</description>
+            <require condition="CM7"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7_ARMCC6_BE">
+            <description>Cortex-M7 for the ARM Compiler 6, big endian</description>
+            <require condition="CM7"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7F_ARMCC6_LE">
+            <description>Cortex-M7 using FPU for the ARM Compiler 6, little endian</description>
+            <require condition="CM7F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7F_ARMCC6_BE">
+            <description>Cortex-M7 using FPU for the ARM Compiler 6, big endian</description>
+            <require condition="CM7F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33_ARMCC6_LE">
+            <description>Cortex-M33 for the ARM Compiler 6, little endian</description>
+            <require condition="CM33"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33_ARMCC6_BE">
+            <description>Cortex-M33 for the ARM Compiler 6, big endian</description>
+            <require condition="CM33"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33F_ARMCC6_LE">
+            <description>Cortex-M33 using FPU for the ARM Compiler 6, little endian</description>
+            <require condition="CM33F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33F_ARMCC6_BE">
+            <description>Cortex-M33 using FPU for the ARM Compiler 6, big endian</description>
+            <require condition="CM33F"/>
+            <require condition="ARMCC6"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM0_GCC_LE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the GNU Compiler, little endian</description>
+            <require condition="CM0"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM0_GCC_BE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the GNU Compiler, big endian</description>
+            <require condition="CM0"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM3_GCC_LE">
+            <description>Cortex-M3 or SC300 for the GNU Compiler, little endian</description>
+            <require condition="CM3"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM3_GCC_BE">
+            <description>Cortex-M3 or SC300 for the GNU Compiler, big endian</description>
+            <require condition="CM3"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4_GCC_LE">
+            <description>Cortex-M4 for the GNU Compiler, little endian</description>
+            <require condition="CM4"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4_GCC_BE">
+            <description>Cortex-M4 for the GNU Compiler, big endian</description>
+            <require condition="CM4"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4F_GCC_LE">
+            <description>Cortex-M4 using FPU for the GNU Compiler, little endian</description>
+            <require condition="CM4F"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4F_GCC_BE">
+            <description>Cortex-M4 using FPU for the GNU Compiler, big endian</description>
+            <require condition="CM4F"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7_GCC_LE">
+            <description>Cortex-M7 for the GNU Compiler, little endian</description>
+            <require condition="CM7"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7_GCC_BE">
+            <description>Cortex-M7 for the GNU Compiler, big endian</description>
+            <require condition="CM7"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7F_GCC_LE">
+            <description>Cortex-M7 using FPU for the GNU Compiler, little endian</description>
+            <require condition="CM7F"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7F_GCC_BE">
+            <description>Cortex-M7 using FPU for the GNU Compiler, big endian</description>
+            <require condition="CM7F"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM23_GCC_LE">
+            <description>Cortex-M23 for the GNU Compiler, little endian</description>
+            <require condition="CM23"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM23_GCC_BE">
+            <description>Cortex-M23 for the GNU Compiler, big endian</description>
+            <require condition="CM23"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33_GCC_LE">
+            <description>Cortex-M33 for the GNU Compiler, little endian</description>
+            <require condition="CM33"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33_GCC_BE">
+            <description>Cortex-M33 for the GNU Compiler, big endian</description>
+            <require condition="CM33"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33F_GCC_LE">
+            <description>Cortex-M33 using FPU for the GNU Compiler, little endian</description>
+            <require condition="CM33F"/>
+            <require condition="GCC"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33F_GCC_BE">
+            <description>Cortex-M33 using FPU for the GNU Compiler, big endian</description>
+            <require condition="CM33F"/>
+            <require condition="GCC"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM0_IAR_LE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the IAR Compiler, little endian</description>
+            <require condition="CM0"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM0_IAR_BE">
+            <description>Cortex-M0, Cortex-M0+ or SC000 for the IAR Compiler, big endian</description>
+            <require condition="CM0"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM3_IAR_LE">
+            <description>Cortex-M3 or SC300 for the IAR Compiler, little endian</description>
+            <require condition="CM3"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM3_IAR_BE">
+            <description>Cortex-M3 or SC300 for the IAR Compiler, big endian</description>
+            <require condition="CM3"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4_IAR_LE">
+            <description>Cortex-M4 for the IAR Compiler, little endian</description>
+            <require condition="CM4"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4_IAR_BE">
+            <description>Cortex-M4 for the IAR Compiler, big endian</description>
+            <require condition="CM4"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM4F_IAR_LE">
+            <description>Cortex-M4 using FPU for the IAR Compiler, little endian</description>
+            <require condition="CM4F"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM4F_IAR_BE">
+            <description>Cortex-M4 using FPU for the IAR Compiler, big endian</description>
+            <require condition="CM4F"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7_IAR_LE">
+            <description>Cortex-M7 for the IAR Compiler, little endian</description>
+            <require condition="CM7"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7_IAR_BE">
+            <description>Cortex-M7 for the IAR Compiler, big endian</description>
+            <require condition="CM7"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM7F_IAR_LE">
+            <description>Cortex-M7 using FPU for the IAR Compiler, little endian</description>
+            <require condition="CM7F"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM7F_IAR_BE">
+            <description>Cortex-M7 using FPU for the IAR Compiler, big endian</description>
+            <require condition="CM7F"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM23_IAR_LE">
+            <description>Cortex-M23 for the IAR Compiler, little endian</description>
+            <require condition="CM23"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM23_IAR_BE">
+            <description>Cortex-M23 for the IAR Compiler, big endian</description>
+            <require condition="CM23"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33_IAR_LE">
+            <description>Cortex-M33 for the IAR Compiler, little endian</description>
+            <require condition="CM33"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33_IAR_BE">
+            <description>Cortex-M33 for the IAR Compiler, big endian</description>
+            <require condition="CM33"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="CM33F_IAR_LE">
+            <description>Cortex-M33 using FPU for the IAR Compiler, little endian</description>
+            <require condition="CM33F"/>
+            <require condition="IAR"/>
+            <require condition="Little"/>
+        </condition>
+        <condition id="CM33F_IAR_BE">
+            <description>Cortex-M33 using FPU for the IAR Compiler, big endian</description>
+            <require condition="CM33F"/>
+            <require condition="IAR"/>
+            <require condition="Big"/>
+        </condition>
+        <condition id="embOS for Cortex-M0">
+            <description>embOS on Cortex-M0, Cortex-M0+, SC000</description>
+            <accept condition="CM0_ARMCC5_LE"/>
+            <accept condition="CM0_ARMCC5_BE"/>
+            <accept condition="CM0_ARMCC6_LE"/>
+            <accept condition="CM0_ARMCC6_BE"/>
+            <accept condition="CM0_GCC_LE"/>
+            <accept condition="CM0_GCC_BE"/>
+            <accept condition="CM0_IAR_LE"/>
+            <accept condition="CM0_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M3">
+            <description>embOS on Cortex-M3, SC300</description>
+            <accept condition="CM3_ARMCC5_LE"/>
+            <accept condition="CM3_ARMCC5_BE"/>
+            <accept condition="CM3_ARMCC6_LE"/>
+            <accept condition="CM3_ARMCC6_BE"/>
+            <accept condition="CM3_GCC_LE"/>
+            <accept condition="CM3_GCC_BE"/>
+            <accept condition="CM3_IAR_LE"/>
+            <accept condition="CM3_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M4">
+            <description>embOS on Cortex-M4</description>
+            <accept condition="CM4_ARMCC5_LE"/>
+            <accept condition="CM4_ARMCC5_BE"/>
+            <accept condition="CM4_ARMCC6_LE"/>
+            <accept condition="CM4_ARMCC6_BE"/>
+            <accept condition="CM4_GCC_LE"/>
+            <accept condition="CM4_GCC_BE"/>
+            <accept condition="CM4_IAR_LE"/>
+            <accept condition="CM4_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M4 using FPU">
+            <description>embOS on Cortex-M4 using FPU</description>
+            <accept condition="CM4F_ARMCC5_LE"/>
+            <accept condition="CM4F_ARMCC5_BE"/>
+            <accept condition="CM4F_ARMCC6_LE"/>
+            <accept condition="CM4F_ARMCC6_BE"/>
+            <accept condition="CM4F_GCC_LE"/>
+            <accept condition="CM4F_GCC_BE"/>
+            <accept condition="CM4F_IAR_LE"/>
+            <accept condition="CM4F_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M7">
+            <description>embOS on Cortex-M7</description>
+            <accept condition="CM7_ARMCC5_LE"/>
+            <accept condition="CM7_ARMCC5_BE"/>
+            <accept condition="CM7_ARMCC6_LE"/>
+            <accept condition="CM7_ARMCC6_BE"/>
+            <accept condition="CM7_GCC_LE"/>
+            <accept condition="CM7_GCC_BE"/>
+            <accept condition="CM7_IAR_LE"/>
+            <accept condition="CM7_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M7 using FPU">
+            <description>embOS on Cortex-M7 using FPU</description>
+            <accept condition="CM7F_ARMCC5_LE"/>
+            <accept condition="CM7F_ARMCC5_BE"/>
+            <accept condition="CM7F_ARMCC6_LE"/>
+            <accept condition="CM7F_ARMCC6_BE"/>
+            <accept condition="CM7F_GCC_LE"/>
+            <accept condition="CM7F_GCC_BE"/>
+            <accept condition="CM7F_IAR_LE"/>
+            <accept condition="CM7F_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M23">
+            <description>embOS on Cortex-M23</description>
+            <accept condition="CM23_GCC_LE"/>
+            <accept condition="CM23_GCC_BE"/>
+            <accept condition="CM23_IAR_LE"/>
+            <accept condition="CM23_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M33">
+            <description>embOS on Cortex-M33</description>
+            <accept condition="CM33_ARMCC5_LE"/>
+            <accept condition="CM33_ARMCC5_BE"/>
+            <accept condition="CM33_ARMCC6_LE"/>
+            <accept condition="CM33_ARMCC6_BE"/>
+            <accept condition="CM33_GCC_LE"/>
+            <accept condition="CM33_GCC_BE"/>
+            <accept condition="CM33_IAR_LE"/>
+            <accept condition="CM33_IAR_BE"/>
+        </condition>
+        <condition id="embOS for Cortex-M33 using FPU">
+            <description>embOS on Cortex-M33 using FPU</description>
+            <accept condition="CM33F_ARMCC5_LE"/>
+            <accept condition="CM33F_ARMCC5_BE"/>
+            <accept condition="CM33F_ARMCC6_LE"/>
+            <accept condition="CM33F_ARMCC6_BE"/>
+            <accept condition="CM33F_GCC_LE"/>
+            <accept condition="CM33F_GCC_BE"/>
+            <accept condition="CM33F_IAR_LE"/>
+            <accept condition="CM33F_IAR_BE"/>
+        </condition>
+        <condition id="embOS for ARMv6-M">
+            <description>embOS on ARMv6-M</description>
+            <require condition="embOS for Cortex-M0"/>
+        </condition>
+        <condition id="embOS for ARMv7-M and ARMv8-M Mainline">
+            <description>embOS on ARMv7-M and ARMv8M Mainline</description>
+            <accept condition="embOS for Cortex-M3"/>
+            <accept condition="embOS for Cortex-M4"/>
+            <accept condition="embOS for Cortex-M7"/>
+            <accept condition="embOS for Cortex-M33"/>
+        </condition>
+        <condition id="embOS for ARMv7-M and ARMv8-M Mainline using FPU">
+            <description>embOS on ARMv7-M and ARMv8M Mainline using FPU</description>
+            <accept condition="embOS for Cortex-M4 using FPU"/>
+            <accept condition="embOS for Cortex-M7 using FPU"/>
+            <accept condition="embOS for Cortex-M33 using FPU"/>
+        </condition>
+        <condition id="embOS for ARMv8-M Baseline">
+            <description>embOS on ARMv8-M Baseline</description>
+            <require condition="embOS for Cortex-M23"/>
+        </condition>
+        <condition id="embOS Port">
+            <description>embOS for ARM Cortex-M</description>
+            <accept condition="embOS for ARMv6-M"/>
+            <accept condition="embOS for ARMv7-M and ARMv8-M Mainline"/>
+            <accept condition="embOS for ARMv7-M and ARMv8-M Mainline using FPU"/>
+            <accept condition="embOS for ARMv8-M Baseline"/>
+            <require Cbundle="embOS" Cclass="RTOS" Cgroup="embOS kernel configuration"/>
+            <require Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration"/>
+        </condition>
+        <condition id="embOS native API">
+            <description>embOS using native embOS API</description>
+            <require condition="embOS Port"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS2"/>
+        </condition>
+        <condition id="embOS CMSIS-RTOS API">
+            <description>embOS using CMSIS-RTOS API</description>
+            <require condition="embOS Port"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="Native"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS2"/>
+        </condition>
+        <condition id="embOS CMSIS-RTOS2 API">
+            <description>embOS using CMSIS-RTOS2 API</description>
+            <require condition="embOS Port"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="Native"/>
+            <deny Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="embOS" Cclass="RTOS" Cversion="1.0.0">
+            <description>embOS real-time operating system</description>
+            <doc>https://www.segger.com/products/rtos/embos/</doc>
+            <component Cgroup="embOS kernel configuration" Cvariant="Debug and Trace">
+                <description>embOS kernel configuration including debug, profiling, stack check and trace features</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_DT  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDT.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDT.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dt.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dt.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Debug and Profiling" isDefaultVariant="true">
+                <description>embOS kernel configuration including debug, profiling and stack check features</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_DP  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBDP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBDP.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_dp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_dp.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Debug">
+                <description>embOS kernel configuration including debug features</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_D  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBD.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LD.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BD.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LD.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BD.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LD.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BD.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLD.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBD.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LD.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BD.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLD.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBD.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLD.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBD.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LD.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BD.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLD.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBD.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__d.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_d.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_d.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Stack check and Profiling">
+                <description>embOS kernel configuration including profiling and stack check features</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_SP  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBSP.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBSP.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_sp.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_sp.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Stack check">
+                <description>embOS kernel configuration including stack check features</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_S  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBS.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LS.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BS.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LS.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BS.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LS.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BS.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLS.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBS.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LS.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BS.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLS.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBS.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLS.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBS.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LS.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BS.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLS.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBS.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__s.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_s.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_s.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Release">
+                <description>embOS kernel configuration intended for release builds</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_R  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LR.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BR.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LR.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBR.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLR.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBR.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__r.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_r.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_r.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS kernel configuration" Cvariant="Extreme Release">
+                <description>embOS kernel configuration intended for size-restrained release builds</description>
+                <RTE_Components_h>
+          #define OS_LIBMODE_XR  (1)
+        </RTE_Components_h>
+                <files>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/UM01001_embOS.pdf" version="5.12.0"/>
+                    <file category="doc" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V5.html" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/UM01021_embOS_CortexM_KEIL.pdf" version="5.12.0"/>
+                    <file category="doc" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_KEIL_MDK_V6.html" version="5.12.0"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/UM01039_embOS_CortexM_GCC.pdf" version="5.10.2"/>
+                    <file category="doc" condition="GCC" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_GCC.html" version="5.10.2"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/UM01014_embOS_CortexM_IAR.pdf" version="5.10.1"/>
+                    <file category="doc" condition="IAR" name="Middlewares/Third-Party/embOS/Documentation/Release_embOS_CortexM_IAR_V8.html" version="5.10.1"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/JLINKMEM.h" version="5.12.0"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/Include/OS_Config.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Include/ARMCC5/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Include/ARMCC6/RTOS.h" version="5.12.0"/>
+                    <file category="header" condition="GCC" name="Middlewares/Third-Party/embOS/Include/GCC/RTOS.h" version="5.10.2"/>
+                    <file category="header" condition="IAR" name="Middlewares/Third-Party/embOS/Include/IAR/RTOS.h" version="5.10.1"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/JLINKMEM_Process.c" version="5.12.0"/>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Source/OS_Error.c" version="5.12.0"/>
+                    <file attr="config" category="sourceC" name="Middlewares/Third-Party/embOS/Source/RTOSInit.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC5" name="Middlewares/Third-Party/embOS/Source/ARMCC5/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="ARMCC6" name="Middlewares/Third-Party/embOS/Source/ARMCC6/OS_InitSysStackInfo.c" version="5.12.0"/>
+                    <file category="sourceC" condition="GCC" name="Middlewares/Third-Party/embOS/Source/GCC/OS_MallocLock.c" version="5.10.2"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx2.c" version="5.10.1"/>
+                    <file category="sourceC" condition="IAR" name="Middlewares/Third-Party/embOS/Source/IAR/xmtx3.c" version="5.10.1"/>
+                    <file category="library" condition="CM0_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT6BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC5_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC5/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT6BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM3_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM4F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM7F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7LXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7BXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_LE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VLXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM33F_ARMCC6_BE" name="Middlewares/Third-Party/embOS/Library/ARMCC6/osT7VBXR.lib" version="5.12.0"/>
+                    <file category="library" condition="CM0_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6LXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT6BXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM3_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM4F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM7F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLLXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM23_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT8BLBXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7LXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7BXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_LE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHLXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM33F_GCC_BE" name="Middlewares/Third-Party/embOS/Library/GCC/libosT7VHBXR.a" version="5.10.2"/>
+                    <file category="library" condition="CM0_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tl__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM0_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os6m_tb__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM3_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM4_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM4F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tl__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM7_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tb__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM7F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tl__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM23_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os8mbl_tb__xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM33_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_LE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tlv_xr.a" version="5.10.1"/>
+                    <file category="library" condition="CM33F_IAR_BE" name="Middlewares/Third-Party/embOS/Library/IAR/os7m_tbv_xr.a" version="5.10.1"/>
+                </files>
+            </component>
+            <component Cgroup="embOS API configuration" Cvariant="Native" condition="embOS Port" isDefaultVariant="true" maxInstances="1">
+                <description>embOS API configuration: Native embOS API</description>
+                <files/>
+            </component>
+            <component Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS" condition="embOS Port" maxInstances="1">
+                <description>embOS API configuration: CMSIS-RTOS API v1</description>
+                <deprecated>true</deprecated>
+                <RTE_Components_h>
+                  #define RTE_CMSIS_RTOS  (1)
+                </RTE_Components_h>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/CMSIS/RTOS/Source/cmsis_os.c"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/CMSIS/RTOS/Include/cmsis_os.h"/>
+                </files>
+            </component>
+            <component Cgroup="embOS API configuration" Cvariant="CMSIS-RTOS2" condition="embOS Port" maxInstances="1">
+                <description>embOS API configuration: CMSIS-RTOS API v2</description>
+                <RTE_Components_h>
+                  #define RTE_CMSIS_RTOS2  (1)
+                </RTE_Components_h>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/CMSIS/RTOS2/Source/cmsis_os2.c"/>
+                    <file category="header" name="Middlewares/Third-Party/embOS/CMSIS/RTOS2/Include/cmsis_os2.h"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Mutexes.c" condition="embOS native API">
+                <description>embOS sample application OS_Mutexes.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Mutexes.c"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Mutexes_CMSIS.c" condition="embOS CMSIS-RTOS API">
+                <description>embOS sample application OS_Mutexes_CMSIS.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Mutexes_CMSIS.c"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Mutexes_CMSIS2.c" condition="embOS CMSIS-RTOS2 API">
+                <description>embOS sample application OS_Mutexes_CMSIS2.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Mutexes_CMSIS2.c"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Start2Tasks.c" condition="embOS native API">
+                <description>embOS sample application OS_Start2Tasks.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Start2Tasks.c"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Start2Tasks_CMSIS.c" condition="embOS CMSIS-RTOS API">
+                <description>embOS sample application OS_Start2Tasks_CMSIS.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Start2Tasks_CMSIS.c"/>
+                </files>
+            </component>
+            <component Cgroup="embOS sample applications" Cvariant="OS_Start2Tasks_CMSIS2.c" condition="embOS CMSIS-RTOS2 API">
+                <description>embOS sample application OS_Start2Tasks_CMSIS2.c</description>
+                <files>
+                    <file category="sourceC" name="Middlewares/Third-Party/embOS/Samples/OS_Start2Tasks_CMSIS2.c"/>
+                </files>
+            </component>
+        </bundle>
+    </components>
+    <examples>
+        <example doc="ReadMe.txt" folder="Projects/STM3240G-Eval/Examples/Start2Tasks" name="Start2Tasks" public="false" version="1.0.0">
+            <description>Example application creating two simple tasks.</description>
+            <board Dvendor="STMicroelectronics:13" name="STM3240G-Eval" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="EWARM" load="Start2Tasks.ewp" name="iar"/>
+                <environment folder="Start2Tasks" load="Start2Tasks.ioc" name="stm32cubemx"/>
+                <environment folder="STM32CubeIDE" load=".cproject" name="stm32cubeide"/>
+            </project>
+            <attributes>
+                <component Cbundle="embOS" Cclass="RTOS" Cgroup="embOS kernel configuration" Cvariant="Debug and Profiling" Cvendor="SEGGER" Cversion="1.0.0"/>
+                <component Cbundle="embOS" Cclass="RTOS" Cgroup="embOS API configuration" Cvariant="Native" Cvendor="SEGGER" Cversion="1.0.0"/>
+            </attributes>
+        </example>
+    </examples>
+</package>

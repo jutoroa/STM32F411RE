@@ -1,3 +1,0 @@
-GPIOxDriver.c:22:6:GPIO_Config	24	static
-GPIOxDriver.c:133:6:GPIO_WritePin	16	static
-GPIOxDriver.c:149:10:GPIO_ReadPin	24	static

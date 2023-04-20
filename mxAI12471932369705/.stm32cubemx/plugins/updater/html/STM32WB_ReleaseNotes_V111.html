@@ -1,0 +1,29 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.1.1 / 17-May-2019</u></b></font><br>
+<b><u>Main Changes</u></b><br>
+<ul style="list-style-type: disc;">
+<li>Firmware Upgrade Services (FUS) V1.0.2:</li>
+<ul>
+<li>Add support for STM32WB5xxE(512K) and STM32WB5xxC(256K) devices.</li>
+<li>On STM32WB5xxC and STM32WB5xxE, it is mandatory to install FUS V1.0.2 before any other operation. Otherwise, the device might be locked in an unrecoverable state.</li>
+</ul><br>
+<li>Wireless Coprocessor Binary:</li>
+<ul>
+<li>BLE System: Fix stopMode2 race condition.</li>
+<li>BLE Security: Fix pairing issue with numeric comparison.</li>
+<li>Impact for stm32wb5x_BLE_Stack_fw.bin and stm32wb5x_BLE_HCILayer_fw.bin only.</li>
+</ul><br>
+<li>STM32 WPAN:</li>
+<ul>
+<li>Fix race condition in transport layer when an operating system is used..</li>
+<li>Mesh Library V1.09.000</li>
+<ul>
+<li>Light HSL Model implementation.</li>
+<li>Sensor Server Model Example.</li>
+<li>CID, PID Configuration.</li>
+<li>Fix of the BD Address issue.</li>
+</ul>
+</ul>
+</ul>
+</html>

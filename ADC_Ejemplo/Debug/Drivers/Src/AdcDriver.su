@@ -1,8 +1,0 @@
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
-../Drivers/Src/AdcDriver.c:15:6:adc_Config	16	static,ignoring_inline_asm
-../Drivers/Src/AdcDriver.c:118:6:startSingleConversion	4	static
-../Drivers/Src/AdcDriver.c:123:6:startContinuousConversion	4	static
-../Drivers/Src/AdcDriver.c:131:10:getADC	4	static
-../Drivers/Src/AdcDriver.c:136:6:ADC_IRQHandler	8	static
-../Drivers/Src/AdcDriver.c:147:28:adc_Complete_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/AdcDriver.c:152:6:configAnalogPin	16	static

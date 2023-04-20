@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+</head>
+<body>
+<font color="blue"><b><u>STM32CubeG4 Firmware Package V1.3.0 / 26-June-2020</u></b></font><br>
+<ul style="list-style-type: disc;">
+<li><b>HAL</b></li>
+<ul>
+<li>Add support for STM32G491/4A1 part numbers.</li>
+</ul>
+<li><b>CMSIS Core</b></li>
+<ul>
+<li>Upgrade to use new CMSIS Core version  V5.6.</li>
+</ul>
+<li><b>Middlewares</b></li>
+<ul>
+<li>USB Device library upgrade to use new version of  V2.6.1.</li>
+<ul>
+<li>USB Core: Fix warning issue with Keil due to missing return value of setup API</li>
+<li>Integration of three new USB device Class drivers:</li>
+<li>USB CDC ECM Class driver</li>
+<li>USB CDC RNDIS Microsoft Class driver</li>
+<li>USB Billboard Class driver</li>
+</ul>
+<li>USB-PD Core library upgrade to use V3.0.3 and G4 USBPD Device Driver upgrade to use V4.0.1, including :</li>
+<ul>
+<li>Maintenance corrections (including updates for Conformance testing)</li>
+<li>Addition of a mechanism to avoid RX buffer overwrite in case of multiple RX</li>
+<li>Management of Tx discard and Tx abort by UCPD IP</li>
+</ul>
+<li>STM32 OpenBootLoader library upgrade to use V2.0.0</li>
+<ul>
+<li>Add support for new Bootloader I2C commands compatible with the Standard Bootloader I2C commands</li>
+</ul>
+</ul>
+</ul>
+</body></html>

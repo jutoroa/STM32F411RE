@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.11.1 / 02-April-2021</u></b></font><br><br>
+<b><u>Main Changes</u></b><br><br>
+<b>Patch Release for FUS security update and Wireless protocols corrections</b><br>
+<ul style="list-style-type: disc;">
+<li>FUS:</li>
+<ul>
+<li>Add functional security enhancements.</li>
+</ul>
+<li>BLE:</li>
+<ul>
+<li>STM32WB15/WB10 VCO settings update to enhance RX path</li>
+<li>Data throughput enhancement on all projects</li>
+<li>Ability to reconnect in secure mode on a 2nd link if master database is clear during 1st link connection</li>
+<li>Resolution of ACI_GAP_BOND_LOST_Event timeout in case Allow_rebond is not sent</li>
+<li>PTS issue ticket done CASE0070853: CID value should be ok above 1000</li>
+<li>BLE_Ota application improved to be SBSFU ready and support Flash driver use / SEM7 flash activity control</li>
+</ul>
+<li>Thread:</li>
+<ul>
+<li>Power consumption enhancement when running above 3mn in Thread_SED_Coap_Multicast example</li>
+</ul>
+<li>Zigbee:</li>
+<ul>
+<li>Allow Zigbee stack to go in low power mode after SF timer wrap-around</li>
+<li>Add support of 2 new Zigbee FreeRTOS example applications (IAR only):</li>
+<ul>
+<li>/P-NUCLEO-WB55.Nucleo/Applications/Zigbee/Zigbee_OnOff_Client_Router_FreeRTOS</li>
+<li>/P-NUCLEO-WB55.Nucleo/Applications/Zigbee/Zigbee_OnOff_Server_Coord_FreeRTOS</li>
+</ul>
+</ul>
+<li>MAC 802.15.4:</li>
+<ul>
+<li>Allow the user to set the PLL @64MHz for CM4</li>
+</ul>
+</ul>
+</html>

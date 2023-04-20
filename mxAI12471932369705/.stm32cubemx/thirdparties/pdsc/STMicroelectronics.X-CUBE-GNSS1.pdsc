@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.6.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-GNSS1</name>
+  <description>Drivers, libraries and sample applications for the GNSS Teseo-LIV3F and Teseo-VIC3DA modules</description>
+  <license>en.DM00251784.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+  
+  <releases>
+    <release version="6.0.0" date="2022-06-08">
+      GNSS support package V6.0.0
+      - This version is compatible with STM32CubeMX V6.6.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V6.6.0
+      - Introduce support to ThreadX Core (AZRTOS) for STM32U5
+      - Publish code on GitHub
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively
+    </release>
+    <release version="5.2.0" date="2021-02-03">
+      GNSS support package V5.2.0
+      - This version is compatible with STM32CubeMX V6.2.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V6.2.x
+      - Add support to Example Selector
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively 
+    </release>
+    <release version="5.1.0" date="2020-11-04">
+      GNSS support package V5.1.0
+      - This version is compatible with STM32CubeMX V6.1.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V6.1.x
+      - Align to latest STM32Cube HAL
+      - Other improvements
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively 
+    </release>
+    <release version="5.0.0" date="2020-07-03">
+      GNSS support package V5.0.0
+      - This version is compatible with STM32CubeMX V6.0.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V6.0.x
+      - Align Component and Bundle names to latest STM32Cube specifications
+      - Update sample applications
+    </release>
+    <release version="4.1.0" date="2020-02-07">
+      GNSS support package V4.1.0
+      - This version is compatible with STM32CubeMX V5.6.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V5.6.x
+      - Fix Custom Board project generation
+    </release>
+    <release version="4.0.0" date="2019-12-10">
+      GNSS support package V4.0.0
+      - This version is compatible with STM32CubeMX V5.5.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V5.5.x
+      - Fix Geofence feature in SimOSGetPos sample application
+    </release>
+    <release version="3.1.0" date="2019-09-23">
+      GNSS support package V3.1.0
+      - This version is compatible with STM32CubeMX V5.4.x (not fully compatible with older releases)
+      - Create sample applications with STM32CubeMX V5.4.x
+      - Add compatibility file
+      - Align to XSD Schema V1.6.0
+      - Add Teseo-LIV3F as a Bare Metal or FreeRTOS variant 
+    </release>    
+    <release version="3.0.0" date="2019-04-19">
+      GNSS support package V3.0.0
+      - This version is compatible with STM32CubeMX V5.2.x (not fully compatible with older releases)
+      - Rework the Driver and the Middleware
+      - Update implementation of FWUpdater application
+    </release>
+    <release version="0.0.6" date="2018-09-18">
+      Add FW_Updater application
+      Add how to configure FW_Updater application in the documentation
+    </release>
+    <release version="0.0.5" date="2018-07-27">
+      Modification into the pack to follow the "CMSIS Pack project generation"
+    </release>
+    <release version="0.0.4" date="2018-07-13">
+      Add SimOSGetPos application
+      Add how to configure SimOSGetPos application in the documentation
+    </release>
+    <release version="0.0.3" date="2018-06-29">
+      Add VirtualCOMPort application
+      Add how to configure 144 pins nucleo in the documentation
+      Add how to configure VirtualCOMPort application in the documentation
+    </release>
+    <release version="0.0.2" date="2018-06-06">
+      Fix issue between uart and driver files
+      Add uart example to the documentation
+    </release>
+    <release version="0.0.1" date="2018-04-30">
+      Initial release of GNSS application
+    </release>
+  </releases>
+  
+  <taxonomy>
+    <description  Cclass="Board Part">The GNSS components support class</description>      
+    <description  Cclass="Board Extension">The expansion boards support class</description>
+  </taxonomy>
+  
+  <keywords>    
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>GNSS</keyword>
+    <keyword>X-NUCLEO-GNSS1A1</keyword>
+	<keyword>Teseo-LIV3F</keyword>
+	<keyword>X-NUCLEO-GNSS2A1</keyword>
+	<keyword>Teseo-VIC3DA</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    <keyword>IS_CONTEXT_EXCLUSIVE</keyword>
+    <keyword>DNS_BUSIO_X_CONTEXT_SHARING</keyword>
+    <keyword>DOES_NOT_SUPPORT_SECURE</keyword>
+  </keywords>
+  
+  <apis>
+    <api Cclass="Board Extension" Cgroup="GNSS1A1" Capiversion="4.0.0" exclusive="1">
+      <description>GNSS library for X-NUCLEO-GNSS1A1 board</description>
+      <files>
+        <file category="doc"    name="Documentation/X-CUBE-GNSS1.chm"/>
+      </files>
+    </api>
+    <api Cclass="Board Support" Cgroup="Custom" Capiversion="4.0.0" exclusive="1">
+      <description>GNSS library for GNSS custom boards</description>
+      <files>
+        <file category="doc"    name="Documentation/X-CUBE-GNSS1.chm"/>
+      </files>
+    </api>
+    <api Cclass="Data Exchange" Cgroup="lib_gnss" Capiversion="5.0.0" exclusive="1">
+      <description>GNSS library for X-NUCLEO-GNSS1A1 and GNSS custom boards</description>
+      <files>
+        <file category="doc"    name="Documentation/X-CUBE-GNSS1.chm"/>
+      </files>
+    </api>
+  </apis>
+  
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M33 </description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M33"/>
+    </condition>
+    
+    <condition id="Teseo LIV3F Condition">
+      <description>Cortex-M Device and board setup (TESEO-LIV3F Driver)</description>
+      <require condition="Cortex-M Device"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibGNSS"/>
+    </condition>
+	
+    <condition id="CMSIS Core with RTOS">
+      <description>CMSIS Core with RTOS for Cortex-M processor</description>
+	  <!-- selecting either the CMSIS RTOS V1 or the CMSIS RTOS V2 is ok -->
+      <accept Cclass="CMSIS" Cgroup="RTOS" Csub="FreeRTOS"/>
+      <accept Cclass="CMSIS" Cgroup="RTOS2" Csub="FreeRTOS"/>
+    </condition>
+
+    <condition id="ThreadX Core (Azure RTOS)">
+      <description>ThreadX Core (Azure RTOS) for Cortex-M processor</description>
+      <require Cbundle="ThreadX" Cclass="RTOS" Cgroup="ThreadX" Csub="Core"/>
+    </condition>
+
+    <condition id="Teseo LIV3F CMSIS FreeRTOS Condition">
+      <description>Cortex-M Device and board setup (TESEO-LIV3F Driver)</description>
+      <require condition="Cortex-M Device"/>
+      <require condition="CMSIS Core with RTOS"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibGNSS"/>
+    </condition>
+	
+    <condition id="Teseo LIV3F ThreadX Condition">
+      <description>Cortex-M Device and board setup (TESEO-LIV3F Driver)</description>
+      <!--
+      <accept Dname="STM32F4*"/>
+      <accept Dname="STM32H7*"/>
+      <accept Dname="STM32L4*"/>
+	  -->
+      <accept Dname="STM32U5*"/>
+      <require condition="ThreadX Core (Azure RTOS)"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibGNSS"/>
+    </condition>
+	
+    <condition id="GNSS1A1 Condition">
+      <description>Cortex-M Device and board setup (X-NUCLEO-GNSS1A1)</description>
+      <require condition="Cortex-M Device"/>
+      <require Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F"/>
+    </condition>
+    
+    <condition id="GNSSLibrary Condition">
+      <description>GNSSLibrary component</description>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibNMEA"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="Interface"/>
+    </condition>
+    
+    <condition id="NMEAParser Condition">
+      <description>NMEAParser component</description>   	  
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibGNSS"/>
+    </condition>
+    
+    <condition id="GNSS Condition">
+      <require condition="Cortex-M Device"/>
+      <accept Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F"/>
+      <deny Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1"/>
+    </condition>
+    
+    <!-- GetPos applications condition -->
+    <condition id="GetPos Condition">
+      <description>GetPos condition</description>
+      <accept  Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1" Cversion="4.0.0"/>
+      <accept  Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="GNSS"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibNMEA" Cversion="5.0.0"/>
+      <deny    Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="Bare Metal"/>
+    </condition>
+
+    <!-- SimOSGetPos applications condition -->
+    <condition id="SimOSGetPos Condition">
+      <description>SimOSGetPos condition</description>
+      <accept  Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1" Cversion="4.0.0"/>
+      <accept  Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="GNSS"/>
+      <require Cbundle="lib_gnss" Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibNMEA" Cversion="5.0.0"/>
+      <deny    Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="CMSIS FreeRTOS"/>
+      <deny    Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="ThreadX"/>
+    </condition>
+
+    <!-- Virtual_COM_Port application condition -->
+    <condition id="VirtualCOMPort Condition">
+      <description>VirtualCOMPort condition</description>
+      <accept Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1" Cversion="4.0.0"/>
+      <accept Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="GNSS"/>
+      <deny   Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="Bare Metal"/>
+    </condition>
+
+    <!-- FW_Updater application condition -->
+    <condition id="FWUpdater Condition">
+      <description>FW_Updater application condition</description>
+      <accept Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1" Cversion="4.0.0"/>
+      <accept Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="GNSS"/>
+      <deny   Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="CMSIS FreeRTOS"/>
+      <deny   Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="ThreadX"/>
+    </condition>	
+  </conditions>
+
+  <components>
+    
+    <bundle Cvendor="STMicroelectronics" Cbundle="GNSS" Cclass="Board Extension" Cversion="4.0.0">  
+      <description>GNSS Board Extension driver including board part driver</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-GNSS1_GettingStarted.pdf</doc>
+      <component Cgroup="GNSS1A1" condition="GNSS1A1 Condition" maxInstances="1" Capiversion="4.0.0">
+        <description>X-NUCLEO-GNSS1A1 BSP component drivers</description>
+        <RTE_Components_h>#define GNSS1A1</RTE_Components_h>			
+        <files>
+          <file category="header" name="Drivers/BSP/GNSS1A1/gnss1a1_gnss.h"/>
+          <file category="source" name="Drivers/BSP/GNSS1A1/gnss1a1_gnss.c"/>
+        </files>
+      </component>
+    </bundle>	
+    
+    <bundle Cvendor="STMicroelectronics" Cbundle="GNSS" Cclass="Board Part" Cversion="5.0.0">
+      <description>GNSS Board Part driver</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-GNSS1_GettingStarted.pdf</doc>
+      <component Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="Bare Metal" condition="Teseo LIV3F Condition" maxInstances="1" >
+        <description>Teseo LIV3F component driver</description>
+        <RTE_Components_h>#define TESEO_LIV3F</RTE_Components_h>			
+        <files>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.c"/>
+        </files>
+      </component>	
+      <component Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="CMSIS FreeRTOS" condition="Teseo LIV3F CMSIS FreeRTOS Condition" maxInstances="1" >
+        <description>Teseo LIV3F component driver (requiring CMSIS V1/V2 - FreeRTOS middleware)</description>
+        <RTE_Components_h>#define TESEO_LIV3F
+                          #define USE_CMSIS_FREERTOS
+        </RTE_Components_h>
+        <files>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.c"/>
+        </files>
+      </component>
+      <component Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="ThreadX" condition="Teseo LIV3F ThreadX Condition" maxInstances="1" >
+        <description>Teseo LIV3F component driver (requiring ThreadX middleware)</description>
+        <RTE_Components_h>#define TESEO_LIV3F
+                          #define USE_THREADX_NATIVE_API
+        </RTE_Components_h>
+        <files>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_i2c.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_queue.c"/>
+          <file category="header" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.h"/>
+          <file category="source" name="Drivers/BSP/Components/teseo_liv3f/teseo_liv3f_uart.c"/>
+        </files>
+      </component>
+    </bundle>
+    
+    <bundle Cvendor="STMicroelectronics" Cbundle="lib_gnss" Cclass="Data Exchange" Cversion="5.0.0">	
+      <description>GNSS Library</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-GNSS1_GettingStarted.pdf</doc>
+      <component Cgroup="lib_gnss" Csub="LibGNSS" condition="GNSSLibrary Condition" maxInstances="1" Capiversion="5.0.0">
+        <description>GNSS library, parser component</description>
+        <RTE_Components_h>#define LIB_GNSS</RTE_Components_h>			
+        <files>
+          <file category="header" name="Middlewares/ST/lib_gnss/LibGNSS/Inc/gnss_parser.h"/>
+          <file category="header" name="Middlewares/ST/lib_gnss/LibGNSS/Inc/gnss_data.h"/>
+          <file category="header" name="Middlewares/ST/lib_gnss/LibGNSS/Inc/gnss_datalog.h"/>
+          <file category="header" name="Middlewares/ST/lib_gnss/LibGNSS/Inc/gnss_geofence.h"/>
+          <file category="source" name="Middlewares/ST/lib_gnss/LibGNSS/Src/gnss_parser.c"/>
+          <file category="source" name="Middlewares/ST/lib_gnss/LibGNSS/Src/gnss_data.c"/>
+        </files>
+      </component>
+      
+      <component Cgroup="lib_gnss" Csub="LibNMEA" condition="NMEAParser Condition" maxInstances="1" Capiversion="5.0.0">
+        <description>GNSS library, NMEA Parser component</description>		
+        <RTE_Components_h>#define LIB_NMEA</RTE_Components_h>			
+        <files>
+          <file category="header" name="Middlewares/ST/lib_gnss/LibNMEA/Inc/NMEA_parser.h"/>
+          <file category="source" name="Middlewares/ST/lib_gnss/LibNMEA/Src/NMEA_parser.c"/>
+        </files>
+      </component>
+      
+      <component Cgroup="lib_gnss" Csub="Interface" Cvariant="Basic" condition="GNSSLibrary Condition" isDefaultVariant="true" maxInstances="1" Capiversion="5.0.0">
+        <description>Component for GNSS Library, basic interface</description>
+        <RTE_Components_h>#define LIB_GNSS_INTERFACE</RTE_Components_h>			
+        <files>
+          <file category="source"  name="Middlewares/ST/lib_gnss/Basic/gnss_lib_config.c"/>	
+        </files>
+      </component>
+      <component Cgroup="lib_gnss" Csub="Interface" Cvariant="Template" condition="GNSSLibrary Condition" isDefaultVariant="false" maxInstances="1" Capiversion="5.0.0">
+        <description>Component for GNSS Library, template interface</description>
+        <RTE_Components_h>#define LIB_GNSS_INTERFACE</RTE_Components_h>			
+        <files>
+          <file  select="true" category="source" name="Middlewares/ST/lib_gnss/Template/gnss_lib_config.c"/>
+          <file  select="true" category="header" name="Middlewares/ST/lib_gnss/Template/gnss_lib_config.h"/>
+        </files>
+      </component>
+    </bundle>
+    
+    <bundle Cvendor="STMicroelectronics" Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cversion="4.0.0">
+      <description>GNSS Board Support Package for custom boards</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-GNSS1_GettingStarted.pdf</doc>	
+      <component Cgroup="Custom" Csub="GNSS" condition="GNSS Condition" maxInstances="1" Capiversion="4.0.0">
+        <description>BSP for GNSS </description>
+        <RTE_Components_h>#define BSP_GNSS</RTE_Components_h>
+        <files></files>
+      </component>
+    </bundle>
+    
+    <!--GNSS sample applications -->
+    <bundle Cbundle="GNSS1_Applications" Cvendor="STMicroelectronics" Cclass="Device" Cversion="6.0.0">
+      <description></description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-GNSS1_GettingStarted.pdf</doc>
+      <component  Cgroup="Application" Cvariant="GetPos" isDefaultVariant="true" condition="GetPos Condition" maxInstances="1">
+        <description>GetPos sample application needs an RTOS from STM32CubeMX</description>
+        <RTE_Components_h>#define GETPOS_APP</RTE_Components_h>
+        <files>
+          <file category="doc" select="readme file" name="Middlewares/ST/lib_gnss/doc/Applications/GetPos/readme.md" />
+        </files>
+      </component>
+      <component  Cgroup="Application" Cvariant="SimOSGetPos" isDefaultVariant="false" condition="SimOSGetPos Condition" maxInstances="1">
+        <description>SimOSGetPos sample application</description> 
+        <RTE_Components_h>#define SIMOSGETPOS_APP</RTE_Components_h>
+        <files>
+          <file category="doc" select="readme file" name="Middlewares/ST/lib_gnss/doc/Applications/SimOSGetPos/readme.md" />
+        </files>
+      </component>
+      <component  Cgroup="Application" Cvariant="VirtualCOMPort" isDefaultVariant="false" condition="VirtualCOMPort Condition" maxInstances="1">
+        <description>Virtual_COM_Port sample application needs an RTOS from STM32CubeMX</description>
+        <RTE_Components_h>#define VCOM_APP</RTE_Components_h>
+        <files>
+          <file category="doc" select="readme file" name="Middlewares/ST/lib_gnss/doc/Applications/VirtualCOMPort/readme.md" />
+        </files>
+      </component>
+      <component  Cgroup="Application" Cvariant="FWUpdater" isDefaultVariant="false" condition="FWUpdater Condition" maxInstances="1">
+        <description>FWUpdater sample application</description> 
+        <RTE_Components_h>#define FWUPD_APP</RTE_Components_h>
+        <files>
+          <file category="doc" select="readme file" name="Middlewares/ST/lib_gnss/doc/Applications/FWUpdater/readme.md" />
+        </files>
+      </component>
+    </bundle>
+
+  </components>
+  
+
+</package>
+
+

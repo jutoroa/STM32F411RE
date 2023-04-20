@@ -1,3 +1,0 @@
-../Src/PWMEjemplo1.c:23:6:PWD_config	4	static
-../Src/PWMEjemplo1.c:62:6:delay	24	static,ignoring_inline_asm
-../Src/PWMEjemplo1.c:71:5:main	8	static,ignoring_inline_asm

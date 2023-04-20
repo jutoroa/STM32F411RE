@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package Dvendor="STMicroelectronics:13" schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>portGmbH</vendor>
+    <name>I-Cube-SoM-uGOAL</name>
+    <description>SoM-uGOAL communication module (PROFINET, ECAT, Ethernet/IP)
+</description>
+    <url>https://www.system-on-module.com/fileadmin/user_upload/Evaluation_Boards/STM32%20Cube/</url>
+    <license>portGmbH_License.txt</license>
+    <supportContact>email: support@port.de</supportContact>
+    <releases>
+        <release date="2022-02-28" version="1.1.0">- SoM hardware is required for testing
+- this pack is compatible with STM32CubeMX v6.4.0 (or later)
+- this pack is tested with STM32CubeIDE v1.8
+- additional support for IAR Workbench and Keil ARMCC</release>
+        <release date="2022-01-18" version="1.0.3">- SoM hardware is required for testing
+- this pack is compatible with STM32CubeMX v6.3.0 (or later)
+- this pack is tested with STM32CubeIDE v1.7
+- additional support for IAR Workbench and Keil ARMCC</release>
+        <release date="2021-12-21" version="1.0.2">- SoM hardware is required for testing
+- this pack is compatible with STM32CubeMX v6.3.0 (or later)
+- this pack is tested with STM32CubeIDE v1.7
+- additional support for IAR Workbench and Keil ARMCC</release>
+        <release date="2021-10-19" version="1.0.1">- SoM hardware is required for testing
+- this pack is compatible with STM32CubeMX v6.3.0 (or later)
+- this pack is tested with STM32CubeIDE v1.7
+- additional support for IAR Workbench and Keil ARMCC</release>
+        <release date="2021-07-19" version="1.0.0">- SoM hardware is required for testing
+- this pack is compatible with STM32CubeMX v6.2.0 (or later)
+- this pack is tested with STM32CubeIDE v1.6
+- additional support for IAR Workbench and Keil ARMCC</release>
+    </releases>
+    <keywords>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="IoT_Middleware">IoT_Middleware</description>
+    </taxonomy>
+    <conditions>
+        <condition id="IP_Activation">
+            <description>need I2C. UART, SPI (activated in HAL-Drivers)</description>
+            <require Cgroup="I2C"/>
+            <require Cgroup="*U?ART"/>
+            <require Cgroup="SPI"/>
+        </condition>
+        <condition id="SoM-uGoal_core">
+            <require Cgroup="core"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="SoM-uGOAL" Cclass="IoT_Middleware" Cversion="1.0.0">
+            <description>SoM-uGOAL Middleware (Stack on Module)</description>
+            <doc>https://portgmbh.atlassian.net/wiki/spaces/IRJ45SOM/pages/231997455/006+-+STM+Cube+Package</doc>
+            <component Cgroup="core" condition="IP_Activation" maxInstances="1">
+                <description>SoM-uGOAL core sources</description>
+                <files>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/goal_id.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/goal_includes.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/goal_inst.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/goal_inst.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_buffer.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_buffer.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_default.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_initial.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_log.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_overload.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_plat.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ugoal/ugoal_types.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/sapi/sapi.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/sapi/sapi.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ext/uthash/utarray.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ext/uthash/uthash.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ext/uthash/utlist.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/ext/uthash/utstring.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_mctc/goal_mctc.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_mctc/goal_mctc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_mctc/goal_mctc_plat.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_mctc/goal_mctc_rb.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_mctc/goal_mctc_rb.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_chan_tcp.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_chan_tcp.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_chan_udp.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_chan_udp.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_led.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_net.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_net.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_ma_net_minimal.c"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_mi_dm.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_mi_dm.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_mi_mctc.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/goal_media/goal_mi_mctc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ccm/ccm_rpc.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ccm/ccm_rpc_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ccm/ccm_rpc_ac.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/dd/goal_dd.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/dd/goal_dd_rpc.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/dd/goal_dd_rpc_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/dd/protos/dd/rpc/goal_dd_rpc_ac.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ecat/ac/goal_ecat.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ecat/ac/goal_ecat_ac.c"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ecat/goal_ecat_pdolist.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ecat/goal_ecat_pdolist.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/ecat/goal_ecat_rpc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/eip/goal_ciptypes.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/eip/goal_eip.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/eip/goal_eip_rpc.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/eip/goal_eip_rpc_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_ac.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_idlist.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_int.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_rpc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/http/goal_http_tmpmgr.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/ctc_net_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/ctc_net_ac.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/ctc_net_list.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/ctc_net_list.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/ctc_net_rpc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/net/plat/drv/ctc/ctc_net_ac.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_pnio.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_pnio_rpc.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_pnio_rpc_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_pnio_rpc_ac.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_snmp.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_snmp_ac.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/goal_snmp_rpc.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/rpc/wrapper/pnio/pn_goal.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/plat/stm32/plat.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/plat/stm32/plat.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/SoM-uGOAL_rootPath.h"/>
+                    <file category="include" name="Middlewares\Third_Party\SoM-uGOAL\rpc\"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="01_pnio_io_mirror" condition="SoM-uGoal_core" isDefaultVariant="true" maxInstances="1">
+                <description>appl_ac_01_pnio_io_mirror</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/goal_http_fs.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/README.md" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-027c-0300-R-IN32M3_Module.bmp" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-Stylesheet-HTML-V2.3.xsl" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-V2.35-portGmbH-irj45-20200204.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-V2.35-portGmbH-irj45-20200717.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-V2.35-Renesas-irj45-20200227.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/gsdml/GSDML-V2.35-Renesas-irj45-20200717.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/index_div_devstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/index_div_modules.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/led_green.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/led_off.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/led_red.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/modlist.js" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/style.css" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/01_pnio_io_mirror/html/upload.html" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="02_eip_io_data" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_02_eip_io_data</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_app_eip.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_app_eip.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/goal_http_fs.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/index_div_devstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/index_div_modules.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/led_green.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/led_off.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/led_red.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/style.css" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/02_eip_io_data/html/upload.html" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="04_pnio_validation" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_04_pnio_validation</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/goal_http_fs.h"/>
+                    <file category="other" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/README.md"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/index_div_devstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/index_div_modules.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/led_green.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/led_off.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/led_red.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/modlist.js" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/style.css" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/04_pnio_validation/html/upload.html" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="05_pnio_01_simple_io" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_05_pnio_01_simple_io</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/goal_appl.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/goal_config.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/gsdml/GSDML-02c7-0300-RENESAS.bmp" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/gsdml/GSDML-028c-0001-PORT.bmp" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/gsdml/GSDML-V2.35-port-multi-20190101.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/05_pnio_01_simple_io/gsdml/GSDML-V2.35-Renesas-multi-20191203.xml" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="06_eip_io_data_static_ip" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_06_eip_io_data_static_ip</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_app_eip.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_app_eip.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/goal_http_fs.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/index_div_devstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/index_div_modules.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/led_green.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/led_off.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/led_red.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/style.css" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/06_eip_io_data_static_ip/html/upload.html" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="07_pnio_dsn" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_07_pnio_dsn</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/07_pnio_dsn/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/07_pnio_dsn/goal_config.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/07_pnio_dsn/gsdml/GSDML-Stylesheet-HTML-V2.3.xsl" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/07_pnio_dsn/gsdml/GSDML-V2.34-portGmbH-irj45-20181130-123548.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/07_pnio_dsn/gsdml/irj45.dsntool" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="08_pnio_01_simple_io_http" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_08_pnio_01_simple_io_http</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/08_pnio_01_simple_io_http/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/08_pnio_01_simple_io_http/goal_config.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/08_pnio_01_simple_io_http/gsdml/GSDML-028c-0001-PORT.bmp" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/08_pnio_01_simple_io_http/gsdml/GSDML-V2.35-port-multi-20181110.xml" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="09_ecat_slave" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_09_ecat_slave</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_ecat.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_ecat.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_ecat_objects.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_ecat_objects.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_foe.c"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/goal_http_fs.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave.h" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_port.bin" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_port.eds" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_port.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_renesas.bin" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_renesas.eds" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/esi/09_ecat_slave_renesas.xml" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/index_div_devstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/led_green.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/led_off.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/led_red.png" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/09_ecat_slave/html/style.css" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="10_pnio_process_alarm" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_10_pnio_process_alarm</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/10_pnio_process_alarm/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/10_pnio_process_alarm/goal_config.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/10_pnio_process_alarm/gsdml/GSDML-028c-0001-PORT.bmp" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/10_pnio_process_alarm/gsdml/GSDML-V2.35-port-multi-20190101.xml" public="false"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="11_firmware_update" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_11_firmware_update</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/11_firmware_update/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/11_firmware_update/goal_config.h"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="13_firmware_update_callback" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_13_firmware_update_callback</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/13_firmware_update_callback/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/13_firmware_update_callback/goal_config.h"/>
+                </files>
+            </component>
+            <component Cgroup="appl" Cvariant="14_ip_management" condition="SoM-uGoal_core" maxInstances="1">
+                <description>appl_ac_14_ip_management</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_appl.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_appl.h"/>
+                    <file category="source" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_appl_http.c"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_appl_http.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_config.h"/>
+                    <file category="header" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/goal_http_fs.h"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/device.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/device_div_manstate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/device_div_updatestate.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/device_ip.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/index.html" public="false"/>
+                    <file category="utility" name="Middlewares/Third_Party/SoM-uGOAL/projects/2015013_irj45/ac/14_ip_management/html/style.css" public="false"/>
+                </files>
+            </component>
+        </bundle>
+    </components>
+    <examples>
+        <example doc="readme.txt" folder="Projects/STM32F429ZI-Nucleo/Applications/SoM_uGOAL_ac_generic_stm32_cube_f429" name="SoM_uGOAL_ac_generic_stm32_cube_f429" public="true" version="1.0.1">
+            <description>Generic STM32F429_cube example 
+for SoM-uGOAL STM32expansionPackage</description>
+            <board Dvendor="STMicroelectronics:13" name="NUCLEO-F429ZI" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="EWARM" load="SoM_uGOAL_ac_generic_stm32_cube_f429.ewp" name="iar"/>
+                <environment folder="MDK-ARM" load="SoM_uGOAL_ac_generic_stm32_cube_f429.uvprojx" name="uv"/>
+                <environment folder="SoM_uGOAL_ac_generic_stm32_cube_f429" load="SoM_uGOAL_ac_generic_stm32_cube_f429.ioc" name="stm32cubemx"/>
+                <environment folder="STM32CubeIDE" load=".cproject" name="stm32cubeide"/>
+            </project>
+            <attributes>
+                <component Cbundle="SoM-uGOAL" Cclass="IoT_Middleware" Cgroup="core" Cvendor="portGmbH" Cversion="1.0.1"/>
+                <keyword>SoM</keyword>
+                <keyword>uGOAL</keyword>
+            </attributes>
+        </example>
+        <example doc="readme.txt" folder="Projects/NUCLEO-G071RB/Applications/SoM_uGOAL_ac_generic_stm32_cube_g071RB" name="SoM_uGOAL_ac_generic_stm32_cube_g071RB" public="true" version="1.0.1">
+            <description>Generic STM32G071RB_cube example 
+for SoM-uGOAL STM32expansionPackage</description>
+            <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="EWARM" load="SoM_uGOAL_ac_generic_stm32_cube_g071RB.ewp" name="iar"/>
+                <environment folder="MDK-ARM" load="SoM_uGOAL_ac_generic_stm32_cube_g071RB.uvprojx" name="uv"/>
+                <environment folder="SoM_uGOAL_ac_generic_stm32_cube_g071RB" load="SoM_uGOAL_ac_generic_stm32_cube_g071RB.ioc" name="stm32cubemx"/>
+                <environment folder="STM32CubeIDE" load=".cproject" name="stm32cubeide"/>
+            </project>
+            <attributes>
+                <component Cbundle="SoM-uGOAL" Cclass="IoT_Middleware" Cgroup="core" Cvendor="portGmbH" Cversion="1.0.0"/>
+                <keyword>SoM</keyword>
+                <keyword>uGOAL</keyword>
+            </attributes>
+        </example>
+    </examples>
+</package>

@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.11.0 / 12-February-2021</u></b></font><br><br>
+<b><u>Main Changes</u></b><br><br>
+<b>Add new devices STM32WB15xx, STM32WB10xx and new boards STM32WB5MM-DK and NUCLEO-WB15CC</b>
+<ul>
+<li>Introduce hal, ll and STM32WPAN support for stm32wb15xx and stm32wb10xx</li>
+<li>Introduce STM32WB5MM-DK and NUCLEO-WB15CC BSP support</li>
+<li>BLE-Mesh library version 1.13.002:
+<ul>
+<li>Updated max number of element to 5 and max number of Model per element to 11 (support lighting control system with occupancy sensing).</li>
+<li>Bug fix: Client API, Light LC model and sensor status, modify Light LC FSM default Lightness values</li>
+<li>Sensor & Light LC Server Models updated</li>
+<li>Client Models updated</li>
+<li>Config Model APIs callbacks added over application layer</li>
+<li>Save & Restore APIs for Models parameters in Flash updated</li>
+<li>Publication enabled for multiple elements</li>
+<li>Remove double disconnection to accelerate provisioning with IOS ST BLE Mesh App version 1.08.001</li>
+<li>Bug correction during unprovisioning with ST BLE Mesh App of non GATT connected Nodes.</li> 
+</ul>
+</li>   
+<li>BLE:
+<ul>
+<li>HID: added: Battery Service and Device Information Service, connection and disconnection events - ID 97936:  L2CAP update to support IP over BLE (M.6874), SHCI_C2_BLE_init() updated parameters to be provided to CPU2 with new BLE stack Options flags</li>
+<li>ID 95186:  SHCI_C2_FUS_GetState fixed to identify when wireless stack running (with correct error code)</li>
+</ul>
+</li>
+<li>THREAD:
+<ul>
+<li>Update OpenThread stack to <b>SHA-1: 3dbd91aa2b70c7d5cc71b2c465ce3583a13dea79</b> (thread-reference-20191113)</li>
+<li>ID 91270: CoapSecure support added</li>
+<li>ID 96955: Fix for entering standby mode while Thread stop procedure is called. New system command SHCI_C2_802_15_4_DeInit added</li>
+</ul>
+</li>
+<li>Zigbee:
+<ul>
+<li>Clarification of PICS information inside the Clusters API interface include files</li>
+<li>New directory structure used to store Clusters API interfaces include files</li>
+<li>Range input parameter checks added when managing Clusters</li>
+<li>ZCL Commissioning Cluster improvement to allow joining commissioning network and sending unicast frames (as well as Inter-PAN)</li>
+<li>Support of a Custom Cluster (Refer to the appropriate applications to see how to use it : Zigbee_custom_ls_Server_Coord, and Zigbee_custom_ls_Client_Router)</li>
+<li>Support of new APIs to control  TouchLink features (Refer to  zcl.touchlink.h file for more details). Adding of TouchLink utility commands</li>
+<li>Minor fixes in DRLC, Voice over Zigbee & RSSI location Clusters</li>
+</ul>
+</li>
+</ul>
+</html>

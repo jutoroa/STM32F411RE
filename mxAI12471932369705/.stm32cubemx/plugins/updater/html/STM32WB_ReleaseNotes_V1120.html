@@ -1,0 +1,34 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.12.0 / 24-June-2021</u></b></font><br><br>
+<b><u>Main Changes</u></b><br><br>
+<b>Maintenance Release for BLE, Thread and Zigbee updatesMain Changes</b><br><br>
+<ul>
+<li>Thread updates</li>
+<ul>
+<li>Introducing following new binary: stm32wb5x_Thread_RCP_fw.bin to support Thread Border Router Setup</li>
+</ul>
+<li>BLE updates</li>
+<ul>
+<li>Introducing BLE Basic stack with reduced features keeping following configuration:</li>
+<ul>
+<li>GAP peripheral and Central (8 links - LL slave up to 2 links)</li>
+<li>GATT server, client</li>
+<li>Data length extension</li>
+<li>Privacy</li>
+<li>White list</li>
+<li>Legacy Pairing, LE secure connections</li>
+<li>HCI interface (reduced)</li>
+</ul>
+<li>Additional beacon feature support</li>
+<li>Critical code optimized in timing during execution</li>
+<li>The command "ACI_GAP_START_NAME_DISCOVERY_PROC" will be deprecated on next STM32Cube_FW_WB release v1.13.0</li>
+</ul>
+<li>Zigbee updates:</li>
+<ul>
+<li>zb_destroy_process improvement correcting some potential memory issues</li>
+<li>Memory allocation improvement</li>
+<li>Power consumption improvement when using fragmentation for a sleepy end device (transfer of payload > 50 bytes)</li>
+</ul>
+</ul>
+</html>

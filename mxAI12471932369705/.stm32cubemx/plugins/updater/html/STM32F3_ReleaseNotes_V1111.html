@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+</head>
+<body>
+<font color="blue"><b><u>STM32CubeF3 Firmware Package V1.11.1 / 23-July-2020</u></b></font><br>
+<b><u>Main Changes</u></b>
+<ul style="list-style-type: disc;">
+<li>Patch release to fix known defects and enhancements implementation.</li>
+<ul>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin's.</li>
+<li>Update HAL_I2C_ER_IRQHandler() API to fix acknowledge failure issue with I2C memory IT processes</li>
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren't initialized (NULL pointer).</li>
+<li>Minor rework on USBD_Start() and USBD_Stop() APIs: stopping device will be handled by HAL_PCD_DeInit() API.</li>
+</ul>
+</ul>
+</body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.13.0 / 12-November-2021</u></b></font><br>
+<b><u>Main Changes</u></b><br><br>
+<ul>
+<li>BLE updates:</li>
+<ul>
+<li>Multi link support</li>
+<li>L2CAP connection-oriented channels support (IP over BLE enabler)</li>
+<li>ACI_GAP_START_NAME_DISCOVERY_PROC command is deprecated</li>
+</ul>
+<li>802.15.4 general updates (Zigbee, Thread, MAC, PHY)</li>
+<ul>
+<li>CCA (Clear Channel Assessment) Threshold has been increased</li>
+</ul>
+<li>Zigbee updates</li>
+<ul>
+<li>802_15_4 timer improvement solving several issues relative to the wraparound of this timer</li>
+</ul>
+<li>Thread updates</li>
+<ul>
+<li>Fix wrapper issue with UDP receivers</li>
+<li>RCP build: improved commissioning process robustness</li>
+</ul>
+<li>MAC 802.15.4 updates</li>
+<ul>
+<li>Fix unicast data processing after restart from persistence</li>
+<li>Fix wrong erratic PANID Compression Flag on Beacon Request</li>
+<li>Reduce MaxBe low level threshold allowing user to change CSMA-CA values</li>
+</ul>
+<li>BLE-Zigbee Concurrent mode</li>
+<ul>
+<li>BLE-Zigbee static concurrent mode not supported in this release, will be fixed in the next release. Alternative is to use BLE-Zigbee Dynamic concurrent mode</li>
+</ul>
+<li>Safeboot</li>
+<ul>
+<li>New binaries added: stm32wb5x_Safeboot_fw.bin, stm32wb3x_Safeboot_fw.bin, stm32wb1x_Safeboot_fw.bin.</li>
+<li>Safeboot is an independent part of the FUS that manages specifically one case: option bytes corruption.</li>
+<li>When option bytes are corrupted, the STM32WB hardware forces the boot to Safeboot whatever the running firmware.</li>
+<li>Safeboot is already present in the FUS and this image allows to update it. Refer to AN5185 for more details.</li>
+<li>Safeboot upgrade is optional.</li>
+</ul>
+</ul>
+</html>

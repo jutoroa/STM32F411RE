@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-ALGOBUILD</name>
+  <description>AlgoBuilder Firmware Template Generator</description>
+  <license>en.DM00367782.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+
+  <releases>
+    <release version="1.3.0">
+      AlgoBuilder Firmware Template Generator V1.3.0
+      - Generates firmware template used in AlgoBuilder application
+      - This version is compatible with STM32CubeMX V6.3.0 or higher and AlgoBuilder V2.8.0 or higher
+    </release>
+    <release version="1.2.1">
+      AlgoBuilder Firmware Template Generator V1.3.0
+      - Generates firmware template used in AlgoBuilder application
+      - This version is compatible with STM32CubeMX V6.0.x or higher and AlgoBuilder V2.8.0 or higher
+    </release>
+    <release version="1.2.0">
+      AlgoBuilder Firmware Template Generator V1.2.0
+      - Generates firmware template used in AlgoBuilder application
+      - This version is compatible with STM32CubeMX V6.0.x or higher and AlgoBuilder V2.8.0 or higher
+    </release>
+    <release version="1.1.0">
+      AlgoBuilder Firmware Template Generator V1.1.0
+      - Generates firmware template used in AlgoBuilder application
+      - This version is compatible with STM32CubeMX V6.0.x or higher and AlgoBuilder V2.5.0 or higher
+    </release>
+    <release version="1.0.0">
+      AlgoBuilder Firmware Template Generator V1.0.0
+      - Generates firmware template used in AlgoBuilder application
+      - This version is compatible with STM32CubeMX V5.6.x or higher and AlgoBuilder V2.5.0 or higher
+    </release>
+  </releases>
+
+  <!--
+  <taxonomy>
+      <description  Cclass="Board Component">The MEMS components support class</description>
+      <description  Cclass="Board Extension">The expansion boards support class</description>
+  </taxonomy>
+  -->
+
+  <keywords>
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>MEMS</keyword>
+    <!--  
+    -->
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    
+  </keywords>
+
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M3, Cortex-M4</description>
+      <!-- STM32F1, STM32F2 and STM32L1 series -->
+      <accept Dcore="Cortex-M3"/>
+
+      <!-- STM32F4, STM32F3 and STM32L4 series -->
+      <accept Dcore="Cortex-M4"/>
+    </condition>
+
+    <condition id="CM0">
+      <require Dcore="Cortex-M0"/>
+    </condition>
+    <condition id="CM0+">
+      <require Dcore="Cortex-M0+"/>
+    </condition>
+    <condition id="CM3">
+      <require Dcore="Cortex-M3"/>
+    </condition>
+    <condition id="CM4">
+      <require Dcore="Cortex-M4"/>
+    </condition>
+
+    <condition id="CM0_GCC">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM0_IAR">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM0_Keil">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="CM0+_GCC">
+      <require Dcore="Cortex-M0+"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM0+_IAR">
+      <require Dcore="Cortex-M0+"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM0+_Keil">
+      <require Dcore="Cortex-M0+"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="CM3_GCC">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM3_IAR">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM3_Keil">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="CM4_GCC">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM4_IAR">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM4_Keil">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- IKS01A2 firmware template condition -->
+    <condition id="IKS01A2 Condition">
+      <require condition="Cortex-M Device"/>
+      <require Cclass="Board Extension" Cgroup="IKS01A2"/>
+      <require Cbundle="Library" Cclass="Motion Libraries" Cgroup="Motion Libraries"/>
+      <require Cbundle="Library" Cclass="DSP Library" Cgroup="DSP Library"/>
+      <deny Cclass="Board Extension" Cgroup="IKS01A3"/>
+      <deny Cclass="Board Extension" Cgroup="IKS02A1"/>
+      <deny Cclass="Board Part" Cgroup="AccGyr"/>
+      <deny Cclass="Board Part" Cgroup="AccMag"/>
+      <deny Cclass="Board Part" Cgroup="Acc"/>
+      <deny Cclass="Board Part" Cgroup="Gyr"/>
+      <deny Cclass="Board Part" Cgroup="Mag"/>
+      <deny Cclass="Board Part" Cgroup="HumTemp"/>
+      <deny Cclass="Board Part" Cgroup="PressTemp"/>
+      <deny Cclass="Board Part" Cgroup="Temp"/>
+      <deny Cclass="Board Support" Cgroup="Custom" Csub="MOTION_SENSOR"/>
+      <deny Cclass="Board Support" Cgroup="Custom" Csub="ENV_SENSOR"/>
+    </condition>
+
+    <!-- IKS01A3 firmware template condition -->
+    <condition id="IKS01A3 Condition">
+      <require condition="Cortex-M Device"/>
+      <require Cclass="Board Extension" Cgroup="IKS01A3"/>
+      <require Cbundle="Library" Cclass="Motion Libraries" Cgroup="Motion Libraries"/>
+      <require Cbundle="Library" Cclass="DSP Library" Cgroup="DSP Library"/>
+      <deny Cclass="Board Extension" Cgroup="IKS01A2"/>
+      <deny Cclass="Board Extension" Cgroup="IKS02A1"/>
+      <deny Cclass="Board Part" Cgroup="AccGyr"/>
+      <deny Cclass="Board Part" Cgroup="AccMag"/>
+      <deny Cclass="Board Part" Cgroup="Acc"/>
+      <deny Cclass="Board Part" Cgroup="Gyr"/>
+      <deny Cclass="Board Part" Cgroup="Mag"/>
+      <deny Cclass="Board Part" Cgroup="HumTemp"/>
+      <deny Cclass="Board Part" Cgroup="PressTemp"/>
+      <deny Cclass="Board Part" Cgroup="Temp"/>
+      <deny Cclass="Board Support" Cgroup="Custom" Csub="MOTION_SENSOR"/>
+      <deny Cclass="Board Support" Cgroup="Custom" Csub="ENV_SENSOR"/>
+    </condition>
+
+    <!-- Custom firmware template condition -->
+    <condition id="Custom board condition">
+      <require condition="Cortex-M Device"/>
+      <accept Cclass="Board Support" Cgroup="Custom" Csub="MOTION_SENSOR"/>
+      <accept Cclass="Board Support" Cgroup="Custom" Csub="ENV_SENSOR"/>
+      <require Cbundle="Library" Cclass="Motion Libraries" Cgroup="Motion Libraries"/>
+      <require Cbundle="Library" Cclass="DSP Library" Cgroup="DSP Library"/>
+      <deny Cclass="Board Extension" Cgroup="IKS01A2"/>
+      <deny Cclass="Board Extension" Cgroup="IKS01A3"/>
+      <deny Cclass="Board Extension" Cgroup="IKS02A1"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="Application" Cvendor="STMicroelectronics" Cclass="Device" Cversion="1.3.0">
+      <description>AlgoBuilder applications</description>
+      <doc>Documentation/en.UM2689.pdf</doc>
+      <component  Cgroup="Application" Cvariant="IKS01A3_AlgoBuilder_Template" isDefaultVariant="true" condition="IKS01A3 Condition" maxInstances="1">
+        <!-- short component description -->
+        <description>AlgoBuilder firmware template for X-NUCLEO-IKS01A3</description>
+        <RTE_Components_h>#define IKS01A3_ALGOBUILDER_FW_TEMPLATE</RTE_Components_h>
+        <files>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_buffers.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_buffers.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_display.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_display.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fft.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_fft.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fsm_mlc.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_libraries.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sensor_hub.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sensor_hub.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sequential_logic.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sequential_logic.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_signal.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_signal.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_user_input.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_user_input.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/algo_builder.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/algo_builder.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/com.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/com.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/demo_serial.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/demo_serial.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_cmd.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/sensor_commands.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/sensor_commands.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_protocol.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/serial_protocol.c"/>
+        </files>
+      </component>
+      <component  Cgroup="Application" Cvariant="IKS01A2_AlgoBuilder_Template" isDefaultVariant="true" condition="IKS01A2 Condition" maxInstances="1">
+        <!-- short component description -->
+        <description>AlgoBuilder firmware template for X-NUCLEO-IKS01A2</description>
+        <RTE_Components_h>#define IKS01A2_ALGOBUILDER_FW_TEMPLATE</RTE_Components_h>
+        <files>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_buffers.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_buffers.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_display.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_display.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fft.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_fft.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fsm_mlc.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_libraries.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sensor_hub.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sensor_hub.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sequential_logic.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sequential_logic.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_signal.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_signal.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_user_input.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_user_input.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/algo_builder.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/algo_builder.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/com.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/com.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/demo_serial.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/demo_serial.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_cmd.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/sensor_commands.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/sensor_commands.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_protocol.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/serial_protocol.c"/>
+          </files>
+      </component>
+      <component  Cgroup="Application" Cvariant="CUSTOM_AlgoBuilder_Template" isDefaultVariant="true" condition="Custom board condition" maxInstances="1">
+        <!-- short component description -->
+        <description>AlgoBuilder firmware template for custom board</description>
+        <RTE_Components_h>#define CUSTOM_ALGOBUILDER_FW_TEMPLATE</RTE_Components_h>
+        <files>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_buffers.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_buffers.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_display.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_display.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fft.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_fft.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_fsm_mlc.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_libraries.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sensor_hub.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sensor_hub.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_sequential_logic.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_sequential_logic.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_signal.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_signal.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/ab_user_input.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/ab_user_input.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/algo_builder.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/algo_builder.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/com.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/com.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/demo_serial.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/demo_serial.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_cmd.h"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/sensor_commands.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/sensor_commands.c"/>
+          <file category="header" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Inc/serial_protocol.h"/>
+          <file category="source" name="Middlewares/ST/AlgoBuilder/FirmwareTemplate/Src/serial_protocol.c"/>
+          </files>
+      </component>
+    </bundle>
+
+    <bundle Cbundle="Library" Cvendor="STMicroelectronics" Cclass="Motion Libraries" Cversion="1.3.0">
+      <description>Motion MEMS libraries</description>
+      <doc></doc>
+      <component Cgroup="Motion Libraries" condition="" isDefaultVariant="true" maxInstances="1">
+        <description>Set of motion MEMS libraries required by AlgoBuilder</description>
+        <files>
+          <file category="header" name="Middlewares/ST/STM32_MotionAC_Library/Inc/motion_ac.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionAC_Library/Lib/MotionAC_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionAW_Library/Inc/motion_aw.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionAW_Library/Lib/MotionAW_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionEC_Library/Inc/motion_ec.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionEC_Library/Lib/MotionEC_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionFX_Library/Inc/motion_fx.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionFX_Library/Lib/MotionFX_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionGC_Library/Inc/motion_gc.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionGC_Library/Lib/MotionGC_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionID_Library/Inc/motion_id.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionID_Library/Lib/MotionID_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionMC_Library/Inc/motion_mc.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionMC_Library/Lib/MotionMC_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionPM_Library/Inc/motion_pm.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionPM_Library/Lib/MotionPM_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionPW_Library/Inc/motion_pw.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionPW_Library/Lib/MotionPW_CM4F_wc16_ot.a"/>
+          <file category="header" name="Middlewares/ST/STM32_MotionTL_Library/Inc/motion_tl.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM3_wc32_ot.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM3_wc16_ot.a"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM4F_wc32_ot_hard.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/ST/STM32_MotionTL_Library/Lib/MotionTL_CM4F_wc16_ot.a"/>
+        </files>
+      </component>
+    </bundle>
+
+    <bundle Cbundle="Library" Cvendor="ARM" Cclass="DSP Library" Cversion="1.3.0">
+      <description>DSP library</description>
+      <doc></doc>
+      <component Cgroup="DSP Library" condition="" isDefaultVariant="true" maxInstances="1">
+        <description>DSP library required by AlgoBuilder</description>
+        <files>
+          <file category="header" name="Middlewares/Third_Party/ARM/DSP/Inc/arm_math.h"/>
+          <file category="library" condition="CM3_GCC" name="Middlewares/Third_Party/ARM/DSP/Lib/libarm_cortexM3l_math.a"/>
+          <file category="library" condition="CM3_IAR" name="Middlewares/Third_Party/ARM/DSP/Lib/iar_cortexM3l_math.a"/>
+          <file category="library" condition="CM3_Keil" name="Middlewares/Third_Party/ARM/DSP/Lib/arm_cortexM3l_math.lib"/>
+          <file category="library" condition="CM4_GCC" name="Middlewares/Third_Party/ARM/DSP/Lib/libarm_cortexM4lf_math.a"/>
+          <file category="library" condition="CM4_IAR" name="Middlewares/Third_Party/ARM/DSP/Lib/iar_cortexM4lf_math.a"/>
+          <file category="library" condition="CM4_Keil" name="Middlewares/Third_Party/ARM/DSP/Lib/arm_cortexM4l_math.lib"/>
+        </files>
+      </component>
+    </bundle>
+
+  </components>
+
+</package>

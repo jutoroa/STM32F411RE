@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+	<vendor>STMicroelectronics</vendor>
+	<name>X-CUBE-AI</name>
+	<description>Artificial Intelligence</description>
+	<license>Package_license.html</license>
+	<!-- web download link -->
+	<url>http://sw-center.st.com/packs/x-cube/</url>
+
+	<releases>
+		<release version="7.1.0">
+Artificial Intelligence Pack version 7.1.0 for STM32 Cortex M7, M4, M0 and M33 MCUs
+What's new in this release:
+  - add the main ONNX-ML operators 
+  - Support of Cortex M0 devices
+  - bug fixes
+		</release>
+		<release version="7.0.0">
+Artificial Intelligence Pack version 7.0.0 for STM32 Cortex M7, M4 and M33 MCUs
+What's new in this release:
+  - add the main ONNX-ML operators (iForest, OCSVM, k-means..)
+  - upgrade TensorFlow lite runtime 2.5.0
+  - add support to run locally a generated c-model
+  - improve precision for the quantized models with the scale factor close to zero
+  - UI - enhance STM32 development board setting for best performance
+  - Embedded documentation - new HowTo, complete the FAQ, comparison TFLM and X-CUBE-AI
+  - bug fixes
+		</release>
+		<release version="6.0.0">
+Artificial Intelligence Pack version 6.0.0 for STM32 Cortex M7, M4 and M33 MCUs
+What's new in this release:
+  - add support of code generation with TensorFlow Lite Micro runtime
+  - new operators: ONNX 20+, TFLite 20+, KERAS Lambda/Custom
+  - remove Qmn format support
+  - remove Lasagne/Caffee and ConvNetJs support
+  - add panel for external weight placement
+  - enhance dual core (multiple context support) code generation with MX6.1
+		</release>
+		<release version="5.2.0">
+Artificial Intelligence Pack version 5.2.0 for STM32 Cortex M7, M4 and M33 MCUs
+What's new in this release:
+	added support for relocatable binary model
+    TFLite and Keras importers are now fully based on TensorFlow 2.3
+    up-to Keras version 2.4.0 model can be imported
+    allow allocation of output buffers in activations buffer	    
+		</release>
+		<release version="5.1.2">
+Artificial Intelligence Pack version 5.1.2 for STM32 Cortex M7 and M4 MCUs
+What's new in this release:
+Enhancements of the User Interface
+    New graph to display the C-graph (operators and associated tensors)
+    New graph to display the usage of the activations buffer
+
+C-Code generation
+    Adding support to generate a c-array by weight/bias tensors
+    Adding textual c-graph description (operators and associated tensors) in the reports
+
+Embedded inference client API extension
+    Adding platform observer API
+
+Validation
+    Adding support for int8/uint8 validation files
+
+		</release>
+		<release version="5.0.0">
+Artificial Intelligence Pack version 5.0.0 for STM32 Cortex M7 and M4 MCUs
+What's new in this release:
+  Support of ONNX
+		</release>
+		<release version="4.1.0">
+Artificial Intelligence Pack version 4.1.0 for STM32 Cortex M7 and M4 MCUs
+What's new in this release:
+  Support of TensorFlow Lite in integer arithmetic
+  Support of external Flash and Ram
+		</release>
+		<release version="4.0.0">
+Artificial Intelligence Pack version 4.0.0 for STM32 Cortex M7 and M4 MCUs
+What's new in this release:
+  Support of TensorFlow Lite in floating point
+  Support of Keras network quantization
+  Enhancements of the User Interface
+     One click automated validation project build and run on the target
+	 New graph display
+	 New Logging window with cancel support that will give the results so far
+  New command line interface allowing to perform the following actions on a neural network
+     analyze to give complexity, needed Flash and Ram size
+	 generate the C code
+	 validate on the desktop and on the target
+	 quantize using the min/max or greedy algorithm
+		</release>
+		<release version="3.4.0">
+Artificial Intelligence Pack version 3.4.0 for STM32 Cortex M7 and M4 MCUs
+
+Integrates support for Keras, Lasagne, Caffe and ConvNetJS neural networks
+What's new in this release:
+  Bug fix and enhancements in the user interface
+  Support of Depthwise 1D and Depthwise separable 1D Keras convolution
+  Better support of Linux and MacOS
+		</release>
+		<release version="3.3.0">
+            Artificial Intelligence Pack version 3.3.0 for STM32 Cortex M7 and M4 MCUs
+		</release>
+	</releases>
+
+	<keywords>
+		<keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+		<keyword>CUBEMX_MIGRATION_CAPABILITY</keyword>
+	</keywords>
+	
+	<conditions>
+		<condition id="Cortex M4 M7 Device">
+			<description>Cortex-M processor based device: Cortex-M4, Cortex-M7</description>
+			<accept Dcore="Cortex-M0"/>
+			<accept Dcore="Cortex-M0+"/>
+			<accept Dcore="Cortex-M4"/>
+			<accept Dcore="Cortex-M7"/>
+			<accept Dcore="Cortex-M33"/>
+			<accept Dfamily="STM32MP1"/>
+		</condition>
+		<condition id="Core">
+			<description>Core AI services</description>
+			<require Cclass="Artificial Intelligence" Cgroup="Core" Cversion="7.1.0"/>
+			<accept Dcore="Cortex-M0"/>
+			<accept Dcore="Cortex-M0+"/>
+			<accept Dcore="Cortex-M4"/>
+			<accept Dcore="Cortex-M7"/>
+			<accept Dcore="Cortex-M33"/>
+			<accept Dfamily="STM32MP1"/>
+		</condition>
+	</conditions>
+
+	<components>
+		<bundle Cvendor="STMicroelectronics" Cbundle="X-CUBE-AI" Cclass="Artificial Intelligence" Cversion="7.1.0">
+			<description>AI Core</description>
+			<doc>Documentation/index.html</doc>
+			<component Cgroup="Core" condition="Cortex M4 M7 Device" maxInstances="1">
+				<!-- short component description -->
+				<description>Artificial Intelligence for STM32</description> 
+				<files>
+					<file category="doc" name="nofile"/> 
+				</files>
+			</component>  
+		</bundle>
+		<bundle Cvendor="STMicroelectronics" Cbundle="Application" Cclass="Device" Cversion="7.1.0">
+			<description>AI Application</description>
+			<doc>Documentation/index.html</doc>
+			<component Cgroup="Application" Cvariant="SystemPerformance" condition="Core" maxInstances="1">
+				<!-- short component description -->
+				<description>System Performance</description> 
+				<RTE_Components_h>#define AI_SYSTEM_PERFORMANCE</RTE_Components_h>
+				<files>
+					<file category="include" name="Middlewares/ST/AI/SystemPerformance/Inc"/>         
+					<file category="source" name="Middlewares/ST/AI/SystemPerformance/Src/aiSystemPerformance.c"/>         
+				</files>
+			</component> 
+			<component Cgroup="Application" Cvariant="Validation" condition="Core" maxInstances="1">
+				<!-- short component description -->
+				<description>Validation on Target</description> 
+				<RTE_Components_h>#define AI_VALIDATION</RTE_Components_h>
+				<files>
+					<file category="include" name="Middlewares/ST/AI/Validation/Inc"/>         
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/aiPbMgr.c"/>  
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/aiTestUtility.c"/>      
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/aiValidation.c"/>      
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/pb_common.c"/>      
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/pb_decode.c"/>      
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/pb_encode.c"/>      
+					<file category="source" name="Middlewares/ST/AI/Validation/Src/stm32msg.pb.c"/>      
+				</files>
+			</component> 
+
+			<component Cgroup="Application" Cvariant="ApplicationTemplate" condition="Core" maxInstances="1">
+				<!-- short component description -->
+				<description>Application Template</description>
+				<RTE_Components_h>#define AI_ApplicationTemplate</RTE_Components_h>
+				<files>
+					<file category="source" name="Middlewares/ST/AI/Src/noop.c"/>
+				</files>
+			</component> 
+		</bundle>
+		<component Cvendor="STMicroelectronics" Cclass="CubeMX" Cgroup="thirdparty" Cversion="4.0">
+			<description>CubeMX Mode and config files</description>
+			<files>
+				<file category="other" attr="config" name="CubeMX/STMicroelectronics.X-CUBE-AI.7.1.0_Modes.xml"/>
+				<file category="other" attr="config" name="CubeMX/STMicroelectronics.X-CUBE-AI.7.1.0_Configs.xml"/>
+			</files>
+		</component>
+	</components>
+</package>

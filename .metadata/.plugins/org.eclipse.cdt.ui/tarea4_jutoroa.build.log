@@ -1,10 +1,16 @@
-00:58:09 **** Incremental Build of configuration Debug for project tarea4_jutoroa ****
+11:54:06 **** Build of configuration Debug for project tarea4_jutoroa ****
 make -j8 all 
-arm-none-eabi-size   tarea4_jutoroa.elf 
-   text	   data	    bss	    dec	    hex	filename
-   5908	     12	   1780	   7700	   1e14	tarea4_jutoroa.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Device/ST/STM32F4xx/Include -I/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "tarea4_jutoroa.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/tarea4_jutoroa/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tarea4_jutoroa.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(EXTIxDriver.o) uses VFP register arguments, tarea4_jutoroa.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(EXTIxDriver.o)
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o) uses VFP register arguments, tarea4_jutoroa.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o) uses VFP register arguments, tarea4_jutoroa.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+collect2: error: ld returned 1 exit status
+make: *** [makefile:63: tarea4_jutoroa.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-00:58:10 Build Finished. 0 errors, 0 warnings. (took 534ms)
+11:54:07 Build Failed. 7 errors, 0 warnings. (took 726ms)
 

@@ -1,2 +1,0 @@
-../Drivers/Src/USARTxDriver.c:17:6:USART_Config	16	static
-../Drivers/Src/USARTxDriver.c:202:5:writeChar	16	static,ignoring_inline_asm

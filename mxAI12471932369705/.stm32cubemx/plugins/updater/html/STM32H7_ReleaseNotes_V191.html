@@ -1,0 +1,20 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeH7 Firmware Package V1.9.1 / 06-December-2021</u></b></font><br>
+<b><u>Main Changes</u></b><br>
+<ul style="list-style-type: disc;">
+<li>General updates to fix known defects and implementation enhancements</li>
+<li>All source files: update disclaimer to add reference to the new license agreement.</li>
+<li>Update all firmware projects by adding dedicated MPU configuration to avoid Cortex-M7 speculative access on external memories.
+<ul>
+<li>Refer to ARM recommendation regarding Cortex-M7 speculative access: <a href="https://developer.arm.com/documentation/ddi0489/f/memory-system/speculative-accesses/considerations-for-system-design">Link</a></li>
+<li>"Arm recommends that you set those regions to have all of the following attributes with the MPU:
+<ul>
+<li>Device or Strongly-ordered.</li>
+<li>Execute Never.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</html>

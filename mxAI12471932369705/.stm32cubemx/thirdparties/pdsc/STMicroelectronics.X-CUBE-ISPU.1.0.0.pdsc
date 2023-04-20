@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-ISPU</name>
+  <description>Drivers and sample applications for ISPU components</description>
+  <license>en.DM00751078.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+
+  <releases>
+    <release version="1.0.0" date="2022-07-31">
+      First official release of the ISPU support package
+      Create sample applications with STM32CubeMX V6.6.0
+      Add new sensors: ISM330IS, LSM6DSO16IS
+      NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively
+    </release>
+  </releases>
+
+  <taxonomy>
+    <description  Cclass="Board Part">The MEMS components support class</description>
+    <description  Cclass="Board Extension">The expansion boards support class</description>
+  </taxonomy>
+
+  <keywords>
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>MEMS</keyword>
+    <keyword>ISPU</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    <keyword>IS_CONTEXT_EXCLUSIVE</keyword> <!-- Do not allow to instantiate the pack in more than one context -->
+    <keyword>DNS_BUSIO_X_CONTEXT_SHARING</keyword> <!-- Do not allow to share resources across context -->
+    <keyword>DOES_NOT_SUPPORT_SECURE</keyword> <!-- Do not support secure context -->
+  </keywords>
+
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M33</description>
+      <!-- STM32F0 -->
+      <accept Dcore="Cortex-M0"/>
+
+      <!-- STM32L0 and STM32G0 -->
+      <accept Dcore="Cortex-M0+"/>
+
+      <!-- STM32F1, STM32F2 and STM32L1 -->
+      <accept Dcore="Cortex-M3"/>
+
+      <!-- STM32F4, STM32F3 and STM32L4 series -->
+      <accept Dcore="Cortex-M4"/>
+
+      <!-- STM32F7 and STM32H7 series -->
+      <accept Dcore="Cortex-M7"/>
+
+      <!-- STM32L5 series -->
+      <accept Dcore="Cortex-M33"/>
+    </condition>
+
+    <condition id="ISM330IS Condition">
+      <description>Cortex-M Device and board setup (ISM330IS Driver)</description>
+      <require condition="Cortex-M Device"/>
+    </condition>
+
+    <condition id="LSM6DSO16IS Condition">
+      <description>Cortex-M Device and board setup (LSM6DSO16IS Driver)</description>
+      <require condition="Cortex-M Device"/>
+    </condition>
+
+    <condition id="ISPU_MOTION_SENSOR Condition">
+      <require condition="Cortex-M Device"/>
+      <require Cclass="Board Part" Cgroup="ISPU_AccGyr"/>
+    </condition>
+	
+	<!-- RTC VPDSC condition -->
+    <condition id="RTC HAL">
+      <description>Driver HAL RTC</description>
+      <require Cclass="Device" Cgroup="RTC" Csub="HAL"/>
+    </condition>
+
+    <condition id="CUSTOM ISPU Examples Condition">
+      <deny Cclass="Board Extension" Cgroup="IKS01A2"/>
+      <deny Cclass="Board Extension" Cgroup="IKS01A3"/>
+      <deny Cclass="Board Extension" Cgroup="IKS02A1"/>
+      <require Cclass="Board Support" Cgroup="CUSTOM" Csub="ISPU_MOTION_SENSOR"/>
+      <accept Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="ISM330IS"/>
+      <accept Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="LSM6DSO16IS"/>
+	    <require condition="RTC HAL"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <component Cvendor="STMicroelectronics" Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="ISM330IS" Cvariant="I2C" isDefaultVariant="true" condition="ISM330IS Condition" maxInstances="1" Cversion="1.0.0">
+      <description>ISM330IS component driver</description>
+      <RTE_Components_h>#define ISM330IS_ACCGYR_I2C</RTE_Components_h>
+      <files>
+        <file category="header"  name="Drivers/BSP/Components/ism330is/ism330is_reg.h"/>
+        <file category="header"  name="Drivers/BSP/Components/ism330is/ism330is.h"/>
+        <file category="source"  name="Drivers/BSP/Components/ism330is/ism330is_reg.c" />
+        <file category="source"  name="Drivers/BSP/Components/ism330is/ism330is.c" />
+      </files>
+    </component>
+    <component Cvendor="STMicroelectronics" Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="ISM330IS" Cvariant="SPI" isDefaultVariant="false" condition="ISM330IS Condition" maxInstances="1" Cversion="1.0.0">
+      <description>ISM330IS component driver</description>
+      <RTE_Components_h>#define ISM330IS_ACCGYR_SPI</RTE_Components_h>
+      <files>
+        <file category="header"  name="Drivers/BSP/Components/ism330is/ism330is_reg.h"/>
+        <file category="header"  name="Drivers/BSP/Components/ism330is/ism330is.h"/>
+        <file category="source"  name="Drivers/BSP/Components/ism330is/ism330is_reg.c" />
+        <file category="source"  name="Drivers/BSP/Components/ism330is/ism330is.c" />
+      </files>
+    </component>
+
+    <component Cvendor="STMicroelectronics" Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="LSM6DSO16IS" Cvariant="I2C" isDefaultVariant="true" condition="LSM6DSO16IS Condition" maxInstances="1" Cversion="1.0.0">
+      <description>LSM6DSO16IS component driver</description>
+      <RTE_Components_h>#define LSM6DSO16IS_ACCGYR_I2C</RTE_Components_h>
+      <files>
+        <file category="header"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is_reg.h"/>
+        <file category="header"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is.h"/>
+        <file category="source"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is_reg.c" />
+        <file category="source"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is.c" />
+      </files>
+    </component>
+    <component Cvendor="STMicroelectronics" Cclass="Board Part" Cgroup="ISPU_AccGyr" Csub="LSM6DSO16IS" Cvariant="SPI" isDefaultVariant="false" condition="LSM6DSO16IS Condition" maxInstances="1" Cversion="1.0.0">
+      <description>LSM6DSO16IS component driver</description>
+      <RTE_Components_h>#define LSM6DSO16IS_ACCGYR_SPI</RTE_Components_h>
+      <files>
+        <file category="header"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is_reg.h"/>
+        <file category="header"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is.h"/>
+        <file category="source"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is_reg.c" />
+        <file category="source"  name="Drivers/BSP/Components/lsm6dso16is/lsm6dso16is.c" />
+      </files>
+    </component>
+
+    <component Cvendor="STMicroelectronics" Cclass="Board Support" Cgroup="CUSTOM" Csub="ISPU_MOTION_SENSOR" condition="ISPU_MOTION_SENSOR Condition" maxInstances="1" Cversion="1.0.0">
+      <description>CUSTOM BSP for Motion Sensors </description>
+      <RTE_Components_h>#define BSP_ISPU_MOTION_SENSORS</RTE_Components_h>
+      <files>
+        <file category="header"  name="Drivers/BSP/Components/Common/motion_sensor.h"/>
+      </files>
+    </component>
+
+    <bundle Cvendor="STMicroelectronics" Cbundle="ISPU_Applications" Cclass="Device" Cversion="1.0.0">
+      <description>ISPU applications</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-ISPU_GettingStarted.pdf</doc>
+      <component  Cgroup="Application" Cvariant="ISPU_DataLogExtended" isDefaultVariant="true" condition="CUSTOM ISPU Examples Condition" maxInstances="1">
+        <description>DataLogExtended application for ISPU device</description>
+        <RTE_Components_h>#define ISPU_DATALOGEXTENDED</RTE_Components_h>
+        <files/>
+      </component>
+    </bundle>
+  </components>
+</package>

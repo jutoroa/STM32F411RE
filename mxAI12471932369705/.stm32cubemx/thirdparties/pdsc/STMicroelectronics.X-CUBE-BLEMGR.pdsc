@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>STMicroelectronics</vendor>
+    <name>X-CUBE-BLEMGR</name>
+    <description>The BLE Manager Library is an STM32 middleware providing an APIs to manage the BLE service according to the BlueNRG-MS, BlueNRG-1/2, BlueNRG-LP and WB middleware APIs.</description>
+    <url>http://sw-center.st.com/packs/x-cube/</url>
+    <license>DM00751078.pdf</license>
+    <releases>
+        <release date="2022-10-05" version="1.2.0">1.2.0 version release of the X-CUBE-BLEMGR support package with example selector. Create sample applications with STM32CubeMX V6.7.0</release>
+        <release date="2022-09-15" version="1.1.0">1.1.0 version release of the X-CUBE-BLEMGR support package. Create sample applications with STM32CubeMX V6.7.0</release>
+        <release date="2022-05-03" version="1.0.0">First official release of the X-CUBE-BLEMGR support package. Create sample applications with STM32CubeMX V6.5.0</release>
+    </releases>
+    <keywords>
+        <keyword>CUBE_RULES_COMPLIANT</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+        <keyword>IS_CONTEXT_EXCLUSIVE</keyword>
+        <keyword>DNS_BUSIO_X_CONTEXT_SHARING</keyword>
+        <keyword>DOES_NOT_SUPPORT_SECURE </keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Data Exchange">Data Exchange</description>
+        <description Cclass="BLE_Manager">BLE_Manager</description>
+        <description Cclass="BLE_Features">BLE_Features</description>
+        <description Cclass="Device">Device</description>
+        <description Cclass="Bluetooth">Bluetooth</description>
+    </taxonomy>
+    <conditions>
+        <condition id="Cortex-M Device">
+            <description>Cortex-M processor based device: Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M33</description>
+            <accept Dcore="Cortex-M0+"/>
+            <accept Dcore="Cortex-M3"/>
+            <accept Dcore="Cortex-M4"/>
+            <accept Dcore="Cortex-M7"/>
+            <accept Dcore="Cortex-M33"/>
+        </condition>
+        <condition id="BLE_ENVIRONMENTAL">
+            <require Cclass="BLE_Features" Cgroup="HardwareSensors" Csub="Environmental"/>
+        </condition>
+        <condition id="BLE_LED">
+            <require Cclass="BLE_Features" Cgroup="HardwareSensors" Csub="Led"/>
+        </condition>
+        <condition id="BLE_SENSOR_FUSION">
+            <require Cclass="BLE_Features" Cgroup="SoftwareLibraries" Csub="SensorFusion"/>
+        </condition>
+        <condition id="BLE_MANAGER">
+            <require Cclass="BLE_Manager" Cgroup="BLE_Manager"/>
+        </condition>
+        <condition id="Application Condition">
+            <accept condition="BLUENRG_2_CORE"/>
+            <accept condition="BLUENRG_MS_CORE"/>
+            <require condition="BLE_ENVIRONMENTAL"/>
+            <require condition="BLE_LED"/>
+            <require condition="BLE_SENSOR_FUSION"/>
+            <require condition="BLE_MANAGER"/>
+            <require Cclass="Data Exchange" Cgroup="parson"/>
+        </condition>
+        <condition id="BLUENRG_2_CORE">
+            <require Cclass="Wireless" Cgroup="BlueNRG-2" Csub="Controller"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-2" Csub="HCI_TL" Cvariant="Basic"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-2" Csub="HCI_TL_INTERFACE" Cvariant="UserBoard"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-2" Csub="Utils"/>
+            <deny Cclass="Wireless" Cgroup="BlueNRG-MS"/>
+        </condition>
+        <condition id="BLUENRG_MS_CORE">
+            <require Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="Controller"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="HCI_TL" Cvariant="Basic"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="HCI_TL_INTERFACE" Cvariant="UserBoard"/>
+            <require Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="Utils"/>
+            <deny Cclass="Wireless" Cgroup="BlueNRG-2"/>
+        </condition>
+        <condition id="REQUIRED_CONDITION">
+            <require Cclass="Data Exchange" Cgroup="parson"/>
+            <require Cclass="Bluetooth" Cgroup="Core"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="BLE Core" Cclass="Bluetooth" Cversion="1.1.0">
+            <description>Bluetooth Core device selector</description>
+            <doc>https://www.st.com/content/st_com/en/search.html#q=BlueNRG-t=products-page=1</doc>
+            <component Cgroup="Core" Cvariant="BLE_2" condition="BLUENRG_2_CORE" maxInstances="1">
+                <description>The BlueNRG-2 is a very low power Bluetooth Low Energy (BLE) single-mode system-on-chip, compliant with Bluetooth specifications. The BlueNRG-2 extends the features of award-winning BlueNRG network processor, enabling the usage of the embedded Cortex M0 to run the user application code.</description>
+                <RTE_Components_h>#define BLUENRG_2</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Core" Cvariant="BLE_MS" condition="BLUENRG_MS_CORE" maxInstances="1">
+                <description>Embedded ST BlueNRG-MS network processor compliant with Bluetooth v4.2.</description>
+                <RTE_Components_h>#define BLUENRG_MS</RTE_Components_h>
+                <files/>
+            </component>
+        </bundle>
+        <bundle Cbundle="STM32_BLE_Manager" Cclass="BLE_Manager" Cversion="1.6.0">
+            <description>STM32_BLE_Manager middleware manager according to the BlueNRG-MS and BlueNRG-1/2 middleware APIs.</description>
+            <doc>Middlewares/ST/STM32_BLE_Manager/Release_Notes.html</doc>
+            <component Cgroup="BLE_Manager" condition="REQUIRED_CONDITION" maxInstances="1">
+                <description>Add bluetooth services using vendor specific profiles</description>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Manager.h"/>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_ManagerCommon.h"/>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_ManagerControl.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Manager.c"/>
+                </files>
+            </component>
+        </bundle>
+        <bundle Cbundle="STM32_BLE_Manager" Cclass="BLE_Features" Cversion="1.6.0">
+            <description>To manage the Bluetooth features according to the BlueNRG-MS and BlueNRG-1/2 middleware APIs.</description>
+            <doc>Middlewares/ST/STM32_BLE_Manager/Documentation/STM32_BLE_Manager_Library.chm</doc>
+            <component Cgroup="ArtificialIntelligence" Csub="AudioSceneClassification" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages audio scene classification info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_AUDIO_SCENE_CLASSIFICATION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_AudioSceneClassification.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_AudioSceneClassification.c"/>
+                </files>
+            </component>
+            <component Cgroup="DataLog" Csub="HighSpeedDataLog" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages high speed data log info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_HIGH_SPEED_DATA_LOG</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_HighSpeedDataLog.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_HighSpeedDataLog.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="AccEvent" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manage Accelerometer events info service using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_ACC_EVENT</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_AccEvent.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_AccEvent.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="AudioLevel" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages audio level info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_AUDIO_LEVEL</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_AudioLevel.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_AudioLevel.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Battery" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages battery info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_BATTERY</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Battery.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Battery.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Environmental" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages environmental info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_ENVIRONMENTAL</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Environmental.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Environmental.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="FiniteStateMachine" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages finite state machine info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_FINITE_STATE_MACHINE</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_FiniteStateMachine.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_FiniteStateMachine.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="GasConcentration" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages gas concentration info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_GAS_CONCENTRATION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_GasConcentration.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_GasConcentration.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Gnss" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages Gnss info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_GNSS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Gnss.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Gnss.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Inertial" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages inertial info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_INERTIAL</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Inertial.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Inertial.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Led" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages led info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_LED</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Led.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Led.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="MachineLearningCore" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages machine learning core info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_MACHINE_LEARNING_CORE</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_MachineLearningCore.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_MachineLearningCore.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="ObjectsDetection" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages objects detection info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_MOTION_OBJECTS_DETECTION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_ObjectsDetection.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_ObjectsDetection.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="Piano" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages piano info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_PIANO</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Piano.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Piano.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="ActivityRecognition" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages activity recognition info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_ACTIVITY_RECOGNITION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_ActivityRecognition.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_ActivityRecognition.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="AudioSourceLocalization" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages audio source localization info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_AUDIO_SOURCE_LOCALIZATION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_AudioSourceLocalization.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_AudioSourceLocalization.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="CarryPosition" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages carry position info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_CARRY_POSITION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_CarryPosition.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_CarryPosition.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="ECompass" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages ecompass  info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_ECOMPASS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_ECompass.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_ECompass.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="FitnessActivities" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages fitness activities info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_FITNESS_ACTIVITIES</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_FitnessActivities.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_FitnessActivities.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="GestureRecognition" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages gesture recognition info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_GESTURE_RECOGNITION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_GestureRecognition.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_GestureRecognition.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="MotionAlgorithms" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages motion algorithms info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_MOTION_ALGORITHMS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_MotionAlgorithms.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_MotionAlgorithms.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="MotionIntensity" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages motion intensity info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_MOTION_INTENSITY</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_MotionIntensity.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_MotionIntensity.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="PedometerAlgorithm" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages pedometer algorithm info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_PEDOMETER_ALGORITHM</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_PedometerAlgorithm.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_PedometerAlgorithm.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="SensorFusion" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages sensor fusion info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_SENSOR_FUSION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_SensorFusion.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_SensorFusion.c"/>
+                </files>
+            </component>
+            <component Cgroup="SoftwareLibraries" Csub="TiltSensing" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages tilt sensing info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_TILT_SENSING</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_TiltSensing.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_TiltSensing.c"/>
+                </files>
+            </component>
+            <component Cgroup="PredictiveMaintenance" Csub="FFT_AlarmSubrangeStatus" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages FFT alarm subrange status info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_FFT_ALARM_SUBRANGE_STATUS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_FFT_AlarmSubrangeStatus.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_FFT_AlarmSubrangeStatus.c"/>
+                </files>
+            </component>
+            <component Cgroup="PredictiveMaintenance" Csub="FFT_Amplitude" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages FFT amplitude info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_FFT_AMPLITUDE</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_FFT_Amplitude.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_FFT_Amplitude.c"/>
+                </files>
+            </component>
+            <component Cgroup="PredictiveMaintenance" Csub="TimeDomain" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages time domain info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_TIME_DOMAIN</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_TimeDomain.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_TimeDomain.c"/>
+                </files>
+            </component>
+            <component Cgroup="PredictiveMaintenance" Csub="TimeDomainAlarmAccPeakStatus" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages time domain alarm accelerometer peak status info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_TD_ACC_PEAK_STATUS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_TimeDomainAlarmAccPeakStatus.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_TimeDomainAlarmAccPeakStatus.c"/>
+                </files>
+            </component>
+            <component Cgroup="PredictiveMaintenance" Csub="TimeDomainAlarmSpeed_RMS_Status" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages time domain alarm speed RMS status info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_TD_ALARM_SPEED_RMS_STATUS</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_TimeDomainAlarmSpeed_RMS_Status.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_TimeDomainAlarmSpeed_RMS_Status.c"/>
+                </files>
+            </component>
+            <component Cgroup="Miscellaneous" Csub="GeneralPurpose" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages general purpose info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_GENERAL_PURPOSE</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_GeneralPurpose.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_GeneralPurpose.c"/>
+                </files>
+            </component>
+            <component Cgroup="WB_FirmwareUpdate" Csub="Ota" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages ota info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_OTA</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Ota.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Ota.c"/>
+                </files>
+            </component>
+            <component Cgroup="DataLog" Csub="SDLogging" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manage SD Logging events info service using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_SD_LOGGING</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_SDLogging.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_SDLogging.c"/>
+                </files>
+            </component>
+            <component Cgroup="PnP" Csub="PnPLike" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manage PnP Like events info service using vendor specific profiles</description>
+                <RTE_Components_h>#define BLE_MANAGER_PNP_LIKE</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_PnPLike.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_PnPLike.c"/>
+                </files>
+            </component>
+            <component Cgroup="HardwareSensors" Csub="EventCounter" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manage Event Counter events info service using vendor specific profiles</description>
+                <RTE_Components_h>#define BLE_MANAGER_EVENT_COUNTER</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_EventCounter.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_EventCounter.c"/>
+                </files>
+            </component>
+            <component Cgroup="Miscellaneous" Csub="Json" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manage json events info service using vendor specific profiles</description>
+                <RTE_Components_h>#define BLE_MANAGER_JSON</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_Json.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_Json.c"/>
+                </files>
+            </component>
+            <component Cgroup="ArtificialIntelligence" Csub="NeaiAnomalyDetection" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages Neai Anomaly Detection info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_NEAI_ANOMALY_DETECTION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_NeaiAnomalyDetection.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_NeaiAnomalyDetection.c"/>
+                </files>
+            </component>
+            <component Cgroup="ArtificialIntelligence" Csub="NeaiNClassClassification" condition="BLE_MANAGER" maxInstances="1">
+                <description>Manages Neai N-Class Classification info services using vendor specific profiles.</description>
+                <RTE_Components_h>#define BLE_MANAGER_NEAI_N_CLASS_CLASSIFICATION</RTE_Components_h>
+                <files>
+                    <file category="header" name="Middlewares/ST/STM32_BLE_Manager/Inc/BLE_NeaiNClassClassification.h"/>
+                    <file category="source" name="Middlewares/ST/STM32_BLE_Manager/Src/BLE_NeaiNClassClassification.c"/>
+                </files>
+            </component>
+        </bundle>
+        <bundle Cbundle="parson" Cclass="Data Exchange" Cvendor="Third_Party" Cversion="1.3.1">
+            <description>Parson is a lighweight json library written in C.</description>
+            <doc>Middlewares/Third_Party/parson/Release_Notes.html</doc>
+            <component Cgroup="parson" maxInstances="1">
+                <description>Parson is a lighweight json library written in C.</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/parson/parson.c"/>
+                    <file category="header" name="Middlewares/Third_Party/parson/parson.h"/>
+                </files>
+            </component>
+        </bundle>
+        <bundle Cbundle="BLEMGR_Applications" Cclass="Device" Cversion="1.1.0">
+            <description>BLEMGR sample applications for BLE_Manager module</description>
+            <doc>Documentation/STMicroelectronics.X-CUBE-BLEMGR_GettingStarted.pdf</doc>
+            <component Cgroup="Application" Cvariant="SensorDataTransmit" condition="Application Condition" maxInstances="1">
+                <description>BLEMGR sample application for STM32_BLE_Manager middleware using ST BLE Sensor app</description>
+                <RTE_Components_h>#define SENSOR_DATA_TRANSMIT</RTE_Components_h>
+                <files/>
+            </component>
+        </bundle>
+    </components>
+</package>

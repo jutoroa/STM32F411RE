@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-EEPRMA1</name>
+  <description>Drivers and sample applications for M95xx and M24xx components</description>
+  <license>en.DM00367782.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+
+  <releases>
+  <release version="3.1.1" date="2021-12-10">
+	  - Added neutral license in source code
+	  - Create sample applications with STM32CubeMX V6.4.0
+      - This version is compatible with STM32CubeMX v6.4.0
+	</release>
+    <release version="3.1.0" date="2021-06-10">
+	  - Added support for Example Selector
+	  - Bug fixing in STM32CubeIDE related to Linux machine compatibilty 
+	  - Create sample applications with STM32CubeMX V6.3.0
+      - This version is compatible with STM32CubeMX v6.3.0
+	</release>
+	<release version="3.0.0" date="2020-09-16">
+	  - BSP driver developement as per the CubeMX model 
+	  - Create sample applications with STM32CubeMX V6.1.0
+      - This version is compatible with STM32CubeMX v6.1.0
+	</release>
+  </releases>
+  
+  <taxonomy>
+    <description  Cclass="Board Component">The EEPROM components support class</description>
+    <description  Cclass="Board Extension">The expansion boards support class</description>
+  </taxonomy>
+
+  <keywords>    
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+	<keyword>CUBEMX_MIGRATION_CAPABILITY</keyword>
+    <keyword>EEPRMA</keyword>
+  </keywords>
+  
+  
+  <apis>
+    <!-- API -->
+    <api Cclass="Board Extension" Cgroup="EEPRMA1" Capiversion="3.1.1" exclusive="0">
+      <description>EEPRMA1 Driver for X-NUCLEO-EEPRMA1</description>
+      <files>
+        <file category="doc"    name="Documentation/X-CUBE-EEPRMA1.chm"/>
+      </files>
+    </api>
+    <api Cclass="Board Extension" Cgroup="EEPRMA2" Capiversion="3.1.1" exclusive="0">
+      <description>EEPRMA1 Driver for X-NUCLEO-EEPRMA2</description>
+      <files>
+        <file category="doc"    name="Documentation/X-CUBE-EEPRMA1.chm"/>
+      </files>
+    </api>
+  </apis>
+  
+  
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7</description>
+      <!-- STM32F0 -->
+      <accept Dcore="Cortex-M0"/>
+	  
+      <!-- STM32L0 -->
+      <accept Dcore="Cortex-M0+"/>
+      
+      <!-- STM32F1, STM32F2 and STM32L1 -->
+	  <accept Dcore="Cortex-M3"/>
+      
+	  <!-- STM32L5-->
+	  <accept Dcore="Cortex-M33"/>
+      <!-- STM32F4, STM32F3 and STM32L4 series -->
+      <accept Dcore="Cortex-M4"/>
+      
+      <!-- STM32F7 and STMH7 series -->
+      <accept Dcore="Cortex-M7"/>     
+    </condition>
+
+    <condition id="CM0_GCC">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM0_IAR">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM0_Keil">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+	
+	<condition id="CM3_GCC">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM3_IAR">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM3_Keil">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+    <condition id="CM4_GCC">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM4_IAR">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM4_Keil">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+	
+	<condition id="CM7_GCC">
+      <require Dcore="Cortex-M7"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM7_IAR">
+      <require Dcore="Cortex-M7"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM7_Keil">
+	  <require Dcore="Cortex-M7"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+	<condition id="EEPRMA1 Condition">		
+	  <description>Cortex-M Device and board setup (X-NUCLEO-EEPRMA1)</description> 
+	  <require condition="Cortex-M Device"/>   
+      <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M24"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M95"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+      <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA2_EEPROMRW"/>	  
+    </condition>
+	<condition id="EEPRMA2 Condition">		
+	  <description>Cortex-M Device and board setup (X-NUCLEO-EEPRMA2)</description> 
+	  <require condition="Cortex-M Device"/>   
+      <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M24"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M95"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+      <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA1_EEPROMRW"/>	  
+    </condition>
+
+	<!-- EEPROM Examples condition -->
+    <condition id="EEPRMA1 Examples Condition">
+      <require Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M24"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M95"/>
+      <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="EEPROM_I2C"/>	  
+	  <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="EEPROM_SPI"/>	
+	  <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA2_EEPROMRW"/>
+    </condition>
+	
+	<condition id="EEPRMA2 Examples Condition">
+      <require Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M24"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Part" Cgroup="M95"/>
+      <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="EEPROM_I2C"/>	  
+	  <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="EEPROM_SPI"/>
+	  <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA1_EEPROMRW"/>	
+    </condition>
+	
+	
+	<condition id="M24XX Condition">
+      <description>Cortex-M Device and board setup (M24XX Driver)</description>      
+      <require condition="Cortex-M Device"/>
+      <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+      <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+      <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA1_EEPROMRW"/>	
+	  <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA2_EEPROMRW"/>	
+    </condition>
+	
+	<condition id="M95XX Condition">
+      <description>Cortex-M Device and board setup (M95XX Driver)</description>      
+      <require condition="Cortex-M Device"/>
+      <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+      <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+      <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA1_EEPROMRW"/>	
+	  <deny Cbundle="EEPRMA_Applications" Cclass="Device" Cgroup="Application" Cvariant="EEPRMA2_EEPROMRW"/>	
+    </condition>
+	
+	<condition id="EEPROM IC Condition">
+      <require condition="Cortex-M Device"/>
+      <accept Cbundle="EEPROM" Cclass="Board Part" Cgroup="M24"/>	
+	  <accept Cbundle="EEPROM" Cclass="Board Part" Cgroup="M95"/>
+      <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA1"/>
+	  <deny Cbundle="EEPROM" Cclass="Board Extension" Cgroup="EEPRMA2"/>
+    </condition>
+
+	
+  </conditions>
+  
+  <components>
+    <bundle Cvendor="STMicroelectronics" Cbundle="EEPROM" Cclass="Board Part" Cversion="3.1.1">
+      <description>EEPROM Driver for custom boards</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-EEPRMA1_GettingStarted.pdf</doc>
+      <component Cgroup="M24" Csub="M24XX" condition="M24XX Condition" maxInstances="1" Capiversion="3.1.1">
+	    <description>M24XX files</description>
+        <RTE_Components_h>#define M24XX_M24_I2C</RTE_Components_h>
+        <!-- short component description -->
+       <!-- <description>M24 component driver</description>  -->
+      <files>
+		  <file category="header"  name="Drivers/BSP/Components/M24xx/m24xx.h"/>
+          <file category="source"  name="Drivers/BSP/Components/M24xx/m24xx.c"/>
+      </files>
+      </component>
+	   <component Cgroup="M95" Csub="M95XX" condition="M95XX Condition" maxInstances="1" Capiversion="3.1.1">
+	    <description>M95XX files</description>
+        <RTE_Components_h>#define M295XX_M95_SPI</RTE_Components_h>
+        <!-- short component description -->
+       <!-- <description>M95 component driver</description>  -->
+      <files>
+		  <file category="header"  name="Drivers/BSP/Components/M95xx/m95xx.h"/>
+          <file category="source"  name="Drivers/BSP/Components/M95xx/m95xx.c"/>
+      </files>
+      </component>	
+	</bundle>
+	
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="EEPROM" Cclass="Board Extension" Cversion="3.1.1">
+    <description>Board Extension</description>
+	  <doc>Documentation/STMicroelectronics.X-CUBE-EEPRMA1_GettingStarted.pdf</doc>
+	  <component Cgroup="EEPRMA1" condition="EEPRMA1 Condition" maxInstances="1" Capiversion="3.1.1">
+		<description> BSP for X-NUCLEO-EEPRMA1 </description>
+        <RTE_Components_h>#define EEPRMA1</RTE_Components_h>
+        <!-- short component description -->
+		<files>
+            <file category="header"  name="Drivers/BSP/Components/M95xx/m95xx.h"/>
+            <file category="source"  name="Drivers/BSP/Components/M95xx/m95xx.c"/>
+            <file category="header"  name="Drivers/BSP/Components/M24xx/m24xx.h"/>
+            <file category="source"  name="Drivers/BSP/Components/M24xx/m24xx.c"/>
+            <file category="header"  name="Drivers/BSP/EEPRMA1/eeprma1_m24.h"/>
+            <file category="source"  name="Drivers/BSP/EEPRMA1/eeprma1_m24.c"/>
+            <file category="header"  name="Drivers/BSP/EEPRMA1/eeprma1_m95.h"/>
+            <file category="source"  name="Drivers/BSP/EEPRMA1/eeprma1_m95.c"/>
+		</files>
+      </component>
+	  <component Cgroup="EEPRMA2" condition="EEPRMA2 Condition" maxInstances="1" Capiversion="3.1.1">
+		<description> BSP for X-NUCLEO-EEPRMA2 </description>
+        <RTE_Components_h>#define EEPRMA2</RTE_Components_h>
+        <!-- short component description -->
+      <files>
+            <file category="header"  name="Drivers/BSP/Components/M95xx/m95xx.h"/>
+            <file category="source"  name="Drivers/BSP/Components/M95xx/m95xx.c"/>
+            <file category="header"  name="Drivers/BSP/Components/M24xx/m24xx.h"/>
+            <file category="source"  name="Drivers/BSP/Components/M24xx/m24xx.c"/>
+            <file category="header"  name="Drivers/BSP/EEPRMA2/eeprma2_m24.h"/>
+            <file category="source"  name="Drivers/BSP/EEPRMA2/eeprma2_m24.c"/>
+            <file category="header"  name="Drivers/BSP/EEPRMA2/eeprma2_m95.h"/>
+            <file category="source"  name="Drivers/BSP/EEPRMA2/eeprma2_m95.c"/>
+      </files>
+      </component>
+    </bundle>
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cversion="3.1.1">   
+      <description>Custom BSP implementation</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-EEPRMA1_GettingStarted.pdf</doc>
+      <component Cgroup="Custom" Csub="EEPROM_I2C" condition="EEPROM IC Condition" maxInstances="1" Capiversion="3.1.1">
+        <description>BSP for M24 </description>
+        <RTE_Components_h>#define BSP_EEPROM_I2C</RTE_Components_h>
+		<!-- short component description -->
+        <files/>
+      </component>
+	  <component Cgroup="Custom" Csub="EEPROM_SPI" condition="EEPROM IC Condition" maxInstances="1" Capiversion="3.1.1">
+        <description>BSP for M95 </description>
+        <RTE_Components_h>#define BSP_EEPROM_SPI</RTE_Components_h>
+		<!-- short component description -->
+        <files/>
+      </component>
+    </bundle> 
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="EEPRMA_Applications" Cclass="Device" Cversion="3.1.1">
+    <description>EEPROM READ WRITE sample example</description>
+	  <doc>Documentation/STMicroelectronics.X-CUBE-EEPRMA1_GettingStarted.pdf</doc>
+	  <component  Cgroup="Application" Cvariant="EEPRMA1_EEPROMRW" isDefaultVariant="true" condition="EEPRMA1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>READ WRITE sample of X-NUCLEO-EEPRMA1</description>
+        <RTE_Components_h>#define EEPRMA1_EEPROMRW_DEMO</RTE_Components_h>
+        <files/>
+      </component>		
+	  <component  Cgroup="Application" Cvariant="EEPRMA2_EEPROMRW" isDefaultVariant="true" condition="EEPRMA2 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>EEPROM READ WRITE sample example for X-NUCLEO-EEPRMA2</description>
+        <RTE_Components_h>#define EEPRMA2_EEPROMRW_DEMO</RTE_Components_h>
+        <files/>
+      </component>	
+    </bundle>    
+    	
+		
+    
+  </components>
+
+</package>

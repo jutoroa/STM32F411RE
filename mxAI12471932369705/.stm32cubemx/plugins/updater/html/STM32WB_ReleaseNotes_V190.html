@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.9.0 / 25-Septembre-2020</u></b></font><br>
+<br><br><br><b><u>Main Changes</u></b><br><br>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Introduce BLE/Thread and BLE/Zigbee dynamic concurrent mode, the support of LLD BLE and PHY_802.15.4 CLI application</h3>
+<ul style="list-style-type: disc;">
+<li><b>Dynamic Concurrent mode support between BLE and Zigbee</b></li>
+<ul>
+<li>Through this feature, the STM32WB can support Zigbee and BLE protocols in parallel.</li>
+<li>3 new applications available on P-NUCLEO-WB55.Nucleo board highlight this feature.</li>
+<li>They are available under Projects-NUCLEO-WB55.Nucleo_Zigbee</li>
+<ul>
+<li>BLE_Zigbee_Dyn</li>
+<li>BLE_Zigbee_Dyn_NVM</li>
+<li>BLE_Zigbee_Dyn_SED</li>
+</ul>
+<li>These application are using the following wireless copro binaries:</li>
+<ul>
+<li><b>stm32wb5x_BLE_Zigbee_FFD_dynamic_fw.bin</b> : BLE Zigbee Full Feature Device Dynamic concurrent mode. To be used for Zigbee Coordinator or Router devices sharing its radio bandwidth with BLE.</li>
+<li><b>stm32wb5x_BLE_Zigbee_RFD_dynamic_fw.bin</b> : BLE Zigbee Reduced Feature Device Dynamic concurrent mode. To be used for Zigbee End Devices sharing its radio bandwidth with BLE.</li>
+</ul>
+</ul>
+<li><b>Dynamic Concurrent mode support between BLE and Thread</b></li>
+<ul>
+<li>Through this feature, the STM32WB can support Thread and BLE protocols in parallel.</li>
+<li>2 new applications available under Projects-NUCLEO-WB55.Nucleo_Thread highlight this feature.</li>
+<ul>
+<li>Ble_Thread_Dyn</li>
+<li>Ble_Thread_Dyn_SED</li>
+</ul>
+<li>These application are using the following wireless copro binary: <b>stm32wb5x_BLE_Thread_FFD_dynamic_fw.bin.</b></li>
+</ul>
+<li><b>Static concurrent mode support between BLE and Zigbee-RFD</b></li>
+<ul>
+<li>When using the static concurrent mode, the application can switch from BLE to Zigbee or from Zigbee to BLE on request.</li>
+<li>There are two flavors of static concurrent mode supporting BLE and Zigbee:</li>
+<ul>
+<li>BLE-Zigbee_FFD (Full Function Device)</li>
+<li>BLE-Zigbee_RFD (Reduced Function Device and optimized for power consumption)</li>
+</ul>
+<li>The <b>stm32wb5x_BLE_Zigbee_RFD_static_fw.bin</b> copro binary is to be used for Zigbee End devices requesting BLE support in static concurrent mode.</li>
+</ul>
+<li><b>Provide the ability to do only BLE advertising & scanning at HCI level</b></li>
+<li><b>PHY_802.15.4 command line interface application</b></li>
+<ul>
+<li>A dedicated application allows the control and the test of the 802_15_4 radio via a command line interface.</li>
+<li>It is available under Projects-NUCLEO-WB55.Nucleo_802_15_4</li>
+<ul>
+<li>Phy_802_15_4_Cli</li>
+</ul>
+<li>This application request the usage of the following wireless copro binary: <b>stm32wb5x_Phy_802_15_4_fw.bin.</b></li>
+</ul>
+<li><b>BLE and LLD</b></li>
+<ul>
+<li>3 new applications are provided based on usage of <b>stm32wb5x_BLE_LLD_fw.bin</b>:</li>
+<ul>
+<li>LLD_BLE_Chat: Text communication between 2 boards using Terminal based on UART</li>
+<li>LLD_BLE_Pressbutton: Transmission and Reception between 2 boards using button and symbolized by blinking LED</li>
+<li>LLD_BLE_Proximity: State Machine Programmed to receive ID from others board (multi boards)</li>
+</ul>
+</ul>
+<li><b>Thread</b></li>
+<ul>
+<li>ID 91267 : Fix CoAP OpenThread API exposed on application side</li>
+<ul>
+<li>The CoAP API is now compliant with <b>OpenThread</b> definition and <b>mContext parameter</b> is then correctly returned to the application.</li>
+</ul>
+</ul>
+</ul>
+</html>

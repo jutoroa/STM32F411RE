@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeF2 Firmware Package V1.8.0 / 28-June-2019</u></b></font><br>
+<b><u>Main Changes</u></b><br>
+<ul style="list-style-type: disc;">
+<li>General updates to fix known defects and enhancements implementation.</li>
+<li>HAL drivers clean-up: remove double casting uint32_t and U.</li>
+<li>General updates to fix CodeSonar compilation warnings.</li>
+<li>General updates to fix the user manual .chm files.</li>
+<li>Add support of HAL callback registration feature.</li>
+<li>Demonstrations binaries are no more delivered within the STM32CubeF2 MCU package. They are available for download, in addition to their required media files if any, in a standalone package accessible through each hardware board official webpage. Please refer to the corresponding demonstration binary readme.txt to get webpage for each board..</li>
+<li>Add new HAL EXTI driver.</li>
+<li>The following changes done on the HAL drivers require an update on the application code based on older HAL versions.</li>
+<ul>
+<li>Add support of HAL callback registration feature.</li>
+<ul>
+<li>The feature disabled by default is available for the following HAL drivers:</li>
+<ul>
+<li>ADC, CAN, CRYP, DAC, DCMI, ETH, HASH, HCD, I2C, UART, USART, IRDA, SMARTCARD,</li>
+<li>MMC, NAND, NOR, PCCARD, PCD, RNG, RTC, SD, SRAM, SPI, I2S, TIM and WWDG</li>
+</ul>
+<li>The feature may be enabled individually per HAL PPP driver by setting the corresponding definition USE_HAL_PPP_REGISTER_CALLBACKS to 1U in stm32f2xx_hal_conf.h.<br>
+project configuration file (template file stm32f2xx_hal_conf_template.h available from Drivers/STM32F2xx_HAL_Driver/Inc)</li>
+<li>Once enabled , the user application may resort to HAL_PPP_RegisterCallback() to register specific callback function(s) and unregister it(them) with HAL_PPP_UnRegisterCallback().</li>
+</ul>
+<li>Rework of HAL CRYP driver (compatibility break).</li>
+<ul>
+<li>HAL CRYP driver has been redesigned with new APIs, to bypass limitations on data Encryption/Decryption management present with previous HAL CRYP driver version.</li>
+<li>The new HAL CRYP driver is the recommended version. It is located as usual in Drivers/STM32F2xx_HAL_Driver/Src and Drivers/STM32f2xx_HAL_Driver/Inc folders. It can be enabled through switch HAL_CRYP_MODULE_ENABLED in stm32f2xx_hal_conf.h</li>
+<li>he legacy HAL CRYP driver is no longer supported.</li>
+</ul>
+<li>Rework of HAL CAN driver (compatibility break).</li>
+<ul>
+<li>A new HAL CAN driver has been redesigned with new API s, to bypass limitation on CAN Tx/Rx FIFO management present with previous HAL CAN driver versions.</li>
+<li>The new HAL CAN driver is the recommended version. il is located as usual in Driver/STM32F2xx_HAL_Driver/Src and Driver/STM32F2xx_HAL_Driver/Inc folders. it can be enabled through switch HAL_CAN_MODULE_ENABLED in stm32f2xx_hal_conf.h file.</li>
+<li>The legacy HAL CAN driver is also present in the package release in Driver/STM32F2xx_HAL_Driver/Src/Legacy and Driver/STM32F2xx_HAL_Driver/Inc/Legacy folders for software compatibility reasons. its usage is not recommended as deprecated. it can however be enabled through switch HAL_CAN_LEGACY_MODULE_ENABLED in stm32f2xx_hal_conf.h file.</li>
+</ul>
+<li>For HAL HCD driver add the following USB callback in usbh_conf.c user file to be compliant with latest changes done on USB Host (HAL/Stack).</li>
+<ul>
+<li>HAL_HCD_PortEnabled_Callback()</li>
+<li>HAL_HCD_PortDisabled_Callback()</li>
+</ul>
+</ul>
+
+<li>Middleware</li>
+<ul>
+<li>Update to use FreeRTOS 10.0.1 ST modified 20190329</li>
+<li>Update to use STemWin V5.44 ST modified 20180322</li>
+<li>Update to use USB Device Library V2.5.3</li>
+<li>Update to use USB Host Library V3.3.3.</li>
+<li>Update to use new version of LwIP V2.0.3.</li>
+<li>Update to use new version of PDM Library V3.1.0</li>
+<li>Update to use mbedTLS V2.14.1 ST modified 20190329.</li>
+<li>Update to use LibJPEG v8d ST modified 20190201.</li>
+</ul>
+</ul>
+<br>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>STMicroelectronics</vendor>
+    <name>FP-ATR-ASTRA1</name>
+    <description>FP-ATR-ASTRA1 CubeMX pack for asset tracking</description>
+    <url>http://sw-center.st.com/packs/x-cube/</url>
+    <license>en.DM00751078.pdf</license>
+    <releases>
+        <release date="2022-07-26" version="1.1.1">STM32CubeMX Example selector implementation</release>
+        <release date="2022-06-10" version="1.1.0">FP-ATR-ASTRA1 initial release</release>
+    </releases>
+    <keywords>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+        <keyword>CUBE_RULES_COMPLIANT</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Device">Device</description>
+    </taxonomy>
+    <requirements>
+        <packages>
+            <package name="X-CUBE-GNSS1" vendor="STMicroelectronics"/>
+            <package name="X-CUBE-MEMS1" vendor="STMicroelectronics"/>
+            <package name="X-CUBE-NFC4" vendor="STMicroelectronics"/>
+        </packages>
+    </requirements>
+    <conditions>
+        <condition id="USB_DEVICE_CDC_FS">
+            <description>USB_DEVICE_CDC_FS</description>
+            <require Cclass="USB" Cgroup="USB Device" Csub="CDC FS"/>
+        </condition>
+        <condition id="STM32_WPAN_BLE">
+            <description>STM32_WPAN_BLE</description>
+            <require Cclass="Wireless" Cgroup="BLE"/>
+        </condition>
+        <condition id="NFC_CONDITION">
+            <description>BOARD_PART_NFC</description>
+            <require Cclass="Board Part" Cgroup="NFC4"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="NFCTAG"/>
+        </condition>
+        <condition id="SENSORS_CONDITION">
+            <description>BOARD_PART_6AXIS</description>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="MOTION_SENSOR"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="HYBRID_SENSOR"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="ENV_SENSOR"/>
+            <require Cclass="Board Part" Cgroup="AccGyr" Csub="LSM6DSO32X" Cvariant="I2C"/>
+            <require Cclass="Board Part" Cgroup="AccTemp" Csub="LIS2DTW12" Cvariant="SPI"/>
+            <require Cclass="Board Part" Cgroup="HumTemp" Csub="HTS221" Cvariant="I2C"/>
+            <require Cclass="Board Part" Cgroup="PressTemp" Csub="LPS22HH" Cvariant="I2C"/>
+            <require Cclass="Board Part" Cgroup="Temp" Csub="STTS22H" Cvariant="I2C"/>
+        </condition>
+        <condition id="GNSS_CONDITION">
+            <description>BOARD_PART_GNSS</description>
+            <require Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibGNSS"/>
+            <require Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="Bare Metal"/>
+            <require Cclass="Data Exchange" Cgroup="lib_gnss" Csub="LibNMEA"/>
+            <require Cclass="Data Exchange" Cgroup="lib_gnss" Csub="Interface" Cvariant="Basic"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="GNSS"/>
+        </condition>
+        <condition id="AstraAppCondition">
+            <description>Astra application conditions</description>
+            <accept Dname="STM32WB5MMG*"/>
+            <require condition="USB_DEVICE_CDC_FS"/>
+            <require condition="STM32_WPAN_BLE"/>
+            <require condition="NFC_CONDITION"/>
+            <require condition="GNSS_CONDITION"/>
+            <require condition="SENSORS_CONDITION"/>
+        </condition>
+    </conditions>
+    <components>
+        <component Cclass="Device" Cgroup="Application" Cvariant="AssetTracking" Cversion="1.1.0" condition="AstraAppCondition" maxInstances="1">
+            <description>ASset TRacking Agent</description>
+            <files>
+                <file category="doc" name="en.DM00751078.pdf" public="false"/>
+                <file category="doc" name="Release_Notes.html" public="false"/>
+            </files>
+        </component>
+    </components>
+</package>

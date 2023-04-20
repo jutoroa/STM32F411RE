@@ -1,0 +1,26 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color=blue><b><u>STM32CubeF0 Firmware Package V1.1.0 / Oct 03, 2014</u></b></font><br>
+<b><u>Main Changes</u></b><br>
+<ul style="list-style-type: disc;">
+	<li>First official release for device STM32F091xC</li>
+	<li>Example porting on IAR, KEIL, TRUE STUDIO</li>
+	<li><b>Full set of examples/application/demo running for device STM32F091xC</b></li>
+	<li>FW Packages now include CMSIS w/ DSP lib</li>
+	<li>Compatibility with LCD Component driver update:</li>
+	<ul style="list-style-type: circle;">
+		<li>Change LCD_IO_WriteData to LCD_IO_WriteMultipleData</li>
+		<li>LCD IO needs to treat also 1 byte.</li>
+	</ul>
+	<li>Examples update:</li>
+	<ul style="list-style-type: circle;">
+		<li>[CORTEX example] No privilege/un-privilege access on M0 cortex</li>
+		<li>[CORTEX example] need call to ISB to flush pipeline after MSR instruction to modify CONTROL register</li>
+		<ul style="list-style-type: square;">
+			<li>remove CORTEXM_ModePrivilege</li>
+			<li>new example created: CORTEXM_ProcessStack</li>
+		</ul>
+	</ul>
+</ul>
+<br>
+</html>

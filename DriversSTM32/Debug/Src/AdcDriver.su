@@ -1,5 +1,5 @@
-/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
-/home/jutoroa/workspace/STMDirectory/mcu_headers/CMSIS/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
+/home/jutoroa/workspace/CMSIS_REPO/STM32CubeF4-master/Drivers/CMSIS/Core/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+/home/jutoroa/workspace/CMSIS_REPO/STM32CubeF4-master/Drivers/CMSIS/Core/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
 ../Src/AdcDriver.c:15:6:adc_Config	16	static,ignoring_inline_asm
 ../Src/AdcDriver.c:185:6:startSingleADC	4	static
 ../Src/AdcDriver.c:190:6:startContinuousADC	4	static

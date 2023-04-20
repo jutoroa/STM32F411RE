@@ -1,10 +1,17 @@
-00:58:06 **** Incremental Build of configuration Debug for project EjemploLibrerias ****
+11:53:55 **** Build of configuration Debug for project EjemploLibrerias ****
 make -j8 all 
-arm-none-eabi-size   EjemploLibrerias.elf 
-   text	   data	    bss	    dec	    hex	filename
-   8056	    108	   1884	  10048	   2740	EjemploLibrerias.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc -o "EjemploLibrerias.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/EjemploLibrerias/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EjemploLibrerias.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(AdcDriver.o) uses VFP register arguments, EjemploLibrerias.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(AdcDriver.o)
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o) uses VFP register arguments, EjemploLibrerias.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(GPIOxDriver.o)
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o) uses VFP register arguments, EjemploLibrerias.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(TIMxDriver.o)
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: error: /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o) uses VFP register arguments, EjemploLibrerias.elf does not
+/opt/st/stm32cubeide_1.9.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file /home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug/libDriversSTM32.a(USARTxDriver.o)
+collect2: error: ld returned 1 exit status
+make: *** [makefile:63: EjemploLibrerias.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-00:58:06 Build Finished. 0 errors, 0 warnings. (took 527ms)
+11:53:55 Build Failed. 9 errors, 0 warnings. (took 675ms)
 

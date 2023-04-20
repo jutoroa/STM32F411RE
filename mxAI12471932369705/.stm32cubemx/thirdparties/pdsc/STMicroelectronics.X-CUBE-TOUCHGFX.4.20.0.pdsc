@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <name>X-CUBE-TOUCHGFX</name>
+  <vendor>STMicroelectronics</vendor>
+  <description>TouchGFX Generator</description>
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+  <supportContact>https://community.st.com/touchgfx</supportContact>
+  <license>Package_license.html</license>
+
+  <releases>
+    <release version="4.20.0">
+New Features:
+
+ - Rendering of Canvas widgets in TouchGFX is now supported by DMA2D (ChromART) through new painter functions for RGB565 and RGB888.
+ - Users can now configure GPIOs through CubeMX to measure the performance of their applications based on TouchGFX Events such as "Render Time", "Frame rate", "VSYNC". Read the HAL Development scenario at http://support.touchgfx.com.
+
+Bugfixes:
+
+ - GPU2D (NeoChrom) in TouchGFX is currently only supported by ThreadX RTOS. For devices that support GPU2D, users were allowed to select other operating systems than ThreadX which would lead to compilation errors.
+
+    </release>
+
+    <release version="4.19.1">
+      TouchGFX Generator V4.19.1
+
+      New Features:
+
+      Bugfixes:
+      - Video: Some abitrary video frame dimensions were decoded wrong when using Hardware decodeding.
+      - The function MX_TouchGFX_PreOSInit(void) was not properly generated for all RTOS.
+
+      Improvements:
+      - Video: Double buffer video controller starts decoding video frames sooner.
+
+    </release>
+
+    <release version="4.19.0">
+      TouchGFX Generator V4.19.0
+
+      New Features:
+      - Native ThreadX Middleware support for U5 devices.
+      - GPU2D can now be enabled as a graphics accelerator for MCUs that support it (.e.g. STM32U599)
+
+      Bugfixes:
+      - Generator now handles DCache correctly on Cortex-M7.
+
+      Improvements:
+      - Virtual functions HAL::beginFrame() and HAL::endFrame() are now defined in TouchGFXHAL.cpp.
+      - Video: DMA2D is utilized to copy YCbCr video data to RGB video buffer(s) for MCUs that support it (.e.g. STM32H750)
+
+    </release>
+
+    <release version="4.18.1">
+      TouchGFX Generator V4.18.1
+
+      New Features:
+
+      Bugfixes:
+       - Video: Concurrent video streams were not syncronized properly.
+       - Video: Video files containing empty frames were not handled properly by both Software- and Hardware decoder.
+       - Video: MDK-ARM compilation would fail on tgfx_jpeg_utils.c.
+
+      Improvements:
+       - Video: Ability to mix video buffer and framebuffer pixelformats for Software decoder., e.g. RGB565 video buffer on RGB888 framebuffer.
+       - Video: RGB buffer can be placed in external memory, previously defaulted to internal.
+       - Video: Decoders no longer Busy-Wait while waiting to finish decoding a single frame.
+
+    </release>
+
+    <release version="4.18.0">
+      TouchGFX Generator V4.18.0
+
+      New Features:
+       - Support for XRGB8888 (32-bit) framebuffer color format
+       - Replaced use of NoDMA class with generated class
+       - Video: Added support for Software and Hardware MJPEG decoding
+
+      Bugfixes:
+       - Prevention of DMA class to change context when loading L8 clut
+
+      Improvements:
+       - 16bpp DMA class now recieves 24-bit color for more accurate color to DMA
+       - Generated code headers now specifies which files are to be modified by user
+
+    </release>
+
+    <release version="4.17.0">
+      TouchGFX Generator V4.17.0
+
+      New Features:
+       - Support for dual-core MCUs (H747, H745)
+       - Support for ThreadX (depends on X-CUBE-AZRTOS-H7 pack)
+       - Relevant functions now use OSWrappers::taskYield() if RTOS is used
+       - Support for ARGB8888 (32-bit) framebuffer color format
+       - Support for FMC display interface
+
+      Improvements:
+       - Renamed Framebuffer Pixel Formats to be more in line with TouchGFX LCD classes ("Black White" => "BW", "Grey" => "Gray")
+       - Support for new Blit Operations (BLIT_OP_COPY_L8, BLIT_OP_COPY_16BIT, BLIT_OP_FILL_16BIT) which simplify generated DMA2D code (STM32DMA.cpp)
+       - Applications that mix image color formats and frame buffer color formats (e.g. RGB888 images on RGB565) now have improved DMA2D support
+
+      Bugfixes:
+       - Disabling OS on H7 no longer causes an error.
+       - Disabling dcache on M7 would fail. A run-time check is now done before clear/flush/invalidate dcache.
+       - Fixed issue where re-genereating code in CubeMX from a G0 AT would cause SerialDataReader to not work properly
+
+    </release>
+
+    <release version="4.16.1">
+      TouchGFX Generator V4.16.1
+
+      Bugfixes:
+      - The function to enter the TouchGFX main event loop was not called when choosing "custom" RTOS.
+
+    </release>
+
+    <release version="4.16.0">
+      TouchGFX Generator V4.16.0
+
+      New Features:
+       - When selecting L8 for LTDC pixel format TouchGFX Generator will create a CLUT and load it into the LTDC at touchgfx::TouchGFXHAL::initialize().
+       - Optimized touchgfx driver for DMA2D when configuring blit operations.
+       - New state machine to handle DCache invalidation only when necessary.
+
+      Bugfixes:
+       - TouchGFX Generator was previously available for projects with dual Core MCUs H747* and H745* despite not being supported yet.
+       - Correctly generating function name for "touchgfxDisplayDriverTransmitBlock".
+       - Added missing implementation of OSWrappers::signalRenderingDone() for CMSIS V1, CMSIS V2, and Custom.
+       - DataReader defaults to 250 bytes before invoking a DMA transfer.
+       - startFlashLineRead, uses DMA to force parallel work.
+
+    </release>
+    <release version="4.15.0">
+      TouchGFX Generator V4.15.0
+       - This version is compatible with STM32CubeMX V6.0.0 and TouchGFX Designer V4.15.0
+
+      New Features:
+       - Data Reader interface for retrieving data from a non-memory-mapped flash
+       - Cortex-M33 support
+       - Improved Partial Framebuffer strategy
+       - touchgfx_taskEntry() now uses OSWrappers::isVSyncAvailable() in case of No-OS
+
+    </release>
+    <release version="4.14.0">
+      TouchGFX Generator V4.14.0
+      - This version is compatible with STM32CubeMX V6.0.0 and TouchGFX Designer V4.14.0
+
+      New Features:
+       - Project updater for STM32CubeIDE adds -femit-class-debug-always flag to compilation to allow for debugging UI components.
+       - HAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes) is now exposed through TouchGFXHAL interface.
+       - OSWrapper CMSISv1 and CMSISv2 no longer require FreeRTOS middleware to be enabled; this allows usage of any CMSIS compatible RTOS.
+       - Project updater now supports ARMCLANG.
+
+      Bugfixes:
+       - Fixed missing extern functions for Partial Framebuffer Strategy.
+       - Project updater now correctly updates STM32CubeIDE projects
+       - Fixed potential lock up when using CMSISv2 driver.
+    </release>
+    <release version="4.13.0">
+      TouchGFX Generator V4.13.0
+      - Generates partial TouchGFX application projects based on hardware configuration
+      - Configure TouchGFX application with TouchGFX Designer
+      - This version is compatible with STM32CubeMX V5.5.x and TouchGFX Designer V4.13.0
+    </release>
+  </releases>
+
+  <taxonomy>
+    <description Cclass="Graphics">Graphics frameworks for STM32 devices</description>
+  </taxonomy>
+
+  <requirements>
+    <languages>
+      <language name="C++" version="99" />
+    </languages>
+  </requirements>
+
+  <keywords>
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    <keyword>PACK_SELF_CONTEXTUALIZATION</keyword>
+    <keyword>IS_CONTEXT_EXCLUSIVE</keyword> <!-- Do not allow to instantiate the pack in more than one context -->
+    <keyword>DOES_NOT_SUPPORT_SECURE</keyword> <!-- Do not support secure context -->
+  </keywords>
+
+  <conditions>
+    <condition id="Cortex-M Devices">
+      <description>Cortex-M processor based device: Cortex-M0+, Cortex-M4, Cortex-M7 and Cortex-M33</description>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M33"/>
+    </condition>
+  </conditions>
+
+  <!-- component section (optional for all Software Packs)-->
+  <components>
+    <bundle Cbundle="Application" Cvendor="STMicroelectronics" Cclass="Graphics" Cversion="4.20.0">
+      <description>STM32 Graphics framework</description>
+      <doc></doc>
+      <component  Cgroup="Application" Cvariant="TouchGFX Generator" isDefaultVariant="true" condition="Cortex-M Devices" maxInstances="1">
+        <RTE_Components_h>#define TOUCHGFX_APP</RTE_Components_h>
+        <description>TouchGFX Generator</description>
+        <files>
+        </files>
+      </component>
+    </bundle>
+  </components>
+</package>

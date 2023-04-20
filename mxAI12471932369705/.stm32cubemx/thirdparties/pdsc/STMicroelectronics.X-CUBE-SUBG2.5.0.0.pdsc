@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>STMicroelectronics</vendor>
+    <name>X-CUBE-SUBG2</name>
+    <description>Drivers and sample applications for SUBG2 components</description>
+    <url>http://sw-center.st.com/packs/x-cube/</url>
+    <license>en.DM00751078.pdf</license>
+    <releases>
+        <release date="2022-04-25" version="5.0.0">- Support of custom board case
+		- Support the configuration of all 4 S2-LP GPIOs
+		- Added FIFO TX/RX examples for custom board case
+		- Added CLI Example from S2-LP DK
+		- Full BSP configuration is taken from STM32CubeMX
+		- S2-LP Component Driver aligned to S2-LP DK
+        - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively
+        - WARNING: For Contiki-NG based projects to work with STM32CubeIDE 1.6.* "Standard" library must be manually chosen in MCU Settings
+		</release>
+        <release date="2021-06-21" version="4.2.0">      - Bugfix on Radio BSP to handle the case with no application.
+      - This version is compatible with STM32CubeMX V6.2.x and V6.3.x
+      - Create sample applications with STM32CubeMX V6.2.x and V6.3.x
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively
+      - WARNING: For Contiki-NG based projects to work with STM32CubeIDE 1.6.* "Standard" library must be manually chosen in MCU Settings</release>
+        <release date="2021-04-20" version="4.1.0">      - Bugfixes on Radio GPIO selection and BSP BUTTON/LED handling
+      - This version is compatible with STM32CubeMX V6.2.x
+      - Create sample applications with STM32CubeMX V6.2.x
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively
+      - WARNING: For Contiki-NG based projects to work with STM32CubeIDE 1.6.* "Standard" library must be manually chosen in MCU Settings</release>
+        <release date="2021-02-26" version="4.0.0">      - This version is compatible with STM32CubeMX V6.2.x
+      - Create sample applications with STM32CubeMX V6.2.x
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively </release>
+        <release date="2020-11-27" version="3.0.1">      - This version is compatible with STM32CubeMX V6.1.x
+      - Create sample applications with STM32CubeMX V6.1.x
+      - Other improvements
+      - NOTE: on dual-core STM32 series this expansion software can be used on both cores but exclusively 
+	</release>
+        <release date="2020-11-30" version="3.0.0">
+      - Added Contiki-NG middleware to provide 6LoWPAN  on top of Sub-GHz radio
+      - Added UDP Client/Server, RPL Border Router and 802.15.4 Sniffer Applications
+
+      - Create sample applications with STM32CubeMX V6.1.0
+      - This version is compatible with STM32CubeMX v6.1.0
+	</release>
+        <release date="2020-04-04" version="2.0.0">
+      - Adding compatibility.xml file
+
+      - Create sample applications with STM32CubeMX V5.6.1
+      - This version is compatible with STM32CubeMX v5.6.1
+    </release>
+        <release date="2020-02-21" version="1.1.0">
+      - Add the support to X-NUCLEO-S2915A1 and X-NUCLEO-S2868A2.
+      - Fixes in the BSP and S2LP component driver
+      - Projects updated for the new Expansion Boards. 
+      - Create sample applications with STM32CubeMX V5.6.0
+      - This version is compatible with STM32CubeMX v5.6.0
+    </release>
+        <release date="2019-12-06" version="1.0.0">
+      - First release of the SUBG2 support package.
+      - Create sample applications with STM32CubeMX V5.5.0
+      - This version is compatible with STM32CubeMX v5.5.0
+    </release>
+    </releases>
+    <keywords>
+        <keyword>ARM</keyword>
+        <keyword>Cortex-M</keyword>
+        <keyword>STMicroelectronics</keyword>
+        <keyword>SUBG2</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+<!--        <keyword>CUBEMX_MIGRATION_CAPABILITY</keyword> -->
+        <keyword>IS_CONTEXT_EXCLUSIVE</keyword>
+        <keyword>DNS_BUSIO_X_CONTEXT_SHARING</keyword>
+        <keyword>DOES_NOT_SUPPORT_SECURE</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Board Support">Board Support</description>
+        <description Cclass="Device">Device</description>
+        <description Cclass="Network">Network</description>
+        <description Cclass="Board Extension">The expansion boards support class</description>
+    </taxonomy>
+    <apis>
+        <api Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2868A1" exclusive="0">
+            <description>S2LP software for X-NUCLEO-S2868A1</description>
+            <files>
+                <file category="doc" name="Documentation/P2P_Example.chm"/>
+            </files>
+        </api>
+        <api Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2868A2" exclusive="0">
+            <description>S2LP software for X-NUCLEO-S2868A2</description>
+            <files>
+                <file category="doc" name="Documentation/P2P_Example.chm"/>
+            </files>
+        </api>
+        <api Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2915A1" exclusive="0">
+            <description>S2LP software for X-NUCLEO-S2915A1</description>
+            <files>
+                <file category="doc" name="Documentation/P2P_Example.chm"/>
+            </files>
+        </api>
+    </apis>
+    <conditions>
+        <condition id="Cortex-M Device">
+            <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7</description>
+            <accept Dcore="Cortex-M0"/>
+            <accept Dcore="Cortex-M0+"/>
+            <accept Dcore="Cortex-M3"/>
+            <accept Dcore="Cortex-M4"/>
+            <accept Dcore="Cortex-M7"/>
+            <accept Dcore="Cortex-M33"/>
+        </condition>
+        <condition id="CM0_GCC">
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM0_IAR">
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM0_Keil">
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM3_GCC">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM3_IAR">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM3_Keil">
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM4_GCC">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM4_IAR">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM4_Keil">
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="CM7_GCC">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="CM7_IAR">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="CM7_Keil">
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="S2868A1_Condition">
+            <description>Cortex-M Device and board setup (X-NUCLEO-S2868A1)</description>
+            <require condition="Cortex-M Device"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny condition="CUSTOM_S2LP_Condition"/>
+        </condition>
+        <condition id="S2868A2_Condition">
+            <description>Cortex-M Device and board setup (X-NUCLEO-S2868A2)</description>
+            <require condition="Cortex-M Device"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny condition="CUSTOM_S2LP_Condition"/>
+        </condition>
+        <condition id="S2915A1_Condition">
+            <description>Cortex-M Device and board setup (X-NUCLEO-S2915A1)</description>
+            <require condition="Cortex-M Device"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny condition="CUSTOM_S2LP_Condition"/>
+        </condition>
+        <condition id="S2868A1_P2P_Condition">
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <require condition="NOT_Contiki-NG"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2868A2_P2P_Condition">
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <require condition="NOT_Contiki-NG"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2915A1_P2P_Condition">
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <require condition="NOT_Contiki-NG"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2LP_Condition">
+            <require condition="Cortex-M Device"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="nullrouting">
+            <accept Cclass="Network" Cgroup="Contiki-NG" Cvariant="nullrouting"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+        </condition>
+        <condition id="RPL Routing">
+            <description>RPL is enabled</description>
+            <accept Cclass="Network" Cgroup="Contiki-NG" Cvariant="rpl-classic"/>
+            <accept Cclass="Network" Cgroup="Contiki-NG" Cvariant="rpl-lite"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Cvariant="nullrouting"/>
+        </condition>
+        <condition id="Nullnet">
+            <description>No network layer</description>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Cvariant="Nullnet"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Cvariant="IPv6"/>
+        </condition>
+        <condition id="IPv6 Network">
+            <description>Networking enabled</description>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Cvariant="IPv6"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Cvariant="Nullnet"/>
+        </condition>
+        <condition id="coap_over_tinydtls">
+            <description>Application layer security bindings are needed (CoAP over DTLS)</description>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer_security"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer" Cvariant="CoAP"/>
+        </condition>
+        <condition id="tsch_mac">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="framer_802_15_4"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom"/>
+        </condition>
+        <condition id="csma_mac">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="framer_802_15_4"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom"/>
+        </condition>
+        <condition id="custom_mac">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="tsch"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="nullmac"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="csma"/>
+        </condition>
+        <condition id="nullmac_mac">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="nullframer"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="tsch"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="nullmac"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom"/>
+        </condition>
+        <condition id="null_framer">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="framer_802_15_4"/>
+        </condition>
+        <condition id="802_15_4_framer">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="nullframer"/>
+        </condition>
+        <condition id="Sniffer_mac">
+            <require condition="custom_mac"/>
+            <require Cbundle="Application" Cvariant="*_Serial_sniffer"/>
+        </condition>
+        <condition id="S2868A1_Contiki-NG">
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <require condition="Contiki-NG"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="S2868A2_Contiki-NG">
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+        </condition>
+        <condition id="S2915A1_Contiki-NG">
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+        </condition>
+        <condition id="Contiki-NG">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG*" Csub="OS_net_mac"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_services"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core"/>
+            <deny Cclass="RF Library" Cgroup="Sigfox STM32 Lib"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2868A1_Contiki-NG-UDP">
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+        </condition>
+        <condition id="Contiki-NG_Standard_Conf">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing" Cvariant="rpl-*"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip" Cvariant="IPv6"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="framer_802_15_4"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="csma"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_services"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2868A2_Contiki-NG-UDP">
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+        </condition>
+        <condition id="S2915A1_Contiki-NG-UDP">
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+        </condition>
+        <condition id="S2868A1_Contiki-NG-BR">
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+        </condition>
+        <condition id="S2915A1_Contiki-NG-BR">
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+        </condition>
+        <condition id="S2868A2_Contiki-NG-BR">
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <require condition="Contiki-NG_Standard_Conf"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+        </condition>
+        <condition id="S2868A1_Contiki-NG-Sniffer">
+            <require condition="Contiki-NG_Sniffer_Conf"/>
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="Contiki-NG_Sniffer_Conf">
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing" Cvariant="nullrouting"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip" Cvariant="Nullnet"/>
+            <require Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="nullframer"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer_security"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+            <deny Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+        </condition>
+        <condition id="S2868A2_Contiki-NG-Sniffer">
+            <require condition="Contiki-NG_Sniffer_Conf"/>
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="S2915A1_Contiki-NG-Sniffer">
+            <require condition="Contiki-NG_Sniffer_Conf"/>
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <require Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+        </condition>
+        <condition id="NOT_Contiki-NG">
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_services"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer_security"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer"/>
+            <deny Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac"/>
+        </condition>
+        <condition id="CUSTOM_S2LP_FIFO_TX_Condition">
+            <require condition="NOT_Contiki-NG"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="CUSTOM_S2LP_FIFO_RX_Condition">
+            <require condition="NOT_Contiki-NG"/>
+            <require Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+        </condition>
+        <condition id="CUSTOM_S2LP_Condition">
+            <require Cclass="Board Support" Cgroup="Custom" Csub="Radio"/>
+            <deny condition="Contiki-NG_Standard_Conf"/>
+            <deny condition="Contiki-NG_Sniffer_Conf"/>
+        </condition>
+        <condition id="S2868A1_CLI_Condition">
+            <require Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Board Support" Cgroup="Custom"/>
+        </condition>
+        <condition id="S2868A2_CLI_Condition">
+            <require Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2915A1"/>
+            <deny Cclass="Board Support" Cgroup="Custom"/>
+        </condition>
+        <condition id="S2915A1_CLI_Condition">
+            <require Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A1"/>
+            <deny Cclass="Board Extension" Cgroup="S2868A2"/>
+            <deny Cclass="Board Support" Cgroup="Custom"/>
+        </condition>
+    </conditions>
+    <components>
+        <component Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0" condition="S2868A1_Condition" maxInstances="1">
+            <description> BSP for X-NUCLEO-S2868A1, S2LP </description>
+            <RTE_Components_h>#define S2868A1</RTE_Components_h>
+            <files>
+                <file category="doc" name="Documentation/STMicroelectronics.X-CUBE-SUBG2_GettingStarted.pdf"/>
+				<file category="doc" name="Drivers/BSP/S2868A1/readme.txt"/>
+                <file category="header" name="Drivers/BSP/S2868A1/s2868a1.h"/>
+                <file category="source" name="Drivers/BSP/S2868A1/s2868a1.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/s2lp.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_CORE_SPI.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/MCU_Interface_template.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Commands.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Config.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Csma.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Fifo.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_General.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Gpio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PacketHandler.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktBasic.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktStack.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktWMbus.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Qi.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Radio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Regs.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer_ex.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Types.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/uint64.h"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Commands.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Csma.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Fifo.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_General.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Gpio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PacketHandler.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktBasic.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktStack.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktWMbus.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Qi.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Radio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer_ex.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Types.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp_sdkapi_mapping.h"/>
+            </files>
+        </component>
+        <component Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0" condition="S2868A2_Condition" maxInstances="1">
+            <description> BSP for X-NUCLEO-S2868A2, S2LP </description>
+            <RTE_Components_h>#define S2868A2</RTE_Components_h>
+            <files>
+                <file category="doc" name="Documentation/STMicroelectronics.X-CUBE-SUBG2_GettingStarted.pdf"/>
+                <file category="header" name="Drivers/BSP/S2868A2/s2868a2.h"/>
+                <file category="source" name="Drivers/BSP/S2868A2/s2868a2.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/s2lp.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_CORE_SPI.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/MCU_Interface_template.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Commands.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Config.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Csma.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Fifo.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_General.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Gpio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PacketHandler.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktBasic.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktStack.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktWMbus.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Qi.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Radio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Regs.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer_ex.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Types.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/uint64.h"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Commands.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Csma.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Fifo.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_General.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Gpio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PacketHandler.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktBasic.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktStack.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktWMbus.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Qi.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Radio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer_ex.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Types.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp_sdkapi_mapping.h"/>
+            </files>
+        </component>
+        <component Capiversion="5.0.0" Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0" condition="S2915A1_Condition" maxInstances="1">
+            <description> BSP for X-NUCLEO-S2915A1, S2LP </description>
+            <RTE_Components_h>#define S2915A1</RTE_Components_h>
+            <files>
+                <file category="doc" name="Documentation/STMicroelectronics.X-CUBE-SUBG2_GettingStarted.pdf"/>
+                <file category="header" name="Drivers/BSP/S2915A1/s2915a1.h"/>
+                <file category="source" name="Drivers/BSP/S2915A1/s2915a1.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/s2lp.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_CORE_SPI.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/MCU_Interface_template.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Commands.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Config.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Csma.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Fifo.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_General.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Gpio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PacketHandler.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktBasic.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktStack.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktWMbus.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Qi.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Radio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Regs.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer_ex.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Types.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/uint64.h"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Commands.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Csma.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Fifo.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_General.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Gpio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PacketHandler.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktBasic.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktStack.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktWMbus.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Qi.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Radio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer_ex.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Types.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp_sdkapi_mapping.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core" Cversion="1.0.3" condition="Contiki-NG" maxInstances="1">
+            <description>ST platform bindings with Contiki-NG</description>
+            <RTE_Components_h>#define CONTIKI_NG_STM32LIB_ENABLED</RTE_Components_h>
+            <files>
+                <file category="header" name="Middlewares/ST/Contiki-NG_STM32_Library/Inc/console.h"/>
+                <file category="header" name="Middlewares/ST/Contiki-NG_STM32_Library/Inc/ip64-conf.h"/>
+                <file category="header" name="Middlewares/ST/Contiki-NG_STM32_Library/Inc/rtimer-arch.h"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/clock.c"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/console.c"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/int-master.c"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/rtimer-arch.c"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/slip-arch.c"/>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Src/watchdog.c"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing" Cvariant="nullrouting" Cvendor="Contiki-NG" Cversion="4.6.0" condition="Nullnet" maxInstances="1">
+            <description>No routing layer</description>
+            <RTE_Components_h>#define ROUTING_CONF_RPL_CLASSIC 0
+#define ROUTING_CONF_RPL_LITE 0
+#define ROUTING_CONF_NULLROUTING 1</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/nullrouting/nullrouting.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/routing.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing" Cvariant="rpl-classic" Cvendor="Contiki-NG" Cversion="4.6.0" condition="IPv6 Network" maxInstances="1">
+            <description>RPL Classic</description>
+            <RTE_Components_h>#define ROUTING_CONF_RPL_CLASSIC 1
+#define ROUTING_CONF_RPL_LITE 0</RTE_Components_h>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-conf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-dag-root.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-dag-root.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-dag.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-ext-header.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-icmp6.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-mrhof.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-nbr-policy.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-of0.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-private.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl-timers.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-classic/rpl.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_routing" Cvariant="rpl-lite" Cvendor="Contiki-NG" Cversion="4.6.0" condition="IPv6 Network" isDefaultVariant="true" maxInstances="1">
+            <description>RPL Lite</description>
+            <RTE_Components_h>#define ROUTING_CONF_RPL_LITE 1
+#define ROUTING_CONF_RPL_CLASSIC 0</RTE_Components_h>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-const.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-dag-root.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-dag-root.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-dag.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-dag.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-ext-header.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-ext-header.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-icmp6.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-icmp6.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-mrhof.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-nbr-policy.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-neighbor.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-neighbor.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-of0.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-timers.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-timers.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl-types.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/rpl-lite/rpl.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip" Cvariant="IPv6" Cvendor="Contiki-NG" Cversion="4.6.0" condition="RPL Routing" isDefaultVariant="true" maxInstances="1">
+            <description>IPv6 Network layer</description>
+            <RTE_Components_h>#define NETSTACK_CONF_NETWORK sicslowpan_driver
+#define NETSTACK_CONF_WITH_IPV6 1</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/ip64-addr.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/ip64-addr.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/esmrf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/esmrf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/roll-tm.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/roll-tm.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/smrf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/smrf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6-engines.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6-route.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6-route.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6-stats.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6-stats.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/psock.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/psock.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/sicslowpan.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/sicslowpan.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/simple-udp.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/simple-udp.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/tcp-socket.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/tcpip.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/tcpip.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/udp-socket.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/udp-socket.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-arch.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-debug.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-nbr.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-nbr.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-route.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-route.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-icmp6.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-icmp6.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-nameserver.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-nameserver.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-nd6.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-nd6.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-packetqueue.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-packetqueue.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-sr.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-sr.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-udp-packet.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-udp-packet.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip6.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uipbuf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uipbuf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uiplib.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uiplib.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uipopt.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/resolv/module-macros.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/resolv/resolv.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/resolv/resolv.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/mpl.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/routing/routing.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_ip" Cvariant="Nullnet" Cvendor="Contiki-NG" Cversion="4.6.0" condition="nullrouting" maxInstances="1">
+            <description>No network layer</description>
+            <RTE_Components_h>#define NETSTACK_CONF_WITH_NULLNET 1</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/nullnet/nullnet.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/nullnet/nullnet.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="Core" Cvendor="Contiki-NG" Cversion="4.6.0" condition="Contiki-NG" maxInstances="1">
+            <description>Core files for Contiki-NG</description>
+            <RTE_Components_h>#define PROJECT_CONF_H 1
+#define CONTIKI_NG_CORE_ENABLED</RTE_Components_h>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/battery-sensor.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/ble-hal.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/button-hal.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/button-sensor.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/eeprom.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/gpio-hal.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/leds.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/dev/leds.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/dev/nullradio.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/nullradio.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/radio.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/rom.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/dev/serial-line.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/serial-line.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/watchdog.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/xmem.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/aes-128.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/aes-128.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/assert.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/assert.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/ccm-star.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/ccm-star.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/circular-list.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/circular-list.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/crc16.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/crc16.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/dbl-circ-list.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/dbl-circ-list.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/dbl-list.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/dbl-list.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/heapmem.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/heapmem.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/ifft.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/ifft.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/list.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/list.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/memb.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/memb.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/queue.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/random.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/random.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/ringbuf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/ringbuf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/ringbufindex.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/ringbufindex.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/sensors.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/sensors.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/stack.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/lib/trickle-timer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/lib/trickle-timer.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/atomic.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/atomic.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/autostart.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/autostart.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/cc-gcc.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/cc.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/clock.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/compower.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/compower.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/critical.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/ctimer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/ctimer.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/energest.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/energest.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/etimer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/etimer.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/int-master.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/lc-addrlabels.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/lc-switch.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/lc.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/log-conf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/log.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/log.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/memory-barrier.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/mutex.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/mutex.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/node-id.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/node-id.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/platform.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/process.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/process.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/pt-sem.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/pt.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/rtimer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/rtimer.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/stack-check.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/stimer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/stimer.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/subprocess.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/sys/timer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/sys/timer.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/link-stats.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/link-stats.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/linkaddr.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/linkaddr.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/nbr-table.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/nbr-table.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/net-debug.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/net-debug.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/netstack.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/netstack.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/packetbuf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/packetbuf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/queuebuf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/queuebuf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/llsec802154.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/mac-sequence.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/mac-sequence.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/mac.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/mac.h"/>
+                <file category="doc" name="Middlewares/Third_Party/Contiki-NG/CONTRIBUTING.md"/>
+                <file category="doc" name="Middlewares/Third_Party/Contiki-NG/LICENSE.md"/>
+                <file category="doc" name="Middlewares/Third_Party/Contiki-NG/README.md"/>
+                <file category="doc" name="Middlewares/Third_Party/Contiki-NG/SECURITY.md"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/contiki.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/contiki-default-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/contiki-lib.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/contiki-net.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma-security.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/ip64-addr.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/tcpip.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uipbuf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-debug.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-nbr.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-icmp6.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-nd6.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uipopt.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-packetqueue.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/multicast/uip-mcast6.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uip-ds6-route.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/uiplib.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/frame802154.h"/>
+                <file category="include" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/"/>
+                <file category="include" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/"/>
+                <file category="include" name="Middlewares/Third_Party/Contiki-NG/os/net/ipv6/"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer" Cvariant="CoAP" Cvendor="Contiki-NG" Cversion="4.6.0" condition="IPv6 Network" maxInstances="1">
+            <description>CoAP Application Layer protocol</description>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-block1.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-block1.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-blocking-api.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-blocking-api.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-callback-api.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-callback-api.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-constants.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-endpoint.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-engine.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-engine.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-keystore-simple.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-keystore-simple.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-keystore.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-log.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-log.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-observe-client.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-observe-client.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-observe.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-observe.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-request-state.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-res-well-known-core.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-separate.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-separate.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-timer-default.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-timer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-timer.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-transactions.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-transactions.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-transport.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap-uip.c"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/coap.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/module-macros.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_tinyDTLS" Cvendor="Contiki-NG" Cversion="4.6.0" condition="coap_over_tinydtls" maxInstances="1">
+            <description>TinyDTLS end to end security</description>
+            <RTE_Components_h>#define DTLS_ENABLED</RTE_Components_h>
+            <files>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/ABOUT.md"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/aes/rijndael.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/aes/rijndael.h"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/CONTRIBUTING.md"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/doc/DoxygenLayout.xml"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-alert.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-ccm.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-ccm.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-crypto.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-crypto.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-hmac.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-hmac.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-log-default.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-log.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-log.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-numeric.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-peer.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-peer.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-state.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls_config.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/ecc/ecc.h"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/LICENSE"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/Makefile"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/netq.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/netq.h"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/README"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/sha2/README"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/sha2/sha2.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/sha2/sha2.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/tinydtls.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/security/tinydtls/dtls-support.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_app-layer_security" Cvendor="Contiki-NG" Cversion="4.6.0" condition="coap_over_tinydtls" maxInstances="1">
+            <description>Binding for CoAP over DTLS</description>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/tinydtls-support/dtls-support-conf.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/app-layer/coap/tinydtls-support/dtls-support.c"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="csma" Cvendor="Contiki-NG" Cversion="4.6.0" condition="csma_mac" isDefaultVariant="true" maxInstances="1">
+            <description>Contiki-NG CSMA mac layer</description>
+            <RTE_Components_h>#define MAC_CONF_WITH_CSMA 1
+#define MAC_CONF_WITH_TSCH 0
+#define NETSTACK_CONF_MAC csma_driver</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/anti-replay.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/anti-replay.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/ccm-star-packetbuf.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/ccm-star-packetbuf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma-output.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma-security.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma-security.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/csma/csma.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="tsch" Cvendor="Contiki-NG" Cversion="4.6.0" condition="tsch_mac" maxInstances="1">
+            <description>Contiki-NG TSCH mac layer (STILL EXPERIMENTAL)</description>
+            <RTE_Components_h>#define MAC_CONF_WITH_TSCH 1
+#define MAC_CONF_WITH_CSMA 0
+#define NETSTACK_CONF_MAC tschmac_driver</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-adaptive-timesync.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-adaptive-timesync.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-asn.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-const.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-log.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-log.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-packet.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-packet.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-queue.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-queue.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-rpl.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-rpl.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-schedule.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-schedule.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-security.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-security.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-slot-operation.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-slot-operation.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-stats.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-stats.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-timeslot-timing.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-types.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac" Cvariant="nullmac" Cvendor="Contiki-NG" Cversion="4.6.0" condition="nullmac_mac" maxInstances="1">
+            <description>Contiki-NG nullmac (no mac layer)</description>
+            <RTE_Components_h>#define MAC_CONF_WITH_TSCH 0
+#define MAC_CONF_WITH_CSMA 0
+#define NETSTACK_CONF_MAC nullmac_driver</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/nullmac/nullmac.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/nullmac/nullmac.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="OS_net_mac" Cvariant="custom" Cversion="1.0.3" condition="Sniffer_mac" maxInstances="1">
+            <description>Custom mac layer (for Serial Sniffer)</description>
+            <RTE_Components_h>#define MAC_CONF_WITH_TSCH 0
+#define MAC_CONF_WITH_CSMA 0
+#define NETSTACK_CONF_MAC sniffer_mac_driver</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/Custom/sniffer-mac.c"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="framer_802_15_4" Cvendor="Contiki-NG" Cversion="4.6.0" condition="802_15_4_framer" isDefaultVariant="true" maxInstances="1">
+            <description>Contiki-NG 802.15.4 framer</description>
+            <RTE_Components_h>#define NETSTACK_CONF_FRAMER  framer_802154</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/frame802154.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/frame802154.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/frame802154e-ie.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/frame802154e-ie.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/framer-802154.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/framer-802154.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/framer.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/sixtop/sixtop.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/sixtop/sixp-pkt.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_net_mac_framer" Cvariant="nullframer" Cvendor="Contiki-NG" Cversion="4.6.0" condition="null_framer" maxInstances="1">
+            <description>No implemented framer</description>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/framer.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/framer/nullframer.c"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_services" Cvendor="Contiki-NG" Cversion="4.6.0" condition="Contiki-NG" maxInstances="1">
+            <description>Service layer</description>
+            <files>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/deployment/deployment.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/deployment/module-macros.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/module-macros.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/serial-shell.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/serial-shell.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/shell-commands.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/shell-commands.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/shell.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/shell/shell.h"/>
+                <file category="include" name="Middlewares/Third_Party/Contiki-NG/os/services"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/simple-energest/simple-energest.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-adaptive-timesync.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-asn.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-conf.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-const.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-log.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-packet.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-queue.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-rpl.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-schedule.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-security.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-slot-operation.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-stats.h"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/net/mac/tsch/tsch-types.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG" Csub="OS_border_router_service" Cvendor="Contiki-NG" Cversion="4.6.0" condition="RPL Routing" maxInstances="1">
+            <description>RPL Border Router Service</description>
+            <files>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/embedded/border-router-embedded.c"/>
+                <file category="other" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/embedded/README.md"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/embedded/slip-bridge.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/module-macros.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/rpl-border-router.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/services/rpl-border-router/rpl-border-router.h"/>
+                <file category="source" name="Middlewares/Third_Party/Contiki-NG/os/dev/slip.c"/>
+                <file category="header" name="Middlewares/Third_Party/Contiki-NG/os/dev/slip.h"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_leds" Cversion="1.0.3" condition="Contiki-NG" maxInstances="1">
+            <description>Platform LED(s) support for Contiki-NG</description>
+            <RTE_Components_h>#define PLATFORM_HAS_LEDS 1</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/dev/leds-arch.c"/>
+            </files>
+        </component>
+        <component Cclass="Network" Cgroup="Contiki-NG_STM32_Library" Csub="Core_dev_buttons" Cversion="1.0.3" condition="Contiki-NG" maxInstances="1">
+            <description>Platform Button(s) support for Contiki-NG</description>
+            <RTE_Components_h>#define PLATFORM_HAS_BUTTON 1</RTE_Components_h>
+            <files>
+                <file category="source" name="Middlewares/ST/Contiki-NG_STM32_Library/dev/button-sensor.c"/>
+            </files>
+        </component>
+        <component Cclass="Board Support" Cgroup="Custom" Csub="Radio" Cversion="4.1.0" maxInstances="1">
+            <description>Custom board implementation for S2LP devices</description>
+            <RTE_Components_h>#define BSP_RADIO</RTE_Components_h>
+            <files>
+                <file category="other" name="Documentation/STMicroelectronics.X-CUBE-SUBG2_GettingStarted.pdf"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/s2lp.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_CORE_SPI.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/MCU_Interface_template.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Commands.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Config.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Csma.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Fifo.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_General.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Gpio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PacketHandler.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktBasic.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktStack.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_PktWMbus.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Qi.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Radio.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Regs.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Timer_ex.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/S2LP_Types.h"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/S2LP_Library/inc/uint64.h"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Commands.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Csma.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Fifo.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_General.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Gpio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PacketHandler.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktBasic.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktStack.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_PktWMbus.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Qi.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Radio.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Timer_ex.c"/>
+                <file category="source" name="Drivers/BSP/Components/S2LP/S2LP_Library/src/S2LP_Types.c"/>
+                <file category="header" name="Drivers/BSP/Components/S2LP/s2lp_sdkapi_mapping.h"/>
+            </files>
+        </component>
+        <bundle Cbundle="Application" Cclass="Device" Cversion="5.0.0">
+            <description>P2P, SDK Examples and Contiki-NG Applications</description>
+            <doc>Documentation/STMicroelectronics.X-CUBE-SUBG2_GettingStarted.pdf</doc>
+            <component Cgroup="Application" Cvariant="S2868A1_P2P" condition="S2868A1_P2P_Condition" isDefaultVariant="true" maxInstances="1">
+                <description>Point-to-point communication sample application for simple buffer transmission and acknowledgement implementation for X-NUCLEO-S2868A1</description>
+                <RTE_Components_h>#define S2868A1_P2P_DEMO</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_P2P" condition="S2868A2_P2P_Condition" maxInstances="1">
+                <description>Point-to-point communication sample application for simple buffer transmission and acknowledgement implementation for X-NUCLEO-S2868A2</description>
+                <RTE_Components_h>#define S2868A2_P2P_DEMO</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_P2P" condition="S2915A1_P2P_Condition" maxInstances="1">
+                <description>Point-to-point communication sample application for simple buffer transmission and acknowledgement implementation for X-NUCLEO-S2915A1</description>
+                <RTE_Components_h>#define S2915A1_P2P_DEMO</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A1_UDP_Client" condition="S2868A1_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP client application based on Contiki-NG, implementation for X-NUCLEO-S2868A1</description>
+                <RTE_Components_h>#define S2868A1_UDP_TX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A1_Border_router" condition="S2868A1_Contiki-NG-BR" maxInstances="1">
+                <description>RPL Border Router Application, based on Contiki-NG, implementation for X-NUCLEO-S2868A1</description>
+                <RTE_Components_h>#define BUILD_WITH_RPL_BORDER_ROUTER 1
+#define USE_AUTOSTART_PROCESS
+#define S2868A1_BORDER_ROUTER
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A1_UDP_Server" condition="S2868A1_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP server application based on Contiki-NG, implementation for X-NUCLEO-S2868A1</description>
+                <RTE_Components_h>#define S2868A1_UDP_RX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A1_Serial_sniffer" condition="S2868A1_Contiki-NG-Sniffer" maxInstances="1">
+                <description>Serial Sniffer application based on Contiki-NG, implementation for X-NUCLEO-S2868A1</description>
+                <RTE_Components_h>#define S2868A1_SNIFFER
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SERIAL_SNIFFER 1
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_UDP_Client" condition="S2868A2_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP client application based on Contiki-NG, implementation for X-NUCLEO-S2868A2</description>
+                <RTE_Components_h>#define S2868A2_UDP_TX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_UDP_Client" condition="S2915A1_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP client application based on Contiki-NG, implementation for X-NUCLEO-S2915A1</description>
+                <RTE_Components_h>#define S2915A1_UDP_TX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_UDP_Server" condition="S2868A2_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP server application based on Contiki-NG, implementation for X-NUCLEO-S2868A2</description>
+                <RTE_Components_h>#define S2868A2_UDP_RX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_UDP_Server" condition="S2915A1_Contiki-NG-UDP" maxInstances="1">
+                <description>UDP server application based on Contiki-NG, implementation for X-NUCLEO-S2915A1</description>
+                <RTE_Components_h>#define S2915A1_UDP_RX
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SHELL 1</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_Border_router" condition="S2868A2_Contiki-NG-BR" maxInstances="1">
+                <description>RPL Border Router Application, based on Contiki-NG, implementation for X-NUCLEO-S2868A2</description>
+                <RTE_Components_h>#define BUILD_WITH_RPL_BORDER_ROUTER 1
+#define USE_AUTOSTART_PROCESS
+#define S2868A2_BORDER_ROUTER
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_Border_router" condition="S2915A1_Contiki-NG-BR" maxInstances="1">
+                <description>RPL Border Router Application, based on Contiki-NG, implementation for X-NUCLEO-S2915A1</description>
+                <RTE_Components_h>#define BUILD_WITH_RPL_BORDER_ROUTER 1
+#define USE_AUTOSTART_PROCESS
+#define S2915A1_BORDER_ROUTER
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_Serial_sniffer" condition="S2868A2_Contiki-NG-Sniffer" maxInstances="1">
+                <description>Serial Sniffer application based on Contiki-NG, implementation for X-NUCLEO-S2868A2</description>
+                <RTE_Components_h>#define S2868A2_SNIFFER
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SERIAL_SNIFFER 1
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_Serial_sniffer" condition="S2915A1_Contiki-NG-Sniffer" maxInstances="1">
+                <description>Serial Sniffer application based on Contiki-NG, implementation for X-NUCLEO-S2915A1</description>
+                <RTE_Components_h>#define S2915A1_SNIFFER
+#define USE_AUTOSTART_PROCESS
+#define BUILD_WITH_SERIAL_SNIFFER 1
+#define BUILD_WITH_SHELL 0</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="CUSTOM_S2LP_FIFO_TX" condition="CUSTOM_S2LP_FIFO_TX_Condition" maxInstances="1">
+                <description>Sample application demostrating the use of FIFO Trasmission Queue</description>
+                <RTE_Components_h>#define CUSTOM_S2LP_FIFO_TX</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="CUSTOM_S2LP_FIFO_RX" condition="CUSTOM_S2LP_FIFO_RX_Condition" maxInstances="1">
+                <description>Sample application demostrating the use of FIFO Trasmission Queue</description>
+                <RTE_Components_h>#define CUSTOM_S2LP_FIFO_RX</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A1_Command_Line_Interface" condition="S2868A1_CLI_Condition" maxInstances="1">
+                <description>Sample application demostrating the use of Command Line Interface</description>
+                <RTE_Components_h>#define S2868A1_CLI
+				#define CLI_APP</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2868A2_Command_Line_Interface" condition="S2868A2_CLI_Condition" maxInstances="1">
+                <description>Sample application demostrating the use of Command Line Interface</description>
+                <RTE_Components_h>#define S2868A2_CLI
+				#define CLI_APP</RTE_Components_h>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="S2915A1_Command_Line_Interface" condition="S2915A1_CLI_Condition" maxInstances="1">
+                <description>Sample application demostrating the use of Command Line Interface</description>
+                <RTE_Components_h>#define S2915A1_CLI
+				#define CLI_APP</RTE_Components_h>
+                <files/>
+            </component>
+        </bundle>
+    </components>
+</package>

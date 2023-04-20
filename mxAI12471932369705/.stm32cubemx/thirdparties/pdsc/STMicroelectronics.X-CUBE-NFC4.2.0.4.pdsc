@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>STMicroelectronics</vendor>
+  <name>X-CUBE-NFC4</name>
+  <description>Drivers and sample applications for NFC4 components</description>
+  <license>en.DM00367782.pdf</license>
+  <!-- web download link -->
+  <url>http://sw-center.st.com/packs/x-cube/</url>
+
+  <releases>
+	<release version="2.0.4" date="2021-12-07">
+	  - FTL Files headers have neutral license statement, LICENSE file is delivered at the root of the component 
+	  - Create sample applications with STM32CubeMX V6.4.0
+      - This version is compatible with STM32CubeMX v6.4.0
+	</release>
+    <release version="2.0.3" date="2021-06-08">
+	  - Updated the L4, F4 HAL driver
+	  - Example Support added
+	  - Bug fixed related to LPD pin for custom board  
+	  - Create sample applications with STM32CubeMX V6.3.0
+      - This version is compatible with STM32CubeMX v6.3.0
+	</release>
+	<release version="2.0.2" date="2021-02-18">
+	  - Updated the L4, F4 HAL driver
+	  - Bug fixed related to Custom BSP component for custom board  
+	  - Create sample applications with STM32CubeMX V6.2.0
+      - This version is compatible with STM32CubeMX v6.2.0
+	</release>
+    <release version="2.0.1" date="2020-11-09">
+	  - Updated the L0 HAL driver to v1.12.0
+	  - Bug fixed related to lib_nfc/ interface  and “basic” variant for custom board combination 
+	  - Create sample applications with STM32CubeMX V6.1.0
+      - This version is compatible with STM32CubeMX v6.1.0
+	</release>
+	<release version="2.0.0" date="2020-06-11">
+	  - Added support of Cortex M33
+	  - Align Component and Bundle to latest specifications
+      - Added printf to LPD project
+	  - Bug fixed related to compilation in linux 
+	  - Create sample applications with STM32CubeMX V6.0.0
+      - This version is compatible with STM32CubeMX v6.0.0
+	</release>
+	<release version="1.5.2" date="2020-02-14">
+	  - ST25DV component driver bug in Memsize reading
+	  - X-CUBE-NFC4 GPO example fails if the ST25DV-I2C GPO is disabled  		
+      - Create sample applications with STM32CubeMX V5.6.0
+      - This version is compatible with STM32CubeMX v5.6.0
+	</release>
+    <release version="1.5.1" date="2019-12-10">
+	  - Compilation error wrong generated GPIO define
+      - Create sample applications with STM32CubeMX V5.5.0
+      - This version is compatible with STM32CubeMX v5.5.0
+	</release>
+  
+	<release version="1.5.0" date="2019-09-18">
+      - attr="config" is added in File attribute
+	  - Bug Fixed :-nfc04a1_conf.h file does not generate appropriate code for Interrupt configuration
+    </release>
+    <release version="1.4.1" date="2019-07-01">
+      - PDSC: grammar and conditions fixes for STM32CubeMX 5.3.0
+      - Resolved : NFC04A1_NFCTAG_isInitialized always returns zero
+	  - Resolved : Conditions fixes
+      - Create sample applications with STM32CubeMX V5.3.0
+      - This version is compatible with STM32CubeMX v5.3.0
+    </release>
+    <release version="1.4.0" date="2019-04-15">
+      - First release of the NFC4 support package.
+      - Create sample applications with STM32CubeMX V5.2.0
+      - This version is compatible with STM32CubeMX v5.2.0
+    </release>
+    <release version="1.3.0" date="2019-01-19">
+      - First release of the NFC4 support package.
+      - Create sample applications with STM32CubeMX V5.1.0
+      - This version is compatible with STM32CubeMX v5.1.0
+    </release>
+  </releases>
+  
+  <taxonomy>
+    <description  Cclass="Board Part">The NFC4 components support class</description>      
+  </taxonomy>
+
+  <keywords>    
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+	<keyword>CUBEMX_MIGRATION_CAPABILITY</keyword>
+    <keyword>NFC</keyword>
+  </keywords>
+  
+  
+  <apis>
+    
+    <api Cclass="Board Extension" Cgroup="NFC04A1" exclusive="0">
+      <description>NFC library for X-NUCLEO-NFC04A1</description>
+      <files>
+        <file category="doc"     name="Documentation/X-CUBE-NFC4.chm"/>
+	<!--<file category="header"  name="Drivers/BSP/NFC04A1/nfc04a1_nfctag.h" />-->
+      </files>
+    </api>
+  </apis>
+  
+  
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7</description>
+      <!-- STM32F0 -->
+      <accept Dcore="Cortex-M0"/>
+	  
+      <!-- STM32L0 -->
+      <accept Dcore="Cortex-M0+"/>
+      
+      <!-- STM32F1, STM32F2 and STM32L1 -->
+	  <accept Dcore="Cortex-M3"/>
+      
+	  <!-- STM32L5-->
+	  <accept Dcore="Cortex-M33"/>
+      <!-- STM32F4, STM32F3 and STM32L4 series -->
+      <accept Dcore="Cortex-M4"/>
+      
+      <!-- STM32F7 and STMH7 series -->
+      <accept Dcore="Cortex-M7"/>     
+    </condition>
+
+    <condition id="CM0_GCC">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM0_IAR">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM0_Keil">
+      <require Dcore="Cortex-M0"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+	
+	<condition id="CM3_GCC">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM3_IAR">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM3_Keil">
+      <require Dcore="Cortex-M3"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+    <condition id="CM4_GCC">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM4_IAR">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM4_Keil">
+      <require Dcore="Cortex-M4"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+	
+	<condition id="CM7_GCC">
+      <require Dcore="Cortex-M7"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM7_IAR">
+      <require Dcore="Cortex-M7"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM7_Keil">
+	  <require Dcore="Cortex-M7"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    
+	<condition id="NFC04A1 Condition">
+	
+	
+	
+	  <description>Cortex-M Device and board setup (X-NUCLEO-NFC04A1)</description> 
+	  <require condition="Cortex-M Device"/>   
+      <deny Cbundle="NFC" Cclass="Board Part" Cgroup="NFC4"/>       
+    </condition>
+
+	<!-- NFC04A1 Examples condition -->
+    <condition id="NFC04A1 Examples Condition">
+      <require Cbundle="NFC" Cclass="Board Extension" Cgroup="NFC04A1"/>
+	  <deny Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Core"/>
+	  <deny Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Interface"/>
+	  <deny Cbundle="NFC" Cclass="Board Part" Cgroup="NFC4"/>
+      <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="NFCTAG"/>	  
+    </condition>
+	
+	<!-- NFC04A1 Examples condition -->
+    <condition id="NFC04A1 Application Condition">
+      <require Cbundle="NFC" Cclass="Board Extension" Cgroup="NFC04A1"/>
+	  <require Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Core"/>
+	  <deny Cbundle="NFC" Cclass="Board Part" Cgroup="NFC4"/>
+      <deny Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom" Csub="NFCTAG"/>	  
+    </condition>
+	
+	<condition id="ST25DV Condition">
+      <description>Cortex-M Device and board setup (ST25DV Driver)</description>      
+      <require condition="Cortex-M Device"/>
+      <require Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Core"/> 
+	  <require Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Interface" Cvariant="Template" />
+	  <deny Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Interface" Cvariant="Basic" />
+      <deny Cbundle="NFC" Cclass="Board Extension" Cgroup="NFC04A1"/>       
+    </condition>
+	
+	<condition id="NFCTAG Condition">
+      <require condition="Cortex-M Device"/>
+      <require Cbundle="NFC" Cclass="Board Part" Cgroup="NFC4"/>
+	  <require Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cgroup="Custom"/>
+	  <deny Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Interface" Cvariant="Basic" />
+      <deny Cbundle="NFC" Cclass="Board Extension" Cgroup="NFC04A1"/>
+    </condition>
+
+    <condition id="libNDEF Core Condition">
+        <description>Cortex-M Device and board setup (ST25DV Driver)</description>      
+        <require condition="Cortex-M Device"/>   
+        <require Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Interface"/>
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_EnergyHarvesting" />	
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_GeneralPurposeOutput" />	
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_I2CPROTECTION"  />	
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_LowPowerDown" />	
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_MAILBOX" />	
+		<deny Cbundle="NFC4_Applications" Cclass="Device" Cgroup="Application" Cvariant="NFC04A1_SERIALUSB" />	
+		
+    </condition>
+
+    <condition id="libNDEF Interface Condition">
+        <description>Cortex-M Device and board setup (ST25DV Driver)</description>      
+        <require condition="Cortex-M Device"/>   
+        <require Cbundle="lib_nfc" Cclass="Wireless" Cgroup="lib_nfc" Csub="Core"/>
+		
+    </condition>
+	
+  </conditions>
+  
+  <components>
+    <bundle Cvendor="STMicroelectronics" Cbundle="NFC" Cclass="Board Part" Cversion="2.0.4">
+      <description>NFC4 library for custom boards</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-NFC4_GettingStarted.pdf</doc>
+      <component Cgroup="NFC4" Csub="ST25DV" condition="NFCTAG Condition" maxInstances="1">
+	    <description>ST25DV files</description>
+        <RTE_Components_h>#define ST25DV_NFC4_I2C</RTE_Components_h>
+        <!-- short component description -->
+       <!-- <description>NFC4 component driver</description>  -->
+      <files>
+		  <file category="header"  name="Drivers/BSP/Components/ST25DV/st25dv_reg.h"/>
+          <file category="header"  name="Drivers/BSP/Components/ST25DV/st25dv.h"/>
+          <file category="source"  name="Drivers/BSP/Components/ST25DV/st25dv_reg.c" />
+          <file category="source"  name="Drivers/BSP/Components/ST25DV/st25dv.c" />
+      </files>
+      </component>	  
+	</bundle>
+	
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="NFC" Cclass="Board Extension" Cversion="2.0.4">
+    <description>Board Extension</description>
+	  <doc>Documentation/STMicroelectronics.X-CUBE-NFC4_GettingStarted.pdf</doc>
+	  <component Cgroup="NFC04A1" condition="NFC04A1 Condition" maxInstances="1">
+		<description> BSPTAG for X-NUCLEO-NFC04A1, ST25DV </description>
+        <RTE_Components_h>#define NFC04A1</RTE_Components_h>
+        <!-- short component description -->
+      <files>
+            <file category="header"  name="Drivers/BSP/Components/ST25DV/st25dv_reg.h"/>
+            <file category="header"  name="Drivers/BSP/Components/ST25DV/st25dv.h"/>
+            <file category="source"  name="Drivers/BSP/Components/ST25DV/st25dv_reg.c" />
+            <file category="source"  name="Drivers/BSP/Components/ST25DV/st25dv.c" />
+            <file category="header"  name="Drivers/BSP/NFC04A1/nfc04a1.h"/>
+            <file category="source"  name="Drivers/BSP/NFC04A1/nfc04a1.c"/>
+            <file category="header"  name="Drivers/BSP/NFC04A1/nfc04a1_nfctag.h"/>
+            <file category="source"  name="Drivers/BSP/NFC04A1/nfc04a1_nfctag.c"/>
+      </files>
+      </component>
+    </bundle>
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="lib_nfc" Cclass="Wireless" Cversion="2.0.4">
+    <description>lib NFC middleware</description>
+	  <doc>Documentation/STMicroelectronics.X-CUBE-NFC4_GettingStarted.pdf</doc>
+	  <component  Cgroup="lib_nfc" Csub="Core" condition="libNDEF Core Condition" maxInstances="1" >
+	     <!-- short component description -->
+		 <description>NDEF Middleware</description>
+        <RTE_Components_h>#define LIB_NDEF</RTE_Components_h>
+	<!--	<description>Single component for libNDEF. Condition to  any NFCTAG BSP class</description> -->
+		<files>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_flash_ndef.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_AAR.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Bluetooth.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_config.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Email.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Geo.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Handover.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_MyApp.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_SMS.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Text.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_URI.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Vcard.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_NDEF_Wifi.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/inc/lib_wrapper.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/Common/inc/tagtype3_wrapper.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/Common/inc/tagtype4_wrapper.h"/>
+		  <file category="header"  name="Middlewares/ST/lib_nfc/Common/inc/tagtype5_wrapper.h"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_AAR.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Bluetooth.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Email.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Geo.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Handover.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_MyApp.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_SMS.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Text.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_URI.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Vcard.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_NDEF_Wifi.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/lib_wrapper.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/tagtype3_wrapper.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/tagtype4_wrapper.c"/>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Core/src/tagtype5_wrapper.c"/>		  
+		</files>
+      </component>
+	  <component  Cgroup="lib_nfc" Csub="Interface" Cvariant="Basic" isDefaultVariant="true" condition="libNDEF Interface Condition" maxInstances="1">
+	     <!-- short component description -->
+		 <description>Interface of Middleware</description>
+        <RTE_Components_h>#define Interface</RTE_Components_h>
+		<!-- <description>Single component for libNDEF. Condition to  any NFCTAG BSP class</description> -->
+		<files>
+		  <file category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Basic/lib_NDEF_config.c"/>	
+		</files>
+	  </component>
+	  <component Cgroup="lib_nfc" Csub="Interface" Cvariant="Template" isDefaultVariant="false" condition="ST25DV Condition" maxInstances="1">
+	     <!-- short component description -->
+		 <description>Interface of Middleware</description>
+        <RTE_Components_h>#define Interface</RTE_Components_h>
+	<!--	<description>Single component for libNDEF. Condition to any NFCTAG BSP class</description>  -->
+		<files>
+		  <file  attr="template" category="source"  name="Middlewares/ST/lib_nfc/lib_NDEF/Template/lib_NDEF_config.c"/>	
+		</files>
+	  </component>	  
+	</bundle>
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="STM32Cube_Custom_BSP_Drivers" Cclass="Board Support" Cversion="2.0.4">   
+      <description>Custom BSP implementation</description>
+      <doc>Documentation/STMicroelectronics.X-CUBE-NFC4_GettingStarted.pdf</doc>
+      <component Cgroup="Custom" Csub="NFCTAG" condition="NFCTAG Condition" maxInstances="1">
+        <description>BSP for NFC TAG </description>
+        <RTE_Components_h>#define BSP_NFCTAG</RTE_Components_h>
+		<!-- short component description -->
+        <files/>
+      </component>
+    </bundle> 
+	
+	<bundle Cvendor="STMicroelectronics" Cbundle="NFC4_Applications" Cclass="Device" Cversion="2.0.4">
+    <description>URI NDEF sample application for X-NUCLEO-NFC04A1</description>
+	  <doc>Documentation/STMicroelectronics.X-CUBE-NFC4_GettingStarted.pdf</doc>
+	  <component  Cgroup="Application" Cvariant="NFC04A1_NDEF_URI" isDefaultVariant="true" condition="NFC04A1 Application Condition" maxInstances="1">
+	     <!-- short component description -->
+         <description></description>
+        <RTE_Components_h>#define NFC04A1_URI_DEMO</RTE_Components_h>
+        <files/>
+      </component>
+	  <component  Cgroup="Application" Cvariant="NFC04A1_EnergyHarvesting" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Energy harvesting feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_EH_DEMO</RTE_Components_h>
+        <files/>
+      </component>		
+	  <component  Cgroup="Application" Cvariant="NFC04A1_GeneralPurposeOutput" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>General purpose output feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_GPO_DEMO</RTE_Components_h>
+        <files/>
+      </component>	
+	  <component  Cgroup="Application" Cvariant="NFC04A1_I2CPROTECTION" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>I2C_PROTECTION feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_I2CPROTECTION_DEMO</RTE_Components_h>
+        <files/>
+      </component>	
+	  <component  Cgroup="Application" Cvariant="NFC04A1_LowPowerDown" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Low Power Down feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_LPD_DEMO</RTE_Components_h>
+        <files/>
+      </component>
+	  <component  Cgroup="Application" Cvariant="NFC04A1_MAILBOX" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1">
+	     <!-- short component description -->
+        <description>Mailbox feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_MAILBOX_DEMO</RTE_Components_h>
+        <files/>
+      </component>
+	  <component  Cgroup="Application" Cvariant="NFC04A1_SERIALUSB" isDefaultVariant="true" condition="NFC04A1 Examples Condition" maxInstances="1"> 
+        <description>Serial USB_PC Software feature of ST25DV</description>
+        <RTE_Components_h>#define NFC04A1_SERIALUSB_DEMO</RTE_Components_h>
+        <files/>
+      </component> 
+    </bundle>    
+    	
+		
+    
+  </components>
+
+</package>

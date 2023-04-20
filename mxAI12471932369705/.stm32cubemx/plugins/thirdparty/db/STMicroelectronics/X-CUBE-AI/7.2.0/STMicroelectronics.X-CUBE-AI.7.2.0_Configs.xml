@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<IP xmlns="http://mcd.rou.st.com/modules.php?name=mcu" DBVersion="V4.0" Name="X-CUBE-AI" RootFolder="Packs/STMicroelectronics/X-CUBE-AI/7.2.0/" Version="7.2.0" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://mcd.rou.st.com/modules.php?name=mcu ../../../../../../../doc/V4/Development/Specifications/db/thirdPartyDb.xsd">
+    <RefConfig Name="ArtificialOoIntelligenceJjXAaCUBEAaAI">
+        <Component Name="XAaCUBEAaAICcArtificialOoIntelligence:Core:$XAaCUBEAaAICcArtificialOoIntelligenceJjCore"/>
+    </RefConfig>
+    <RefConfig Name="DeviceJjApplication">
+        <Component Name="ApplicationCcDevice:Application:SystemPerformance:$ApplicationCcDeviceJjApplication"/>
+        <Component Name="ApplicationCcDevice:Application:Validation:$ApplicationCcDeviceJjApplication"/>
+        <Component Name="ApplicationCcDevice:Application:ApplicationTemplate:$ApplicationCcDeviceJjApplication"/>
+    </RefConfig>
+    <RefComponent Cclass="XAaCUBEAaAICcArtificialOoIntelligence" Cgroup="Core" Cversion="7Gg2Gg0">
+        <File Category="doc" Condition="" Name="./nofile"/>
+    </RefComponent>
+    <RefComponent Cclass="ApplicationCcDevice" Cgroup="Application" Cversion="7Gg2Gg0">
+        <SubComponent Csub="" Cvariant="ApplicationTemplate:ApplicationTemplate">
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Src/noop.c"/>
+        </SubComponent>
+        <SubComponent Csub="" Cvariant="Validation:Validation">
+            <File Category="include" Condition="" Name="Middlewares/ST/AI/Validation/Inc"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/aiPbMgr.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/aiTestUtility.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/aiValidation.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/pb_common.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/pb_decode.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/pb_encode.c"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/Validation/Src/stm32msg.pb.c"/>
+        </SubComponent>
+        <SubComponent Csub="" Cvariant="SystemPerformance:SystemPerformance">
+            <File Category="include" Condition="" Name="Middlewares/ST/AI/SystemPerformance/Inc"/>
+            <File Category="source" Condition="" Name="Middlewares/ST/AI/SystemPerformance/Src/aiSystemPerformance.c"/>
+        </SubComponent>
+    </RefComponent>
+    <RefConfigFile Name="RTE_Component" Template="RTE_Components.ftl">
+        <File Category="header" Condition="all" Name="./RTE_Components.h"/>
+    </RefConfigFile>
+</IP>

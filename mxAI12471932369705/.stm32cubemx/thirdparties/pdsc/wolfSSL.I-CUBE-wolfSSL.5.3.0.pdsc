@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>wolfSSL</vendor>
+    <name>I-CUBE-wolfSSL</name>
+    <description>Lightweight SSL/TLS and Crypt Library for Embedded Systems</description>
+    <url>http://www.wolfSSL.com/files/ide/</url>
+    <license>wolfSSL-License.txt</license>
+    <releases>
+        <release date="2022-05-03" version="5.3.0">
+        May/3/2022,  wolfSSL pack for wolfSSL 5.3.0
+        </release>
+        <release date="2022-03-09" version="5.2.0">
+        February/21/2022,  wolfSSL pack for wolfSSL 5.2.0
+        </release>
+        <release date="2022-01-03" version="5.1.1">
+        January/03/2022,  wolfSSL pack for wolfSSL 5.1.1
+        </release>
+        <release date="2021-11-01" version="5.0.0">
+        November/01/2021,  wolfSSL pack for wolfSSL 5.0.0
+        </release>
+        <release date="2021-07-12" version="4.8.0">
+        July/12/2021,  wolfSSL pack for wolfSSL 4.8.0
+        </release>
+        <release date="2020-12-21" version="4.7.0">
+        February/16/2021,  wolfSSL pack for wolfSSL 4.7.0
+        </release>
+        <release date="2020-12-21" version="4.6.0">
+        December/15/2020,  wolfSSL pack for wolfSSL 4.6.0
+        </release>
+        <release date="2020-08-19" version="4.5.0">
+        August/19/2020,  wolfSSL pack for wolfSSL 4.5.0
+        </release>
+        <release date="2020-06-11" version="4.4.1">
+        June/11/2020,  wolfSSL pack for wolfSSL 4.4.1
+        </release>
+        <release date="2018-03-13" version="3.14.0">
+        March/13/2018,  wolfSSL pack for wolfSSL 3.14.0
+        </release>
+    </releases>
+    <keywords>
+        <keyword>CyaSSL</keyword>
+        <keyword>wolfSSL</keyword>
+        <keyword>Security</keyword>
+        <keyword>Crypt</keyword>
+        <keyword>Cipher</keyword>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="wolfSSL">wolfSSL: SSL/TLS and Crypt Library</description>
+        <description Cclass="wolfSSL" Cgroup="wolfSSL">wolfSSL: SSL/TLS Library</description>
+        <description Cclass="wolfSSL" Cgroup="wolfCrypt">wolfCrypt: Crypt Library</description>
+    </taxonomy>
+    <conditions>
+        <condition id="wolfCrypt-Core">
+            <require Cclass="wolfSSL" Cgroup="wolfCrypt" Csub="Core"/>
+        </condition>
+        <condition id="wolfSSL-Core">
+            <require Cclass="wolfSSL" Cgroup="wolfSSL" Csub="Core"/>
+            <require condition="wolfCrypt-Core"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="wolfSSL" Cclass="wolfSSL" Cversion="5.3.0">
+            <description>wolfSSL: SSL/TLS and Crypt Library</description>
+            <doc>Documentation/wolfSSLManual-TableofContents.htm</doc>
+            <component Cgroup="wolfSSL" Csub="Core" condition="wolfCrypt-Core">
+                <description>wolfSSL, Lightweight SSL/TLS library</description>
+                <files>
+                    <file category="doc" name="Documentation/wolfSSLManual-TableofContents.htm"/>
+                    <file category="include" name="Middlewares/Third_Party/wolfssl/"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/bio.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/conf.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/crl.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/internal.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/keys.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/ocsp.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/sniffer.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/ssl.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/tls.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/tls13.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/wolfio.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/x509.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/src/x509_str.c"/>
+                </files>
+            </component>
+            <component Cgroup="wolfCrypt" Csub="Core" condition="wolfCrypt-Core">
+                <description>wolfCrypt Core, Lightweight Crypt/Cipher Library</description>
+                <files>
+                    <file category="doc" name="Documentation/wolfSSLManual-wolfCryptUsageReference.htm"/>
+                    <file category="doc" name="Documentation/README.md"/>
+                    <file category="include" name="Middlewares/Third_Party/wolfssl/"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/aes.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/arc4.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/asm.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/asn.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/blake2b.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/blake2s.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/camellia.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/chacha.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/chacha20_poly1305.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/cmac.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/coding.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/compress.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/cpuid.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/curve448.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/curve25519.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/des3.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/dh.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/dsa.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ecc_fp.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ecc.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/eccsi.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ed448.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ed25519.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/error.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/evp.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/fe_448.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/fe_low_mem.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/fe_operations.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ge_448.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ge_low_mem.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ge_operations.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/hash.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/hmac.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/integer.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/kdf.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/logging.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/md2.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/md4.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/md5.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/misc.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/memory.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/pkcs7.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/pkcs12.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/poly1305.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/pwdbased.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/random.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/rc2.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/ripemd.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/rsa.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sakke.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sha.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sha256.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sha3.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sha512.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/signature.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_arm32.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_arm64.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_armthumb.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_c32.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_c64.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_cortexm.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_dsp32.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_int.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/sp_x86_64.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/srp.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/tfm.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wc_dsp.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wc_encrypt.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wc_pkcs11.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wc_port.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wolfevent.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/wolfmath.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-32-curve25519_c.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-32-sha512-asm_c.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-aes.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-chacha.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-curve25519_c.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-poly1305.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-sha256.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/arm/armv8-sha512.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/atmel/atmel.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/st/stm32.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/src/port/st/stsafe.c"/>
+                </files>
+            </component>
+            <component Cgroup="wolfCrypt" Csub="Test" condition="wolfSSL-Core">
+                <description>wolfCrypt Test Suite</description>
+                <files>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/IDE/STM32Cube/wolfssl_example.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/test/test.c"/>
+                    <file category="source" name="Middlewares/Third_Party/wolfssl/wolfcrypt/benchmark/benchmark.c"/>
+                </files>
+            </component>
+        </bundle>
+    </components>
+</package>

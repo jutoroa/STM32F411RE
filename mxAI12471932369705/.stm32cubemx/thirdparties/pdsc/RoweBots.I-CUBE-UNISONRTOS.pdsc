@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>RoweBots</vendor>
+    <name>I-CUBE-UNISONRTOS</name>
+    <description>UnisonRTOS for Cortex-M</description>
+    <url>https://rowebots.com/unison-software-expansion-stm32cubemx/</url>
+    <license>Documents/license.txt</license>
+    <supportContact>https://rowebots.com/#contact</supportContact>
+    <releases>
+        <release date="2021-02-10" version="5.5.0-4">Updated package's requirements</release>
+        <release date="2021-01-06" version="5.5.0-3">Updated "sys.h" file according to the new requriements.</release>
+        <release date="2020-12-07" version="5.5.0-2">- Updated quick Start Guide
+- Updated package name according tp the ST requirements.</release>
+        <release date="2020-08-13" version="5.5.0-1">- Removed CMSIS from requirements list</release>
+        <release date="2020-07-02" version="5.5.0-0">Initial version</release>
+    </releases>
+    <keywords>
+        <keyword>CUBE_RULES_COMPLIANT</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+        <keyword>UnisonRTOS</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Device">Device</description>
+        <description Cclass="RTOS">RTOS</description>
+    </taxonomy>
+    <conditions>
+        <condition id="ARMCC">
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="GCC">
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="IAR">
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="ARMCC GCC IAR">
+            <accept condition="ARMCC"/>
+            <accept condition="GCC"/>
+            <accept condition="IAR"/>
+        </condition>
+        <condition id="CM0">
+            <description>Cortex-M0 or Cortex-M0+ processor based device</description>
+            <accept Dcore="Cortex-M0"/>
+            <accept Dcore="Cortex-M0+"/>
+        </condition>
+        <condition id="CM3">
+            <description>Cortex-M3 processor based device</description>
+            <accept Dcore="Cortex-M3"/>
+        </condition>
+        <condition id="CM4">
+            <description>Cortex-M4 processor based device</description>
+            <accept Dcore="Cortex-M4" Dfpu="NO_FPU"/>
+        </condition>
+        <condition id="CM4F">
+            <description>Cortex-M4 processor based device</description>
+            <accept Dcore="Cortex-M4" Dfpu="FPU"/>
+        </condition>
+        <condition id="CM7">
+            <description>Cortex-M7 processor based device</description>
+            <accept Dcore="Cortex-M7"/>
+        </condition>
+        <condition id="CoreM">
+            <description>Cortex-M processor based device</description>
+            <accept condition="CM0"/>
+            <accept condition="CM3"/>
+            <accept condition="CM4"/>
+            <accept condition="CM4F"/>
+            <accept condition="CM7"/>
+        </condition>
+        <condition id="CM0_IAR">
+            <description>Cortex-M0 or Cortex-M0+ processor based device for the IAR Compiler</description>
+            <require condition="CM0"/>
+            <require condition="IAR"/>
+        </condition>
+        <condition id="CM3_IAR">
+            <description>Cortex-M3 processor based device for the IAR Compiler</description>
+            <require condition="CM3"/>
+            <require condition="IAR"/>
+        </condition>
+        <condition id="CM4_IAR">
+            <description>Cortex-M4 processor based device for the IAR Compiler</description>
+            <require condition="CM4"/>
+            <require condition="IAR"/>
+        </condition>
+        <condition id="CM4F_IAR">
+            <description>Cortex-M4 processor based device for the IAR Compiler</description>
+            <require condition="CM4F"/>
+            <require condition="IAR"/>
+        </condition>
+        <condition id="CM7_IAR">
+            <description>Cortex-M7 processor based device for the IAR Compiler</description>
+            <require condition="CM7"/>
+            <require condition="IAR"/>
+        </condition>
+        <condition id="CM0_GCC">
+            <description>Cortex-M0 or Cortex-M0+ processor based device for the ARM Compiler 6</description>
+            <require condition="CM0"/>
+            <require condition="GCC"/>
+        </condition>
+        <condition id="CM3_GCC">
+            <description>Cortex-M3 processor based device for the ARM Compiler 6</description>
+            <require condition="CM3"/>
+            <require condition="GCC"/>
+        </condition>
+        <condition id="CM4_GCC">
+            <description>Cortex-M4 processor based device for the ARM Compiler 6</description>
+            <require condition="CM4"/>
+            <require condition="GCC"/>
+        </condition>
+        <condition id="CM4F_GCC">
+            <description>Cortex-M4 processor based device for the ARM Compiler 6</description>
+            <require condition="CM4F"/>
+            <require condition="GCC"/>
+        </condition>
+        <condition id="CM7_GCC">
+            <description>Cortex-M7 processor based device for the ARM Compiler 6</description>
+            <require condition="CM7"/>
+            <require condition="GCC"/>
+        </condition>
+        <condition id="CM0_ARMCC">
+            <description>Cortex-M0 or Cortex-M0+ processor based device for the ARM Compiler 5</description>
+            <require condition="CM0"/>
+            <require condition="ARMCC"/>
+        </condition>
+        <condition id="CM3_ARMCC">
+            <description>Cortex-M3 processor based device for the ARM Compiler 5</description>
+            <require condition="CM3"/>
+            <require condition="ARMCC"/>
+        </condition>
+        <condition id="CM4_ARMCC">
+            <description>Cortex-M4 processor based device for the ARM Compiler 5</description>
+            <require condition="CM4"/>
+            <require condition="ARMCC"/>
+        </condition>
+        <condition id="CM4F_ARMCC">
+            <description>Cortex-M4 processor based device for the ARM Compiler 5</description>
+            <require condition="CM4F"/>
+            <require condition="ARMCC"/>
+        </condition>
+        <condition id="CM7_ARMCC">
+            <description>Cortex-M7 processor based device for the ARM Compiler 5</description>
+            <require condition="CM7"/>
+            <require condition="ARMCC"/>
+        </condition>
+        <condition id="UnisonRTOS Port Cortex-M">
+            <require condition="ARMCC GCC IAR"/>
+            <require condition="CoreM"/>
+        </condition>
+        <condition id="UnisonRTOS">
+            <accept condition="UnisonRTOS Port Cortex-M"/>
+        </condition>
+        <condition id="UnisonRTOS CM">
+            <require condition="UnisonRTOS Port Cortex-M"/>
+        </condition>
+        <condition id="UnisonRTOS Core">
+            <require Cbundle="UnisonRTOS" Cclass="RTOS" Cgroup="Core"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="UnisonRTOS" Cclass="RTOS" Cversion="1.7.2">
+            <description>UnisonRTOS Real Time Kernel</description>
+            <doc>Documents/STM32CubeMX-and-UNISON-RTOS-QSG.pdf</doc>
+            <component Cgroup="KERNEL" condition="UnisonRTOS CM" maxInstances="1">
+                <description>Core API (Kernel, Tasks, Semaphores, Mutexes, Queues) for Cortex-M</description>
+                <files>
+                    <file category="include" name="Middleware/Third_Party/UnisonRTOS/KERNEL/include"/>
+                    <file category="source" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/context.c" public="false"/>
+                    <file category="source" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/port.c" public="false"/>
+                    <file category="header" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/port.h" public="false"/>
+                    <file category="header" condition="CM0_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM0/version.h" public="false"/>
+                    <file category="source" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/context.c" public="false"/>
+                    <file category="source" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/port.c" public="false"/>
+                    <file category="header" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/port.h" public="false"/>
+                    <file category="header" condition="CM3_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM3/version.h" public="false"/>
+                    <file category="source" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/context.c" public="false"/>
+                    <file category="source" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/port.c" public="false"/>
+                    <file category="header" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/port.h" public="false"/>
+                    <file category="header" condition="CM4_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4/version.h" public="false"/>
+                    <file category="source" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/context.c" public="false"/>
+                    <file category="source" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/port.c" public="false"/>
+                    <file category="header" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/port.h" public="false"/>
+                    <file category="header" condition="CM4F_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM4F/version.h" public="false"/>
+                    <file category="source" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/context.c" public="false"/>
+                    <file category="source" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/port.c" public="false"/>
+                    <file category="header" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/port.h" public="false"/>
+                    <file category="header" condition="CM7_IAR" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/ewarm/ARM_CM7/version.h" public="false"/>
+                    <file category="source" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/context.c" public="false"/>
+                    <file category="source" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/interrupt.c" public="false"/>
+                    <file category="source" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/low_level_asm.c" public="false"/>
+                    <file category="source" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/port.c" public="false"/>
+                    <file category="header" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/port.h" public="false"/>
+                    <file category="header" condition="CM0_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM0/version.h" public="false"/>
+                    <file category="source" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/context.c" public="false"/>
+                    <file category="source" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/interrupt.c" public="false"/>
+                    <file category="source" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/low_level_asm.c" public="false"/>
+                    <file category="source" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/port.c" public="false"/>
+                    <file category="header" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/port.h" public="false"/>
+                    <file category="header" condition="CM3_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM3/version.h" public="false"/>
+                    <file category="source" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/context.c" public="false"/>
+                    <file category="source" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/interrupt.c" public="false"/>
+                    <file category="source" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/low_level_asm.c" public="false"/>
+                    <file category="source" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/port.c" public="false"/>
+                    <file category="header" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/port.h" public="false"/>
+                    <file category="header" condition="CM4_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4/version.h" public="false"/>
+                    <file category="source" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/context.c" public="false"/>
+                    <file category="source" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/interrupt.c" public="false"/>
+                    <file category="source" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/low_level_asm.c" public="false"/>
+                    <file category="source" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/port.c" public="false"/>
+                    <file category="header" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/port.h" public="false"/>
+                    <file category="header" condition="CM4F_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM4F/version.h" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/context.c" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/interrupt.c" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/low_level_asm.c" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/port.c" public="false"/>
+                    <file category="header" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/port.h" public="false"/>
+                    <file category="header" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/gcc/ARM_CM7/version.h" public="false"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/platform.h"/>
+                    <file category="source" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/context.c" public="false"/>
+                    <file category="source" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/port.c" public="false"/>
+                    <file category="header" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/port.h" public="false"/>
+                    <file category="header" condition="CM0_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM0/version.h" public="false"/>
+                    <file category="source" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/context.c" public="false"/>
+                    <file category="source" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/port.c" public="false"/>
+                    <file category="header" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/port.h" public="false"/>
+                    <file category="header" condition="CM3_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM3/version.h" public="false"/>
+                    <file category="source" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/context.c" public="false"/>
+                    <file category="source" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/port.c" public="false"/>
+                    <file category="header" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/port.h" public="false"/>
+                    <file category="header" condition="CM4_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4/version.h" public="false"/>
+                    <file category="source" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/context.c" public="false"/>
+                    <file category="source" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/port.c" public="false"/>
+                    <file category="header" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/port.h" public="false"/>
+                    <file category="header" condition="CM4F_ARMCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM4F/version.h" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/context.c" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/interrupt.c" public="false"/>
+                    <file category="sourceAsm" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/low_level_asm.s" public="false"/>
+                    <file category="source" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/port.c" public="false"/>
+                    <file category="header" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/port.h" public="false"/>
+                    <file category="header" condition="CM7_GCC" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/rvmdk/ARM_CM7/version.h" public="false"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/unison_heap.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/port/unison_kernel_start.c"/>
+                    <file category="other" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/ChangeLog"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/clock_getres.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/clock_gettime.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/clock_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/clock_settime.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/directory.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/dirstubs.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/dirstubs.h"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/dlog_kernel_ev.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/heap.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/idle.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/idle.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/kalloc.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/kernel.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/kfatal.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_close.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_getattr.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_notify.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_open.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_receive.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_send.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_setattr.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mq_unlink.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_receive.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_reply.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_send.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_sigpost.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/mr_sigrecv.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/nanosleep.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/nano_lock.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pool.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/ptalloc.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_getdetachst.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_getschedpar.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_getstackaddr.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_getstacksize.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_setdetachst.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_setschedpar.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_setstackaddr.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_attr_setstacksize.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_barrier_destroy.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_barrier_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_barrier_wait.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cancel.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cleanup.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_condattr.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cond_broadcast.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cond_destroy.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cond_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cond_signal.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_cond_wait.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_create.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_detach.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_equal.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_exit.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_getattr_np.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_getprio.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_getschedparam.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_join.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutexattr_destroy.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutexattr_gettype.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutexattr_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutexattr_settype.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_destroy.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_getlock_np.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_lock.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_timedlock.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_trylock.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_mutex_unlock.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_self.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_setcancelstate.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_setcanceltype.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_setcanceltype_np.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_setprio.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_setschedparam.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_stackinfo.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/pthread_testcancel.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/queue.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sched_get_priority.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sched_yield.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_close.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_destroy.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_getvalue.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_init.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_open.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_post.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_timedwait.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_trywait.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_unlink.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/sem_wait.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/tdalloc.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/thread.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/threads_utilization.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/threads_utilization.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/time.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_create.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_delete.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_getoverrun.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_gettime.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_settime.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/timer_tick.c"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/uptime.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/version.h"/>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/xprintf.c"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/_mqueue.h"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/_pthread.h"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/_semaphore.h"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/KERNEL/kernel/_time.h"/>
+                </files>
+            </component>
+            <component Cgroup="CMSIS" condition="UnisonRTOS CM" maxInstances="1">
+                <description>CMSIS-RTOS implementation for Cortex-M based on UnisonRTOS</description>
+                <files>
+                    <file category="source" name="Middleware/Third_Party/UnisonRTOS/CMSIS/cmsis_os.c" public="false"/>
+                    <file category="header" name="Middleware/Third_Party/UnisonRTOS/CMSIS/cmsis_os.h" public="false"/>
+                </files>
+            </component>
+        </bundle>
+        <bundle Cbundle="UnisonRTOS_Applications" Cclass="Device" Cversion="1.0.0">
+            <description>Bundle with Unison RTOS Applications</description>
+            <doc>Documents/readme.pdf</doc>
+            <component Cgroup="Application" Cvariant="simple" condition="UnisonRTOS CM" isDefaultVariant="true" maxInstances="1">
+                <description>This application shows the MainThread in Unison RTOS</description>
+                <files/>
+            </component>
+            <component Cgroup="Application" Cvariant="semaphore" condition="UnisonRTOS CM" isDefaultVariant="true" maxInstances="1">
+                <description>This application shows how to work with semaphores in Unison RTOS</description>
+                <files/>
+            </component>
+        </bundle>
+    </components>
+</package>

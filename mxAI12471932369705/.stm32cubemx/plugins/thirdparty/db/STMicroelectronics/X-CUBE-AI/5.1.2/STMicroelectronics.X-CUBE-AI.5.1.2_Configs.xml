@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<IP xmlns="http://mcd.rou.st.com/modules.php?name=mcu" CodeTemplate="app_x-cube-ai_h.ftl;app_x-cube-ai_c.ftl" DBVersion="V4.0" Name="X-CUBE-AI" RootFolder="Packs/STMicroelectronics/X-CUBE-AI/5.1.2/" Version="5.1.2" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://mcd.rou.st.com/modules.php?name=mcu IP_Configs.xsd">
+    <RefConfig Name="ArtificialOoIntelligenceJjXAaCUBEAaAI">
+        <Component Name="XAaCUBEAaAICcArtificialOoIntelligence:Core:$XAaCUBEAaAICcArtificialOoIntelligenceJjCore"/>
+    </RefConfig>
+    <RefConfig Name="ArtificialOoIntelligenceJjApplication">
+        <Component Name="ApplicationCcArtificialOoIntelligence:Application:SystemPerformance:$ApplicationCcArtificialOoIntelligenceJjApplication"/>
+        <Component Name="ApplicationCcArtificialOoIntelligence:Application:Validation:$ApplicationCcArtificialOoIntelligenceJjApplication"/>
+        <Component Name="ApplicationCcArtificialOoIntelligence:Application:ApplicationTemplate:$ApplicationCcArtificialOoIntelligenceJjApplication"/>
+	    <ConfigFile Name="constants_ai_h"/>
+    </RefConfig>
+    <RefConfigFile Name="constants_ai_h" Description="AI Process file" Template="constants_ai_h.ftl">
+        <File Name="constants_ai.h" Category="header" Condition="all" Version="" attr="" select="" src=""/>
+        <Argument Name="HeapSize" GenericType="simple" Comment=""/>
+        <Argument Name="StackSize" GenericType="simple" Comment=""/>
+    </RefConfigFile>
+    <RefComponent Cclass="XAaCUBEAaAICcArtificialOoIntelligence" Cgroup="Core" Cversion="5Gg1Gg2"/>
+    <RefComponent Cclass="ApplicationCcArtificialOoIntelligence" Cgroup="Application" Cversion="5Gg1Gg2">
+        <SubComponent Csub="" Cvariant="ApplicationTemplate:ApplicationTemplate"/>
+        <SubComponent Csub="" Cvariant="Validation:Validation"/>
+        <SubComponent Csub="" Cvariant="SystemPerformance:SystemPerformance"/>
+    </RefComponent>
+    <RefConfigFile Name="RTE_Component" Template="RTE_Components.ftl">
+        <File Category="header" Condition="" Name="RTE_Components.h" Version="" attr="" select="" src=""/>
+    </RefConfigFile>
+    <RefBspComponent Name="COM Port" BspIpName="USART" BspModeName="Asynchronous">
+        <File Category="template" Name="bsp_ai_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent Name="COM Port" BspIpName="UART" BspModeName="Asynchronous">
+        <File Category="template" Name="bsp_ai_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent Name="COM Port" BspIpName="LPUART" BspModeName="Asynchronous">
+        <File Category="template" Name="bsp_ai_h.ftl"/>
+    </RefBspComponent>
+</IP>

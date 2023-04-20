@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>STMicroelectronics</vendor>
+    <name>FP-ATR-SIGFOX1</name>
+    <description>STM32CubeMX function pack for Sigfox asset tracker.
+Minimum required version STM32CubeMX 6.6.0.
+
+Known limitations:
+- X-NUCLEO-S2915 works only with project configuration not including Bluetooth.
+- Register CallBacks must be enabled for SPI, TIM and UART.
+</description>
+    <url>http://sw-center.st.com/packs/x-cube/</url>
+    <license>en.DM00751078.pdf</license>
+    <releases>
+        <release date="2022-09-01" version="3.2.0">First STM32CubeMX package release.</release>
+    </releases>
+    <keywords>
+        <keyword>CUBE_RULES_COMPLIANT</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="Device">Device</description>
+    </taxonomy>
+    <requirements>
+        <packages>
+            <package name="X-CUBE-GNSS1" vendor="STMicroelectronics" version="6.0.0"/>
+            <package name="X-CUBE-MEMS1" vendor="STMicroelectronics" version="9.2.0"/>
+            <package name="X-CUBE-SFXS2LP1" vendor="STMicroelectronics" version="4.0.0"/>
+            <package name="X-CUBE-SUBG2" vendor="STMicroelectronics" version="5.0.0"/>
+            <package name="X-CUBE-BLE1" vendor="STMicroelectronics" version="6.2.3"/>
+        </packages>
+    </requirements>
+    <conditions>
+        <condition id="Supported families">
+            <accept Dname="STM32L0*"/>
+            <accept Dname="STM32L1*"/>
+            <accept Dname="STM32L4*"/>
+        </condition>
+        <condition id="SUBG2 condition">
+            <description>Conditions for the inclusion of the package X-CUBE-SUBG2</description>
+            <accept Cclass="Board Extension" Cgroup="S2868A1" Cversion="4.1.0"/>
+            <accept Cclass="Board Extension" Cgroup="S2868A2" Cversion="4.1.0"/>
+            <accept Cclass="Board Extension" Cgroup="S2915A1" Cversion="4.1.0"/>
+        </condition>
+        <condition id="FP-ATR-SIGFOX1 application condition">
+            <require condition="BLE1 condition"/>
+            <require condition="Supported families"/>
+            <require condition="SUBG2 condition"/>
+            <require condition="SFXS2LP1 condition"/>
+            <require condition="MEMS1 condition"/>
+            <require condition="GNSS1 condition"/>
+        </condition>
+        <condition id="SFXS2LP1 condition">
+            <description>Conditions for the inclusion of the package X-CUBE-SFXS2LP1</description>
+            <require Cbundle="Type" Cclass="Memory" Cgroup="NVM Type"/>
+            <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_library"/>
+            <require Cclass="Network" Cgroup="Sigfox" Csub="sigfox_st_library"/>
+        </condition>
+        <condition id="MEMS1 condition">
+            <description>Conditions for the inclusion of the package X-CUBE-MEMS1</description>
+            <accept Cclass="Board Extension" Cgroup="IKS01A2"/>
+            <accept Cclass="Board Extension" Cgroup="IKS01A3"/>
+        </condition>
+        <condition id="GNSS1 condition L0-L1">
+            <description>Conditions for the inclusion of the package X-CUBE-GNSS1 for L0 and L1 families</description>
+            <accept Dname="STM32L0*"/>
+            <accept Dname="STM32L1*"/>
+            <deny Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="CMSIS FreeRTOS"/>
+        </condition>
+        <condition id="BLE1 condition">
+            <description>Condition for the inclusion of the package X-CUBE-BLE1</description>
+            <deny Cbundle="BlueNRG-MS" Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="HCI_TL" Cvariant="Template"/>
+            <deny Cbundle="BlueNRG-MS" Cclass="Wireless" Cgroup="BlueNRG-MS" Csub="HCI_TL_INTERFACE" Cvariant="Template"/>
+        </condition>
+        <condition id="GNSS1 condition L4">
+            <description>Conditions for the inclusion of the package X-CUBE-GNSS1 for L4 family</description>
+            <require Dname="STM32L4*"/>
+            <deny Cbundle="GNSS" Cclass="Board Part" Cgroup="Gnss" Csub="Teseo LIV3F" Cvariant="Bare Metal"/>
+        </condition>
+        <condition id="GNSS1 condition">
+            <description>Conditions for the inclusion of the package X-CUBE-GNSS1
+</description>
+            <accept condition="GNSS1 condition L4"/>
+            <accept condition="GNSS1 condition L0-L1"/>
+            <require Cbundle="GNSS" Cclass="Board Extension" Cgroup="GNSS1A1"/>
+        </condition>
+    </conditions>
+    <components>
+        <bundle Cbundle="Application" Cclass="Device" Cversion="3.2.0">
+            <description>Application bundle</description>
+            <doc>Documentation/STMicroelectronics.FP-ATR-SIGFOX1_GettingStarted.pdf</doc>
+            <component Cgroup="Application" Cvariant="FP-ATR-SIGFOX1" condition="FP-ATR-SIGFOX1 application condition" maxInstances="1">
+                <description>Main application</description>
+                <RTE_Components_h>#define FP_ATR_SIGFOX1</RTE_Components_h>
+                <files/>
+            </component>
+        </bundle>
+    </components>
+</package>

@@ -1,4 +1,0 @@
-G:/Mi unidad/Unalmed/Taller_5/STM32DIRECTORY/mcu_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
-../Drivers/Src/BasicTimer.c:21:6:BTimer_Config	16	static,ignoring_inline_asm
-../Drivers/Src/BasicTimer.c:83:28:BTimer_Callback	4	static,ignoring_inline_asm
-../Drivers/Src/BasicTimer.c:89:6:TIM2_IRQHandler	8	static

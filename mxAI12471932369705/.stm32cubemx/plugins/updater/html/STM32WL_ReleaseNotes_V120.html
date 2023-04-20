@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWL Firmware Package V1.2.0 / 04-February-2022</u></b></font><br>
+<b><u>Main Changes</u></b><br>
+<ul style="list-style-type: disc;">
+<li><b>CMSIS/LL/HAL Drivers updates:</b></li>
+<ul>
+<li>Maintenance to include latest corrections</li>
+</ul>
+<li><b>LoRaWAN Middleware updates:</b></li>
+<ul>
+<li>Feature: Integration of LoRaWAN v1.0.4 from LoRa Mac Semtech/StackForce develop branch (31-May-2021 commits, version 4.5.2)</li>
+<li>Feature: NVM Context store/restore implementation with Flash usage and SRAM2 retention (required by Certification code)</li>
+<li>Feature: US915/CN470/AU915 HYBRID Frequency sub-band can be overloaded in lorawan_conf.h</li>
+<li>Fix: Negative sensor Temperature</li>
+<li>Fix: LmHandlerSend function returns an error when the App data is not sent because piggyback FOpts MAC commands is set as priority in the uplink payload</li>
+<li>Fix: FragDecoder fragment max size update to support upper DRs</li>
+</ul>
+<li><b>Sigfox Middleware updates:</b></li>
+<ul>
+<li>Crypto : V1.0.0</li>
+<li>Monarch: V2.0.1 (STMicroelectronics Patent)</li>
+<li>SigfoxLib: V2.10.0</li>
+<li>SigfoxLibTest: V0.8.0</li>
+</ul>
+<li><b>Utilities updates:</b></li>
+<ul>
+<li>Maintenance to include latest corrections</li>
+</ul>
+</ul>
+</html>

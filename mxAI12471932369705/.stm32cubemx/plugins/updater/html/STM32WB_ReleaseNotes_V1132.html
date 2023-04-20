@@ -1,0 +1,28 @@
+<!DOCTYPE html >
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<font color="blue"><b><u>STM32CubeWB Firmware Package V1.13.2 / 15-February-2022</u></b></font><br>
+<b><u>Main Changes</u></b><br><br>
+<ul>
+<li>BLE updates:</li>
+<ul>
+<li>Introducing following new binary Full stack extended: stm32wbxx_BLE_Stack_full_extended_fw.bin including BLE extended advertizing features</li>
+<li>Introducing following new binary HCI layer extended: stm32wbxx_BLE_HCILayer_extended_fw.bin including BLE extended advertizing features</li>
+<li>Compared to previous delivery, the binary stm32wbxx_BLE_Stack_full_fw.bin is linked to modified Basic stack library with included Phy update(2Mb/s) and additional beacon</li>
+<li>BLE Binaries FWs are compliant to BLE5.2 certified features TCRL2021-1</li>
+</ul>
+<li>Zigbee updates</li>
+<ul>
+<li>Zigbee stack patches in order to solve R22 security vulnerability reported by the CSA (Security Incident Number: 2021-ZP-0401)</li>
+<li>Fix Manufacturer ID management : Node Descriptor Response Manufacturer ID can be set using ZbApsSet. apsManufacturerId is no more overwritten when calling ZbStartup</li>
+</ul>
+<li>BLE Zigbee Static updates</li>
+<ul>
+<li>Fix memory leak on transition from Zigbee to BLE</li>
+<li>Following application has been added: /P-NUCLEO-WB55.Nucleo/Applications/BLE_Zigbee/BLE_Zigbee_Static</li>
+</ul>
+<li>BLE-Thread Dynamic Concurrent Mode</li>
+<ul>
+<li>Correct low power consumption issue</li>
+</ul>
+</ul>
+</html>

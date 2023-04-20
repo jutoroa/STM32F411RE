@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>emotas</vendor>
+    <name>I-CUBE-CANOPEN</name>
+    <description>This STM32Pack by emotas includes a time and functional limited CANopen slave library for evaluation purposes.</description>
+    <url>https://www.emotas.de/evaluation/packs/emotas.I-CUBE-CANOPEN.pdsc/</url>
+    <license>License.pdf</license>
+    <supportContact>evaluation@emotas.de</supportContact>
+    <releases>
+        <release date="2022-02-17" url="https://www.emotas.de/evaluation/packs/emotas.I-CUBE-CANOPEN.1.1.2.pack" version="1.1.2">First official release
+
+Supported Devices:
+- STM32G0
+- STM32G4
+- STM32L5
+- STM32U5
+- STM32H7
+
+Examples with support for EWARM, MDK-ARM and STM32CubeIDE
+for the following NUCLEO Boards:
+
+- NUCLEO-G431RB</release>
+    </releases>
+    <keywords>
+        <keyword>CUBE_RULES_COMPLIANT</keyword>
+        <keyword>IMPLEMENTED_WITH_STM32CUBEMX</keyword>
+        <keyword>CAN</keyword>
+        <keyword>CANopen</keyword>
+        <keyword>FDCAN</keyword>
+    </keywords>
+    <taxonomy>
+        <description Cclass="CANopen" Cgroup="emotas_CANopen">CANopen</description>
+    </taxonomy>
+    <conditions>
+        <condition id="requireCANopenSlaveLibrary">
+            <description>Support for CANopen Slave Functionality</description>
+            <require Cclass="CANopen"/>
+            <require Cgroup="emotas_CANopen"/>
+            <require condition="require supported Device"/>
+        </condition>
+        <condition id="require supported Device">
+            <description>require on of the supported Devices</description>
+            <accept Dname="STM32G0*"/>
+            <accept Dname="STM32G4*"/>
+            <accept Dname="STM32H7*"/>
+            <accept Dname="STM32L5*"/>
+            <accept Dname="STM32U5*"/>
+        </condition>
+        <condition id="Cortex-M0 Devices with GCC">
+            <description>Support for Cortex-M0 Devices with GCC</description>
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M0 Devices with Keil">
+            <description>Support for Cortex-M0 Devices with Keil</description>
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M0 Devices with IAR">
+            <description>Support for Cortex-M0 Devices with IAR</description>
+            <require Dcore="Cortex-M0"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="Cortex-M0+ Devices with GCC">
+            <description>Support for Cortex-M0+ Devices with GCC</description>
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M0+ Devices with Keil">
+            <description>Support for Cortex-M0+ Devices with Keil</description>
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M0+ Devices with IAR">
+            <description>Support for Cortex-M0+ Devices with IAR</description>
+            <require Dcore="Cortex-M0+"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="Cortex-M3 Devices with GCC">
+            <description>Support for Cortex-M3 Devices with GCC</description>
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M3 Devices with Keil">
+            <description>Support for Cortex-M3 Devices with Keil</description>
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M3 Devices with IAR">
+            <description>Support for Cortex-M3 Devices with IAR</description>
+            <require Dcore="Cortex-M3"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="Cortex-M4 Devices with GCC">
+            <description>Support for Cortex-M4 Devices with GCC</description>
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M4 Devices with Keil">
+            <description>Support for Cortex-M4 Devices with Keil</description>
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M4 Devices with IAR">
+            <description>Support for Cortex-M4 Devices with IAR</description>
+            <require Dcore="Cortex-M4"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="Cortex-M7 Devices with GCC">
+            <description>Support for Cortex-M4 Devices with GCC</description>
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M7 Devices with Keil">
+            <description>Support for Cortex-M7 Devices with Keil</description>
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M7 Devices with IAR">
+            <description>Support for Cortex-M7 Devices with IAR</description>
+            <require Dcore="Cortex-M7"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="Cortex-M33 Devices with GCC">
+            <description>Support for Cortex-M33 Devices with GCC</description>
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="GCC"/>
+        </condition>
+        <condition id="Cortex-M33 Devices with Keil">
+            <description>Support for Cortex-M33 Devices with Keil</description>
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="ARMCC"/>
+        </condition>
+        <condition id="Cortex-M33 Devices with IAR">
+            <description>Support for Cortex-M33 Devices with IAR</description>
+            <require Dcore="Cortex-M33"/>
+            <require Tcompiler="IAR"/>
+        </condition>
+        <condition id="require STM32F0">
+            <require Dname="STM32F0*"/>
+        </condition>
+        <condition id="require STM32F1">
+            <require Dname="STM32F1*"/>
+        </condition>
+        <condition id="require STM32F3">
+            <require Dname="STM32F3*"/>
+        </condition>
+        <condition id="require STM32F4">
+            <require Dname="STM32F4*"/>
+        </condition>
+        <condition id="require STM32F7">
+            <require Dname="STM32F7*"/>
+        </condition>
+        <condition id="require STM32F2">
+            <require Dname="STM32F2*"/>
+        </condition>
+        <condition id="require STM32L4">
+            <require Dname="STM32L4*"/>
+        </condition>
+        <condition id="require STM32L5">
+            <require Dname="STM32L5*"/>
+        </condition>
+        <condition id="require STM32H7">
+            <require Dname="STM32H7*"/>
+        </condition>
+        <condition id="require STM32MP1">
+            <require Dname="STM32MP1*"/>
+        </condition>
+        <condition id="require STM32G0">
+            <require Dname="STM32G0*"/>
+        </condition>
+        <condition id="require STM32G4">
+            <require Dname="STM32G4*"/>
+        </condition>
+        <condition id="require STM32U5">
+            <require Dname="STM32U5*"/>
+        </condition>
+        <condition id="require hidden file">
+            <require Dname="xxxxxxxxx"/>
+        </condition>
+    </conditions>
+    <components>
+        <component Cclass="Device" Cgroup="Application" Cvariant="Slave" Cversion="1.0.0" condition="requireCANopenSlaveLibrary" isDefaultVariant="true" maxInstances="1">
+            <description>CANopen Slave Example Application</description>
+            <files>
+                <file category="doc" condition="require hidden file" name="Projects/CANopen/Applications/Slave/readme.txt" public="false"/>
+            </files>
+        </component>
+        <component Cclass="CANopen" Cgroup="emotas_CANopen" Cversion="3.8.0" condition="require supported Device" maxInstances="1">
+            <description>CANopen Slave Library</description>
+            <files>
+                <file category="source" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F0/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F1/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F2" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F2/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F3" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F3/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F4/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32F7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32F7/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32G0" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G0/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32G4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32G4/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32H7" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32H7/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32L4" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L4/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32L5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32L5/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32MP1" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32MP1/gen_objdict.c" public="false"/>
+                <file category="source" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/codrv_canbittiming.c" public="false"/>
+                <file category="other" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/emotas_CANopen_Slave.cddp" public="false"/>
+                <file category="other" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/emotas_CANopen_Slave.csv" public="false"/>
+                <file category="other" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/emotas_CANopen_Slave.eds" public="false"/>
+                <file category="doc" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/emotas_CANopen_Slave.html" public="false"/>
+                <file category="doc" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/emotas_CANopen_Slave_doc.txt" public="false"/>
+                <file category="header" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/gen_define.h" public="false"/>
+                <file category="header" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/gen_indication.h" public="false"/>
+                <file category="header" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/gen_indices.h" public="false"/>
+                <file category="source" condition="require STM32U5" name="Middlewares/Third_Party/emotas_CANopen/Config/STM32U5/gen_objdict.c" public="false"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_candebug.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_canopen.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_cfgman.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_cob.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_commtask.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_datatype.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_drv.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_edsparse.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_emcy.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_esdo.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_flyingmaster.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_gfc.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_idnego.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_led.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_lss.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_manager.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_network.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_nmt.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_odaccess.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_odindex.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_pdo.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_sdo.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_sleep.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_srd.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_srdo.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_store.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_sync.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_time.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_timer.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/co_user.h"/>
+                <file category="header" name="Middlewares/Third_Party/emotas_CANopen/Library/inc/iso_tp.h"/>
+                <file category="library" condition="Cortex-M0+ Devices with Keil" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM0+_ARMCC.lib" public="false"/>
+                <file category="library" condition="Cortex-M0+ Devices with GCC" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM0+_GCC.a" public="false"/>
+                <file category="library" condition="Cortex-M0+ Devices with IAR" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM0+_IAR.a" public="false"/>
+                <file category="library" condition="Cortex-M33 Devices with Keil" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM33_ARMCC.lib" public="false"/>
+                <file category="library" condition="Cortex-M33 Devices with GCC" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM33_GCC.a" public="false"/>
+                <file category="library" condition="Cortex-M33 Devices with IAR" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM33_IAR.a" public="false"/>
+                <file category="library" condition="Cortex-M4 Devices with Keil" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM4_ARMCC.lib" public="false"/>
+                <file category="library" condition="Cortex-M4 Devices with GCC" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM4_GCC.a" public="false"/>
+                <file category="library" condition="Cortex-M4 Devices with IAR" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM4_IAR.a" public="false"/>
+                <file category="library" condition="Cortex-M7 Devices with Keil" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM7_ARMCC.lib" public="false"/>
+                <file category="library" condition="Cortex-M7 Devices with GCC" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM7_GCC.a" public="false"/>
+                <file category="library" condition="Cortex-M7 Devices with IAR" name="Middlewares/Third_Party/emotas_CANopen/Library/lib/I-CUBE-CANOPEN_CM7_IAR.a" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/License.pdf" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/Release_Notes.html" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/Documentation/canopen-lib-en.pdf" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/Documentation/canopen-lib.pdf" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/Documentation/readme.txt" public="false"/>
+                <file category="doc" name="Middlewares/Third_Party/emotas_CANopen/Documentation/_htmresc/0190870_emotas_logo_RGB.jpg" public="false"/>
+            </files>
+        </component>
+    </components>
+    <examples>
+        <example doc="Release_Notes.html" folder="Projects/NUCLEO-G431RB/Examples/CANopenSlave-NUCLEO-G431RB" name="CANopenSlave-NUCLEO-G431RB" public="true" version="1.0.0">
+            <description>Simple CANopen Slave Example for evaluation purposes.</description>
+            <board Dvendor="STMicroelectronics:13" name="NUCLEO-G431RB" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="CANopenSlave-NUCLEO-G431RB" load="CANopenSlave-NUCLEO-G431RB.ioc" name="stm32cubemx"/>
+                <environment folder="EWARM" load="CANopenSlave-NUCLEO-G431RB.ewp" name="iar"/>
+                <environment folder="MDK-ARM" load="CANopenSlave-NUCLEO-G431RB.uvprojx" name="uv"/>
+                <environment folder="STM32CubeIDE" load=".cproject" name="stm32cubeide"/>
+            </project>
+            <attributes>
+                <component Cclass="Device" Cgroup="Application" Cvariant="Slave" Cvendor="emotas" Cversion="1.0.0"/>
+                <component Cclass="CANopen" Cgroup="emotas_CANopen" Cvendor="emotas" Cversion="3.8.0"/>
+                <category>CAN</category>
+                <category>FDCAN</category>
+                <category>CANopen</category>
+                <keyword>CAN/FDCAN</keyword>
+                <keyword>CAN</keyword>
+                <keyword>FDCAN</keyword>
+                <keyword>CANopen</keyword>
+                <keyword>emotas</keyword>
+            </attributes>
+        </example>
+    </examples>
+</package>
