@@ -1,4 +1,0 @@
-../Src/mainI2CMPU6050V1.c:67:5:main	24	static
-../Src/mainI2CMPU6050V1.c:137:6:initSystem	8	static
-../Src/mainI2CMPU6050V1.c:229:6:USART2_Callback	8	static
-../Src/mainI2CMPU6050V1.c:234:6:Timer2_Callback	4	static

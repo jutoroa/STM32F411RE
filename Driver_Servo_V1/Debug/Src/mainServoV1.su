@@ -1,4 +1,0 @@
-../Src/mainServoV1.c:52:5:main	8	static
-../Src/mainServoV1.c:142:6:initSystem	8	static
-../Src/mainServoV1.c:224:6:delay	24	static,ignoring_inline_asm
-../Src/mainServoV1.c:233:6:USART2_Callback	8	static
