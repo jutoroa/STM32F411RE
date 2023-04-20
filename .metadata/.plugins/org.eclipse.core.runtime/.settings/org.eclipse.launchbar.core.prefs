@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tinyMLSineTest Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_IntroSPI Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tinyMLSineTest Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_IntroSPI Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ChatGPTTest_V1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CMSIS_BasicConfig Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005C_EjemploTimers/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005C_EjemploTimers/activeLaunchTarget=null\:---
@@ -11,6 +11,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_V1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_V1/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_V2\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_V2\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CMSIS_BasicConfig\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ChatGPTTest_V1\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ChatGPTTest_V1/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:EXTIEjemplo1\ Debug/activeLaunchMode=run

@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
-		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ZipFile"/>
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.FileSystem"/>
 		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
@@ -17,35 +17,35 @@
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="orderedElements">
 			<item value="org.eclipse.ui.preferencePages.Views"/>
-			<item value="org.eclipse.epp.mpc.ui.command.showInstalled"/>
-			<item value="org.eclipse.cdt.ui.preferences.CodeColoringPreferencePage"/>
 			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
+			<item value="org.eclipse.cdt.ui.preferences.CodeColoringPreferencePage"/>
+			<item value="org.eclipse.epp.mpc.ui.command.showInstalled"/>
 			<item value="org.eclipse.ui.window.preferences"/>
 			<item value="org.eclipse.ui.preferencePages.AutoSave"/>
 		</list>
 		<list key="orderedProviders">
 			<item value="org.eclipse.ui.preferences"/>
+			<item value="org.eclipse.ui.preferences"/>
+			<item value="org.eclipse.ui.preferences"/>
 			<item value="org.eclipse.ui.commands"/>
-			<item value="org.eclipse.ui.preferences"/>
-			<item value="org.eclipse.ui.preferences"/>
 			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.preferences"/>
 		</list>
 		<list key="textEntries">
 			<item value="1"/>
-			<item value="2"/>
-			<item value="2"/>
 			<item value="1"/>
+			<item value="2"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 		</list>
 		<list key="textArray">
 			<item value="them"/>
-			<item value="plug"/>
-			<item value="plu"/>
+			<item value="color"/>
 			<item value="synta"/>
 			<item value="s"/>
-			<item value="color"/>
+			<item value="plug"/>
+			<item value="plu"/>
 			<item value="prefe"/>
 			<item value="auto"/>
 		</list>
@@ -53,6 +53,15 @@
 	<section name="org.eclipse.ui.preferences.keysPreferencePage">
 	</section>
 	<section name="FileSystemImportWizard">
+		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
+		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/home/jutoroa/workspace/CMSIS_REPO/CMSIS_5-5.9.0/CMSIS/DSP/Source"/>
+			<item value="/home/jutoroa/workspace/CMSIS_REPO/CMSIS_5-5.9.0/CMSIS/DSP"/>
+			<item value="/home/jutoroa/workspace/CMSIS_REPO/CMSIS_5-5.9.0/CMSIS"/>
+			<item value="/home/jutoroa/workspace/CMSIS_REPO/CMSIS_5-5.9.0/CMSIS/DSP/PrivateInclude"/>
+			<item value="/home/jutoroa/workspace/CMSIS_REPO/STM32CubeF4-master/Drivers/CMSIS"/>
+		</list>
 	</section>
 	<section name="ZipFileExportWizard">
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>

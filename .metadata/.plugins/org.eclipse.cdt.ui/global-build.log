@@ -1,20 +1,68 @@
-11:33:07 **** Incremental Build of configuration Debug for project CMSIS_BasicConfig ****
+15:57:39 **** Incremental Build of configuration Debug for project CMSIS_BasicConfig ****
 make clean all 
 rm -rf ./Core/Startup/startup_stm32f411retx.d ./Core/Startup/startup_stm32f411retx.o
 rm -rf ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su
 rm -rf ./App/Src/main.d ./App/Src/main.o ./App/Src/main.su
 rm -rf CMSIS_BasicConfig.elf CMSIS_BasicConfig.list CMSIS_BasicConfig.map default.size.stdout
  
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
-arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
-arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sysmem.o"
-arm-none-eabi-gcc "../App/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"App/Src/main.d" -MT"App/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "App/Src/main.o"
-arm-none-eabi-gcc -o "CMSIS_BasicConfig.elf" @"objects.list"  -lDriversSTM32 -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CMSIS_BasicConfig.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../App/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"App/Src/main.d" -MT"App/Src/main.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/Src/main.o"
+arm-none-eabi-gcc -o "CMSIS_BasicConfig.elf" @"objects.list"  -lDriversSTM32 -lDSP_COMPILATION -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CMSIS_BasicConfig.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug -L/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/Debug  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CMSIS_BasicConfig.elf
  
 arm-none-eabi-size   CMSIS_BasicConfig.elf 
    text	   data	    bss	    dec	    hex	filename
-  23592	    476	   1588	  25656	   6438	CMSIS_BasicConfig.elf
+   1024	   1080	   1572	   3676	    e5c	CMSIS_BasicConfig.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  CMSIS_BasicConfig.elf  > "CMSIS_BasicConfig.list"
+Finished building: CMSIS_BasicConfig.list
+ 
+15:57:41 **** Incremental Build of configuration Debug for project CMSIS_BasicConfig ****
+make clean all 
+rm -rf ./Core/Startup/startup_stm32f411retx.d ./Core/Startup/startup_stm32f411retx.o
+rm -rf ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su
+rm -rf ./App/Src/main.d ./App/Src/main.o ./App/Src/main.su
+rm -rf CMSIS_BasicConfig.elf CMSIS_BasicConfig.list CMSIS_BasicConfig.map default.size.stdout
+ 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../App/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"App/Src/main.d" -MT"App/Src/main.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/Src/main.o"
+arm-none-eabi-gcc -o "CMSIS_BasicConfig.elf" @"objects.list"  -lDriversSTM32 -lDSP_COMPILATION -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CMSIS_BasicConfig.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug -L/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/Debug  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CMSIS_BasicConfig.elf
+ 
+arm-none-eabi-size   CMSIS_BasicConfig.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1024	   1080	   1572	   3676	    e5c	CMSIS_BasicConfig.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  CMSIS_BasicConfig.elf  > "CMSIS_BasicConfig.list"
+Finished building: CMSIS_BasicConfig.list
+ 
+15:59:27 **** Incremental Build of configuration Debug for project CMSIS_BasicConfig ****
+make clean all 
+rm -rf ./Core/Startup/startup_stm32f411retx.d ./Core/Startup/startup_stm32f411retx.o
+rm -rf ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su
+rm -rf ./App/Src/main.d ./App/Src/main.o ./App/Src/main.su
+rm -rf CMSIS_BasicConfig.elf CMSIS_BasicConfig.list CMSIS_BasicConfig.map default.size.stdout
+ 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../App/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/App/Inc" -I"/home/jutoroa/workspace/STMDirectory/DriversSTM32/Inc" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Core/Include" -I"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/Drivers/Device/ST/STM32F4xx/Include" -I"/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/DSP/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"App/Src/main.d" -MT"App/Src/main.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/Src/main.o"
+../App/Src/main.c: In function 'main':
+../App/Src/main.c:49:19: warning: unused variable 'diff' [-Wunused-variable]
+   49 |         float32_t diff = 1;
+      |                   ^~~~
+arm-none-eabi-gcc -o "CMSIS_BasicConfig.elf" @"objects.list"  -lDriversSTM32 -lDSP_COMPILATION -mcpu=cortex-m4 -T"/home/jutoroa/workspace/STMDirectory/CMSIS_BasicConfig/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CMSIS_BasicConfig.map" -Wl,--gc-sections -static -L/home/jutoroa/workspace/STMDirectory/DriversSTM32/Debug -L/home/jutoroa/workspace/STMDirectory/DSP_COMPILATION/Debug  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CMSIS_BasicConfig.elf
+ 
+arm-none-eabi-size   CMSIS_BasicConfig.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3684	   1088	   1580	   6352	   18d0	CMSIS_BasicConfig.elf
 Finished building: default.size.stdout
  
 arm-none-eabi-objdump -h -S  CMSIS_BasicConfig.elf  > "CMSIS_BasicConfig.list"
