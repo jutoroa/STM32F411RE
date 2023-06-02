@@ -77,8 +77,11 @@
 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1277123733" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.lib.debug.1841126226.1606161431" name="TransformFunctions.c" rcbsApplicability="disable" resourcePath="DSP/Source/TransformFunctions/TransformFunctions.c" toolsToInvoke="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.350623039.282818005">
+						<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.350623039.282818005" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.350623039"/>
+					</fileInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DSP"/>
+						<entry excluding="Source/TransformFunctions/TransformFunctions.c|Source/TransformFunctions/TransformFunctionsF16.c|Source/SVMFunctions/SVMFunctions.c|Source/SVMFunctions/SVMFunctionsF16.c|Source/SupportFunctions/SupportFunctions.c|Source/SupportFunctions/SupportFunctionsF16.c|Source/StatisticsFunctions/StatisticsFunctions.c|Source/StatisticsFunctions/StatisticsFunctionsF16.c|Source/QuaternionMathFunctions/QuaternionMathFunctions.c|Source/MatrixFunctions/MatrixFunctions.c|Source/MatrixFunctions/MatrixFunctionsF16.c|Source/InterpolationFunctions/InterpolationFunctions.c|Source/InterpolationFunctions/InterpolationFunctionsF16.c|Source/FilteringFunctions/FilteringFunctions.c|Source/FilteringFunctions/FilteringFunctionsF16.c|Source/FastMathFunctions/FastMathFunctions.c|Source/FastMathFunctions/FastMathFunctionsF16.c|Source/DistanceFunctions/DistanceFunctions.c|Source/DistanceFunctions/DistanceFunctionsF16.c|Source/ControllerFunctions/ControllerFunctions.c|Source/ComplexMathFunctions/ComplexMathFunctions.c|Source/ComplexMathFunctions/ComplexMathFunctionsF16.c|Source/CommonTables/CommonTables.c|Source/CommonTables/CommonTablesF16.c|Source/BayesFunctions/BayesFunctions.c|Source/BayesFunctions/BayesFunctionsF16.c|Source/BasicMathFunctions/BasicMathFunctions.c|Source/BasicMathFunctions/BasicMathFunctionsF16.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DSP"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 					</sourceEntries>

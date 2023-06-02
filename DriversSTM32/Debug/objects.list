@@ -1,4 +1,4 @@
-"./Src/AdcDriver.o"
+"./Src/AdcDriverWorkshopTaller5.o"
 "./Src/CaptureFrecDriver.o"
 "./Src/EXTIxDriver.o"
 "./Src/FPUDriver.o"

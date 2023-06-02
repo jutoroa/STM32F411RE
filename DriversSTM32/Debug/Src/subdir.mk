@@ -5,7 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/AdcDriver.c \
+../Src/AdcDriverWorkshopTaller5.c \
 ../Src/CaptureFrecDriver.c \
 ../Src/EXTIxDriver.c \
 ../Src/FPUDriver.c \
@@ -24,7 +24,7 @@ C_SRCS += \
 ../Src/rtcDS1307Driver.c 
 
 OBJS += \
-./Src/AdcDriver.o \
+./Src/AdcDriverWorkshopTaller5.o \
 ./Src/CaptureFrecDriver.o \
 ./Src/EXTIxDriver.o \
 ./Src/FPUDriver.o \
@@ -43,7 +43,7 @@ OBJS += \
 ./Src/rtcDS1307Driver.o 
 
 C_DEPS += \
-./Src/AdcDriver.d \
+./Src/AdcDriverWorkshopTaller5.d \
 ./Src/CaptureFrecDriver.d \
 ./Src/EXTIxDriver.d \
 ./Src/FPUDriver.d \
@@ -69,7 +69,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/AdcDriver.d ./Src/AdcDriver.o ./Src/AdcDriver.su ./Src/CaptureFrecDriver.d ./Src/CaptureFrecDriver.o ./Src/CaptureFrecDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/FPUDriver.d ./Src/FPUDriver.o ./Src/FPUDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/I2sDriver.d ./Src/I2sDriver.o ./Src/I2sDriver.su ./Src/MPU6050Driver.d ./Src/MPU6050Driver.o ./Src/MPU6050Driver.su ./Src/OLEDDriver.d ./Src/OLEDDriver.o ./Src/OLEDDriver.su ./Src/PLLDriver.d ./Src/PLLDriver.o ./Src/PLLDriver.su ./Src/PWMxDriver.d ./Src/PWMxDriver.o ./Src/PWMxDriver.su ./Src/RTCDriver.d ./Src/RTCDriver.o ./Src/RTCDriver.su ./Src/SpiDriver.d ./Src/SpiDriver.o ./Src/SpiDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su ./Src/rtcDS1307Driver.d ./Src/rtcDS1307Driver.o ./Src/rtcDS1307Driver.su
+	-$(RM) ./Src/AdcDriverWorkshopTaller5.d ./Src/AdcDriverWorkshopTaller5.o ./Src/AdcDriverWorkshopTaller5.su ./Src/CaptureFrecDriver.d ./Src/CaptureFrecDriver.o ./Src/CaptureFrecDriver.su ./Src/EXTIxDriver.d ./Src/EXTIxDriver.o ./Src/EXTIxDriver.su ./Src/FPUDriver.d ./Src/FPUDriver.o ./Src/FPUDriver.su ./Src/GPIOxDriver.d ./Src/GPIOxDriver.o ./Src/GPIOxDriver.su ./Src/I2CxDriver.d ./Src/I2CxDriver.o ./Src/I2CxDriver.su ./Src/I2sDriver.d ./Src/I2sDriver.o ./Src/I2sDriver.su ./Src/MPU6050Driver.d ./Src/MPU6050Driver.o ./Src/MPU6050Driver.su ./Src/OLEDDriver.d ./Src/OLEDDriver.o ./Src/OLEDDriver.su ./Src/PLLDriver.d ./Src/PLLDriver.o ./Src/PLLDriver.su ./Src/PWMxDriver.d ./Src/PWMxDriver.o ./Src/PWMxDriver.su ./Src/RTCDriver.d ./Src/RTCDriver.o ./Src/RTCDriver.su ./Src/SpiDriver.d ./Src/SpiDriver.o ./Src/SpiDriver.su ./Src/SysTickDriver.d ./Src/SysTickDriver.o ./Src/SysTickDriver.su ./Src/TIMxDriver.d ./Src/TIMxDriver.o ./Src/TIMxDriver.su ./Src/USARTxDriver.d ./Src/USARTxDriver.o ./Src/USARTxDriver.su ./Src/rtcDS1307Driver.d ./Src/rtcDS1307Driver.o ./Src/rtcDS1307Driver.su
 
 .PHONY: clean-Src
 

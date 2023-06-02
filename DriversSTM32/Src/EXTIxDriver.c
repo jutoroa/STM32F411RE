@@ -115,7 +115,7 @@ void EXTI_Config(EXTI_Config_t *extiConfig){
 		EXTI -> RTSR |= (EXTI_RTSR_TR0 << (extiConfig -> pin));
 	}
 	// Activamos la configuración para el flanco de bajada
-	else if((extiConfig -> trigger) == TRIGGER_RISING){
+	else if((extiConfig -> trigger) == TRIGGER_FALLING){
 		EXTI -> FTSR |= (EXTI_FTSR_TR0 << (extiConfig -> pin));
 	}
 	// Activamos la configuración para los dos

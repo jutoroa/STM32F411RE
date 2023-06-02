@@ -1,14 +1,87 @@
-
-
 #include <math.h>
 #include "arm_math.h"
 
+#include "GPIOxDriver.h"
+#include "USARTxDriver.h"
+#include "TIMxDriver.h"
+#include "FPUDriver.h"
+#include "EXTIxDriver.h"
+
+/* Defines for the USART and BLINKY pheripheral */
+
+// Handler para todos los periféricos que se van a implementar en el desarrollo del proyecto
+GPIO_Handler_t 	handlerStateLED 		= {0};	// StateLED
+GPIO_Handler_t 	handlerPinTX 			= {0};	// handlerPinTX
+GPIO_Handler_t 	handlerPinRX 			= {0};	// handlerPinRX
+
+TIMER_Handler_t handlerTimer2 			= {0};	// Timer2
+
+USART_Handler_t handlerCommTerminal		= {0};	// Usart para la terminal en USART 2
+
+uint8_t 	rxData					= 0;				// Variable donde se guardarán los datos obtenidos por el RX
+
+void initSystem(void){
+	FPUInit();
+
+	// Configuración el State LED
+	handlerStateLED.pGPIOx								= GPIOA;
+	handlerStateLED.GPIO_PinConfig.GPIO_PinNumber		= PIN_5;
+	handlerStateLED.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_OUT;
+	handlerStateLED.GPIO_PinConfig.GPIO_PinOPType		= GPIO_OTYPE_PUSHPULL;
+	handlerStateLED.GPIO_PinConfig.GPIO_PinPuPdControl	= GPIO_PUPDR_NOTHING;
+	handlerStateLED.GPIO_PinConfig.GPIO_PinSpeed		= GPIO_OSPEED_FAST;
+
+	//Cargamos la configuraciónif(rxData != '\0'){
+
+	GPIO_Config(&handlerStateLED);
+
+	/* Configurando los pines sobre los que funciona el USART */
+	handlerPinTX.pGPIOx									= GPIOA;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinNumber			= PIN_2;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_NOTHING;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
+	handlerPinTX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF7;
+
+	GPIO_Config(&handlerPinTX);
+
+	handlerPinRX.pGPIOx									= GPIOA;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinNumber			= PIN_3;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinMode			= GPIO_MODE_ALTFN;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinOPType			= GPIO_OTYPE_PUSHPULL;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinPuPdControl		= GPIO_PUPDR_NOTHING;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinSpeed			= GPIO_OSPEED_FAST;
+	handlerPinRX.GPIO_PinConfig.GPIO_PinAltFunMode		= AF7;
+
+	GPIO_Config(&handlerPinRX);
+
+
+	handlerCommTerminal.ptrUSARTx							= USART2;
+	handlerCommTerminal.USART_Config.USART_mode				= USART_MODE_RXTX;
+	handlerCommTerminal.USART_Config.USART_baudrate			= USART_BAUDRATE_19200;
+	handlerCommTerminal.USART_Config.USART_datasize			= USART_DATASIZE_8BIT;
+	handlerCommTerminal.USART_Config.USART_parity			= USART_PARITY_ODD;
+	handlerCommTerminal.USART_Config.USART_stopbits			= USART_STOPBIT_1;
+	handlerCommTerminal.USART_Config.USART_interrupt		= USART_INTERRUPT_RX_ENABLE;
+
+	USART_Config(&handlerCommTerminal);
+
+	// Configuración del timer2
+	handlerTimer2.ptrTIMx								= TIM2;
+	handlerTimer2.timerConfig.Timer_mode				= TIMER_MODE_UP;
+	handlerTimer2.timerConfig.Timer_speed				= TIMER_INCR_SPEED_1ms;
+	handlerTimer2.timerConfig.Timer_period				= 250;
+
+	Timer_Config(&handlerTimer2);
+	startTimer(&handlerTimer2);
+}
 
 /* ----------------------------------------------------------------------
 * Defines each of the tests performed
 * ------------------------------------------------------------------- */
 #define MAX_BLOCKSIZE   32
-#define DELTA           (0.000001f)
+#define DELTA           (0.00001f)
 
 
 /* ----------------------------------------------------------------------
@@ -46,29 +119,38 @@ float32_t  sinSquareOutput;
 
 int main(void)
 {
-        float32_t diff = 1;
-        uint32_t i;
+	char bufferData[128] = {0};
+
+	initSystem();
+	float32_t diff;
+	uint32_t i;
 
         for(i=0; i< blockSize; i++){
+        	cosOutput = arm_cos_f32(testInput_f32[i]);
+            sinOutput = arm_sin_f32(testInput_f32[i]);
 
-        	// Calcular el sin y cos para cada uno de los elementos del arreglo
-			cosOutput = arm_cos_f32(testInput_f32[i]);
-			sinOutput = arm_sin_f32(testInput_f32[i]);
+			arm_mult_f32(&cosOutput, &cosOutput, &cosSquareOutput, 1);
+			arm_mult_f32(&sinOutput, &sinOutput, &sinSquareOutput, 1);
 
-//			arm_mult_f32(&cosOutput, &cosOutput, &cosSquareOutput, 1);
-//			arm_mult_f32(&sinOutput, &sinOutput, &sinSquareOutput, 1);
-//
-//			arm_add_f32(&cosSquareOutput, &sinSquareOutput, &testOutput, 1);
-//
-//                /* absolute value of difference between ref and test */
-//            diff = fabsf(testRefOutput_f32 - testOutput);
+			arm_add_f32(&cosSquareOutput, &sinSquareOutput, &testOutput, 1);
+
+                /* absolute value of difference between ref and test */
+            diff = fabsf(testRefOutput_f32 - testOutput);
 
             /* Comparison of sin_cos value with reference */
-//            if(diff > DELTA)
-//            {
+            if(diff > DELTA)
+            {
 //                   status = ARM_MATH_TEST_FAILURE;
-//            }
-//
+               	// Imprimimos los valores por consola
+               	sprintf(bufferData, "ARM_MATH_TEST_FAILURE DIFF = %f \n\r",diff);
+               	writeMsg(&handlerCommTerminal, bufferData);
+            }
+            else{
+               	// Imprimimos los valores por consola
+               	sprintf(bufferData, "ARM_MATH_TEST_SUCCESFULL DIFF = %f \n\r",diff);
+               	writeMsg(&handlerCommTerminal, bufferData);
+            }
+
 //            if( status == ARM_MATH_TEST_FAILURE)
 //            {
 //               while(1);
@@ -76,5 +158,17 @@ int main(void)
 
     }
 
-    while(1);                             /* main function does not return */
+    while(1){
+
+    }
+}
+
+// Timer encargado del StateLED
+void Timer2_Callback(void){
+	handlerStateLED.pGPIOx -> ODR ^= GPIO_ODR_OD5;		// Encendido y apagado StateLED
+}
+
+void USART2_Callback(void){
+	// Lectura de los datos recibidos
+	rxData = returnData();
 }
