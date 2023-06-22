@@ -79,4 +79,13 @@
 			<item value="/home/jutoroa/workspace/STMDirectory/12_IntroSPI.zip"/>
 		</list>
 	</section>
+	<section name="InstallationDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="-37"/>
+		<item key="DIALOG_Y_ORIGIN" value="-343"/>
+		<item key="DIALOG_WIDTH" value="686"/>
+		<item key="DIALOG_HEIGHT" value="841"/>
+		<item key="DIALOG_FONT_NAME" value="1|Noto Sans|10.0|0|GTK|1|"/>
+	</section>
+	<section name="NewWizardAction">
+	</section>
 </section>

@@ -5,7 +5,7 @@
  *      Author: jutoroa
  */
 
-#include "AdcDriver.h"
+#include "AdcDriverWorkshopTaller5.h"
 #include "GPIOxDriver.h"
 
 GPIO_Handler_t handlerAdcPin = {0};
